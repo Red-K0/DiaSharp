@@ -5,6 +5,6 @@
 /// </summary>
 public enum AssociationKind
 {
-    None,
-    Coroutine
+	None,
+	Coroutine
 }

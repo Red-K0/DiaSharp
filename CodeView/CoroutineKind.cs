@@ -8,28 +8,28 @@
 /// </remarks>
 public enum CoroutineKind
 {
-    /// <summary>
-    /// Not a coroutine.
-    /// </summary>
-    None,
+	/// <summary>
+	/// Not a coroutine.
+	/// </summary>
+	None,
 
-    /// <summary>
-    /// The original coroutine function.
-    /// </summary>
-    Primary,
+	/// <summary>
+	/// The original coroutine function.
+	/// </summary>
+	Primary,
 
-    /// <summary>
-    /// Initialization function, sets up the coroutine frame.
-    /// </summary>
-    Init,
+	/// <summary>
+	/// Initialization function, sets up the coroutine frame.
+	/// </summary>
+	Init,
 
-    /// <summary>
-    /// Resume function, contains the coroutine body code.
-    /// </summary>
-    Resume,
+	/// <summary>
+	/// Resume function, contains the coroutine body code.
+	/// </summary>
+	Resume,
 
-    /// <summary>
-    /// Destroy function, tears down the coroutine frame.
-    /// </summary>
-    Destroy
+	/// <summary>
+	/// Destroy function, tears down the coroutine frame.
+	/// </summary>
+	Destroy
 }

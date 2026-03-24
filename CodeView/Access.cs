@@ -1,4 +1,6 @@
-﻿namespace DiaSharp.CodeView;
+﻿using DiaSharp.Enums;
+
+namespace DiaSharp.CodeView;
 
 /// <summary>
 /// Specifies the scope of visibility (access level) of member functions and variables.
@@ -9,7 +11,7 @@
 /// </remarks>
 public enum Access
 {
-    Private   = 0,
-    Public    = 1,
-    Protected = 2,
+	Private   = 0,
+	Public    = 1,
+	Protected = 2,
 }
