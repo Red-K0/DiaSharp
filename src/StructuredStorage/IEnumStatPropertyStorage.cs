@@ -1,0 +1,17 @@
+using System.Runtime.InteropServices.Marshalling;
+
+namespace DiaSharp.StructuredStorage;
+
+[GeneratedComInterface]
+[Guid("00000139-0000-0000-C000-000000000046")]
+[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+public partial interface IEnumStatPropertyStorage
+{
+	IEnumStatPropertyStorage Clone();
+
+	uint Next(uint propertyCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out StatPropertyStorage[] properties);
+
+	void Reset();
+
+	void Skip(uint propertyCount);
+}
