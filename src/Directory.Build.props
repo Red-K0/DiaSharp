@@ -1,0 +1,19 @@
+<Project>
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<AnalysisLevel>preview-all</AnalysisLevel>
+		<IsAotCompatible>true</IsAotCompatible>
+		<WarningLevel>9999</WarningLevel>
+
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<LangVersion>preview</LangVersion>
+		<Nullable>enable</Nullable>
+
+		<IsTrimmable>true</IsTrimmable>
+		<PublishAot>true</PublishAot>
+	</PropertyGroup>
+</Project>

@@ -1,3 +1,7 @@
 <Solution>
-  <Project Path="DiaSharp.csproj" />
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Project Path="DiaSharp.Managed/DiaSharp.Managed.csproj" Id="80a99f5c-85e1-4904-a80f-82ce2ade4203" />
+  <Project Path="DiaSharp/DiaSharp.csproj" />
 </Solution>

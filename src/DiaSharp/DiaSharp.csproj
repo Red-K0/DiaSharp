@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Include="System.Reflection" />
+		<Using Include="System.Runtime.InteropServices" />
+		<Using Include="System.Runtime.InteropServices.Marshalling" />
+	</ItemGroup>
+
+</Project>

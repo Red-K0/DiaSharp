@@ -299,6 +299,7 @@ dotnet_diagnostic.CA1027.severity = none
 
 # CA1028: Enum Storage should be Int32
 dotnet_diagnostic.CA1028.severity = none
+dotnet_diagnostic.CA1724.severity = none
 
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
