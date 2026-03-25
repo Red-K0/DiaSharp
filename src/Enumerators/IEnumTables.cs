@@ -15,7 +15,7 @@ public partial interface IEnumTables
 
 	ITable Item(Variant index);
 
-	uint Next(uint tableCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ITable[] tables);
+	uint GetNext(uint tableCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ITable[] tables);
 
 	void Skip(uint tableCount);
 

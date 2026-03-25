@@ -6,8 +6,10 @@
 /// <remarks>
 /// Must be used in combination with <see cref="HostRegister"/> for full coverage, see implementation for more details.
 /// </remarks>
-public enum PowerPC
+public enum PPC
 {
+	NOREG = 0,
+
 	#region General Registers (User Level)
 
 	GPR0  = 1,

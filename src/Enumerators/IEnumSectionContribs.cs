@@ -14,7 +14,7 @@ public partial interface IEnumSectionContribs
 
 	ISectionContrib Item(uint index);
 
-	uint Next(uint contribCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISectionContrib[] contribs);
+	uint GetNext(uint contribCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISectionContrib[] contribs);
 
 	void Skip(uint contribCount);
 

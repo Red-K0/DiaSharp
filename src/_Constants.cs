@@ -6,7 +6,7 @@ namespace DiaSharp;
 
 #pragma warning disable IDE1006
 
-internal class _Constants
+static internal class _Constants
 {
 	public const string HlslObsoleteMessage = "The newer DXC compiler no longer produces PDBs. This API only has valid values on PDBs produced by the older fxc.exe compiler.";
 }

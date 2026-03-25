@@ -9,7 +9,7 @@ namespace DiaSharp.StructuredStorage;
 /// <see cref="IPropertyStorage.Enum"/> supplies a pointer to the <see cref="IEnumStatPropertyStorage"/> interface on an enumerator object that can be used to enumerate the <see cref="StatPropertyStorage"/> structures for the properties in the current property set.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public readonly unsafe struct StatPropertyStorage
+public readonly unsafe struct StatPropertyStorage : IEquatable<StatPropertyStorage>
 {
 	/// <summary>
 	/// A wide-character null-terminated Unicode string that contains the optional string name associated with the property. May be <see langword="null"/>.
@@ -28,4 +28,27 @@ public readonly unsafe struct StatPropertyStorage
 	/// The property type.
 	/// </summary>
 	public readonly VariantType Type;
+
+	public override readonly bool Equals(object? obj) => obj is StatPropertyStorage storage && this == storage;
+
+	public override int GetHashCode()
+	{
+		HashCode code = new();
+
+		fixed (StatPropertyStorage* storage = &this) code.AddBytes(new(storage, sizeof(StatPropertyStorage)));
+
+		return code.ToHashCode();
+	}
+
+	public static bool operator ==(StatPropertyStorage left, StatPropertyStorage right)
+	{
+		return new ReadOnlySpan<byte>(&left, sizeof(StatPropertyStorage)) == new ReadOnlySpan<byte>(&right, sizeof(StatPropertyStorage));
+	}
+
+	public static bool operator !=(StatPropertyStorage left, StatPropertyStorage right)
+	{
+		return new ReadOnlySpan<byte>(&left, sizeof(StatPropertyStorage)) != new ReadOnlySpan<byte>(&right, sizeof(StatPropertyStorage));
+	}
+
+	public bool Equals(StatPropertyStorage other) => this == other;
 }

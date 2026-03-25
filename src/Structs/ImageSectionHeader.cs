@@ -1,13 +1,12 @@
-﻿namespace DiaSharp.Structs;
+﻿using DiaSharp.Enums;
 
-using System.Runtime.InteropServices;
-using DiaSharp.Enums;
+namespace DiaSharp.Structs;
 
 /// <summary>
 /// Represents the image section header format.
 /// </summary>
 [StructLayout(LayoutKind.Explicit, Pack = 1)]
-public unsafe struct ImageSectionHeader
+public unsafe struct ImageSectionHeader : IEquatable<ImageSectionHeader>
 {
 	/// <summary>
 	/// An 8-byte, null-padded UTF-8 string. There is no terminating null character if the string is exactly eight characters long.
@@ -89,5 +88,28 @@ public unsafe struct ImageSectionHeader
 	/// <summary>
 	/// The characteristics of the image.
 	/// </summary>
-	[FieldOffset(36)] public ImageSectionFlags Characteristics;
+	[FieldOffset(36)] public SectionCharacteristics Characteristics;
+
+	public override readonly bool Equals(object? obj) => obj is ImageSectionHeader header && this == header;
+
+	public override int GetHashCode()
+	{
+		HashCode code = new();
+
+		fixed (ImageSectionHeader* header = &this) code.AddBytes(new(header, sizeof(ImageSectionHeader)));
+
+		return code.ToHashCode();
+	}
+
+	public static bool operator ==(ImageSectionHeader left, ImageSectionHeader right)
+	{
+		return new ReadOnlySpan<byte>(&left, sizeof(ImageSectionHeader)) == new ReadOnlySpan<byte>(&right, sizeof(ImageSectionHeader));
+	}
+
+	public static bool operator !=(ImageSectionHeader left, ImageSectionHeader right)
+	{
+		return new ReadOnlySpan<byte>(&left, sizeof(ImageSectionHeader)) != new ReadOnlySpan<byte>(&right, sizeof(ImageSectionHeader));
+	}
+
+	public readonly bool Equals(ImageSectionHeader other) => this == other;
 }

@@ -1,5 +1,6 @@
 ﻿namespace DiaSharp.Interop;
 
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1720:Identifier contains type name", Justification = "Type names necessary.")]
 public enum VariantType : ushort
 {
 	/// <summary> Not specified. </summary>
@@ -143,7 +144,6 @@ public enum VariantType : ushort
 	/// <summary> A void pointer for local use. </summary>
 	ByRef = 0x4000,
 
-	Reserved = 0x8000,
 	TypeMask = 0x0FFF,
 	Illegal = 0xFFFF,
 }

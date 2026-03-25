@@ -14,7 +14,7 @@ public partial interface IEnumDebugStreams
 
 	IEnumDebugStreamData Item(uint index);
 
-	uint Next(uint dataCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IEnumDebugStreamData[] steamDatas);
+	uint GetNext(uint dataCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IEnumDebugStreamData[] steamDatas);
 
 	void Skip(uint dataCount);
 

@@ -14,7 +14,7 @@ public partial interface IEnumSourceFiles
 
 	ISourceFile Item(uint index);
 
-	uint Next(uint fileCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISourceFile[] files);
+	uint GetNext(uint fileCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISourceFile[] files);
 
 	void Skip(uint fileCount);
 

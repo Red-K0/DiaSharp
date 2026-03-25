@@ -45,5 +45,5 @@ public partial interface IStackFrame
 	[return: MarshalAs(UnmanagedType.Bool)]
 	bool GetSystemExceptionHandling();
 
-	StackFrameType GetType();
+	StackFrameType GetFrameType();
 }

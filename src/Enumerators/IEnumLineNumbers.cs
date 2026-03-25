@@ -14,7 +14,7 @@ public partial interface IEnumLineNumbers
 
 	ILineNumber Item(uint index);
 
-	uint Next(uint lineCount, [MarshalUsing(CountElementName = nameof(lineCount))] out ILineNumber[] lines);
+	uint GetNext(uint lineCount, [MarshalUsing(CountElementName = nameof(lineCount))] out ILineNumber[] lines);
 
 	void Skip(uint lineCount);
 

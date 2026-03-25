@@ -6,8 +6,10 @@
 /// <remarks>
 /// Must be used in combination with <see cref="HostRegister"/> for full coverage, see implementation for more details.
 /// </remarks>
-public enum SuperHMedia
+public enum SHM
 {
+	NOREG = 0,
+
 	#region 64-bit General Registers
 
 	R0    = 10,

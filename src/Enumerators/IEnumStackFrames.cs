@@ -8,7 +8,7 @@ namespace DiaSharp.Enumerators;
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumStackFrames
 {
-	uint Next(uint frameCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IStackFrame[] frames);
+	uint GetNext(uint frameCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IStackFrame[] frames);
 
 	void Reset();
 }

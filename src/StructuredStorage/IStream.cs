@@ -2,6 +2,8 @@ using System.Runtime.InteropServices.Marshalling;
 
 namespace DiaSharp.StructuredStorage;
 
+#pragma warning disable CA1711
+
 [GeneratedComInterface]
 [Guid("0000000C-0000-0000-C000-000000000046")]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -21,7 +23,9 @@ public partial interface IStream : ISequentialStream
 
 	void UnlockRegion(ulong offset, ulong byteCount, LockType lockType);
 
-	void Stat(out StatsTag tag, StatFlag flag);
+	void Stat(out StatStorage tag, StatName flag);
 
 	void Clone(out IStream stream);
 }
+
+#pragma warning restore CA1711

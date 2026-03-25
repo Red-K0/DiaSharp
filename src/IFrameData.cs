@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices.Marshalling;
+using DiaSharp.Enums;
 using DiaSharp.Stack;
 
 namespace DiaSharp;
@@ -43,7 +44,7 @@ public partial interface IFrameData
 	[return: MarshalAs(UnmanagedType.Bool)]
 	bool GetAllocatesBasePointer();
 
-	uint GetType();
+	StackFrameType GetFrameType();
 
 	IFrameData GetFunctionParent();
 

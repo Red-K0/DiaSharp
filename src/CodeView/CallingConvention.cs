@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace DiaSharp.CodeView;
+﻿namespace DiaSharp.CodeView;
 
 /// <summary>
 /// Specifies the calling convention for a function.
@@ -8,7 +6,7 @@ namespace DiaSharp.CodeView;
 /// <remarks>
 /// The values in this enumeration are returned by a call to the Symbol::GetcallingConvention method.
 /// </remarks>
-public enum Call
+public enum CallingConvention
 {
 	/// <summary>
 	/// Near C calling convention. Arguments pushed right-to-left. Caller cleans the stack.
@@ -134,10 +132,4 @@ public enum Call
 	/// Near vector calling convention. Arguments pushed left-to-right with register usage. Callee cleans the stack.
 	/// </summary>
 	NearVector = 0x18,
-
-	/// <summary>
-	/// First unused calling convention value.
-	/// </summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	Reserved = 0x19
 }

@@ -7,5 +7,5 @@ namespace DiaSharp.Stack;
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IStackWalkHelper2 : IStackWalkHelper
 {
-	ulong GetPointerAuthenticationMask(ulong pointer);
+	ulong GetPointerAuthenticationMask(ulong pointerValue);
 }

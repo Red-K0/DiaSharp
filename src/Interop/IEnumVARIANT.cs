@@ -9,7 +9,7 @@ public partial interface IEnumVARIANT
 {
 	IEnumVARIANT Clone();
 
-	uint Next(uint elementCount, [MarshalUsing(CountElementName = nameof(elementCount))] out IUnknown[] elements);
+	uint GetNext(uint elementCount, [MarshalUsing(CountElementName = nameof(elementCount))] out IUnknown[] elements);
 
 	void Reset();
 

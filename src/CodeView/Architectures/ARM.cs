@@ -8,6 +8,8 @@
 /// </remarks>
 public enum ARM
 {
+	NOREG = 0,
+
 	#region ARM Standard Registers
 
 	R0   = 10,

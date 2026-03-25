@@ -4,7 +4,8 @@
 /// Represents the image section header format.
 /// </summary>
 [Flags]
-public enum ImageSectionFlags : uint
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1028:Enum Storage should be Int32", Justification = "Larger values don't fit in an Int32")]
+public enum SectionCharacteristics : uint
 {
 	/// <summary>
 	/// The section should not be padded to the next boundary.

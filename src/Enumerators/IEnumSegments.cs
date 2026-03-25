@@ -14,7 +14,7 @@ public partial interface IEnumSegments
 
 	ISegment Item(uint index);
 
-	uint Next(uint segmentCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISegment[] segments);
+	uint GetNext(uint segmentCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISegment[] segments);
 
 	void Skip(uint segmentCount);
 

@@ -8,6 +8,8 @@
 /// </remarks>
 public enum ARM64
 {
+	NOREG = 0,
+
 	#region General Purpose 32-bit Integer Registers
 
 	W0  = 10,

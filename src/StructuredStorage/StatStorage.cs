@@ -6,13 +6,13 @@ namespace DiaSharp.StructuredStorage;
 /// Contains statistical data about an open storage, stream, or byte-array object. This structure is used in the <see cref="IStream"/> interface.
 /// </summary>
 [StructLayout(LayoutKind.Sequential, Pack = 8)]
-public unsafe struct StatsTag
+public unsafe struct StatStorage : IEquatable<StatStorage>
 {
 	/// <summary>
 	/// A pointer to a null-terminated Unicode string that contains the name. Space for this string is allocated by the method called and freed by the caller (for more information, see <see cref="Marshal.FreeCoTaskMem(nint)"/>).
 	/// </summary>
 	/// <remarks>
-	/// To not return this member, specify the <see cref="StatFlag.NoName"/> value when you call <see cref="IStream.Stat(out StatsTag, StatFlag)"/>.
+	/// To not return this member, specify the <see cref="StatName.Omit"/> value when you call <see cref="IStream.Stat(out StatStorage, StatName)"/>.
 	/// </remarks>
 	public char* Name;
 
@@ -78,4 +78,28 @@ public unsafe struct StatsTag
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public uint reserved;
+
+	public override readonly bool Equals(object? obj) => obj is StatStorage storage && this == storage;
+
+	public override int GetHashCode()
+	{
+		HashCode code = new();
+
+		fixed (StatStorage* storage = &this) code.AddBytes(new(storage, sizeof(StatStorage)));
+
+		return code.ToHashCode();
+	}
+
+	public static bool operator ==(StatStorage left, StatStorage right)
+	{
+		return new ReadOnlySpan<byte>(&left, sizeof(StatStorage)) == new ReadOnlySpan<byte>(&right, sizeof(StatStorage));
+	}
+
+	public static bool operator !=(StatStorage left, StatStorage right)
+	{
+		return new ReadOnlySpan<byte>(&left, sizeof(StatStorage)) != new ReadOnlySpan<byte>(&right, sizeof(StatStorage));
+	}
+
+	public readonly bool Equals(StatStorage other) => this == other;
+
 }

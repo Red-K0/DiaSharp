@@ -14,7 +14,7 @@ public partial interface IEnumSymbolsByAddressEx : IEnumSymbolsByAddress
 
 	ISymbol GetSymbolByVA([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, ulong virtualAddress);
 
-	uint Next([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint symbolCount, [MarshalUsing(CountElementName = nameof(symbolCount))] out ISymbol[] symbols);
+	uint GetNext([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint symbolCount, [MarshalUsing(CountElementName = nameof(symbolCount))] out ISymbol[] symbols);
 
 	uint Prev([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint symbolCount, [MarshalUsing(CountElementName = nameof(symbolCount))] out ISymbol[] symbols);
 }

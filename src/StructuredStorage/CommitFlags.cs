@@ -9,7 +9,7 @@ public enum CommitFlags
 	/// <summary>
 	/// You can specify this condition with <see cref="Consolidate"/>, or some combination of the other three flags in this list of elements. Use this value to increase the readability of code.
 	/// </summary>
-	Default = 0,
+	None = 0,
 
 	/// <summary>
 	/// The commit operation can overwrite existing data to reduce overall space requirements.

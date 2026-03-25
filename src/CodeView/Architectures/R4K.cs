@@ -6,8 +6,10 @@
 /// <remarks>
 /// Must be used in combination with <see cref="HostRegister"/> for full coverage, see implementation for more details.
 /// </remarks>
-public enum R4000
+public enum R4K
 {
+	NOREG = 0,
+
 	#region Integer Registers
 
 	IntZERO = 10,

@@ -9,7 +9,7 @@ public partial interface IEnumStatPropertyStorage
 {
 	IEnumStatPropertyStorage Clone();
 
-	uint Next(uint propertyCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out StatPropertyStorage[] properties);
+	uint GetNext(uint propertyCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out StatPropertyStorage[] properties);
 
 	void Reset();
 

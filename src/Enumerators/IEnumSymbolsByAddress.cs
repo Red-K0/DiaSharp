@@ -14,7 +14,7 @@ public partial interface IEnumSymbolsByAddress
 
 	ISymbol GetSymbolByVA(ulong virtualAddress);
 
-	uint Next(uint symbolCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISymbol[] symbols);
+	uint GetNext(uint symbolCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISymbol[] symbols);
 
 	uint Prev(uint symbolCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISymbol[] symbols);
 

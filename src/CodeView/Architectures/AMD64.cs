@@ -8,6 +8,8 @@
 /// </remarks>
 public enum AMD64
 {
+	NOREG = 0,
+
 	#region Standard Registers
 
 	AL     = 1,

@@ -13,7 +13,7 @@ public partial interface IEnumNamedStreams
 	int GetCount();
 
 	[return: MarshalAs(UnmanagedType.BStr)]
-	string Next();
+	string GetNext();
 
 	void Skip(uint streamCount);
 

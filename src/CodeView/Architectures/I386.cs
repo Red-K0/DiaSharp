@@ -6,8 +6,10 @@
 /// <remarks>
 /// Must be used in combination with <see cref="HostRegister"/> for full coverage, see implementation for more details.
 /// </remarks>
-public enum IX86
+public enum I386
 {
+	NOREG = 0,
+
 	#region x86 Standard Registers
 
 	AL     = 1,

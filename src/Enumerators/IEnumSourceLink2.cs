@@ -10,5 +10,5 @@ public partial interface IEnumSourceLink2 : IEnumSourceLink
 	ulong SizeOfNext2();
 
 	[return: MarshalUsing(CountElementName = nameof(bytesWritten))]
-	byte[] Next(ulong bufferSize, out ulong bytesWritten);
+	byte[] GetNext(ulong bufferSize, out ulong bytesWritten);
 }

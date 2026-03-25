@@ -16,7 +16,7 @@
 /// <para> An array of <see cref="AddressMapEntry"/> structures is passed to the AddressMap::set_addressMap method. </para>
 /// </remarks>
 [StructLayout(LayoutKind.Explicit, Pack = 4, Size = 8)]
-public readonly struct AddressMapEntry
+public readonly struct AddressMapEntry : IEquatable<AddressMapEntry>
 {
 	/// <summary>
 	/// A relative virtual address (RVA) in image A.
@@ -29,4 +29,20 @@ public readonly struct AddressMapEntry
 	/// </summary>
 	[FieldOffset(4)]
 	public readonly uint RelativeVirtualAddressTarget;
+
+	public override bool Equals(object? obj) => obj is AddressMapEntry entry && this == entry;
+
+	public override int GetHashCode() => (int)(RelativeVirtualAddressTarget ^ RelativeVirtualAddress);
+
+	public static unsafe bool operator ==(AddressMapEntry left, AddressMapEntry right)
+	{
+		return *(ulong*)&left == *(ulong*)&right;
+	}
+
+	public static unsafe bool operator !=(AddressMapEntry left, AddressMapEntry right)
+	{
+		return *(ulong*)&left != *(ulong*)&right;
+	}
+
+	public bool Equals(AddressMapEntry other) => this == other;
 }

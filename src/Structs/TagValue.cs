@@ -8,7 +8,7 @@
 /// An alternative way to think about the layout of a <see cref="TagValue"/> could be something like this:
 /// </remarks>
 [StructLayout(LayoutKind.Explicit, Pack = 1, Size = 17)]
-public readonly struct TagValue
+public readonly struct TagValue : IEquatable<TagValue>
 {
 	[FieldOffset(00)]
 	public readonly UInt128 Value128;
@@ -30,4 +30,27 @@ public readonly struct TagValue
 	/// </summary>
 	[FieldOffset(16)]
 	public readonly byte ValueSize;
+
+	public override readonly bool Equals(object? obj) => obj is TagValue value && this == value;
+
+	public override unsafe int GetHashCode()
+	{
+		HashCode code = new();
+
+		fixed (TagValue* value = &this) code.AddBytes(new(value, sizeof(TagValue)));
+
+		return code.ToHashCode();
+	}
+
+	public static unsafe bool operator ==(TagValue left, TagValue right)
+	{
+		return new ReadOnlySpan<byte>(&left, sizeof(TagValue)) == new ReadOnlySpan<byte>(&right, sizeof(TagValue));
+	}
+
+	public static unsafe bool operator !=(TagValue left, TagValue right)
+	{
+		return new ReadOnlySpan<byte>(&left, sizeof(TagValue)) != new ReadOnlySpan<byte>(&right, sizeof(TagValue));
+	}
+
+	public bool Equals(TagValue other) => this == other;
 }

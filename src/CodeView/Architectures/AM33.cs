@@ -8,6 +8,8 @@
 /// </remarks>
 public enum AM33
 {
+	NOREG = 0,
+
 	#region "Extended" (GPI) Registers
 
 	E0 = 10,

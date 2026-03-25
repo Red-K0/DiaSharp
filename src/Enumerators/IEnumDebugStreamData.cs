@@ -18,7 +18,7 @@ public partial interface IEnumDebugStreamData
 	[return: MarshalUsing(CountElementName = nameof(bytesWritten))]
 	byte[] Item(uint index, uint bufferSize, out uint bytesWritten);
 
-	uint Next(uint dataCount, uint bufferSize, out uint bytesWritten, [MarshalUsing(CountElementName = nameof(bufferSize))] out byte[] dataBuffer);
+	uint GetNext(uint dataCount, uint bufferSize, out uint bytesWritten, [MarshalUsing(CountElementName = nameof(bufferSize))] out byte[] dataBuffer);
 
 	void Skip(uint dataCount);
 

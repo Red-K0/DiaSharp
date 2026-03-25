@@ -14,7 +14,7 @@ public partial interface IEnumFrameData
 
 	IFrameData Item(uint index);
 
-	uint Next(uint dataCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IFrameData[] frameDatas);
+	uint GetNext(uint dataCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IFrameData[] frameDatas);
 
 	void Skip(uint dataCount);
 

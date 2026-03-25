@@ -15,7 +15,7 @@ public partial interface IEnumSymbols
 
 	ISymbol Item(uint index);
 
-	uint Next(uint symbolCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISymbol[] elements);
+	uint GetNext(uint symbolCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISymbol[] elements);
 
 	void Skip(uint symbolCount);
 

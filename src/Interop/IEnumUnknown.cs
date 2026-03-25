@@ -9,7 +9,7 @@ public partial interface IEnumUnknown
 {
 	void Clone(out IEnumUnknown enumerator);
 
-	uint Next(uint elementCount, [MarshalUsing(CountElementName = nameof(elementCount))] out IUnknown[] elements);
+	uint GetNext(uint elementCount, [MarshalUsing(CountElementName = nameof(elementCount))] out IUnknown[] elements);
 
 	void Reset();
 

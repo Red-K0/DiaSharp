@@ -12,7 +12,7 @@ public partial interface IEnumSourceLink
 	uint SizeOfNext();
 
 	[return: MarshalUsing(CountElementName = nameof(bytesWritten))]
-	byte[] Next(uint bufferSize, out uint bytesWritten);
+	byte[] GetNext(uint bufferSize, out uint bytesWritten);
 
 	void Skip(uint byteCount);
 

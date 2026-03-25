@@ -8,6 +8,8 @@
 /// </remarks>
 public enum M32R
 {
+	NOREG = 0,
+
 	R0  = 10,
 	R1  = 11,
 	R2  = 12,

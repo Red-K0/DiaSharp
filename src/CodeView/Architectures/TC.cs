@@ -6,8 +6,10 @@
 /// <remarks>
 /// Must be used in combination with <see cref="HostRegister"/> for full coverage, see implementation for more details.
 /// </remarks>
-public enum TriCore
+public enum TC
 {
+	NOREG = 0,
+
 	#region General Purpose Data Registers
 
 	D0  = 10,

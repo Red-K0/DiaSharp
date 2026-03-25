@@ -13,7 +13,7 @@ public partial interface IPropertyStorage
 	[return: MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.BStr, SizeParamIndex = 0)]
 	string[] ReadPropertyNames(uint propertyIDCount, [MarshalUsing(CountElementName = nameof(propertyIDCount))] [In] uint[] propertyIDs);
 
-	IEnumStatPropertyStorage Enum();
+	IEnumStatPropertyStorage GetEnum();
 
 	uint ReadUint(uint id);
 

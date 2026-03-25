@@ -9,7 +9,7 @@ namespace DiaSharp.Symbols;
 [GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
 [Guid("CB787B2F-BD6C-4635-BA52-933126BD2DCD")]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public unsafe partial interface ISymbol
+public partial interface ISymbol
 {
 	uint GetSymbolIndexID();
 
@@ -22,7 +22,7 @@ public unsafe partial interface ISymbol
 
 	ISymbol GetClassParent();
 
-	ISymbol GetType();
+	ISymbol GetSymbolType();
 
 	DataKind GetDataKind();
 
@@ -113,7 +113,8 @@ public unsafe partial interface ISymbol
 	[return: MarshalAs(UnmanagedType.BStr)]
 	string GetSymbolsFileName();
 
-	int GetReference();
+	[return: MarshalAs(UnmanagedType.Bool)]
+	bool GetIsReference();
 
 	uint GetCount();
 
@@ -205,15 +206,15 @@ public unsafe partial interface ISymbol
 	[return: MarshalUsing(CountElementName = nameof(dataWritten))]
 	byte[] GetDataBytes(uint dataSize, out uint dataWritten);
 
+	IEnumSymbols FindChildrenUnaware(SymbolTag symbolTag, string name, NameSearchOptions compareFlags);
+
 	IEnumSymbols FindChildren(SymbolTag symbolTag, string name, NameSearchOptions compareFlags);
 
-	IEnumSymbols FindChildrenEx(SymbolTag symbolTag, string name, NameSearchOptions compareFlags);
+	IEnumSymbols FindChildrenByAddress(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint sectionIndex, uint offset);
 
-	IEnumSymbols FindChildrenExByAddress(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint sectionIndex, uint offset);
+	IEnumSymbols FindChildrenByVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, ulong virtualAddress);
 
-	IEnumSymbols FindChildrenExByVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, ulong va);
-
-	IEnumSymbols FindChildrenExByRVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint rva);
+	IEnumSymbols FindChildrenByRVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint relativeVirtualAddress);
 
 	uint GetTargetSection();
 
@@ -240,7 +241,7 @@ public unsafe partial interface ISymbol
 	UdtKind GetUdtKind();
 
 	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetUndecoratedNameEx(UndecorateOptions undecorateOptions);
+	string GetUndecoratedName(UndecorateOptions undecorateOptions);
 
 	[return: MarshalAs(UnmanagedType.Bool)]
 	bool GetIsNoReturn();
@@ -394,7 +395,8 @@ public unsafe partial interface ISymbol
 
 	uint GetLocalBasePointerRegisterID();
 
-	int GetIsLocationControlFlowDependent();
+	[return: MarshalAs(UnmanagedType.Bool)]
+	bool GetIsLocationControlFlowDependent();
 
 	uint GetStride();
 
@@ -402,7 +404,8 @@ public unsafe partial interface ISymbol
 
 	uint GetNumberOfColumns();
 
-	int GetIsMatrixRowMajor();
+	[return: MarshalAs(UnmanagedType.Bool)]
+	bool GetIsMatrixRowMajor();
 
 	[return: MarshalUsing(CountElementName = nameof(countWritten))]
 	uint[] GetNumericProperties(uint propertyCount, out uint countWritten);
@@ -506,21 +509,21 @@ public unsafe partial interface ISymbol
 
 	IEnumSymbols FindInlineFramesByAddress(uint sectionIndex, uint offset);
 
-	IEnumSymbols FindInlineFramesByRVA(uint rva);
+	IEnumSymbols FindInlineFramesByRVA(uint relativeVirtualAddress);
 
-	IEnumSymbols FindInlineFramesByVA(ulong va);
+	IEnumSymbols FindInlineFramesByVA(ulong virtualAddress);
 
 	IEnumLineNumbers FindInlineeLines();
 
 	IEnumLineNumbers FindInlineeLinesByAddress(uint sectionIndex, uint offset, uint length);
 
-	IEnumLineNumbers FindInlineeLinesByRVA(uint rva, uint length);
+	IEnumLineNumbers FindInlineeLinesByRVA(uint relativeVirtualAddress, uint length);
 
-	IEnumLineNumbers FindInlineeLinesByVA(ulong va, uint length);
+	IEnumLineNumbers FindInlineeLinesByVA(ulong virtualAddress, uint length);
 
 	IEnumSymbols FindSymbolsForAcceleratorPointerTag(uint tagValue);
 
-	IEnumSymbols FindSymbolsByRVAForAcceleratorPointerTag(uint tagValue, uint rva);
+	IEnumSymbols FindSymbolsByRVAForAcceleratorPointerTag(uint tagValue, uint relativeVirtualAddress);
 
 	[return: MarshalUsing(CountElementName = nameof(tagCount))]
 	uint[] GetAcceleratorPointerTags(uint tagCount, out uint tagsWritten);

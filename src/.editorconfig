@@ -285,6 +285,21 @@ dotnet_diagnostic.CA1515.severity = none
 # CA2014: Do not use stackalloc in loops
 dotnet_diagnostic.CA2014.severity = none
 
+# IDE0040: Add accessibility modifiers
+dotnet_diagnostic.IDE0040.severity = none
+
+# CA1024: Use properties where appropriate
+dotnet_diagnostic.CA1024.severity = none
+
+# CA1711: Identifiers should not have incorrect suffix
+dotnet_diagnostic.CA1711.severity = none
+
+# CA1027: Mark enums with FlagsAttribute
+dotnet_diagnostic.CA1027.severity = none
+
+# CA1028: Enum Storage should be Int32
+dotnet_diagnostic.CA1028.severity = none
+
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 tab_width = 4
@@ -324,3 +339,4 @@ dotnet_style_qualification_for_event = false:silent
 dotnet_diagnostic.CA2007.severity = none
 dotnet_diagnostic.CA1062.severity = none
 dotnet_diagnostic.CA1810.severity = none
+dotnet_diagnostic.SYSLIB1092.severity = none

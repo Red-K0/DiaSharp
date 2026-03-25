@@ -8,6 +8,8 @@
 /// </remarks>
 public enum IA64
 {
+	NOREG = 0,
+
 	#region Branch Registers
 
 	Br0 = 512,

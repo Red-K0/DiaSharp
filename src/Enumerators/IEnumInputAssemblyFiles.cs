@@ -14,7 +14,7 @@ public partial interface IEnumInputAssemblyFiles
 
 	IInputAssemblyFile Item(uint index);
 
-	uint Next(uint fileCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IInputAssemblyFile[] files);
+	uint GetNext(uint fileCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IInputAssemblyFile[] files);
 
 	void Skip(uint fileCount);
 

@@ -14,7 +14,7 @@ public partial interface IEnumInjectedSources
 
 	IInjectedSource Item(uint index);
 
-	uint Next(uint sourceCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IInjectedSource[] sources);
+	uint GetNext(uint sourceCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IInjectedSource[] sources);
 
 	void Skip(uint sourceCount);
 
