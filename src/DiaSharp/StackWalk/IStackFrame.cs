@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices.Marshalling;
 using DiaSharp.CodeView;
 using DiaSharp.Interop;
 using DiaSharp.Native;

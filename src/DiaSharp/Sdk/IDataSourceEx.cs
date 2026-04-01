@@ -1,8 +1,8 @@
-using DiaSharp.Sdk.Callbacks;
+using DiaSharp.SDK.Callbacks;
 using DiaSharp.Interop;
 using DiaSharp.Storage;
 
-namespace DiaSharp.Sdk;
+namespace DiaSharp.SDK;
 
 [GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
 [Guid("1A21EB69-962A-4BC4-8BD3-681797D38B23")]

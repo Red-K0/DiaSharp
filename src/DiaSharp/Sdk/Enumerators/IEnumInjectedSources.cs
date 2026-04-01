@@ -1,6 +1,6 @@
 using DiaSharp.Interop;
 
-namespace DiaSharp.Sdk.Enumerators;
+namespace DiaSharp.SDK.Enumerators;
 
 [GeneratedComInterface]
 [Guid("D5612573-6925-4468-8883-98CDEC8C384A")]

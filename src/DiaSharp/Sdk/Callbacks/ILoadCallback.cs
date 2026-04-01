@@ -1,4 +1,4 @@
-﻿namespace DiaSharp.Sdk.Callbacks;
+﻿namespace DiaSharp.SDK.Callbacks;
 
 [GeneratedComInterface]
 [Guid("C32ADB82-73F4-421b-95D5-A4706EDF5DBE")]

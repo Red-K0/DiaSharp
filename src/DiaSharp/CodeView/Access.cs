@@ -1,4 +1,4 @@
-﻿using DiaSharp.Sdk.Symbols;
+﻿using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.CodeView;
 

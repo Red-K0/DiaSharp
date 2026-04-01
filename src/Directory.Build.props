@@ -3,16 +3,20 @@
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<AnalysisLevel>preview-all</AnalysisLevel>
 		<IsAotCompatible>true</IsAotCompatible>
 		<WarningLevel>9999</WarningLevel>
+		<NoWarn>CS1591</NoWarn>
 
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>
 
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<IsTrimmable>true</IsTrimmable>
 		<PublishAot>true</PublishAot>
 	</PropertyGroup>

@@ -1,4 +1,5 @@
 ﻿using DiaSharp.Interop;
+using DiaSharp.SDK;
 
 namespace DiaSharp.Storage;
 

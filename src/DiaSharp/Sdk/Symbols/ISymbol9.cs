@@ -1,4 +1,4 @@
-namespace DiaSharp.Sdk.Symbols;
+namespace DiaSharp.SDK.Symbols;
 
 [GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
 [Guid("A89E5969-92A1-4F8A-B704-00121C37ABBB")]

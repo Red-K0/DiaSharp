@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace DiaSharp.Sdk;
+namespace DiaSharp.SDK;
 
 /// <summary>
 /// Specifies a combination of flags that control how a symbol is undecorated.

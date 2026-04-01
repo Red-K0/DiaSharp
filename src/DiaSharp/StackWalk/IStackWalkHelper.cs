@@ -1,7 +1,6 @@
-using System.Runtime.InteropServices.Marshalling;
 using DiaSharp.CodeView;
-using DiaSharp.Sdk;
-using DiaSharp.Sdk.Symbols;
+using DiaSharp.SDK;
+using DiaSharp.SDK.Symbols;
 using DiaSharp.Native;
 
 namespace DiaSharp.StackWalk;

@@ -1,10 +1,9 @@
 using DiaSharp.CodeView;
 using DiaSharp.CodeView.Hlsl;
-using DiaSharp.Sdk.Enumerators;
-using DiaSharp.Sdk.Symbols;
 using DiaSharp.Native;
+using DiaSharp.SDK.Enumerators;
 
-namespace DiaSharp.Sdk.Symbols;
+namespace DiaSharp.SDK.Symbols;
 
 [GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
 [Guid("CB787B2F-BD6C-4635-BA52-933126BD2DCD")]
@@ -102,7 +101,7 @@ public partial interface ISymbol
 
 	Variant GetValue();
 
-	uint GetBaseType();
+	uint GetBaseType();	
 
 	uint GetToken();
 
@@ -419,10 +418,10 @@ public partial interface ISymbol
 	[return: MarshalAs(UnmanagedType.Bool)]
 	bool GetIsOptimizedAway();
 
-	[Obsolete(_Constants.HlslObsoleteMessage)]
+	[Obsolete(_Globals.HlslObsoleteMessage)]
 	BuiltIn GetBuiltInKind();
 
-	[Obsolete(_Constants.HlslObsoleteMessage)]
+	[Obsolete(_Globals.HlslObsoleteMessage)]
 	Register GetRegisterType();
 
 	uint GetBaseDataSlot();
@@ -437,7 +436,7 @@ public partial interface ISymbol
 
 	uint GetSizeInUdt();
 
-	[Obsolete(_Constants.HlslObsoleteMessage)]
+	[Obsolete(_Globals.HlslObsoleteMessage)]
 	MemorySpace GetMemorySpaceKind();
 
 	uint GetUnmodifiedTypeId();

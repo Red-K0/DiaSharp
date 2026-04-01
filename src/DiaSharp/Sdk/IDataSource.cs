@@ -1,7 +1,7 @@
 using DiaSharp.Interop;
 using DiaSharp.Storage;
 
-namespace DiaSharp.Sdk;
+namespace DiaSharp.SDK;
 
 [GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
 [Guid("79F1BB5F-B66E-48E5-B6A9-1545C323CA3D")]
@@ -15,7 +15,7 @@ public partial interface IDataSource
 
 	void LoadAndValidateDataFromPdb(string pdbPath, ref Guid pdbSignature, uint signature, uint age);
 
-	void LoadDataForExe(string executable, string searchPath, IUnknown callback);
+	void LoadDataForExe(string exePath, string searchPath, IUnknown callback);
 
 	void LoadDataFromIStream(IStream stream);
 

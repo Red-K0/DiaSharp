@@ -1,6 +1,6 @@
 using DiaSharp.Interop;
 
-namespace DiaSharp.Sdk;
+namespace DiaSharp.SDK;
 
 [GeneratedComInterface]
 [Guid("4A59FB77-ABAC-469B-A30B-9ECC85BFEF14")]

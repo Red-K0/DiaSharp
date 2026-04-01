@@ -1,6 +1,6 @@
-using DiaSharp.Sdk.Symbols;
+using DiaSharp.SDK.Symbols;
 
-namespace DiaSharp.Sdk;
+namespace DiaSharp.SDK;
 
 [GeneratedComInterface]
 [Guid("B388EB14-BE4D-421D-A8A1-6CF7AB057086")]

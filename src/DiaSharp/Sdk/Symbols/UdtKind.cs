@@ -1,4 +1,4 @@
-﻿namespace DiaSharp.Sdk.Symbols;
+﻿namespace DiaSharp.SDK.Symbols;
 
 /// <summary>
 /// Describes the variety of a user-defined type (UDT).

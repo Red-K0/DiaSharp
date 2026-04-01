@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices.Marshalling;
-
 namespace DiaSharp.StackWalk;
 
 [GeneratedComInterface]

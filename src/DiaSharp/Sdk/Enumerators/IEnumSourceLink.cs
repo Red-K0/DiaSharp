@@ -1,4 +1,4 @@
-﻿namespace DiaSharp.Sdk.Enumerators;
+﻿namespace DiaSharp.SDK.Enumerators;
 
 [GeneratedComInterface]
 [Guid("45cd1eb3-5c6c-43e3-b20a-a4d8035de4e2")]

@@ -1,6 +1,6 @@
 using DiaSharp.StackWalk;
 
-namespace DiaSharp.Sdk.Enumerators;
+namespace DiaSharp.SDK.Enumerators;
 
 [GeneratedComInterface]
 [Guid("EC9D461D-CE74-4711-A020-7D8F9A1DD255")]

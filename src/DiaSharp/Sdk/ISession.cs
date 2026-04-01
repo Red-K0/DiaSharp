@@ -1,8 +1,8 @@
 using DiaSharp.CodeView;
-using DiaSharp.Sdk.Enumerators;
-using DiaSharp.Sdk.Symbols;
+using DiaSharp.SDK.Enumerators;
+using DiaSharp.SDK.Symbols;
 
-namespace DiaSharp.Sdk;
+namespace DiaSharp.SDK;
 
 [GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
 [Guid("2F609EE1-D1C8-4E24-8288-3326BADCD211")]

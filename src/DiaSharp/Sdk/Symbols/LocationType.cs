@@ -1,4 +1,4 @@
-﻿namespace DiaSharp.Sdk.Symbols;
+﻿namespace DiaSharp.SDK.Symbols;
 
 /// <summary>
 /// Indicates the kind of location information contained in a symbol.

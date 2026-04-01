@@ -1,6 +1,5 @@
-using System.Runtime.InteropServices.Marshalling;
 using DiaSharp.CodeView;
-using DiaSharp.Sdk.Enumerators;
+using DiaSharp.SDK.Enumerators;
 
 namespace DiaSharp.StackWalk;
 

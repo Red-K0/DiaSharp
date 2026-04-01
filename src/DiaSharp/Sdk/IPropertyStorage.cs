@@ -1,6 +1,6 @@
 using DiaSharp.Storage;
 
-namespace DiaSharp.Sdk;
+namespace DiaSharp.SDK;
 
 [GeneratedComInterface]
 [Guid("9d416f9c-e184-45b2-a4f0-ce517f719e9b")]

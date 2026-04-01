@@ -1,4 +1,6 @@
-﻿namespace DiaSharp.Storage;
+﻿using DiaSharp.SDK;
+
+namespace DiaSharp.Storage;
 
 /// <summary>
 /// The <see cref="PropertySpecifier"/> structure is used by many of the methods of <see cref="IPropertyStorage"/> to specify a property either by its ID, or its associated string name.

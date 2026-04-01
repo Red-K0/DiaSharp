@@ -1,7 +1,7 @@
 using DiaSharp.Native;
 using DiaSharp.StackWalk;
 
-namespace DiaSharp.Sdk;
+namespace DiaSharp.SDK;
 
 [GeneratedComInterface]
 [Guid("A39184B7-6A36-42DE-8EEC-7DF9F3F59F33")]

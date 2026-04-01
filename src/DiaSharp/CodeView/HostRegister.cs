@@ -4,7 +4,7 @@
 /// Specifies a target register. Unlike the implementation in the original cvconst.h, the registers here are split by ISA.
 /// </summary>
 /// <remarks>
-/// See the <see cref="Architectures"/> namespace for more specialized enumerations, with specific values.
+/// See the <see cref="Architecture"/> namespace for more specialized enumerations, with specific values.
 /// </remarks>
 public enum HostRegister
 {

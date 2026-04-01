@@ -1,4 +1,4 @@
-﻿namespace DiaSharp.Sdk.Callbacks;
+﻿namespace DiaSharp.SDK.Callbacks;
 
 /// <summary>
 /// Provides the file name and error code for the last load error for fastlink PDBs.

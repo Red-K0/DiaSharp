@@ -1,7 +1,11 @@
 <Solution>
-  <Folder Name="/Solution Items/">
+  <Folder Name="/Root/">
     <File Path="Directory.Build.props" />
   </Folder>
-  <Project Path="DiaSharp.Managed/DiaSharp.Managed.csproj" Id="80a99f5c-85e1-4904-a80f-82ce2ade4203" />
+  <Folder Name="/Samples/">
+    <Project Path="Samples/MinimalManaged/MinimalManaged.csproj" Id="ee1b9c80-b126-4d09-8a51-5d4fea8092bc" />
+    <Project Path="Samples/MinimalNative/MinimalNative.csproj" Id="b2c3a1ff-a77b-48f6-b131-596f4582a3b3" />
+  </Folder>
   <Project Path="DiaSharp/DiaSharp.csproj" />
+  <Project Path="Managed/Managed.csproj" Id="80a99f5c-85e1-4904-a80f-82ce2ade4203" />
 </Solution>

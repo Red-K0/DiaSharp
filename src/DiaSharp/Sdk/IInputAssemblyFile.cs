@@ -1,4 +1,4 @@
-namespace DiaSharp.Sdk;
+namespace DiaSharp.SDK;
 
 [GeneratedComInterface]
 [Guid("3BFE56B0-390C-4863-9430-1F3D083B7684")]
