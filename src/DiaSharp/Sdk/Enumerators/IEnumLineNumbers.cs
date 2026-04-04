@@ -2,22 +2,19 @@ using DiaSharp.Interop;
 
 namespace DiaSharp.SDK.Enumerators;
 
-[GeneratedComInterface]
-[Guid("FE30E878-54AC-44F1-81BA-39DE940F6052")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumLineNumbers
 {
-	IEnumVARIANT GetNewEnum();
+	int GetNewEnum(out IEnumVARIANT enumerator);
 
-	int GetCount();
+	int GetCount(out int count);
 
-	ILineNumber Item(uint index);
+	int Item(uint index, out ILineNumber number);
 
-	uint GetNext(uint lineCount, [MarshalUsing(CountElementName = nameof(lineCount))] out ILineNumber[] lines);
+	unsafe int GetNext(uint lineCount, void** lines, out uint linesFetched);
 
-	void Skip(uint lineCount);
+	int Skip(uint lineCount);
 
-	void Reset();
+	int Reset();
 
-	IEnumLineNumbers Clone();
+	int Clone(out IEnumLineNumbers enumerator);
 }

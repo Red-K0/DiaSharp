@@ -2,22 +2,19 @@ using DiaSharp.Interop;
 
 namespace DiaSharp.SDK.Enumerators;
 
-[GeneratedComInterface]
-[Guid("D5612573-6925-4468-8883-98CDEC8C384A")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumInjectedSources
 {
-	IEnumVARIANT GetNewEnum();
+	int GetNewEnum(out IEnumVARIANT enumerator);
 
-	int GetCount();
+	int GetCount(out int count);
 
-	IInjectedSource Item(uint index);
+	int Item(uint index, out IInjectedSource source);
 
-	uint GetNext(uint sourceCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IInjectedSource[] sources);
+	unsafe int GetNext(uint sourceCount, void** sources, out uint sourcesFetched);
 
-	void Skip(uint sourceCount);
+	int Skip(uint sourceCount);
 
-	void Reset();
+	int Reset();
 
-	IEnumInjectedSources Clone();
+	int Clone(out IEnumInjectedSources enumerator);
 }

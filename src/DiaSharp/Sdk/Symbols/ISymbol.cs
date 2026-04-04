@@ -5,594 +5,480 @@ using DiaSharp.SDK.Enumerators;
 
 namespace DiaSharp.SDK.Symbols;
 
-[GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
-[Guid("CB787B2F-BD6C-4635-BA52-933126BD2DCD")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface ISymbol
 {
-	uint GetSymbolIndexID();
+	int GetSymbolIndexID(out uint result);
 
-	SymbolTag GetSymbolTag();
+	int GetSymbolTag(out SymbolTag result);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetName();
+	int GetName([MarshalAs(UnmanagedType.BStr)] out string result);
 
-	ISymbol GetLexicalParent();
+	int GetLexicalParent(out ISymbol result);
 
-	ISymbol GetClassParent();
+	int GetClassParent(out ISymbol result);
 
-	ISymbol GetSymbolType();
+	int GetSymbolType(out ISymbol result);
 
-	DataKind GetDataKind();
+	int GetDataKind(out DataKind result);
 
-	LocationType GetLocationType();
+	int GetLocationType(out LocationType result);
 
-	uint GetAddressSection();
+	int GetAddressSection(out uint result);
 
-	uint GetAddressOffset();
+	int GetAddressOffset(out uint result);
 
-	uint GetRelativeVirtualAddress();
+	int GetRelativeVirtualAddress(out uint result);
 
-	ulong GetVirtualAddress();
+	int GetVirtualAddress(out ulong result);
 
-	uint GetRegisterID();
+	int GetRegisterID(out uint result);
 
-	int GetOffset();
+	int GetOffset(out int result);
 
-	ulong GetLength();
+	int GetLength(out ulong result);
 
-	uint GetSlot();
+	int GetSlot(out uint result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetVolatileType();
+	int GetVolatileType([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetConstType();
+	int GetConstType([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetUnalignedType();
+	int GetUnalignedType([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	uint GetAccess();
+	int GetAccess(out uint result);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetLibraryName();
+	int GetLibraryName([MarshalAs(UnmanagedType.BStr)] out string result);
 
-	uint GetPlatform();
+	int GetPlatform(out uint result);
 
-	uint GetLanguage();
+	int GetLanguage(out uint result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetEditAndContinueEnabled();
+	int GetEditAndContinueEnabled([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	uint GetFrontendMajor();
+	int GetFrontendMajor(out uint result);
 
-	uint GetFrontendMinor();
+	int GetFrontendMinor(out uint result);
 
-	uint GetFrontendBuild();
+	int GetFrontendBuild(out uint result);
 
-	uint GetBackendMajor();
+	int GetBackendMajor(out uint result);
 
-	uint GetBackendMinor();
+	int GetBackendMinor(out uint result);
 
-	uint GetBackendBuild();
+	int GetBackendBuild(out uint result);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetSourceFileName();
+	int GetSourceFileName([MarshalAs(UnmanagedType.BStr)] out string result);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetUnused();
+	int GetUnused([MarshalAs(UnmanagedType.BStr)] out string result);
 
-	ThunkOrdinal GetThunkOrdinal();
+	int GetThunkOrdinal(out ThunkOrdinal result);
 
-	int GetThisAdjustor();
+	int GetThisAdjustor(out int result);
 
-	uint GetVirtualBaseOffset();
+	int GetVirtualBaseOffset(out uint result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsVirtual();
+	int GetIsVirtual([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsIntro();
+	int GetIsIntro([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsPure();
+	int GetIsPure([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	uint GetCallingConvention();
+	int GetCallingConvention(out uint result);
 
-	Variant GetValue();
+	int GetValue(out Variant result);
 
-	uint GetBaseType();	
+	int GetBaseType(out uint result);
 
-	uint GetToken();
+	int GetToken(out uint result);
 
-	uint GetTimestamp();
+	int GetTimestamp(out uint result);
 
-	Guid GetGUID();
+	int GetGUID(out Guid result);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetSymbolsFileName();
+	int GetSymbolsFileName([MarshalAs(UnmanagedType.BStr)] out string result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsReference();
+	int GetIsReference([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	uint GetCount();
+	int GetCount(out uint result);
 
-	uint GetBitPosition();
+	int GetBitPosition(out uint result);
 
-	ISymbol GetArrayIndexType();
+	int GetArrayIndexType(out ISymbol result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsPacked();
+	int GetIsPacked([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasConstructor();
+	int GetHasConstructor([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasOverloadedOperator();
+	int GetHasOverloadedOperator([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsNested();
+	int GetIsNested([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasNestedTypes();
+	int GetHasNestedTypes([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasAssignmentOperator();
+	int GetHasAssignmentOperator([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasCastOperator();
+	int GetHasCastOperator([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsScoped();
+	int GetIsScoped([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsVirtualBaseClass();
+	int GetIsVirtualBaseClass([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsIndirectVirtualBaseClass();
+	int GetIsIndirectVirtualBaseClass([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	int GetVirtualBasePointerOffset();
+	int GetVirtualBasePointerOffset(out int result);
 
-	ISymbol GetVirtualTableShape();
+	int GetVirtualTableShape(out ISymbol result);
 
-	uint GetLexicalParentID();
+	int GetLexicalParentID(out uint result);
 
-	uint GetClassParentID();
+	int GetClassParentID(out uint result);
 
-	uint GetTypeID();
+	int GetTypeID(out uint result);
 
-	uint GetArrayIndexTypeID();
+	int GetArrayIndexTypeID(out uint result);
 
-	uint GetVirtualTableShapeID();
+	int GetVirtualTableShapeID(out uint result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsCode();
+	int GetIsCode([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsFunction();
+	int GetIsFunction([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsManaged();
+	int GetIsManaged([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsMSIL();
+	int GetIsMSIL([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	uint GetVirtualBaseDisplacementIndex();
+	int GetVirtualBaseDisplacementIndex(out uint result);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetUndecoratedName();
+	int GetUndecoratedName([MarshalAs(UnmanagedType.BStr)] out string result);
 
-	uint GetAge();
+	int GetAge(out uint result);
 
-	uint GetSignature();
+	int GetSignature(out uint result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsCompilerGenerated();
+	int GetIsCompilerGenerated([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsAddressTaken();
+	int GetIsAddressTaken([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	uint GetRank();
+	int GetRank(out uint result);
 
-	ISymbol GetLowerBound();
+	int GetLowerBound(out ISymbol result);
 
-	ISymbol GetUpperBound();
+	int GetUpperBound(out ISymbol result);
 
-	uint GetLowerBoundID();
+	int GetLowerBoundID(out uint result);
 
-	uint GetUpperBoundID();
+	int GetUpperBoundID(out uint result);
 
-	[return: MarshalUsing(CountElementName = nameof(dataWritten))]
-	byte[] GetDataBytes(uint dataSize, out uint dataWritten);
+	unsafe int GetDataBytes(uint dataSize, out uint dataWritten, byte* buffer);
 
-	IEnumSymbols FindChildrenUnaware(SymbolTag symbolTag, string name, NameSearchOptions compareFlags);
+	int FindChildrenUnaware(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, out IEnumSymbols result);
 
-	IEnumSymbols FindChildren(SymbolTag symbolTag, string name, NameSearchOptions compareFlags);
+	int FindChildren(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, out IEnumSymbols result);
 
-	IEnumSymbols FindChildrenByAddress(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint sectionIndex, uint offset);
+	int FindChildrenByAddress(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result);
 
-	IEnumSymbols FindChildrenByVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, ulong virtualAddress);
+	int FindChildrenByVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result);
 
-	IEnumSymbols FindChildrenByRVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint relativeVirtualAddress);
+	int FindChildrenByRVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result);
 
-	uint GetTargetSection();
+	int GetTargetSection(out uint result);
 
-	uint GetTargetOffset();
+	int GetTargetOffset(out uint result);
 
-	uint GetTargetRelativeVirtualAddress();
+	int GetTargetRelativeVirtualAddress(out uint result);
 
-	ulong GetTargetVirtualAddress();
+	int GetTargetVirtualAddress(out ulong result);
 
-	Native.ImageFileMachine GetMachineType();
+	int GetMachineType(out Native.ImageFileMachine result);
 
-	uint GetOemID();
+	int GetOemID(out uint result);
 
-	uint GetOemSymbolID();
+	int GetOemSymbolID(out uint result);
 
-	[return: MarshalUsing(CountElementName = nameof(typesWritten))]
-	ISymbol[] GetTypes(uint typeCount, out uint typesWritten);
+	unsafe int GetTypes(uint typeCount, out uint typesWritten, void** buffer);
 
-	[return: MarshalUsing(CountElementName = nameof(typeIDsWritten))]
-	uint[] GetTypeIDs(uint typeIDCount, out uint typeIDsWritten);
+	unsafe int GetTypeIDs(uint typeIDCount, out uint typeIDsWritten, uint* buffer);
 
-	ISymbol GetObjectPointerType();
+	int GetObjectPointerType(out ISymbol result);
 
-	UdtKind GetUdtKind();
+	int GetUdtKind(out UdtKind result);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetUndecoratedName(UndecorateOptions undecorateOptions);
+	int GetUndecoratedName(UndecorateOptions undecorateOptions, [MarshalAs(UnmanagedType.BStr)] out string result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsNoReturn();
+	int GetIsNoReturn([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasCustomCallingConvention();
+	int GetHasCustomCallingConvention([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetNoInline();
+	int GetNoInline([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasOptimizedCodeDebugInfo();
+	int GetHasOptimizedCodeDebugInfo([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsNotReached();
+	int GetIsNotReached([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasInterruptReturn();
+	int GetHasInterruptReturn([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasFarReturn();
+	int GetHasFarReturn([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsStatic();
+	int GetIsStatic([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasDebugInfo();
+	int GetHasDebugInfo([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsLTCG();
+	int GetIsLTCG([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsDataAligned();
+	int GetIsDataAligned([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasSecurityChecks();
+	int GetHasSecurityChecks([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetCompilerName();
+	int GetCompilerName([MarshalAs(UnmanagedType.BStr)] out string result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasAlloca();
+	int GetHasAlloca([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasSetJump();
+	int GetHasSetJump([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasLongJump();
+	int GetHasLongJump([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasInlAsm();
+	int GetHasInlAsm([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasEH();
+	int GetHasEH([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasSEH();
+	int GetHasSEH([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasEHa();
+	int GetHasEHa([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsNaked();
+	int GetIsNaked([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsAggregated();
+	int GetIsAggregated([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsSplitted();
+	int GetIsSplitted([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	ISymbol GetContainer();
+	int GetContainer(out ISymbol result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetInliningSpecified();
+	int GetInliningSpecified([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetNoStackOrderingSpecified();
+	int GetNoStackOrderingSpecified([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	ISymbol GetVirtualBaseTableType();
+	int GetVirtualBaseTableType(out ISymbol result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasManagedCode();
+	int GetHasManagedCode([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsHotpatchable();
+	int GetIsHotpatchable([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsConvertedCIL();
+	int GetIsConvertedCIL([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsMSILNetmodule();
+	int GetIsMSILNetmodule([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasCTypes();
+	int GetHasCTypes([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsStripped();
+	int GetIsStripped([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	uint GetFrontendQFE();
+	int GetFrontendQFE(out uint result);
 
-	uint GetBackendQFE();
+	int GetBackendQFE(out uint result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetWasInlined();
+	int GetWasInlined([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasStrictGSCheck();
+	int GetHasStrictGSCheck([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsCxxReturnUdt();
+	int GetIsCxxReturnUdt([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsConstructorVirtualBase();
+	int GetIsConstructorVirtualBase([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsRValueReference();
+	int GetIsRValueReference([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	ISymbol GetUnmodifiedType();
+	int GetUnmodifiedType(out ISymbol result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetFramePointerPresent();
+	int GetFramePointerPresent([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasSafeBuffers();
+	int GetHasSafeBuffers([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsIntrinsic();
+	int GetIsIntrinsic([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsSealed();
+	int GetIsSealed([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasHfaFloat();
+	int GetHasHfaFloat([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasHfaDouble();
+	int GetHasHfaDouble([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	uint GetLiveRangeStartAddressSection();
+	int GetLiveRangeStartAddressSection(out uint result);
 
-	uint GetLiveRangeStartAddressOffset();
+	int GetLiveRangeStartAddressOffset(out uint result);
 
-	uint GetLiveRangeStartRelativeVirtualAddress();
+	int GetLiveRangeStartRelativeVirtualAddress(out uint result);
 
-	uint GetLiveRangeCount();
+	int GetLiveRangeCount(out uint result);
 
-	ulong GetLiveRangeLength();
+	int GetLiveRangeLength(out ulong result);
 
-	uint GetOffsetInUdt();
+	int GetOffsetInUdt(out uint result);
 
-	uint GetParamBasePointerRegisterID();
+	int GetParamBasePointerRegisterID(out uint result);
 
-	uint GetLocalBasePointerRegisterID();
+	int GetLocalBasePointerRegisterID(out uint result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsLocationControlFlowDependent();
+	int GetIsLocationControlFlowDependent([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	uint GetStride();
+	int GetStride(out uint result);
 
-	uint GetNumberOfRows();
+	int GetNumberOfRows(out uint result);
 
-	uint GetNumberOfColumns();
+	int GetNumberOfColumns(out uint result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsMatrixRowMajor();
+	int GetIsMatrixRowMajor([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalUsing(CountElementName = nameof(countWritten))]
-	uint[] GetNumericProperties(uint propertyCount, out uint countWritten);
+	unsafe int GetNumericProperties(uint propertyCount, out uint countWritten, uint* buffer);
 
-	[return: MarshalUsing(CountElementName = nameof(countWritten))]
-	ushort[] GetModifierValues(uint propertyCount, out uint countWritten);
+	unsafe int GetModifierValues(uint propertyCount, out uint countWritten, ushort* buffer);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsReturnValue();
+	int GetIsReturnValue([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsOptimizedAway();
+	int GetIsOptimizedAway([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[Obsolete(_Globals.HlslObsoleteMessage)]
-	BuiltIn GetBuiltInKind();
+	[PreserveSig, Obsolete(_Globals.HlslObsoleteMessage)]
+	int GetBuiltInKind(out BuiltIn result);
 
-	[Obsolete(_Globals.HlslObsoleteMessage)]
-	Register GetRegisterType();
+	[PreserveSig, Obsolete(_Globals.HlslObsoleteMessage)]
+	int GetRegisterType(out Register result);
 
-	uint GetBaseDataSlot();
+	int GetBaseDataSlot(out uint result);
 
-	uint GetBaseDataOffset();
+	int GetBaseDataOffset(out uint result);
 
-	uint GetTextureSlot();
+	int GetTextureSlot(out uint result);
 
-	uint GetSamplerSlot();
+	int GetSamplerSlot(out uint result);
 
-	uint GetUavSlot();
+	int GetUavSlot(out uint result);
 
-	uint GetSizeInUdt();
+	int GetSizeInUdt(out uint result);
 
-	[Obsolete(_Globals.HlslObsoleteMessage)]
-	MemorySpace GetMemorySpaceKind();
+	[PreserveSig, Obsolete(_Globals.HlslObsoleteMessage)]
+	int GetMemorySpaceKind(out MemorySpace result);
 
-	uint GetUnmodifiedTypeId();
+	int GetUnmodifiedTypeId(out uint result);
 
-	uint GetSubTypeId();
+	int GetSubTypeId(out uint result);
 
-	ISymbol GetSubType();
+	int GetSubType(out ISymbol result);
 
-	uint GetNumberOfModifiers();
+	int GetNumberOfModifiers(out uint result);
 
-	uint GetNumberOfRegisterIndices();
+	int GetNumberOfRegisterIndices(out uint result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsHLSLData();
+	int GetIsHLSLData([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsPointerToDataMember();
+	int GetIsPointerToDataMember([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsPointerToMemberFunction();
+	int GetIsPointerToMemberFunction([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsSingleInheritance();
+	int GetIsSingleInheritance([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsMultipleInheritance();
+	int GetIsMultipleInheritance([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsVirtualInheritance();
+	int GetIsVirtualInheritance([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetRestrictedType();
+	int GetRestrictedType([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsPointerBasedOnSymbolValue();
+	int GetIsPointerBasedOnSymbolValue([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	ISymbol GetBaseSymbol();
+	int GetBaseSymbol(out ISymbol result);
 
-	uint GetBaseSymbolId();
+	int GetBaseSymbolId(out uint result);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetObjectFileName();
+	int GetObjectFileName([MarshalAs(UnmanagedType.BStr)] out string result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsAcceleratorGroupSharedLocal();
+	int GetIsAcceleratorGroupSharedLocal([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsAcceleratorPointerTagLiveRange();
+	int GetIsAcceleratorPointerTagLiveRange([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsAcceleratorStubFunction();
+	int GetIsAcceleratorStubFunction([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	uint GetNumberOfAcceleratorPointerTags();
+	int GetNumberOfAcceleratorPointerTags(out uint result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsSDL();
+	int GetIsSDL([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsWinRTPointer();
+	int GetIsWinRTPointer([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsRefUdt();
+	int GetIsRefUdt([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsValueUdt();
+	int GetIsValueUdt([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsInterfaceUdt();
+	int GetIsInterfaceUdt([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	IEnumSymbols FindInlineFramesByAddress(uint sectionIndex, uint offset);
+	int FindInlineFramesByAddress(uint sectionIndex, uint offset, out IEnumSymbols result);
 
-	IEnumSymbols FindInlineFramesByRVA(uint relativeVirtualAddress);
+	int FindInlineFramesByRVA(uint relativeVirtualAddress, out IEnumSymbols result);
 
-	IEnumSymbols FindInlineFramesByVA(ulong virtualAddress);
+	int FindInlineFramesByVA(ulong virtualAddress, out IEnumSymbols result);
 
-	IEnumLineNumbers FindInlineeLines();
+	int FindInlineeLines(out IEnumLineNumbers result);
 
-	IEnumLineNumbers FindInlineeLinesByAddress(uint sectionIndex, uint offset, uint length);
+	int FindInlineeLinesByAddress(uint sectionIndex, uint offset, uint length, out IEnumLineNumbers result);
 
-	IEnumLineNumbers FindInlineeLinesByRVA(uint relativeVirtualAddress, uint length);
+	int FindInlineeLinesByRVA(uint relativeVirtualAddress, uint length, out IEnumLineNumbers result);
 
-	IEnumLineNumbers FindInlineeLinesByVA(ulong virtualAddress, uint length);
+	int FindInlineeLinesByVA(ulong virtualAddress, uint length, out IEnumLineNumbers result);
 
-	IEnumSymbols FindSymbolsForAcceleratorPointerTag(uint tagValue);
+	int FindSymbolsForAcceleratorPointerTag(uint tagValue, out IEnumSymbols result);
 
-	IEnumSymbols FindSymbolsByRVAForAcceleratorPointerTag(uint tagValue, uint relativeVirtualAddress);
+	int FindSymbolsByRVAForAcceleratorPointerTag(uint tagValue, uint relativeVirtualAddress, out IEnumSymbols result);
 
-	[return: MarshalUsing(CountElementName = nameof(tagCount))]
-	uint[] GetAcceleratorPointerTags(uint tagCount, out uint tagsWritten);
+	unsafe int GetAcceleratorPointerTags(uint tagCount, out uint tagsWritten, uint* buffer);
 
-	ILineNumber GetSourceLineOnTypeDefinition();
+	int GetSourceLineOnTypeDefinition(out ILineNumber result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsPGO();
+	int GetIsPGO([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasValidPGOCounts();
+	int GetHasValidPGOCounts([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsOptimizedForSpeed();
+	int GetIsOptimizedForSpeed([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	uint GetPGOEntryCount();
+	int GetPGOEntryCount(out uint result);
 
-	uint GetPGOEdgeCount();
+	int GetPGOEdgeCount(out uint result);
 
-	ulong GetPGODynamicInstructionCount();
+	int GetPGODynamicInstructionCount(out ulong result);
 
-	uint GetStaticSize();
+	int GetStaticSize(out uint result);
 
-	uint GetFinalLiveStaticSize();
+	int GetFinalLiveStaticSize(out uint result);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetPhaseName();
+	int GetPhaseName([MarshalAs(UnmanagedType.BStr)] out string result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasControlFlowCheck();
+	int GetHasControlFlowCheck([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsConstantExport();
+	int GetIsConstantExport([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsDataExport();
+	int GetIsDataExport([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetPrivateExport();
+	int GetPrivateExport([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetNoNameExport();
+	int GetNoNameExport([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetExportHasExplicitlyAssignedOrdinal();
+	int GetExportHasExplicitlyAssignedOrdinal([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetExportIsForwarder();
+	int GetExportIsForwarder([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	uint GetOrdinal();
+	int GetOrdinal(out uint result);
 
-	uint GetFrameSize();
+	int GetFrameSize(out uint result);
 
-	uint GetExceptionHandlerAddressSection();
+	int GetExceptionHandlerAddressSection(out uint result);
 
-	uint GetExceptionHandlerAddressOffset();
+	int GetExceptionHandlerAddressOffset(out uint result);
 
-	uint GetExceptionHandlerRelativeVirtualAddress();
+	int GetExceptionHandlerRelativeVirtualAddress(out uint result);
 
-	ulong GetExceptionHandlerVirtualAddress();
+	int GetExceptionHandlerVirtualAddress(out ulong result);
 
-	IInputAssemblyFile FindInputAssemblyFile();
+	int FindInputAssemblyFile(out IInputAssemblyFile result);
 
-	uint GetCharacteristics();
+	int GetCharacteristics(out uint result);
 
-	ISymbol GetCoffGroup();
+	int GetCoffGroup(out ISymbol result);
 
-	uint GetBindID();
+	int GetBindID(out uint result);
 
-	uint GetBindSpace();
+	int GetBindSpace(out uint result);
 
-	uint GetBindSlot();
+	int GetBindSlot(out uint result);
 }

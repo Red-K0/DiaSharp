@@ -2,26 +2,21 @@ using DiaSharp.Native;
 
 namespace DiaSharp.SDK;
 
-[GeneratedComInterface]
-[Guid("B62A2E7A-067A-4ea3-B598-04C09717502C")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IAddressMap
 {
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsAddressMapEnabled();
+	int GetIsAddressMapEnabled([MarshalAs(UnmanagedType.Bool)] out bool enabled);
 
-	void SetIsAddressMapEnabled([MarshalAs(UnmanagedType.Bool)] bool value);
+	int SetIsAddressMapEnabled([MarshalAs(UnmanagedType.Bool)] bool enabled);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsRelativeVirtualAddressEnabled();
+	int GetIsRelativeVirtualAddressEnabled([MarshalAs(UnmanagedType.Bool)] out bool enabled);
 
-	void SetIsRelativeVirtualAddressEnabled([MarshalAs(UnmanagedType.Bool)] bool value);
+	int SetIsRelativeVirtualAddressEnabled([MarshalAs(UnmanagedType.Bool)] bool enabled);
 
-	uint GetImageAlignment();
+	int GetImageAlignment(out uint alignment);
 
-	void SetImageAlignment(uint value);
+	int SetImageAlignment(uint value);
 
-	void SetImageHeaders(uint dataSize, [MarshalUsing(CountElementName = nameof(dataSize))] ImageSectionHeader[] data, [MarshalAs(UnmanagedType.Bool)] bool originalHeaders);
+	unsafe int SetImageHeaders(uint dataSize, ImageSectionHeader* data, [MarshalAs(UnmanagedType.Bool)] bool originalHeaders);
 
-	void SetAddressMap(uint dataSize, [MarshalUsing(CountElementName = nameof(dataSize))] AddressMapEntry[] data, [MarshalAs(UnmanagedType.Bool)] bool imageToSymbols);
+	unsafe int SetAddressMap(uint dataSize, AddressMapEntry* data, [MarshalAs(UnmanagedType.Bool)] bool imageToSymbols);
 };

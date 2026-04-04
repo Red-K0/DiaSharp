@@ -2,26 +2,23 @@ using DiaSharp.Interop;
 
 namespace DiaSharp.SDK.Enumerators;
 
-[GeneratedComInterface]
-[Guid("9FC77A4B-3C1C-44ed-A798-6C1DEEA53E1F")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumFrameData
 {
-	IEnumVARIANT GetNewEnum();
+	int GetNewEnum(out IEnumVARIANT enumerator);
 
-	int GetCount();
+	int GetCount(out int count);
 
-	IFrameData Item(uint index);
+	int Item(uint index, out IFrameData frameData);
 
-	uint GetNext(uint dataCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IFrameData[] frameDatas);
+	unsafe int GetNext(uint frameCount, void** frames, out uint framesFetched);
 
-	void Skip(uint dataCount);
+	int Skip(uint dataCount);
 
-	void Reset();
+	int Reset();
 
-	IEnumFrameData Clone();
+	int Clone(out IEnumFrameData enumerator);
 
-	IFrameData FrameByRVA(uint relativeVirtualAddress);
+	int FrameByRVA(uint relativeVirtualAddress, out IFrameData frameData);
 
-	IFrameData FrameByVA(ulong virtualAddress);
+	int FrameByVA(ulong virtualAddress, out IFrameData frameData);
 }

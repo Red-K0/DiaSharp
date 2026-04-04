@@ -2,36 +2,33 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.SDK;
 
-[GeneratedComInterface]
-[Guid("B388EB14-BE4D-421D-A8A1-6CF7AB057086")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface ILineNumber
 {
-	ISymbol GetCompiland();
+	int GetCompiland(out ISymbol symbol);
 
-	ISourceFile GetSourceFile();
+	int GetSourceFile(out ISourceFile file);
 
-	uint GetLineNumber();
+	int GetLineNumber(out uint number);
 
-	uint GetLineNumberEnd();
+	int GetLineNumberEnd(out uint number);
 
-	uint GetColumnNumber();
+	int GetColumnNumber(out uint column);
 
-	uint GetColumnNumberEnd();
+	int GetColumnNumberEnd(out uint column);
 
-	uint GetAddressSection();
+	int GetSectionAddress(out uint sectionAddress);
 
-	uint GetAddressOffset();
+	int GetOffsetAddress(out uint offsetAddress);
 
-	uint GetRelativeVirtualAddress();
+	int GetRelativeVirtualAddress(out uint rva);
 
-	ulong GetVirtualAddress();
+	int GetVirtualAddress(out ulong va);
 
-	uint GetLength();
+	int GetLength(out uint length);
 
-	uint GetSourceFileID();
+	int GetSourceFileID(out uint id);
 
-	int GetStatement();
+	int GetStatement(out int statement);
 
-	uint GetCompilandID();
+	int GetCompilandID(out uint id);
 }

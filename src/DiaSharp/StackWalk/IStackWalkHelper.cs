@@ -5,40 +5,29 @@ using DiaSharp.Native;
 
 namespace DiaSharp.StackWalk;
 
-[GeneratedComInterface]
-[Guid("21F81B1B-C5BB-42A3-BC4F-CCBAA75B9F19")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IStackWalkHelper
 {
-	ulong GetRegisterValue(HostRegister index);
+	int GetRegisterValue(HostRegister index, out ulong value);
 
-	void PutRegisterValue(HostRegister index, ulong value);
+	int PutRegisterValue(HostRegister index, ulong value);
 
-	[return: MarshalUsing(CountElementName = nameof(bytesWritten))]
-	byte[] ReadMemory(MemoryType type, ulong virtualAddress, uint bufferSize, out uint bytesWritten);
+	unsafe int ReadMemory(MemoryType type, ulong virtualAddress, uint bufferSize, out uint bytesWritten, byte* buffer);
 
-	ulong SearchForReturnAddress(IFrameData frame);
+	int SearchForReturnAddress(IFrameData frame, out ulong address);
 
-	ulong SearchForReturnAddressStart(IFrameData frame, ulong startAddress);
+	int SearchForReturnAddressStart(IFrameData frame, ulong address, out ulong startAddress);
 
-	IFrameData GetFrameForVA(ulong va);
+	int GetFrameForVA(ulong va, out IFrameData frame);
 
-	ISymbol GetSymbolForVA(ulong va);
+	int GetSymbolForVA(ulong va, out ISymbol symbol);
 
-	[return: MarshalUsing(CountElementName = nameof(bytesWritten))]
-	byte[] GetPDataForVA(ulong virtualAddress, uint bytesRequested, out uint bytesWritten);
+	unsafe int GetPDataForVA(ulong virtualAddress, uint bytesRequested, out uint bytesWritten, byte* buffer);
 
-	ulong GetImageForVA(ulong virtualAddressContext);
+	int GetImageForVA(ulong virtualAddressContext, out ulong imageAddress);
 
-	uint GetAddressForVA(ulong virtualAddress, out uint equivalentSection);
+	int GetAddressForVA(ulong virtualAddress, out uint equivalentSection, out uint fragmentCount);
 
-	uint GetNumberOfFunctionFragmentsForVA(ulong functionAddress, uint functionSize);
+	int GetNumberOfFunctionFragmentsForVA(ulong functionAddress, uint functionSize, out uint fragmentCount);
 
-	void GetFunctionFragmentsForVA(
-		ulong functionAddress,
-		uint functionSize,
-		uint fragmentCount,
-		[MarshalUsing(CountElementName = nameof(fragmentCount))] out ulong[] fragments,
-		[MarshalUsing(CountElementName = nameof(fragmentCount))] out uint[] fragmentLengths
-	);
+	unsafe int GetFunctionFragmentsForVA(ulong functionAddress, uint functionSize, uint fragmentCount, ulong* fragments, uint* fragmentLengths);
 }

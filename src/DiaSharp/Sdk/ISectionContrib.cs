@@ -2,71 +2,53 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.SDK;
 
-[GeneratedComInterface]
-[Guid("0CF4B60E-35B1-4C6C-BDD8-854B9C8E3857")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface ISectionContrib
 {
-	ISymbol GetCompiland();
+	int GetCompiland(out ISymbol compiland);
 
-	uint GetAddressSection();
+	int GetAddressSection(out uint section);
 
-	uint GetAddressOffset();
+	int GetAddressOffset(out uint offset);
 
-	uint GetRelativeVirtualAddress();
+	int GetRelativeVirtualAddress(out uint rva);
 
-	ulong GetVirtualAddress();
+	int GetVirtualAddress(out ulong va);
 
-	uint GetLength();
+	int GetLength(out uint length);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetNotPaged();
+	int GetNotPaged([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetNoPad();
+	int GetNoPad([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetCode();
+	int GetHasCode([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetInitializedData();
+	int GetHasInitializedData([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetUninitializedData();
+	int GetHasUninitializedData([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetInformational();
+	int GetIsInformational([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetRemove();
+	int GetIsRemoved([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetCOMDAT();
+	int GetIsCOMDAT([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetDiscardable();
+	int GetIsDiscardable([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetNotCached();
+	int GetNotCached([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetShare();
+	int GetIsShareable([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetExecute();
+	int GetIsExecutable([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetRead();
+	int GetIsReadable([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetWrite();
+	int GetIsWriteable([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	uint GetDataCRC();
+	int GetDataCRC(out uint crc);
 
-	uint GetRelocationsCRC();
+	int GetRelocationsCRC(out uint crc);
 
-	uint GetCompilandID();
+	int GetCompilandID(out uint ID);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetCode16bit();
+	int GetHas16BitCode([MarshalAs(UnmanagedType.Bool)] out bool value);
 }

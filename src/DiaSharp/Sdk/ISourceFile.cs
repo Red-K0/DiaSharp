@@ -1,21 +1,17 @@
+using DiaSharp.CodeView;
 using DiaSharp.SDK.Enumerators;
 
 namespace DiaSharp.SDK;
 
-[GeneratedComInterface]
-[Guid("A2EF5353-F5A8-4EB3-90D2-CB526ACB3CDD")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface ISourceFile
 {
-	uint GetUniqueID();
+	int GetUniqueID(out uint ID);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetFileName();
+	int GetFileName([MarshalAs(UnmanagedType.BStr)] out string name);
 
-	uint GetChecksumType();
+	int GetChecksumType(out SourceChecksumType type);
 
-	IEnumSymbols GetCompilands();
+	int GetCompilands(out IEnumSymbols compilands);
 
-	[return: MarshalUsing(CountElementName = nameof(bytesWritten))]
-	byte[] GetChecksum(uint bufferSize, out uint bytesWritten);
+	unsafe int GetChecksum(uint bufferSize, out uint bytesWritten, byte* buffer);
 }

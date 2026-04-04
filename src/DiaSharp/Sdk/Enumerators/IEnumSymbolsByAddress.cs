@@ -2,20 +2,17 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.SDK.Enumerators;
 
-[GeneratedComInterface]
-[Guid("624B7D9C-24EA-4421-9D06-3B577471C1FA")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumSymbolsByAddress
 {
-	ISymbol GetSymbolByAddress(uint sectionNumber, uint offset);
+	int GetSymbolByAddress(uint sectionNumber, uint offset, out ISymbol symbol);
 
-	ISymbol GetSymbolByRVA(uint relativeVirtualAddress);
+	int GetSymbolByRVA(uint relativeVirtualAddress, out ISymbol symbol);
 
-	ISymbol GetSymbolByVA(ulong virtualAddress);
+	int GetSymbolByVA(ulong virtualAddress, out ISymbol symbol);
 
-	uint GetNext(uint symbolCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISymbol[] symbols);
+	unsafe int GetNext(uint symbolCount, void** symbols, out uint symbolsFetched);
 
-	uint Prev(uint symbolCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISymbol[] symbols);
+	unsafe int Prev(uint symbolCount, void** symbols, out uint symbolsFetched);
 
-	IEnumSymbolsByAddress Clone();
+	int Clone(out IEnumSymbolsByAddress enumeator);
 }

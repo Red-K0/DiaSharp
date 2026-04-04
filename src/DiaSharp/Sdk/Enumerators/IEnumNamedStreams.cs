@@ -2,21 +2,17 @@ using DiaSharp.Interop;
 
 namespace DiaSharp.SDK.Enumerators;
 
-[GeneratedComInterface]
-[Guid("2B01F5E0-98DB-4824-A9A0-5192833BEF47")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumNamedStreams
 {
-	IEnumVARIANT GetNewEnum();
+	int GetNewEnum(out IEnumVARIANT enumerator);
 
-	int GetCount();
+	int GetCount(out int count);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetNext();
+	int GetNext([MarshalAs(UnmanagedType.BStr)] out string name);
 
-	void Skip(uint streamCount);
+	int Skip(uint nameCount);
 
-	void Reset();
+	int Reset();
 
-	IEnumNamedStreams Clone();
+	int Clone(out IEnumNamedStreams enumerator);
 };

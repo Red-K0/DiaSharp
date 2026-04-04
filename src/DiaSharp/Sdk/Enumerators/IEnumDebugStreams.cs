@@ -2,22 +2,19 @@ using DiaSharp.Interop;
 
 namespace DiaSharp.SDK.Enumerators;
 
-[GeneratedComInterface]
-[Guid("08CBB41E-47A6-4F87-92F1-1C9C87CED044")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumDebugStreams
 {
-	IEnumVARIANT GetNewEnum();
+	void GetNewEnum(out IEnumVARIANT enumerator);
 
-	int GetCount();
+	void GetCount(out int count);
 
-	IEnumDebugStreamData Item(uint index);
+	void Item(uint index, out IEnumDebugStreamData data);
 
-	uint GetNext(uint dataCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out IEnumDebugStreamData[] steamDatas);
+	unsafe void GetNext(uint streamCount, void** streams, out uint streamsFetched);
 
-	void Skip(uint dataCount);
+	void Skip(uint streamCount);
 
 	void Reset();
 
-	IEnumDebugStreams Clone();
+	void Clone(out IEnumSymbolsByAddress enumerator);
 }

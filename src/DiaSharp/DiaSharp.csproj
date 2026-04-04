@@ -1,13 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup> </PropertyGroup>
+	<PropertyGroup>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+	</PropertyGroup>
 
 	<PropertyGroup Label="Nuget">
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	  
+
 		<Title>DiaSharp</Title>
 		<Authors>Red-K0</Authors>
-	  
+
 		<RepositoryUrl>https://github.com/Red-K0/DiaSharp/</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 

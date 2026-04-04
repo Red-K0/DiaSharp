@@ -1,13 +1,10 @@
 namespace DiaSharp.Interop;
 
-[GeneratedComInterface]
-[Guid("00000100-0000-0000-C000-000000000046")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumUnknown
 {
 	void Clone(out IEnumUnknown enumerator);
 
-	uint GetNext(uint elementCount, [MarshalUsing(CountElementName = nameof(elementCount))] out IUnknown[] elements);
+	unsafe void GetNext(uint elementCount, void** elements, out uint elementsFetched);
 
 	void Reset();
 

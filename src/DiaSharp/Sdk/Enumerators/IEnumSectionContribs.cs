@@ -2,22 +2,19 @@ using DiaSharp.Interop;
 
 namespace DiaSharp.SDK.Enumerators;
 
-[GeneratedComInterface]
-[Guid("1994DEB2-2C82-4B1D-A57F-AFF424D54A68")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumSectionContribs
 {
-	IEnumVARIANT GetNewEnum();
+	int GetNewEnum(out IEnumVARIANT enumerator);
 
-	int GetCount();
+	int GetCount(out int count);
 
-	ISectionContrib Item(uint index);
+	int Item(uint index, out ISectionContrib contrib);
 
-	uint GetNext(uint contribCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISectionContrib[] contribs);
+	unsafe int GetNext(uint contribCount, void** contribs, out uint contribsFetched);
 
-	void Skip(uint contribCount);
+	int Skip(uint contribCount);
 
-	void Reset();
+	int Reset();
 
-	IEnumSectionContribs Clone();
+	int Clone(out IEnumSectionContribs enumerator);
 }

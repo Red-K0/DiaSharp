@@ -36,8 +36,8 @@ public static class Constants
 	{
 		fixed (Guid* unknown = &IUnknownGUID, source = &DiaSourceGUID, altSource = &DiaSourceAltGUID, stack = &DiaStackWalkerGUID)
 		{
-			      _IUnknownGUID = unknown;
-			     _DiaSourceGUID = source;
+				  _IUnknownGUID = unknown;
+				 _DiaSourceGUID = source;
 			  _DiaSourceAltGUID = altSource;
 			_DiaStackWalkerGUID = stack;
 		}

@@ -2,17 +2,13 @@ using DiaSharp.Interop;
 
 namespace DiaSharp.SDK;
 
-[GeneratedComInterface]
-[Guid("4A59FB77-ABAC-469B-A30B-9ECC85BFEF14")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface ITable : IEnumUnknown
 {
-	IEnumVARIANT GetNewEnum();
+	int GetNewEnum(out IEnumVARIANT enumerator);
 
-	[return: MarshalAs(UnmanagedType.LPWStr)]
-	string GetName();
+	int GetName([MarshalAs(UnmanagedType.LPWStr)] out string name);
 
-	int GetCount();
+	int GetCount(out int count);
 
-	IUnknown Item(uint index);
+	unsafe int Item(uint index, out void* item);
 }

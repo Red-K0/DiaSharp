@@ -1,14 +1,10 @@
 namespace DiaSharp.SDK.Symbols;
 
-[GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
-[Guid("A89E5969-92A1-4F8A-B704-00121C37ABBB")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface ISymbol9 : ISymbol8
 {
-	uint GetFramePadSize();
+	int GetFramePadSize(out uint size);
 
-	uint GetFramePadOffset();
+	int GetFramePadOffset(out uint offset);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsRuntimeStaticChecked();
+	int GetIsRuntimeStaticChecked([MarshalAs(UnmanagedType.Bool)] out bool enabled);
 }

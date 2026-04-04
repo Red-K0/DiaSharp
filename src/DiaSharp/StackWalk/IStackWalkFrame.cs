@@ -4,19 +4,15 @@ using DiaSharp.Native;
 
 namespace DiaSharp.StackWalk;
 
-[GeneratedComInterface]
-[Guid("07C590C1-438D-4F47-BDCD-4397BC81AD75")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IStackWalkFrame
 {
-	ulong GetRegisterValue(HostRegister index);
+	int GetRegisterValue(HostRegister index, out ulong value);
 
-	void PutRegisterValue(HostRegister index, ulong value);
+	int PutRegisterValue(HostRegister index, ulong value);
 
-	[return: MarshalUsing(CountElementName = nameof(bytesWritten))]
-	byte[] ReadMemory(MemoryType type, ulong virtualAddress, uint bytesRequested, out uint bytesWritten);
+	unsafe int ReadMemory(MemoryType type, ulong virtualAddress, uint bytesRequested, out uint bytesWritten, byte* buffer);
 
-	ulong SearchForReturnAddress(IFrameData frame);
+	int SearchForReturnAddress(IFrameData frame, out ulong address);
 
-	ulong SearchForReturnAddressStart(IFrameData frame, ulong startAddress);
+	int SearchForReturnAddressStart(IFrameData frame, ulong address, out ulong start);
 }

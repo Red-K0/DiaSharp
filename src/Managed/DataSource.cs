@@ -1,88 +1,98 @@
-﻿using DiaSharp.CodeView;
-using DiaSharp.COM;
-using DiaSharp.SDK;
-using DiaSharp.SDK.Enumerators;
+﻿//using DiaSharp.CodeView;
+//using DiaSharp.COM;
+//using DiaSharp.SDK;
+//using DiaSharp.SDK.Enumerators;
 
-namespace DiaSharp.Managed;
+//namespace DiaSharp.Managed;
 
-public sealed class DataSource : ComObject<IDataSource>
-{
-	public DataSource() : base(ComHelpers.CoCreateInstance<IDataSource>(Constants.DiaSourceGUID)) { }
+//public sealed unsafe class DataSource : ComObject<IDataSource>
+//{
+//	public DataSource() : base(ComHelpers.CoCreateInstance<IDataSource>(Constants.DiaSourceGUID)) { }
 
-	public bool TryLoadDataFromPdb(string pdbPath)
-	{
-		EnsureNotDisposed();
+//	public bool TryLoadDataFromPdb(string pdbPath)
+//	{
+//		EnsureNotDisposed();
 
-		try
-		{
-			_native.LoadDataFromPdb(pdbPath);
+//		try
+//		{
+//			_native.LoadDataFromPdb(pdbPath);
 
-			return true;
-		}
-		catch
-		{
-			return false;
-		}
-	}
+//			return true;
+//		}
+//		catch
+//		{
+//			return false;
+//		}
+//	}
 
-	public bool TryLoadDataFromPdb(string pdbPath, Guid pdbSignature, uint signature, uint age)
-	{
-		EnsureNotDisposed();
+//	public bool TryLoadDataFromPdb(string pdbPath, Guid pdbSignature, uint signature, uint age)
+//	{
+//		EnsureNotDisposed();
 
-		try
-		{
-			_native.LoadAndValidateDataFromPdb(pdbPath, ref pdbSignature, signature, age);
+//		try
+//		{
+//			_native.LoadAndValidateDataFromPdb(pdbPath, ref pdbSignature, signature, age);
 
-			return true;
-		}
-		catch
-		{
-			return false;
-		}
-	}
+//			return true;
+//		}
+//		catch
+//		{
+//			return false;
+//		}
+//	}
 
-	public bool TryLoadForExe(string exePath, string searchPath)
-	{
-		EnsureNotDisposed();
+//	public bool TryLoadDataForExe(string exePath, string searchPath)
+//	{
+//		EnsureNotDisposed();
 
-		try
-		{
-			_native.LoadDataForExe(exePath, searchPath, null!);
+//		try
+//		{
+//			_native.LoadDataForExe(exePath, searchPath, null!);
 
-			return true;
-		}
-		catch
-		{
-			return false;
-		}
-	}
+//			return true;
+//		}
+//		catch
+//		{
+//			return false;
+//		}
+//	}
 
-	public string[] FindNamedStreams(string name, NameSearchOptions searchOptions = NameSearchOptions.None)
-	{
-		EnsureNotDisposed();
+//	public bool TryLoadDataFromCodeViewInfo(string exePath, string searchPath, ReadOnlySpan<byte> info)
+//	{
+//		_native.LoadDataFromCodeViewInfo(exePath, searchPath, info.Length, )
+//	}
 
-		if (!TryQueryInterface(out IDataSourceEx2? source)) throw new NotSupportedException("The IDataSourceEx2 interface is unsupported, please ensure the latest version of the DIA SDK is installed.");
+//	public bool TryLoadDataFromMiscInfo(string exePath, string searchPath, DateTime exeTimestamp, DateTime debugTimestamp, uint exeSize, ReadOnlySpan<byte> info)
+//	{
 
-		try
-		{
-			IEnumNamedStreams streams = source.FindNamedStreams(name, searchOptions);
+//	}
 
-			try
-			{
-				string[] streamNames = new string[streams.GetCount()];
+//	public string* FindNamedStreams(string name, NameSearchOptions searchOptions = NameSearchOptions.None)
+//	{
+//		EnsureNotDisposed();
 
-				for (int i = 0; i < streamNames.Length; i++) streamNames[i] = streams.GetNext();
+//		if (!TryQueryInterface(out IDataSourceEx2? source)) throw new NotSupportedException("The IDataSourceEx2 interface is unsupported, please ensure the latest version of the DIA SDK is installed.");
 
-				return streamNames;
-			}
-			finally
-			{
-				ComHelpers.Release(ref streams);
-			}
-		}
-		finally
-		{
-			ComHelpers.Release(ref source);
-		}
-	}
-}
+//		try
+//		{
+//			IEnumNamedStreams streams = source.FindNamedStreams(name, searchOptions);
+
+//			try
+//			{
+//				string* streamNames = new string[streams.GetCount()];
+
+//				for (int i = 0; i < streamNames.Length; i++) streamNames[i] = streams.GetNext();
+
+//				return streamNames;
+//			}
+//			finally
+//			{
+//				ComHelpers.Release(ref streams);
+//			}
+//		}
+//		finally
+//		{
+//			ComHelpers.Release(ref source);
+//		}
+//	}
+//}

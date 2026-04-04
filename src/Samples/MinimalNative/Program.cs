@@ -5,4 +5,10 @@ IDataSource dataSource = ComHelpers.CoCreateInstance<IDataSource>(Constants.DiaS
 
 dataSource.LoadDataFromPdb("DiaSharp.pdb");
 
-Console.WriteLine(dataSource.OpenSession().GetGlobalScope().GetName());
+dataSource.OpenSession(out var session);
+
+session.GetGlobalScope(out var scope);
+
+scope.GetName(out string name);
+
+Console.WriteLine(name);

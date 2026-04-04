@@ -1,22 +1,16 @@
 namespace DiaSharp.SDK;
 
-[GeneratedComInterface]
-[Guid("3BFE56B0-390C-4863-9430-1F3D083B7684")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IInputAssemblyFile
 {
-	uint GetUniqueID();
+	int GetUniqueID(out uint ID);
 
-	uint GetIndex();
+	int GetIndex(out uint index);
 
-	uint GetTimestamp();
+	int GetTimestamp(out uint timestamp);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetWasPdbAvailableAtILMerge();
+	int GetWasPdbAvailableAtILMerge([MarshalAs(UnmanagedType.Bool)] out bool available);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetFilename();
+	int GetFilename([MarshalAs(UnmanagedType.BStr)] out string name);
 
-	[return: MarshalUsing(CountElementName = nameof(bufferSize))]
-	byte[] GetVersion(uint bufferSize, out uint dataSize);
+	unsafe int GetVersion(uint bufferSize, out uint dataSize, byte* buffer);
 }
