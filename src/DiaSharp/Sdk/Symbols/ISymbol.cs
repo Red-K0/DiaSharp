@@ -5,7 +5,7 @@ using DiaSharp.SDK.Enumerators;
 
 namespace DiaSharp.SDK.Symbols;
 
-public partial interface ISymbol
+public unsafe partial interface ISymbol
 {
 	int GetSymbolIndexID(out uint result);
 
@@ -189,7 +189,7 @@ public partial interface ISymbol
 
 	int GetTargetVirtualAddress(out ulong result);
 
-	int GetMachineType(out Native.ImageFileMachine result);
+	int GetMachineType(out DiaSharp.Native.ImageFileMachine result);
 
 	int GetOemID(out uint result);
 

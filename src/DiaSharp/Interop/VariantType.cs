@@ -1,6 +1,6 @@
 ﻿namespace DiaSharp.Interop;
 
-[System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1720:Identifier contains type name", Justification = "Type names necessary.")]
+[SuppressMessage("Naming", "CA1720:Identifier contains type name", Justification = "Type names necessary.")]
 public enum VariantType : ushort
 {
 	/// <summary> Not specified. </summary>
@@ -114,13 +114,13 @@ public enum VariantType : ushort
 	/// <summary> The name of the stream follows. </summary>
 	Stream = 66,
 
-	/// <summary> The name of the storage follows. </summary>
+	/// <summary> The name of the DiaSharp.Storage follows. </summary>
 	Storage = 67,
 
 	/// <summary> The stream contains an object. </summary>
 	StreamedObject = 68,
 
-	/// <summary> The storage contains an object. </summary>
+	/// <summary> The DiaSharp.Storage contains an object. </summary>
 	StoredObject = 69,
 
 	/// <summary> The blob contains an object. </summary>

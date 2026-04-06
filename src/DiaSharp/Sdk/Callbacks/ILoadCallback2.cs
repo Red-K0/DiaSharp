@@ -2,8 +2,8 @@
 
 public partial interface ILoadCallback2 : ILoadCallback
 {
-	void RestrictOriginalPathAccess();
-	void RestrictReferencePathAccess();
-	void RestrictDBGAccess();
-	void RestrictSystemRootAccess();
+	int RestrictOriginalPathAccess();
+	int RestrictReferencePathAccess();
+	int RestrictDBGAccess();
+	int RestrictSystemRootAccess();
 }

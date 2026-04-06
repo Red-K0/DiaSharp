@@ -18,13 +18,13 @@ public enum CommitFlags
 	/// <para>
 	/// This value is not recommended for typical usage because it is not as robust as the default value.
 	/// In this case, it is possible for the commit operation to fail after the old data is overwritten, but before the new data is completely committed.
-	/// Then, neither the old version nor the new version of the storage object will be intact.
+	/// Then, neither the old version nor the new version of the DiaSharp.Storage object will be intact.
 	/// </para>
 	/// <para> You can use this value in the following cases: </para>
 	/// <list type="bullet">
 	/// <item> The user is willing to risk losing the data. </item>
-	/// <item> The low-memory save sequence will be used to safely save the storage object to a smaller file. </item>
-	/// <item> A previous commit reported STG_E_MEDIUMFULL, but overwriting the existing data would provide enough space to commit changes to the storage object. </item>
+	/// <item> The low-memory save sequence will be used to safely save the DiaSharp.Storage object to a smaller file. </item>
+	/// <item> A previous commit reported STG_E_MEDIUMFULL, but overwriting the existing data would provide enough space to commit changes to the DiaSharp.Storage object. </item>
 	/// </list>
 	/// <para>
 	/// Be aware that the commit operation verifies that adequate space exists before any overwriting occurs. Thus, if the commit operation fails due to space requirements, the old data is safe.
@@ -34,15 +34,15 @@ public enum CommitFlags
 	Overwrite = 1,
 
 	/// <summary>
-	/// Prevents multiple users of a storage object from overwriting each other's changes.
+	/// Prevents multiple users of a DiaSharp.Storage object from overwriting each other's changes.
 	/// </summary>
 	/// <remarks>
 	/// <para>
-	/// The commit operation occurs only if there have been no changes to the saved storage object because the user most recently opened it.
-	/// Thus, the saved version of the storage object is the same version that the user has been editing.
+	/// The commit operation occurs only if there have been no changes to the saved DiaSharp.Storage object because the user most recently opened it.
+	/// Thus, the saved version of the DiaSharp.Storage object is the same version that the user has been editing.
 	/// </para>
 	/// <para>
-	/// If other users have changed the storage object, the commit operation fails and returns the STG_E_NOTCURRENT value.
+	/// If other users have changed the DiaSharp.Storage object, the commit operation fails and returns the STG_E_NOTCURRENT value.
 	/// To override this behavior, call <see cref="IStream.Commit"/> again using the <see cref="None"/> value.
 	/// </para>
 	/// </remarks>
@@ -58,17 +58,17 @@ public enum CommitFlags
 	/// </para>
 	/// <para> The performance increase comes at the expense of an increased risk of losing data if a problem occurs before the cache is saved and the data in the cache is lost. </para>
 	/// <para>
-	/// If you do not specify this value, then committing changes to root-level storage objects is robust even if a disk cache is used.
+	/// If you do not specify this value, then committing changes to root-level DiaSharp.Storage objects is robust even if a disk cache is used.
 	/// The two-phase commit process ensures that data is stored on the disk and not just to the disk cache.
 	/// </para>
 	/// </remarks>
 	DangerouslyCommitMerelyToDiskCache = 4,
 
 	/// <summary>
-	/// On Windows 2000 and Windows XP: Indicates that a storage should be consolidated after it is committed, resulting in a smaller file on disk.
+	/// On Windows 2000 and Windows XP: Indicates that a DiaSharp.Storage should be consolidated after it is committed, resulting in a smaller file on disk.
 	/// </summary>
 	/// <remarks>
-	/// <para> This flag is valid only on the outermost storage object that has been opened in transacted mode. It is not valid for streams. </para>
+	/// <para> This flag is valid only on the outermost DiaSharp.Storage object that has been opened in transacted mode. It is not valid for streams. </para>
 	/// <para> The <see cref="Consolidate"/> flag can be combined with any other STGC flags. </para>
 	/// </remarks>
 	Consolidate = 8

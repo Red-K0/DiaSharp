@@ -2,13 +2,13 @@
 
 public partial interface ILoadCallback
 {
-	unsafe void NotifyDebugDirectory([MarshalAs(UnmanagedType.Bool)] bool executable, uint dataSize, byte* data);
+	unsafe int NotifyDebugDirectory([MarshalAs(UnmanagedType.Bool)] bool executable, uint dataSize, byte* data);
 
-	void NotifyOpenDebug([MarshalAs(UnmanagedType.BStr)] string debugPath, uint resultCode);
+	int NotifyOpenDebug([MarshalAs(UnmanagedType.BStr)] string debugPath, uint resultCode);
 
-	void NotifyOpenPDB([MarshalAs(UnmanagedType.BStr)] string pdbPath, uint resultCode);
+	int NotifyOpenPDB([MarshalAs(UnmanagedType.BStr)] string pdbPath, uint resultCode);
 
-	void RestrictRegistryAccess();
+	int RestrictRegistryAccess();
 
-	void RestrictSymbolServerAccess();
+	int RestrictSymbolServerAccess();
 }

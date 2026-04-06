@@ -2,7 +2,7 @@ using DiaSharp.CodeView;
 
 namespace DiaSharp.SDK.Symbols;
 
-public partial interface ISymbol8 : ISymbol7
+public unsafe partial interface ISymbol8 : ISymbol7
 {
 	int GetCoroutineKind(out CoroutineKind kind);
 

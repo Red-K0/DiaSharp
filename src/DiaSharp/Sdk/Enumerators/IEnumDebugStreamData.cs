@@ -4,20 +4,19 @@ namespace DiaSharp.SDK.Enumerators;
 
 public partial interface IEnumDebugStreamData
 {
-	IEnumVARIANT GetNewEnum();
+	int GetNewEnum(out IEnumVARIANT enumerator);
 
-	int GetCount();
+	int GetCount(out int count);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetName();
+	int GetName([MarshalAs(UnmanagedType.BStr)] out string name);
 
-	unsafe void Item(uint index, uint bufferSize, uint* bytesWritten, byte* buffer);
+	unsafe int Item(uint index, uint bufferSize, uint* bytesWritten, byte* buffer);
 
-	unsafe uint GetNext(uint dataCount, uint bufferSize, uint* bytesWritten, byte* dataBuffer);
+	unsafe int GetNext(uint dataCount, uint bufferSize, uint* bytesWritten, byte* dataBuffer, out uint elementsFetched);
 
-	void Skip(uint dataCount);
+	int Skip(uint dataCount);
 
-	void Reset();
+	int Reset();
 
-	IEnumDebugStreamData Clone();
+	int Clone(out IEnumDebugStreamData enumerator);
 }

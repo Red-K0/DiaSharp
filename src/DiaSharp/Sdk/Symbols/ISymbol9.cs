@@ -1,6 +1,6 @@
 namespace DiaSharp.SDK.Symbols;
 
-public partial interface ISymbol9 : ISymbol8
+public unsafe partial interface ISymbol9 : ISymbol8
 {
 	int GetFramePadSize(out uint size);
 

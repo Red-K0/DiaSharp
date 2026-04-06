@@ -58,7 +58,7 @@ public static unsafe partial class ComHelpers
 	///		</list>
 	/// </returns>
 	[LibraryImport("ole32")]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "CoCreateInstanceEx is necessary for COM instantation.")]
+	[SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "CoCreateInstanceEx is necessary for COM instantation.")]
 	public static partial int CoCreateInstanceEx(Guid* classID, void* outerIUnknown, ClassContext classContext, ServerInfo* serverInfo, uint resultCount, MultiQueryInterface* results);
 
 	/// <summary>
@@ -74,7 +74,7 @@ public static unsafe partial class ComHelpers
 	/// <param name="value"> Address of variable that receives the interface pointer requested in <paramref name="interfaceID"/>. Upon success, contains the requested pointer. Upon failure contains <see langword="null"/>. </param>
 	/// <returns></returns>
 	[LibraryImport("ole32")]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "CoCreateInstance is necessary for COM instantation.")]
+	[SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "CoCreateInstance is necessary for COM instantation.")]
 	public static partial int CoCreateInstance(Guid* classID, void* outerIUnknown, ClassContext classContext, Guid* interfaceID, out void* value);
 
 	/// <summary>

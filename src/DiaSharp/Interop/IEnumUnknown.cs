@@ -2,11 +2,11 @@ namespace DiaSharp.Interop;
 
 public partial interface IEnumUnknown
 {
-	void Clone(out IEnumUnknown enumerator);
+	int Clone(out IEnumUnknown enumerator);
 
-	unsafe void GetNext(uint elementCount, void** elements, out uint elementsFetched);
+	unsafe int GetNext(uint elementCount, void** elements, out uint elementsFetched);
 
-	void Reset();
+	int Reset();
 
-	void Skip(uint elementCount);
+	int Skip(uint elementCount);
 }

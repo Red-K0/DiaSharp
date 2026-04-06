@@ -4,7 +4,7 @@
 /// Specifies the type of memory to access.
 /// </summary>
 /// <remarks>
-/// The values in this enumeration are passed to the StackWalkHelper::readMemory method to limit access to different types of memory.
+/// The values in this enumeration are passed to the <see cref="StackWalk.IStackWalkHelper.ReadMemory(DiaSharp.Native.MemoryType, ulong, uint, out uint, byte*)"/> method to limit access to different types of memory.
 /// </remarks>
 public enum MemoryType
 {

@@ -4,7 +4,7 @@ namespace DiaSharp.SDK;
 
 public partial interface IPropertyStorage
 {
-	unsafe int ReadMultiple(uint specifierCount, PropertySpecifier* specifiers, out void* PropVariant);
+	unsafe int ReadMultiple(uint specifierCount, PropertySpecifier* specifiers, out void* propVariant);
 
 	unsafe int ReadPropertyNames(uint propertyIDCount, uint* propertyIDs, [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.BStr, SizeParamIndex = 0)] out string[] names);
 
