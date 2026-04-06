@@ -4,7 +4,7 @@
 /// Represents the image section header format.
 /// </summary>
 [Flags]
-[SuppressMessage("Design", "CA1028:Enum DiaSharp.Storage should be Int32", Justification = "Larger values don't fit in an Int32")]
+[SuppressMessage("Design", "CA1028:Enum storage should be Int32", Justification = "Larger values don't fit in an Int32")]
 public enum SectionCharacteristics : uint
 {
 	/// <summary>

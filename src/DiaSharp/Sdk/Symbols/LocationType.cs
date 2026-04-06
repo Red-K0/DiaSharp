@@ -20,7 +20,7 @@ public enum LocationType
 	Static,
 
 	/// <summary>
-	/// Location is in thread local DiaSharp.Storage.
+	/// Location is in thread local storage.
 	/// </summary>
 	ThreadLocal,
 

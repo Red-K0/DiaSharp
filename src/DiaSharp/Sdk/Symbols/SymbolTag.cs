@@ -153,7 +153,7 @@ public enum SymbolTag
 	VTable,
 
 	/// <summary>
-	/// Indicates that the symbol is a custom symbol. The DIA DiaSharp.SDK doesn't provide further interpretation of these symbols.
+	/// Indicates that the symbol is a custom symbol. The DIA SDK doesn't provide further interpretation of these symbols.
 	/// </summary>
 	Custom,
 
