@@ -7,6 +7,5 @@
     <Project Path="Samples/MinimalNative/MinimalNative.csproj" Id="b2c3a1ff-a77b-48f6-b131-596f4582a3b3" />
   </Folder>
   <Project Path="DiaSharp/DiaSharp.csproj" />
-  <Project Path="DiaSharp_/DiaSharp_.csproj" Id="30b42aef-e815-4ae2-888f-7463c97d31b6" />
   <Project Path="Managed/Managed.csproj" Id="80a99f5c-85e1-4904-a80f-82ce2ade4203" />
 </Solution>
