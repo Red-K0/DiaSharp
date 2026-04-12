@@ -3,7 +3,7 @@ using DiaSharp.SDK;
 
 IDataSource dataSource = ComHelpers.CoCreateInstance<IDataSource>(Constants.DiaSourceGUID);
 
-dataSource.LoadDataFromPdb("DiaSharp.pdb");
+dataSource.LoadDataFromPDB("DiaSharp.pdb");
 
 dataSource.OpenSession(out var session);
 

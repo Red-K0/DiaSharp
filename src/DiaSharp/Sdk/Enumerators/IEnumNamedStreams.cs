@@ -15,4 +15,4 @@ public partial interface IEnumNamedStreams
 	int Reset();
 
 	int Clone(out IEnumNamedStreams enumerator);
-};
+}

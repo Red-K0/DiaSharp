@@ -8,7 +8,7 @@ public partial interface IInputAssemblyFile
 
 	int GetTimestamp(out uint timestamp);
 
-	int GetWasPdbAvailableAtILMerge([MarshalAs(UnmanagedType.Bool)] out bool available);
+	int GetWasPDBAvailableAtILMerge([MarshalAs(UnmanagedType.Bool)] out bool available);
 
 	int GetFilename([MarshalAs(UnmanagedType.BStr)] out string name);
 

@@ -6,9 +6,9 @@ public partial interface IDataSource
 {
 	int GetLastError([MarshalAs(UnmanagedType.BStr)] out string error);
 
-	int LoadDataFromPdb(string pdbPath);
+	int LoadDataFromPDB(string pdbPath);
 
-	unsafe int LoadAndValidateDataFromPdb(string pdbPath, Guid* pdbSignature, uint signature, uint age);
+	unsafe int LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age);
 
 	unsafe int LoadDataForExe(string exePath, string searchPath, void* callback);
 

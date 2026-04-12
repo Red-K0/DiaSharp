@@ -32,11 +32,6 @@
 	</ItemGroup>
 
 	<ItemGroup Label="Global Usings">
-		<Using Include="System.Reflection" />
-		<Using Include="System.Diagnostics" />
-		<Using Include="System.Diagnostics.CodeAnalysis" />
-		<Using Include="System.Runtime.CompilerServices" />
-		<Using Include="System.Runtime.InteropServices" />
 		<Using Include="System.Runtime.InteropServices.Marshalling" />
 	</ItemGroup>
 

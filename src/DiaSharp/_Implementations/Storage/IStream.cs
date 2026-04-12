@@ -170,17 +170,15 @@ file unsafe partial interface InterfaceImplementation : IStream
 	}
 
 	[SkipLocalsInit]
-	int IStream.Read(out byte value, uint byteCount, out uint bytesRead)
+	int IStream.Read(byte* buffer, uint byteCount, out uint bytesRead)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStream));
-		Unsafe.SkipInit(out value);
 		Unsafe.SkipInit(out bytesRead);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
 		fixed (uint* __bytesRead_native = &bytesRead)
-		fixed (byte* __value_native = &value)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, byte*, uint, uint*, int>)__vtable_native[3])(__this, __value_native, byteCount, __bytesRead_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, byte*, uint, uint*, int>)__vtable_native[3])(__this, buffer, byteCount, __bytesRead_native);
 		}
 
 		GC.KeepAlive(this);
@@ -188,24 +186,23 @@ file unsafe partial interface InterfaceImplementation : IStream
 	}
 
 	[SkipLocalsInit]
-	int IStream.Write(ref byte value, uint byteCount, out uint bytesWritten)
+	int IStream.Write(byte* buffer, uint byteCount, out uint bytesWritten)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStream));
 		Unsafe.SkipInit(out bytesWritten);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
 		fixed (uint* __bytesWritten_native = &bytesWritten)
-		fixed (byte* __value_native = &value)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, byte*, uint, uint*, int>)__vtable_native[4])(__this, __value_native, byteCount, __bytesWritten_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, byte*, uint, uint*, int>)__vtable_native[4])(__this, buffer, byteCount, __bytesWritten_native);
 		}
 
 		GC.KeepAlive(this);
 		return __retVal;
 	}
 
-	int ISequentialStream.Read(out byte value, uint byteCount, out uint bytesRead) => throw new UnreachableException();
-	int ISequentialStream.Write(ref byte value, uint byteCount, out uint bytesWritten) => throw new UnreachableException();
+	int ISequentialStream.Read(byte* value, uint byteCount, out uint bytesRead) => throw new UnreachableException();
+	int ISequentialStream.Write(byte* value, uint byteCount, out uint bytesWritten) => throw new UnreachableException();
 }
 
 file unsafe partial interface InterfaceImplementation
@@ -438,13 +435,13 @@ file unsafe partial interface InterfaceImplementation
 namespace DiaSharp.Storage
 {
 	[IUnknownDerived<InterfaceInformation, InterfaceImplementation>]
-	public partial interface IStream
+	public unsafe partial interface IStream
 	{
 
 		[SkipLocalsInit, PreserveSig]
-		new int Read(out byte value, uint byteCount, out uint bytesRead) => ((ISequentialStream)this).Read(out value, byteCount, out bytesRead);
+		new int Read(byte* value, uint byteCount, out uint bytesRead) => ((ISequentialStream)this).Read(value, byteCount, out bytesRead);
 
 		[SkipLocalsInit, PreserveSig]
-		new int Write(ref byte value, uint byteCount, out uint bytesWritten) => ((ISequentialStream)this).Write(ref value, byteCount, out bytesWritten);
+		new int Write(byte* value, uint byteCount, out uint bytesWritten) => ((ISequentialStream)this).Write(value, byteCount, out bytesWritten);
 	}
 }

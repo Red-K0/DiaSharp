@@ -14,7 +14,7 @@ file unsafe class InterfaceInformation : IIUnknownInterfaceType
 file unsafe partial interface InterfaceImplementation : IDataSourceEx
 {
 	[SkipLocalsInit]
-	int IDataSourceEx.LoadDataFromPdb(string pdbPath, bool prefetchPDB)
+	int IDataSourceEx.LoadDataFromPDB(string pdbPath, bool prefetchPDB)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
 		int __prefetchPDB_native;
@@ -32,7 +32,7 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 	}
 
 	[SkipLocalsInit]
-	int IDataSourceEx.LoadAndValidateDataFromPdb(string pdbPath, ref Guid pdbSignature, uint signature, uint age, bool prefetchPDB)
+	int IDataSourceEx.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, bool prefetchPDB)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
 		int __prefetchPDB_native;
@@ -40,10 +40,9 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 		// Marshal - Convert managed data to native data.
 		__prefetchPDB_native = prefetchPDB ? 1 : 0;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (Guid* __pdbSignature_native = &pdbSignature)
 		fixed (void* __pdbPath_native = &Utf16StringMarshaller.GetPinnableReference(pdbPath))
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, Guid*, uint, uint, int, int>)__vtable_native[12])(__this, (ushort*)__pdbPath_native, __pdbSignature_native, signature, age, __prefetchPDB_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, Guid*, uint, uint, int, int>)__vtable_native[12])(__this, (ushort*)__pdbPath_native, pdbSignature, signature, age, __prefetchPDB_native);
 		}
 
 		GC.KeepAlive(this);
@@ -132,7 +131,7 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 	}
 
 	[SkipLocalsInit]
-	int IDataSourceEx.SetMiniPdbErrorCallback(nint context, MiniPdbErrorCallback callback)
+	int IDataSourceEx.SetMiniPDBErrorCallback(nint context, MiniPDBErrorCallback callback)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
 		nint __callback_native;
@@ -144,23 +143,22 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 		}
 
 		// NotifyForSuccessfulInvoke - Keep alive any managed objects that need to stay alive across the call.
-		System.GC.KeepAlive(callback);
+		GC.KeepAlive(callback);
 		GC.KeepAlive(this);
 		return __retVal;
 	}
 
 	[SkipLocalsInit]
-	int IDataSourceEx.ValidatePdb(string pdbPath, ref Guid pdbSignature, uint signature, uint age, out bool valid)
+	int IDataSourceEx.ValidatePDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, out bool valid)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
 		Unsafe.SkipInit(out valid);
 		int __valid_native;
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (Guid* __pdbSignature_native = &pdbSignature)
 		fixed (void* __pdbPath_native = &Utf16StringMarshaller.GetPinnableReference(pdbPath))
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, Guid*, uint, uint, int*, int>)__vtable_native[18])(__this, (ushort*)__pdbPath_native, __pdbSignature_native, signature, age, &__valid_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, Guid*, uint, uint, int*, int>)__vtable_native[18])(__this, (ushort*)__pdbPath_native, pdbSignature, signature, age, &__valid_native);
 		}
 
 		GC.KeepAlive(this);
@@ -202,7 +200,7 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 	}
 
 	[SkipLocalsInit]
-	int IDataSourceEx.LoadDataFromPdb(string pdbPath)
+	int IDataSourceEx.LoadDataFromPDB(string pdbPath)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
 		int __retVal;
@@ -217,7 +215,7 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 	}
 
 	[SkipLocalsInit]
-	int IDataSourceEx.LoadAndValidateDataFromPdb(string pdbPath, Guid* pdbSignature, uint signature, uint age)
+	int IDataSourceEx.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
 		int __retVal;
@@ -338,8 +336,8 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 	}
 
 	int IDataSource.GetLastError(out string error) => throw new UnreachableException();
-	int IDataSource.LoadDataFromPdb(string pdbPath) => throw new UnreachableException();
-	int IDataSource.LoadAndValidateDataFromPdb(string pdbPath, Guid* pdbSignature, uint signature, uint age) => throw new UnreachableException();
+	int IDataSource.LoadDataFromPDB(string pdbPath) => throw new UnreachableException();
+	int IDataSource.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age) => throw new UnreachableException();
 	int IDataSource.LoadDataForExe(string exePath, string searchPath, void* callback) => throw new UnreachableException();
 	int IDataSource.LoadDataFromIStream(IStream stream) => throw new UnreachableException();
 	int IDataSource.OpenSession(out ISession session) => throw new UnreachableException();
@@ -350,7 +348,7 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 file unsafe partial interface InterfaceImplementation
 {
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_LoadDataFromPdb(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native, int __prefetchPDB_native)
+	static internal int ABI_LoadDataFromPDB(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native, int __prefetchPDB_native)
 	{
 		int __retVal;
 
@@ -360,7 +358,7 @@ file unsafe partial interface InterfaceImplementation
 			bool prefetchPDB = __prefetchPDB_native != 0;
 			string pdbPath = Utf16StringMarshaller.ConvertToManaged(__pdbPath_native)!;
 			IDataSourceEx @this = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native);
-			__retVal = @this.LoadDataFromPdb(pdbPath, prefetchPDB);
+			__retVal = @this.LoadDataFromPDB(pdbPath, prefetchPDB);
 		}
 		catch (Exception __exception)
 		{
@@ -371,25 +369,18 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_LoadAndValidateDataFromPdb(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native, Guid* __pdbSignature_native__param, uint signature, uint age, int __prefetchPDB_native)
+	static internal int ABI_LoadAndValidateDataFromPDB(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native, Guid* pdbSignature, uint signature, uint age, int __prefetchPDB_native)
 	{
-		IDataSourceEx @this = default!;
-		string pdbPath = default!;
-		ref Guid __pdbSignature_native = ref *__pdbSignature_native__param;
-		Guid pdbSignature = default!;
-		bool prefetchPDB = default!;
-		int __retVal = default;
+		int __retVal;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
-			prefetchPDB = __prefetchPDB_native != 0;
-			pdbSignature = __pdbSignature_native;
-			pdbPath = Utf16StringMarshaller.ConvertToManaged(__pdbPath_native)!;
-			@this = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native);
-			__retVal = @this.LoadAndValidateDataFromPdb(pdbPath, ref pdbSignature, signature, age, prefetchPDB);
+			bool prefetchPDB = __prefetchPDB_native != 0;
+			string pdbPath = Utf16StringMarshaller.ConvertToManaged(__pdbPath_native)!;
+			IDataSourceEx @this = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native);
+			__retVal = @this.LoadAndValidateDataFromPDB(pdbPath, pdbSignature, signature, age, prefetchPDB);
 			// Marshal - Convert managed data to native data.
-			__pdbSignature_native = pdbSignature;
 		}
 		catch (Exception __exception)
 		{
@@ -495,16 +486,16 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_SetMiniPdbErrorCallback(ComWrappers.ComInterfaceDispatch* __this_native, nint context, nint __callback_native)
+	static internal int ABI_SetMiniPDBErrorCallback(ComWrappers.ComInterfaceDispatch* __this_native, nint context, nint __callback_native)
 	{
 		int __retVal = default;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
-			MiniPdbErrorCallback callback = __callback_native != default ? Marshal.GetDelegateForFunctionPointer<MiniPdbErrorCallback>(__callback_native) : default!;
+			MiniPDBErrorCallback callback = __callback_native != default ? Marshal.GetDelegateForFunctionPointer<MiniPDBErrorCallback>(__callback_native) : default!;
 			IDataSourceEx @this = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native);
-			__retVal = @this.SetMiniPdbErrorCallback(context, callback);
+			__retVal = @this.SetMiniPDBErrorCallback(context, callback);
 		}
 		catch (Exception __exception)
 		{
@@ -515,12 +506,10 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_ValidatePdb(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native, Guid* __pdbSignature_native__param, uint signature, uint age, int* __valid_native__param)
+	static internal int ABI_ValidatePDB(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native, Guid* pdbSignature, uint signature, uint age, int* __valid_native__param)
 	{
 		IDataSourceEx @this = default!;
 		string pdbPath = default!;
-		ref Guid __pdbSignature_native = ref *__pdbSignature_native__param;
-		Guid pdbSignature = default!;
 		ref int __valid_native = ref *__valid_native__param;
 		bool valid = default!;
 		int __retVal = default;
@@ -528,13 +517,11 @@ file unsafe partial interface InterfaceImplementation
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
-			pdbSignature = __pdbSignature_native;
 			pdbPath = Utf16StringMarshaller.ConvertToManaged(__pdbPath_native)!;
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native);
-			__retVal = @this.ValidatePdb(pdbPath, ref pdbSignature, signature, age, out valid);
+			__retVal = @this.ValidatePDB(pdbPath, pdbSignature, signature, age, out valid);
 			// Marshal - Convert managed data to native data.
 			__valid_native = valid ? 1 : 0;
-			__pdbSignature_native = pdbSignature;
 		}
 		catch (Exception __exception)
 		{
@@ -555,14 +542,14 @@ file unsafe partial interface InterfaceImplementation
 		}
 
 		{
-			vtable[11] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, int, int>)&ABI_LoadDataFromPdb;
-			vtable[12] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, Guid*, uint, uint, int, int>)&ABI_LoadAndValidateDataFromPdb;
+			vtable[11] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, int, int>)&ABI_LoadDataFromPDB;
+			vtable[12] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, Guid*, uint, uint, int, int>)&ABI_LoadAndValidateDataFromPDB;
 			vtable[13] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, ushort*, void*, int, int>)&ABI_LoadDataForExe;
 			vtable[14] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, void*, int, int>)&ABI_LoadDataFromIStream;
 			vtable[15] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, ulong*, int>)&ABI_GetStreamSize;
 			vtable[16] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, ulong, ulong, ulong*, byte*, int>)&ABI_GetStreamRawData;
-			vtable[17] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, nint, nint, int>)&ABI_SetMiniPdbErrorCallback;
-			vtable[18] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, Guid*, uint, uint, int*, int>)&ABI_ValidatePdb;
+			vtable[17] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, nint, nint, int>)&ABI_SetMiniPDBErrorCallback;
+			vtable[18] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, Guid*, uint, uint, int*, int>)&ABI_ValidatePDB;
 		}
 
 		return vtable;
@@ -579,10 +566,10 @@ namespace DiaSharp.SDK
 		new int GetLastError(out string error) => ((IDataSource)this).GetLastError(out error);
 
 		[SkipLocalsInit, PreserveSig]
-		new int LoadDataFromPdb(string pdbPath) => ((IDataSource)this).LoadDataFromPdb(pdbPath);
+		new int LoadDataFromPDB(string pdbPath) => ((IDataSource)this).LoadDataFromPDB(pdbPath);
 
 		[SkipLocalsInit, PreserveSig]
-		new int LoadAndValidateDataFromPdb(string pdbPath, Guid* pdbSignature, uint signature, uint age) => ((IDataSource)this).LoadAndValidateDataFromPdb(pdbPath, pdbSignature, signature, age);
+		new int LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age) => ((IDataSource)this).LoadAndValidateDataFromPDB(pdbPath, pdbSignature, signature, age);
 
 		[SkipLocalsInit, PreserveSig]
 		new int LoadDataForExe(string exePath, string searchPath, void* callback) => ((IDataSource)this).LoadDataForExe(exePath, searchPath, callback);

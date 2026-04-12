@@ -90,7 +90,7 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 	}
 
 	[SkipLocalsInit]
-	int IDataSourceEx2.LoadDataFromPdb(string pdbPath)
+	int IDataSourceEx2.LoadDataFromPDB(string pdbPath)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
 		int __retVal;
@@ -105,7 +105,7 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 	}
 
 	[SkipLocalsInit]
-	int IDataSourceEx2.LoadAndValidateDataFromPdb(string pdbPath, Guid* pdbSignature, uint signature, uint age)
+	int IDataSourceEx2.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
 		int __retVal;
@@ -226,7 +226,7 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 	}
 
 	[SkipLocalsInit]
-	int IDataSourceEx2.LoadDataFromPdb(string pdbPath, bool prefetchPDB)
+	int IDataSourceEx2.LoadDataFromPDB(string pdbPath, bool prefetchPDB)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
 		int __prefetchPDB_native;
@@ -244,7 +244,7 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 	}
 
 	[SkipLocalsInit]
-	int IDataSourceEx2.LoadAndValidateDataFromPdb(string pdbPath, ref Guid pdbSignature, uint signature, uint age, bool prefetchPDB)
+	int IDataSourceEx2.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, bool prefetchPDB)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
 		int __prefetchPDB_native;
@@ -252,10 +252,9 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 		// Marshal - Convert managed data to native data.
 		__prefetchPDB_native = prefetchPDB ? 1 : 0;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (Guid* __pdbSignature_native = &pdbSignature)
 		fixed (void* __pdbPath_native = &Utf16StringMarshaller.GetPinnableReference(pdbPath))
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, Guid*, uint, uint, int, int>)__vtable_native[12])(__this, (ushort*)__pdbPath_native, __pdbSignature_native, signature, age, __prefetchPDB_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, Guid*, uint, uint, int, int>)__vtable_native[12])(__this, (ushort*)__pdbPath_native, pdbSignature, signature, age, __prefetchPDB_native);
 		}
 
 		GC.KeepAlive(this);
@@ -344,7 +343,7 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 	}
 
 	[SkipLocalsInit]
-	int IDataSourceEx2.SetMiniPdbErrorCallback(nint context, MiniPdbErrorCallback callback)
+	int IDataSourceEx2.SetMiniPDBErrorCallback(nint context, MiniPDBErrorCallback callback)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
 		nint __callback_native;
@@ -362,17 +361,16 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 	}
 
 	[SkipLocalsInit]
-	int IDataSourceEx2.ValidatePdb(string pdbPath, ref Guid pdbSignature, uint signature, uint age, out bool valid)
+	int IDataSourceEx2.ValidatePDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, out bool valid)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
 		Unsafe.SkipInit(out valid);
 		int __valid_native;
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (Guid* __pdbSignature_native = &pdbSignature)
 		fixed (void* __pdbPath_native = &Utf16StringMarshaller.GetPinnableReference(pdbPath))
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, Guid*, uint, uint, int*, int>)__vtable_native[18])(__this, (ushort*)__pdbPath_native, __pdbSignature_native, signature, age, &__valid_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, Guid*, uint, uint, int*, int>)__vtable_native[18])(__this, (ushort*)__pdbPath_native, pdbSignature, signature, age, &__valid_native);
 		}
 
 		GC.KeepAlive(this);
@@ -382,21 +380,21 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 	}
 
 	int IDataSource.GetLastError(out string error) => throw new UnreachableException();
-	int IDataSource.LoadDataFromPdb(string pdbPath) => throw new UnreachableException();
-	int IDataSource.LoadAndValidateDataFromPdb(string pdbPath, Guid* pdbSignature, uint signature, uint age) => throw new UnreachableException();
+	int IDataSource.LoadDataFromPDB(string pdbPath) => throw new UnreachableException();
+	int IDataSource.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age) => throw new UnreachableException();
 	int IDataSource.LoadDataForExe(string exePath, string searchPath, void* callback) => throw new UnreachableException();
 	int IDataSource.LoadDataFromIStream(IStream stream) => throw new UnreachableException();
 	int IDataSource.OpenSession(out ISession session) => throw new UnreachableException();
 	int IDataSource.LoadDataFromCodeViewInfo(string executable, string searchPath, uint infoSize, byte* info, void* callback) => throw new UnreachableException();
 	int IDataSource.LoadDataFromMiscInfo(string executable, string searchPath, uint exeTimestamp, uint debugTimestamp, uint exeSize, uint infoSize, byte* info, void* callback) => throw new UnreachableException();
-	int IDataSourceEx.LoadDataFromPdb(string pdbPath, bool prefetchPDB) => throw new UnreachableException();
-	int IDataSourceEx.LoadAndValidateDataFromPdb(string pdbPath, ref Guid pdbSignature, uint signature, uint age, bool prefetchPDB) => throw new UnreachableException();
+	int IDataSourceEx.LoadDataFromPDB(string pdbPath, bool prefetchPDB) => throw new UnreachableException();
+	int IDataSourceEx.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, bool prefetchPDB) => throw new UnreachableException();
 	int IDataSourceEx.LoadDataForExe(string executable, string searchPath, void* callback, bool prefetchPDB) => throw new UnreachableException();
 	int IDataSourceEx.LoadDataFromIStream(IStream stream, bool prefetchPDB) => throw new UnreachableException();
 	int IDataSourceEx.GetStreamSize(string stream, out ulong size) => throw new UnreachableException();
 	int IDataSourceEx.GetStreamRawData(string stream, ulong byteOffset, ulong bufferSize, out ulong bytesWritten, byte* buffer) => throw new UnreachableException();
-	int IDataSourceEx.SetMiniPdbErrorCallback(nint context, MiniPdbErrorCallback callback) => throw new UnreachableException();
-	int IDataSourceEx.ValidatePdb(string pdbPath, ref Guid pdbSignature, uint signature, uint age, out bool valid) => throw new UnreachableException();
+	int IDataSourceEx.SetMiniPDBErrorCallback(nint context, MiniPDBErrorCallback callback) => throw new UnreachableException();
+	int IDataSourceEx.ValidatePDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, out bool valid) => throw new UnreachableException();
 }
 
 file unsafe partial interface InterfaceImplementation
@@ -455,10 +453,10 @@ namespace DiaSharp.SDK
 		new int GetLastError(out string error) => ((IDataSource)this).GetLastError(out error);
 
 		[SkipLocalsInit, PreserveSig]
-		new int LoadDataFromPdb(string pdbPath) => ((IDataSource)this).LoadDataFromPdb(pdbPath);
+		new int LoadDataFromPDB(string pdbPath) => ((IDataSource)this).LoadDataFromPDB(pdbPath);
 
 		[SkipLocalsInit, PreserveSig]
-		new int LoadAndValidateDataFromPdb(string pdbPath, Guid* pdbSignature, uint signature, uint age) => ((IDataSource)this).LoadAndValidateDataFromPdb(pdbPath, pdbSignature, signature, age);
+		new int LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age) => ((IDataSource)this).LoadAndValidateDataFromPDB(pdbPath, pdbSignature, signature, age);
 
 		[SkipLocalsInit, PreserveSig]
 		new int LoadDataForExe(string exePath, string searchPath, void* callback) => ((IDataSource)this).LoadDataForExe(exePath, searchPath, callback);
@@ -476,10 +474,10 @@ namespace DiaSharp.SDK
 		new int LoadDataFromMiscInfo(string executable, string searchPath, uint exeTimestamp, uint debugTimestamp, uint exeSize, uint infoSize, byte* info, void* callback) => ((IDataSource)this).LoadDataFromMiscInfo(executable, searchPath, exeTimestamp, debugTimestamp, exeSize, infoSize, info, callback);
 
 		[SkipLocalsInit, PreserveSig]
-		new int LoadDataFromPdb(string pdbPath, bool prefetchPDB) => ((IDataSourceEx)this).LoadDataFromPdb(pdbPath, prefetchPDB);
+		new int LoadDataFromPDB(string pdbPath, bool prefetchPDB) => ((IDataSourceEx)this).LoadDataFromPDB(pdbPath, prefetchPDB);
 
 		[SkipLocalsInit, PreserveSig]
-		new int LoadAndValidateDataFromPdb(string pdbPath, ref Guid pdbSignature, uint signature, uint age, bool prefetchPDB) => ((IDataSourceEx)this).LoadAndValidateDataFromPdb(pdbPath, ref pdbSignature, signature, age, prefetchPDB);
+		new int LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, bool prefetchPDB) => ((IDataSourceEx)this).LoadAndValidateDataFromPDB(pdbPath, pdbSignature, signature, age, prefetchPDB);
 
 		[SkipLocalsInit, PreserveSig]
 		new int LoadDataForExe(string executable, string searchPath, void* callback, bool prefetchPDB) => ((IDataSourceEx)this).LoadDataForExe(executable, searchPath, callback, prefetchPDB);
@@ -494,9 +492,9 @@ namespace DiaSharp.SDK
 		new int GetStreamRawData(string stream, ulong byteOffset, ulong bufferSize, out ulong bytesWritten, byte* buffer) => ((IDataSourceEx)this).GetStreamRawData(stream, byteOffset, bufferSize, out bytesWritten, buffer);
 
 		[SkipLocalsInit, PreserveSig]
-		new int SetMiniPdbErrorCallback(nint context, MiniPdbErrorCallback callback) => ((IDataSourceEx)this).SetMiniPdbErrorCallback(context, callback);
+		new int SetMiniPDBErrorCallback(nint context, MiniPDBErrorCallback callback) => ((IDataSourceEx)this).SetMiniPDBErrorCallback(context, callback);
 
 		[SkipLocalsInit, PreserveSig]
-		new int ValidatePdb(string pdbPath, ref Guid pdbSignature, uint signature, uint age, out bool valid) => ((IDataSourceEx)this).ValidatePdb(pdbPath, ref pdbSignature, signature, age, out valid);
+		new int ValidatePDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, out bool valid) => ((IDataSourceEx)this).ValidatePDB(pdbPath, pdbSignature, signature, age, out valid);
 	}
 }

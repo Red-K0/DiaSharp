@@ -45,7 +45,7 @@ file unsafe partial interface InterfaceImplementation : IDataSource
 	}
 
 	[SkipLocalsInit]
-	int IDataSource.LoadDataFromPdb(string pdbPath)
+	int IDataSource.LoadDataFromPDB(string pdbPath)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSource));
 		int __retVal;
@@ -60,7 +60,7 @@ file unsafe partial interface InterfaceImplementation : IDataSource
 	}
 
 	[SkipLocalsInit]
-	int IDataSource.LoadAndValidateDataFromPdb(string pdbPath, Guid* pdbSignature, uint signature, uint age)
+	int IDataSource.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSource));
 		int __retVal;
@@ -208,7 +208,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_LoadDataFromPdb(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native)
+	static internal int ABI_LoadDataFromPDB(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native)
 	{
 		int __retVal;
 
@@ -217,7 +217,7 @@ file unsafe partial interface InterfaceImplementation
 			string pdbPath = Utf16StringMarshaller.ConvertToManaged(__pdbPath_native)!;
 			// Unmarshal - Convert native data to managed data.
 			IDataSource @this = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSource>(__this_native);
-			__retVal = @this.LoadDataFromPdb(pdbPath);
+			__retVal = @this.LoadDataFromPDB(pdbPath);
 		}
 		catch (Exception __exception)
 		{
@@ -228,7 +228,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_LoadAndValidateDataFromPdb(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native, Guid* pdbSignature, uint signature, uint age)
+	static internal int ABI_LoadAndValidateDataFromPDB(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native, Guid* pdbSignature, uint signature, uint age)
 	{
 		int __retVal;
 
@@ -237,7 +237,7 @@ file unsafe partial interface InterfaceImplementation
 			// Unmarshal - Convert native data to managed data.
 			string pdbPath = Utf16StringMarshaller.ConvertToManaged(__pdbPath_native)!;
 			IDataSource @this = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSource>(__this_native);
-			__retVal = @this.LoadAndValidateDataFromPdb(pdbPath, pdbSignature, signature, age);
+			__retVal = @this.LoadAndValidateDataFromPDB(pdbPath, pdbSignature, signature, age);
 		}
 		catch (Exception __exception)
 		{
@@ -369,8 +369,8 @@ file unsafe partial interface InterfaceImplementation
 
 		{
 			vtable[3] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort**, int>)&ABI_GetLastError;
-			vtable[4] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, int>)&ABI_LoadDataFromPdb;
-			vtable[5] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, Guid*, uint, uint, int>)&ABI_LoadAndValidateDataFromPdb;
+			vtable[4] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, int>)&ABI_LoadDataFromPDB;
+			vtable[5] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, Guid*, uint, uint, int>)&ABI_LoadAndValidateDataFromPDB;
 			vtable[6] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, ushort*, void*, int>)&ABI_LoadDataForExe;
 			vtable[7] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, void*, int>)&ABI_LoadDataFromIStream;
 			vtable[8] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, void**, int>)&ABI_OpenSession;

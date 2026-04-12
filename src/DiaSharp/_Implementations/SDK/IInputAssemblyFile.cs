@@ -60,7 +60,7 @@ file unsafe partial interface InterfaceImplementation : IInputAssemblyFile
 	}
 
 	[SkipLocalsInit]
-	int IInputAssemblyFile.GetWasPdbAvailableAtILMerge(out bool available)
+	int IInputAssemblyFile.GetWasPDBAvailableAtILMerge(out bool available)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IInputAssemblyFile));
 		Unsafe.SkipInit(out available);
@@ -200,7 +200,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetWasPdbAvailableAtILMerge(ComWrappers.ComInterfaceDispatch* __this_native, int* __available_native__param)
+	static internal int ABI_GetWasPDBAvailableAtILMerge(ComWrappers.ComInterfaceDispatch* __this_native, int* __available_native__param)
 	{
 		IInputAssemblyFile @this = default!;
 		ref int __available_native = ref *__available_native__param;
@@ -211,7 +211,7 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native);
-			__retVal = @this.GetWasPdbAvailableAtILMerge(out available);
+			__retVal = @this.GetWasPDBAvailableAtILMerge(out available);
 			// Marshal - Convert managed data to native data.
 			__available_native = available ? 1 : 0;
 		}
@@ -288,7 +288,7 @@ file unsafe partial interface InterfaceImplementation
 			vtable[3] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetUniqueID;
 			vtable[4] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetIndex;
 			vtable[5] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetTimestamp;
-			vtable[6] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetWasPdbAvailableAtILMerge;
+			vtable[6] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetWasPDBAvailableAtILMerge;
 			vtable[7] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort**, int>)&ABI_GetFilename;
 			vtable[8] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint, uint*, byte*, int>)&ABI_GetVersion;
 		}

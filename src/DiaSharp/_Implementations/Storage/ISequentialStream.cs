@@ -12,17 +12,15 @@ file unsafe class InterfaceInformation : IIUnknownInterfaceType
 file unsafe partial interface InterfaceImplementation : ISequentialStream
 {
 	[SkipLocalsInit]
-	int ISequentialStream.Read(out byte value, uint byteCount, out uint bytesRead)
+	int ISequentialStream.Read(byte* value, uint byteCount, out uint bytesRead)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISequentialStream));
-		Unsafe.SkipInit(out value);
 		Unsafe.SkipInit(out bytesRead);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
 		fixed (uint* __bytesRead_native = &bytesRead)
-		fixed (byte* __value_native = &value)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, byte*, uint, uint*, int>)__vtable_native[3])(__this, __value_native, byteCount, __bytesRead_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, byte*, uint, uint*, int>)__vtable_native[3])(__this, value, byteCount, __bytesRead_native);
 		}
 
 		GC.KeepAlive(this);
@@ -30,16 +28,15 @@ file unsafe partial interface InterfaceImplementation : ISequentialStream
 	}
 
 	[SkipLocalsInit]
-	int ISequentialStream.Write(ref byte value, uint byteCount, out uint bytesWritten)
+	int ISequentialStream.Write(byte* value, uint byteCount, out uint bytesWritten)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISequentialStream));
 		Unsafe.SkipInit(out bytesWritten);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
 		fixed (uint* __bytesWritten_native = &bytesWritten)
-		fixed (byte* __value_native = &value)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, byte*, uint, uint*, int>)__vtable_native[4])(__this, __value_native, byteCount, __bytesWritten_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, byte*, uint, uint*, int>)__vtable_native[4])(__this, value, byteCount, __bytesWritten_native);
 		}
 
 		GC.KeepAlive(this);
@@ -50,11 +47,9 @@ file unsafe partial interface InterfaceImplementation : ISequentialStream
 file unsafe partial interface InterfaceImplementation
 {
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_Read(ComWrappers.ComInterfaceDispatch* __this_native, byte* __value_native__param, uint byteCount, uint* __bytesRead_native__param)
+	static internal int ABI_Read(ComWrappers.ComInterfaceDispatch* __this_native, byte* value, uint byteCount, uint* __bytesRead_native__param)
 	{
 		ISequentialStream @this = default!;
-		ref byte __value_native = ref *__value_native__param;
-		byte value = default!;
 		ref uint __bytesRead_native = ref *__bytesRead_native__param;
 		uint bytesRead = default!;
 		int __retVal = default;
@@ -62,10 +57,9 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISequentialStream>(__this_native);
-			__retVal = @this.Read(out value, byteCount, out bytesRead);
+			__retVal = @this.Read(value, byteCount, out bytesRead);
 			// Marshal - Convert managed data to native data.
 			__bytesRead_native = bytesRead;
-			__value_native = value;
 		}
 		catch (Exception __exception)
 		{
@@ -76,23 +70,19 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_Write(ComWrappers.ComInterfaceDispatch* __this_native, byte* __value_native__param, uint byteCount, uint* __bytesWritten_native__param)
+	static internal int ABI_Write(ComWrappers.ComInterfaceDispatch* __this_native, byte* value, uint byteCount, uint* __bytesWritten_native__param)
 	{
 		ISequentialStream @this = default!;
-		ref byte __value_native = ref *__value_native__param;
-		byte value = default!;
 		ref uint __bytesWritten_native = ref *__bytesWritten_native__param;
 		uint bytesWritten = default!;
 		int __retVal = default;
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
-			value = __value_native;
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISequentialStream>(__this_native);
-			__retVal = @this.Write(ref value, byteCount, out bytesWritten);
+			__retVal = @this.Write(value, byteCount, out bytesWritten);
 			// Marshal - Convert managed data to native data.
 			__bytesWritten_native = bytesWritten;
-			__value_native = value;
 		}
 		catch (Exception __exception)
 		{
