@@ -2,6 +2,7 @@ using DiaSharp.Storage;
 
 namespace DiaSharp.SDK;
 
+[Guid("9D416F9C-E184-45B2-A4F0-CE517F719E9B")]
 public partial interface IPropertyStorage
 {
 	unsafe int ReadMultiple(uint specifierCount, PropertySpecifier* specifiers, out void* propVariant);

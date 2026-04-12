@@ -4,6 +4,7 @@ using DiaSharp.Native;
 
 namespace DiaSharp.StackWalk;
 
+[Guid("07C590C1-438D-4F47-BDCD-4397BC81AD75")]
 public partial interface IStackWalkFrame
 {
 	int GetRegisterValue(HostRegister index, out ulong value);

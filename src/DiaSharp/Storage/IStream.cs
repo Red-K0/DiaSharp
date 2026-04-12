@@ -2,6 +2,7 @@ namespace DiaSharp.Storage;
 
 #pragma warning disable CA1711
 
+[Guid("0000000C-0000-0000-C000-000000000046")]
 public partial interface IStream : ISequentialStream
 {
 	int Seek(long offset, SeekType origin, out ulong newPosition);

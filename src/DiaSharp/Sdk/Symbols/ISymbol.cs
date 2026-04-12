@@ -5,6 +5,7 @@ using DiaSharp.SDK.Enumerators;
 
 namespace DiaSharp.SDK.Symbols;
 
+[Guid("CB787B2F-BD6C-4635-BA52-933126BD2DCD")]
 public unsafe partial interface ISymbol
 {
 	int GetSymbolIndexID(out uint result);

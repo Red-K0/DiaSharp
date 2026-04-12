@@ -2,6 +2,7 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.SDK;
 
+[Guid("0CF4B60E-35B1-4C6C-BDD8-854B9C8E3857")]
 public partial interface ISectionContrib
 {
 	int GetCompiland(out ISymbol compiland);

@@ -3,6 +3,7 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.SDK.Enumerators;
 
+[Guid("CAB72C48-443B-48F5-9B0B-42F0820AB29A")]
 public partial interface IEnumSymbols
 {
 	int GetNewEnum(out IEnumVARIANT enumerator);

@@ -2,6 +2,7 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.SDK;
 
+[Guid("B388EB14-BE4D-421D-A8A1-6CF7AB057086")]
 public partial interface ILineNumber
 {
 	int GetCompiland(out ISymbol symbol);

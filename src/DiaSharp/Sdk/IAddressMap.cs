@@ -2,6 +2,7 @@ using DiaSharp.Native;
 
 namespace DiaSharp.SDK;
 
+[Guid("B62A2E7A-067A-4ea3-B598-04C09717502C")]
 public partial interface IAddressMap
 {
 	int GetIsAddressMapEnabled([MarshalAs(UnmanagedType.Bool)] out bool enabled);

@@ -3,6 +3,7 @@ using DiaSharp.SDK.Enumerators;
 
 namespace DiaSharp.SDK;
 
+[Guid("A2EF5353-F5A8-4eb3-90D2-CB526ACB3CDD")]
 public partial interface ISourceFile
 {
 	int GetUniqueID(out uint ID);

@@ -3,6 +3,7 @@ using DiaSharp.StackWalk;
 
 namespace DiaSharp.SDK;
 
+[Guid("A39184B7-6A36-42DE-8EEC-7DF9F3F59F33")]
 public partial interface IFrameData
 {
 	int GetAddressSection(out uint section);

@@ -1,5 +1,6 @@
 namespace DiaSharp.SDK;
 
+[Guid("0775B784-C75B-4449-848B-B7BD3159545B")]
 public partial interface ISegment
 {
 	int GetFrame(out uint frame);

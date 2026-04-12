@@ -1,5 +1,6 @@
 ﻿namespace DiaSharp.SDK.Enumerators;
 
+[Guid("45CD1EB3-5C6C-43E3-B20A-A4D8035DE4E2")]
 public partial interface IEnumSourceLink
 {
 	int Count(out uint count);

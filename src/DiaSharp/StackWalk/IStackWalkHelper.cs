@@ -5,6 +5,7 @@ using DiaSharp.Native;
 
 namespace DiaSharp.StackWalk;
 
+[Guid("21F81B1B-C5BB-42A3-BC4F-CCBAA75B9F19")]
 public partial interface IStackWalkHelper
 {
 	int GetRegisterValue(HostRegister index, out ulong value);

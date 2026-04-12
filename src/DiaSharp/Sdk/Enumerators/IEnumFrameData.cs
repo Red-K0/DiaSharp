@@ -2,6 +2,7 @@ using DiaSharp.Interop;
 
 namespace DiaSharp.SDK.Enumerators;
 
+[Guid("9FC77A4B-3C1C-44ed-A798-6C1DEEA53E1F")]
 public partial interface IEnumFrameData
 {
 	int GetNewEnum(out IEnumVARIANT enumerator);

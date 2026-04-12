@@ -2,6 +2,7 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.SDK.Enumerators;
 
+[Guid("624B7D9C-24EA-4421-9D06-3B577471C1FA")]
 public partial interface IEnumSymbolsByAddress
 {
 	int GetSymbolByAddress(uint sectionNumber, uint offset, out ISymbol symbol);

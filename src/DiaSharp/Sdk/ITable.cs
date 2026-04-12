@@ -2,6 +2,7 @@ using DiaSharp.Interop;
 
 namespace DiaSharp.SDK;
 
+[Guid("4A59FB77-ABAC-469B-A30B-9ECC85BFEF14")]
 public partial interface ITable : IEnumUnknown
 {
 	int GetNewEnum(out IEnumVARIANT enumerator);

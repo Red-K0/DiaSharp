@@ -1,5 +1,6 @@
 namespace DiaSharp.SDK;
 
+[Guid("AE605CDC-8105-4A23-B710-3259F1E26112")]
 public partial interface IInjectedSource
 {
 	int GetCRC(out uint crc);

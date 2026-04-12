@@ -4,6 +4,7 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.SDK;
 
+[Guid("2F609EE1-D1C8-4E24-8288-3326BADCD211")]
 public partial interface ISession
 {
 	int GetLoadAddress(out ulong address);

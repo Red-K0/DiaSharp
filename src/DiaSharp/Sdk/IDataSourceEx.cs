@@ -3,6 +3,7 @@ using DiaSharp.Storage;
 
 namespace DiaSharp.SDK;
 
+[Guid("1A21EB69-962A-4BC4-8BD3-681797D38B23")]
 public unsafe partial interface IDataSourceEx : IDataSource
 {
 	int LoadDataFromPDB(string pdbPath, [MarshalAs(UnmanagedType.Bool)] bool prefetchPDB);

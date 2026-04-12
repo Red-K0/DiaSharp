@@ -3,6 +3,7 @@ using DiaSharp.Native;
 
 namespace DiaSharp.SDK.Enumerators;
 
+[Guid("C65C2B0A-1150-4D7A-AFCC-E05BF3DEE81E")]
 public partial interface IEnumTables
 {
 	int GetNewEnum(out IEnumVARIANT enumrator);

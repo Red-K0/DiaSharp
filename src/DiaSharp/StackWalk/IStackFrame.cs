@@ -3,6 +3,7 @@ using DiaSharp.Native;
 
 namespace DiaSharp.StackWalk;
 
+[Guid("5EDBC96D-CDD6-4792-AFBE-CC89007D9610")]
 public partial interface IStackFrame
 {
 	int GetAllocatesBasePointer([MarshalAs(UnmanagedType.Bool)] out bool allocates);
