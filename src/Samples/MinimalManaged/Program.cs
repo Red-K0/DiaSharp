@@ -1,7 +1,7 @@
-﻿using DiaSharp.Managed;
+﻿//using DiaSharp.Managed;
 
-DataSource dataSource = new();
+//DataSource dataSource = new();
 
-dataSource.TryLoadDataFromPdb("DiaSharp.pdb");
+//dataSource.TryLoadDataFromPdb("DiaSharp.pdb");
 
-Console.WriteLine(dataSource.FindNamedStreams("").First());
+//Console.WriteLine(dataSource.FindNamedStreams("").First());

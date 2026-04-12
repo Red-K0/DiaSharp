@@ -7,7 +7,7 @@ namespace DiaSharp.Storage;
 /// Contains data about a single property in a property set. This data is the property ID and type tag, and the optional string name that may be associated with the property.
 /// </summary>
 /// <remarks>
-/// <see cref="IPropertyStorage.GetEnum()"/> supplies a pointer to the <see cref="IEnumStatPropertyStorage"/> interface on an enumerator object that can be used to enumerate the <see cref="StatPropertyStorage"/> structures for the properties in the current property set.
+/// <see cref="IPropertyStorage.GetEnum(out IEnumStatPropertyStorage)"/> supplies a pointer to the <see cref="IEnumStatPropertyStorage"/> interface on an enumerator object that can be used to enumerate the <see cref="StatPropertyStorage"/> structures for the properties in the current property set.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public readonly unsafe struct StatPropertyStorage : IEquatable<StatPropertyStorage>

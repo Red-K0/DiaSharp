@@ -1,15 +1,12 @@
 namespace DiaSharp.Storage;
 
-[GeneratedComInterface]
-[Guid("00000139-0000-0000-C000-000000000046")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumStatPropertyStorage
 {
-	IEnumStatPropertyStorage Clone();
+	int Clone(out IEnumStatPropertyStorage enumerator);
 
-	uint GetNext(uint propertyCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out StatPropertyStorage[] properties);
+	unsafe int GetNext(uint propertyCount, StatPropertyStorage* properties, out uint propertiesWritten);
 
-	void Reset();
+	int Reset();
 
-	void Skip(uint propertyCount);
+	int Skip(uint propertyCount);
 }

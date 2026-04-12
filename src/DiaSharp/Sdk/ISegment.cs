@@ -1,28 +1,22 @@
 namespace DiaSharp.SDK;
 
-[GeneratedComInterface]
-[Guid("0775B784-C75B-4449-848B-B7BD3159545B")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface ISegment
 {
-	uint GetFrame();
-	
-	uint GetOffset();
-	
-	uint GetLength();
-	
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetRead();
-	
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetWrite();
-	
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetExecute();
-	
-	uint GetAddressSection();
-	
-	uint GetRelativeVirtualAddress();
-	
-	ulong GetVirtualAddress();
+	int GetFrame(out uint frame);
+
+	int GetOffset(out uint offset);
+
+	int GetLength(out uint length);
+
+	int GetRead([MarshalAs(UnmanagedType.Bool)] out bool value);
+
+	int GetWrite([MarshalAs(UnmanagedType.Bool)] out bool value);
+
+	int GetExecute([MarshalAs(UnmanagedType.Bool)] out bool value);
+
+	int GetAddressSection(out uint section);
+
+	int GetRelativeVirtualAddress(out uint rva);
+
+	int GetVirtualAddress(out ulong va);
 };

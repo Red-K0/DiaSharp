@@ -4,130 +4,123 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.SDK;
 
-[GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
-[Guid("2F609EE1-D1C8-4E24-8288-3326BADCD211")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface ISession
 {
-	ulong GetLoadAddress();
+	int GetLoadAddress(out ulong address);
 
-	void PutLoadAddress(ulong virtualAddresslue);
+	int PutLoadAddress(ulong address);
 
-	ISymbol GetGlobalScope();
+	int GetGlobalScope(out ISymbol scope);
 
-	IEnumTables GetEnumTables();
+	int GetEnumTables(out IEnumTables tables);
 
-	IEnumSymbolsByAddress GetSymbolsByAddress();
+	int GetSymbolsByAddress(out IEnumSymbolsByAddress symbols);
 
-	IEnumSymbols FindChildren(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions);
+	int FindChildren(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, out IEnumSymbols symbols);
 
-	IEnumSymbols FindChildrenEx(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions);
+	int FindChildrenEx(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, out IEnumSymbols symbols);
 
-	IEnumSymbols FindChildrenExByAddress(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint sectionIndex, uint offset);
+	int FindChildrenExByAddress(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint sectionIndex, uint offset, out IEnumSymbols symbols);
 
-	IEnumSymbols FindChildrenExByVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, ulong virtualAddress);
+	int FindChildrenExByVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, ulong virtualAddress, out IEnumSymbols symbols);
 
-	IEnumSymbols FindChildrenExByRVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint relativeVirtualAddress);
+	int FindChildrenExByRVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint relativeVirtualAddress, out IEnumSymbols symbols);
 
-	ISymbol FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag tag);
+	int FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag tag, out ISymbol symbol);
 
-	ISymbol FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag);
+	int FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out ISymbol symbol);
 
-	ISymbol FindSymbolByVA(ulong virtualAddress, SymbolTag tag);
+	int FindSymbolByVA(ulong virtualAddress, SymbolTag tag, out ISymbol symbol);
 
-	ISymbol FindSymbolByToken(uint token, SymbolTag tag);
+	int FindSymbolByToken(uint token, SymbolTag tag, out ISymbol symbol);
 
-	void SymbolsAreEquivirtualAddresslent(ISymbol symbolA, ISymbol symbolB);
+	int SymbolsAreEquivalent(ISymbol symbolA, ISymbol symbolB);
 
-	ISymbol SymbolByID(uint id);
+	int SymbolByID(uint id, out ISymbol symbol);
 
-	ISymbol FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out int displacement);
+	int FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out int displacement, out ISymbol symbol);
 
-	ISymbol FindSymbolByVA(ulong VirtualAddress, SymbolTag tag, out int displacement);
+	int FindSymbolByVA(ulong VirtualAddress, SymbolTag tag, out int displacement, out ISymbol symbol);
 
-	IEnumSourceFiles FindFile(ISymbol compiland, string name, NameSearchOptions searchOptions);
+	int FindFile(ISymbol compiland, string name, NameSearchOptions searchOptions, out IEnumSourceFiles files);
 
-	ISourceFile FindFileByID(uint uniqueId);
+	int FindFileByID(uint uniqueId, out ISourceFile file);
 
-	IEnumLineNumbers FindLines(ISymbol compiland, ISourceFile file);
+	int FindLines(ISymbol compiland, ISourceFile file, out IEnumLineNumbers lines);
 
-	IEnumLineNumbers FindLinesByAddress(uint segment, uint offset, uint length);
+	int FindLinesByAddress(uint segment, uint offset, uint length, out IEnumLineNumbers lines);
 
-	IEnumLineNumbers FindLinesByRVA(uint relativeVirtualAddress, uint length);
+	int FindLinesByRVA(uint relativeVirtualAddress, uint length, out IEnumLineNumbers lines);
 
-	IEnumLineNumbers FindLinesByVA(ulong virtualAddress, uint length);
+	int FindLinesByVA(ulong virtualAddress, uint length, out IEnumLineNumbers lines);
 
-	IEnumLineNumbers FindLinesByLineNumber(ISymbol compiland, ISourceFile file, uint lineNumber, uint column);
+	int FindLinesByLineNumber(ISymbol compiland, ISourceFile file, uint lineNumber, uint column, out IEnumLineNumbers lines);
 
-	IEnumInjectedSources FindInjectedSource(string sourceFile);
+	int FindInjectedSource(string sourceFile, out IEnumInjectedSources sources);
 
-	IEnumDebugStreams GetEnumDebugStreams();
+	int GetEnumDebugStreams(out IEnumDebugStreams streams);
 
-	IEnumSymbols FindInlineFramesByAddress(ISymbol parent, uint sectionIndex, uint offset);
+	int FindInlineFramesByAddress(ISymbol parent, uint sectionIndex, uint offset, out IEnumSymbols inlinees);
 
-	IEnumSymbols FindInlineFramesByRVA(ISymbol parent, uint relativeVirtualAddress);
+	int FindInlineFramesByRVA(ISymbol parent, uint relativeVirtualAddress, out IEnumSymbols inlinees);
 
-	IEnumSymbols FindInlineFramesByVA(ISymbol parent, ulong virtualAddress);
+	int FindInlineFramesByVA(ISymbol parent, ulong virtualAddress, out IEnumSymbols inlinees);
 
-	IEnumLineNumbers FindInlineeLines(ISymbol parent);
+	int FindInlineeLines(ISymbol parent, out IEnumLineNumbers lines);
 
-	IEnumLineNumbers FindInlineeLinesByAddress(ISymbol parent, uint isect, uint offset, uint length);
+	int FindInlineeLinesByAddress(ISymbol parent, uint isect, uint offset, uint length, out IEnumLineNumbers lines);
 
-	IEnumLineNumbers FindInlineeLinesByRVA(ISymbol parent, uint relativeVirtualAddress, uint length);
+	int FindInlineeLinesByRVA(ISymbol parent, uint relativeVirtualAddress, uint length, out IEnumLineNumbers lines);
 
-	IEnumLineNumbers FindInlineeLinesByVA(ISymbol parent, ulong virtualAddress, uint length);
+	int FindInlineeLinesByVA(ISymbol parent, ulong virtualAddress, uint length, out IEnumLineNumbers lines);
 
-	IEnumLineNumbers FindInlineeLinesByLineNumber(ISymbol compiland, ISourceFile file, uint lineNumber, uint column);
+	int FindInlineeLinesByLineNumber(ISymbol compiland, ISourceFile file, uint lineNumber, uint column, out IEnumLineNumbers lines);
 
-	IEnumSymbols FindInlineesByName(string name, NameSearchOptions searchOptions);
+	int FindInlineesByName(string name, NameSearchOptions searchOptions, out IEnumSymbols inlinees);
 
-	IEnumLineNumbers FindAcceleratorInlineeLinesByLineNumber(ISymbol parent, ISourceFile file, uint lineNumber, uint column);
+	int FindAcceleratorInlineeLinesByLineNumber(ISymbol parent, ISourceFile file, uint lineNumber, uint column, out IEnumLineNumbers lines);
 
-	IEnumSymbols FindSymbolsForAcceleratorPointerTag(ISymbol parent, uint tagValue);
+	int FindSymbolsForAcceleratorPointerTag(ISymbol parent, uint tagValue, out IEnumSymbols symbols);
 
-	IEnumSymbols FindSymbolsByRVAForAcceleratorPointerTag(ISymbol parent, uint tagValue, uint relativeVirtualAddress);
+	int FindSymbolsByRVAForAcceleratorPointerTag(ISymbol parent, uint tagValue, uint relativeVirtualAddress, out IEnumSymbols symbols);
 
-	IEnumSymbols FindAcceleratorInlineesByName(string name, NameSearchOptions searchOptions);
+	int FindAcceleratorInlineesByName(string name, NameSearchOptions searchOptions, out IEnumSymbols symbols);
 
-	uint GetAddressForVA(ulong virtualAddress, out uint sectionIndex);
+	int GetAddressForVA(ulong virtualAddress, out uint sectionIndex, out uint address);
 
-	uint GetAddressForRVA(uint relativeVirtualAddress, out uint sectionIndex);
+	int GetAddressForRVA(uint relativeVirtualAddress, out uint sectionIndex, out uint address);
 
-	IEnumLineNumbers FindILOffsetsByAddress(uint sectionIndex, uint offset, uint length);
+	int FindILOffsetsByAddress(uint sectionIndex, uint offset, uint length, out IEnumLineNumbers lines);
 
-	IEnumLineNumbers FindILOffsetsByRVA(uint relativeVirtualAddress, uint length);
+	int FindILOffsetsByRVA(uint relativeVirtualAddress, uint length, out IEnumLineNumbers lines);
 
-	IEnumLineNumbers FindILOffsetsByVA(ulong virtualAddress, uint length);
+	int FindILOffsetsByVA(ulong virtualAddress, uint length, out IEnumLineNumbers lines);
 
-	IEnumInputAssemblyFiles FindInputAssemblyFiles();
+	int FindInputAssemblyFiles(out IEnumInputAssemblyFiles files);
 
-	IInputAssemblyFile FindInputAssembly(uint index);
+	int FindInputAssembly(uint index, out IInputAssemblyFile assembly);
 
-	IInputAssemblyFile FindInputAssemblyByID(uint uniqueId);
+	int FindInputAssemblyByID(uint uniqueId, out IInputAssemblyFile assembly);
 
-	uint GetFunctionMetadataTokenMapSize();
+	int GetFunctionMetadataTokenMapSize(out uint size);
 
-	[return: MarshalUsing(CountElementName = nameof(bytesWritten))]
-	byte[] GetFunctionMetadataTokenMap(uint bufferSize, out uint bytesWritten);
+	unsafe int GetFunctionMetadataTokenMap(uint bufferSize, out uint bytesWritten, byte* buffer);
 
-	uint GetTypeMetadataTokenMapSize();
+	int GetTypeMetadataTokenMapSize(out uint size);
 
-	[return: MarshalUsing(CountElementName = nameof(bytesWritten))]
-	byte[] GetTypeMetadataTokenMap(uint bufferSize, out uint bytesWritten);
+	unsafe int GetTypeMetadataTokenMap(uint bufferSize, out uint bytesWritten, byte* buffer);
 
-	uint GetNumberOfFunctionFragmentsForVA(ulong functionVA, uint functionSize);
+	int GetNumberOfFunctionFragmentsForVA(ulong functionVA, uint functionSize, out uint fragmentCount);
 
-	uint GetNumberOfFunctionFragmentsForRVA(uint functionRVA, uint functionSize);
+	int GetNumberOfFunctionFragmentsForRVA(uint functionRVA, uint functionSize, out uint fragmentCount);
 
-	[return: MarshalUsing(CountElementName = nameof(fragmentCount))]
-	uint[] GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, [MarshalUsing(CountElementName = nameof(fragmentCount))] out ulong[] fragmentVAs);
+	unsafe int GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten);
 
-	[return: MarshalUsing(CountElementName = nameof(fragmentCount))]
-	uint[] GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, [MarshalUsing(CountElementName = nameof(fragmentCount))] out uint[] fragmentRVAs);
+	unsafe int GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten);
 
-	IEnumSymbols GetExports();
+	int GetExports(out IEnumSymbols exports);
 
-	IEnumSymbols GetHeapAllocationSites();
+	int GetHeapAllocationSites(out IEnumSymbols sites);
 
-	IInputAssemblyFile FindInputAssemblyFile(ISymbol symbol);
+	int FindInputAssemblyFile(ISymbol symbol, out IInputAssemblyFile assembly);
 }

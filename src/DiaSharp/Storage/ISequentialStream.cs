@@ -2,14 +2,11 @@ namespace DiaSharp.Storage;
 
 #pragma warning disable CA1711
 
-[GeneratedComInterface]
-[Guid("0C733A30-2A1C-11CE-ADE5-00AA0044773D")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface ISequentialStream
 {
-	uint Read(out byte value, uint byteCount);
+	unsafe int Read(byte* buffer, uint byteCount, out uint bytesRead);
 
-	uint Write(ref byte value, uint byteCount);
+	unsafe int Write(byte* buffer, uint byteCount, out uint bytesWritten);
 }
 
-#pragma warning restore CA1711
+#pragma warning restore CA1711s

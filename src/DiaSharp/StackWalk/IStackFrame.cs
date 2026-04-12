@@ -1,48 +1,39 @@
 using DiaSharp.CodeView;
-using DiaSharp.Interop;
 using DiaSharp.Native;
 
 namespace DiaSharp.StackWalk;
 
-[GeneratedComInterface]
-[Guid("5EDBC96D-CDD6-4792-AFBE-CC89007D9610")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IStackFrame
 {
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetAllocatesBasePointer();
+	int GetAllocatesBasePointer([MarshalAs(UnmanagedType.Bool)] out bool allocates);
 
-	ulong GetBase();
+	int GetBase(out ulong address);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetCppExceptionHandling();
+	int GetCppExceptionHandling([MarshalAs(UnmanagedType.Bool)] out bool enabled);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetHasFunctionStart();
+	int GetHasFunctionStart([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	uint GetLocalsLength();
+	int GetLocalsLength(out uint length);
 
-	uint GetParamsLength();
+	int GetParamsLength(out uint length);
 
-	uint GetPrologueLength();
+	int GetPrologueLength(out uint length);
 
-	uint GetSavedRegistersLength();
+	int GetSavedRegistersLength(out uint length);
 
-	ulong GetLocalsBase();
+	int GetLocalsBase(out ulong address);
 
-	uint GetMaxStack();
+	int GetMaxStack(out uint maxStack);
 
-	[return: MarshalUsing(CountElementName = nameof(bytesWritten))]
-	byte[] GetRawLVarInstanceValue(IUnknown instance, uint bufferSize, out uint bytesWritten);
+	unsafe int GetRawLVarInstanceValue(void* instance, uint bufferSize, out uint bytesWritten, byte* buffer);
 
-	ulong GetRegisterValue(HostRegister index);
+	int GetRegisterValue(HostRegister index, out ulong value);
 
-	ulong GetReturnAddress();
+	int GetReturnAddress(out ulong address);
 
-	uint GetSize();
+	int GetSize(out uint size);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetSystemExceptionHandling();
+	int GetSystemExceptionHandling([MarshalAs(UnmanagedType.Bool)] out bool enabled);
 
-	StackFrameType GetFrameType();
+	int GetFrameType(out StackFrameType type);
 }

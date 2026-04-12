@@ -2,20 +2,17 @@ using DiaSharp.CodeView;
 
 namespace DiaSharp.SDK.Symbols;
 
-[GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
-[Guid("7F2E041F-1294-41BD-B83A-E715972D2CE3")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public partial interface ISymbol8 : ISymbol7
+public unsafe partial interface ISymbol8 : ISymbol7
 {
-	CoroutineKind GetCoroutineKind();
+	int GetCoroutineKind(out CoroutineKind kind);
 
-	AssociationKind GetAssociatedSymbolKind();
+	int GetAssociatedSymbolKind(out AssociationKind kind);
 
-	uint GetAssociatedSymbolSection();
+	int GetAssociatedSymbolSection(out uint section);
 
-	uint GetAssociatedSymbolOffset();
+	int GetAssociatedSymbolOffset(out uint offset);
 
-	uint GetAssociatedSymbolRVA();
+	int GetAssociatedSymbolRVA(out uint rva);
 
-	ulong GeAassociatedSymbolAddress();
+	int GeAassociatedSymbolAddress(out ulong address);
 }

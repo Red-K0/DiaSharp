@@ -43,7 +43,7 @@ public enum CommitFlags
 	/// </para>
 	/// <para>
 	/// If other users have changed the storage object, the commit operation fails and returns the STG_E_NOTCURRENT value.
-	/// To override this behavior, call <see cref="IStream.Commit"/> again using the <see cref="None"/> value.
+	/// To override this behavior, call <see cref="IStream.Commit(CommitFlags)"/> again using the <see cref="None"/> value.
 	/// </para>
 	/// </remarks>
 	OnlyIfCurrent = 2,

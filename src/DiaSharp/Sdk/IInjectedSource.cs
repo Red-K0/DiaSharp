@@ -1,25 +1,18 @@
 namespace DiaSharp.SDK;
 
-[GeneratedComInterface]
-[Guid("AE605CDC-8105-4A23-B710-3259F1E26112")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IInjectedSource
 {
-	uint GetCRC();
+	int GetCRC(out uint crc);
 
-	ulong GetLength();
+	int GetLength(out ulong length);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetFilename();
+	int GetFilename([MarshalAs(UnmanagedType.BStr)] out string name);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetObjectFilename();
+	int GetObjectFilename([MarshalAs(UnmanagedType.BStr)] out string name);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetVirtualFilename();
+	int GetVirtualFilename([MarshalAs(UnmanagedType.BStr)] out string name);
 
-	uint GetSourceCompression();
+	int GetSourceCompression(out uint compression);
 
-	[return: MarshalUsing(CountElementName = nameof(bytesWritten))]
-	byte[] GetSource(uint dataSize, out uint bytesWritten);
+	unsafe int GetSource(uint dataSize, out uint bytesWritten, byte* buffer);
 }

@@ -1,16 +1,10 @@
 namespace DiaSharp.SDK.Symbols;
 
-[GeneratedComInterface(StringMarshalling = StringMarshalling.Utf16)]
-[Guid("611E86CD-B7D1-4546-8A15-070E2B07A427")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-public partial interface ISymbol2 : ISymbol
+public unsafe partial interface ISymbol2 : ISymbol
 {
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsObjectiveCClass();
+	int GetIsObjectiveCClass([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsObjectiveCCategory();
+	int GetIsObjectiveCCategory([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetIsObjectiveCProtocol();
+	int GetIsObjectiveCProtocol([MarshalAs(UnmanagedType.Bool)] out bool value);
 }

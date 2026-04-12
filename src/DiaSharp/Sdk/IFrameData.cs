@@ -3,49 +3,41 @@ using DiaSharp.StackWalk;
 
 namespace DiaSharp.SDK;
 
-[GeneratedComInterface]
-[Guid("A39184B7-6A36-42DE-8EEC-7DF9F3F59F33")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IFrameData
 {
-	uint GetAddressSection();
+	int GetAddressSection(out uint section);
 
-	uint GetAddressOffset();
+	int GetAddressOffset(out uint offset);
 
-	uint GetRelativeVirtualAddress();
+	int GetRelativeVirtualAddress(out uint rva);
 
-	ulong GetVirtualAddress();
+	int GetVirtualAddress(out ulong virtualAddress);
 
-	uint GetLengthBlock();
+	int GetBlockLength(out uint blockLength);
 
-	uint GetLengthLocals();
+	int GetLocalsLength(out uint length);
 
-	uint GetLengthParams();
+	int GetParamsLength(out uint length);
 
-	uint GetMaxStack();
+	int GetMaxStack(out uint maxStack);
 
-	uint GetPrologueLength();
+	int GetPrologueLength(out uint length);
 
-	uint GetSavedRegistersLength();
+	int GetSavedRegistersLength(out uint length);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string GetProgram();
+	int GetProgram([MarshalAs(UnmanagedType.BStr)] out string name);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetSystemExceptionHandling();
+	int GetSystemExceptionHandling([MarshalAs(UnmanagedType.Bool)] out bool enabled);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetCppExceptionHandling();
+	int GetCppExceptionHandling([MarshalAs(UnmanagedType.Bool)] out bool enabled);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetFunctionStart();
+	int GetIsFunctionStart([MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool GetAllocatesBasePointer();
+	int GetAllocatesBasePointer([MarshalAs(UnmanagedType.Bool)] out bool allocates);
 
-	StackFrameType GetFrameType();
+	int GetFrameType(out StackFrameType type);
 
-	IFrameData GetFunctionParent();
+	int GetFunctionParent(out IFrameData parentData);
 
-	void Execute(IStackWalkFrame frame);
+	int Execute(IStackWalkFrame stackFrame);
 }

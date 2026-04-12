@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-[assembly: DisableRuntimeMarshalling]
+﻿[assembly: DisableRuntimeMarshalling]
 
 namespace DiaSharp;
 

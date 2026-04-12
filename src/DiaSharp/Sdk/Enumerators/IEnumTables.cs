@@ -3,22 +3,19 @@ using DiaSharp.Native;
 
 namespace DiaSharp.SDK.Enumerators;
 
-[GeneratedComInterface]
-[Guid("C65C2B0A-1150-4D7A-AFCC-E05BF3DEE81E")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumTables
 {
-	IEnumVARIANT GetNewEnum();
+	int GetNewEnum(out IEnumVARIANT enumrator);
 
-	int GetCount();
+	int GetCount(out int count);
 
-	ITable Item(Variant index);
+	int Item(Variant index, out ITable table);
 
-	uint GetNext(uint tableCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ITable[] tables);
+	unsafe int GetNext(uint tableCount, void** tables, out uint tablesFetched);
 
-	void Skip(uint tableCount);
+	int Skip(uint tableCount);
 
-	void Reset();
+	int Reset();
 
-	IEnumTables Clone();
+	int Clone(out IEnumTables enumerator);
 }

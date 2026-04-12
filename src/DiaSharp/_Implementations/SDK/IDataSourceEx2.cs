@@ -1,0 +1,500 @@
+﻿#pragma warning disable CS0612, CS0618, IDE0008
+using DiaSharp.CodeView;
+using DiaSharp.SDK;
+using DiaSharp.SDK.Callbacks;
+using DiaSharp.SDK.Enumerators;
+using DiaSharp.Storage;
+
+file unsafe class InterfaceInformation : IIUnknownInterfaceType
+{
+	public static Guid Iid { get; } = new([221, 200, 64, 210, 15, 26, 110, 69, 128, 166, 79, 29, 6, 191, 93, 244]);
+
+	public static void** ManagedVirtualMethodTable => field != null ? field : (field = InterfaceImplementation.CreateManagedVirtualFunctionTable());
+}
+
+[DynamicInterfaceCastableImplementation]
+file unsafe partial interface InterfaceImplementation : IDataSourceEx2
+{
+	[SkipLocalsInit]
+	int IDataSourceEx2.FindNamedStreams(string name, NameSearchOptions searchOptions, out IEnumNamedStreams streams)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		bool __invokeSucceeded = default!;
+		Unsafe.SkipInit(out streams);
+		ushort* __name_native = default;
+		void* __streams_native = default;
+		int __retVal = default;
+		// Setup - Perform required setup.
+		scoped BStrStringMarshaller.ManagedToUnmanagedIn __name_native__marshaller = new();
+
+		try
+		{
+			// Marshal - Convert managed data to native data.
+			__name_native__marshaller.FromManaged(name, stackalloc byte[BStrStringMarshaller.ManagedToUnmanagedIn.BufferSize]);
+			{
+				// PinnedMarshal - Convert managed data to native data that requires the managed data to be pinned.
+				__name_native = __name_native__marshaller.ToUnmanaged();
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, NameSearchOptions, void**, int>)__vtable_native[19])(__this, __name_native, searchOptions, &__streams_native);
+			}
+
+			__invokeSucceeded = true;
+			GC.KeepAlive(this);
+			// Unmarshal - Convert native data to managed data.
+			streams = ComInterfaceMarshaller<IEnumNamedStreams>.ConvertToManaged(__streams_native)!;
+		}
+		finally
+		{
+			if (__invokeSucceeded)
+			{
+				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
+				ComInterfaceMarshaller<IEnumNamedStreams>.Free(__streams_native);
+			}
+
+			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
+			__name_native__marshaller.Free();
+		}
+
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.GetLastError(out string error)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		bool __invokeSucceeded = default!;
+		Unsafe.SkipInit(out error);
+		ushort* __error_native = default;
+		int __retVal = default;
+
+		try
+		{
+			{
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[3])(__this, &__error_native);
+			}
+
+			__invokeSucceeded = true;
+			GC.KeepAlive(this);
+			// Unmarshal - Convert native data to managed data.
+			error = BStrStringMarshaller.ConvertToManaged(__error_native)!;
+		}
+		finally
+		{
+			if (__invokeSucceeded)
+			{
+				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
+				BStrStringMarshaller.Free(__error_native);
+			}
+		}
+
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.LoadDataFromPDB(string pdbPath)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		int __retVal;
+		// Pin - Pin data in preparation for calling the P/Invoke.
+		fixed (void* __pdbPath_native = &Utf16StringMarshaller.GetPinnableReference(pdbPath))
+		{
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, int>)__vtable_native[4])(__this, (ushort*)__pdbPath_native);
+		}
+
+		GC.KeepAlive(this);
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		int __retVal;
+		// Pin - Pin data in preparation for calling the P/Invoke.
+		fixed (void* __pdbPath_native = &Utf16StringMarshaller.GetPinnableReference(pdbPath))
+		{
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, Guid*, uint, uint, int>)__vtable_native[5])(__this, (ushort*)__pdbPath_native, pdbSignature, signature, age);
+		}
+
+		GC.KeepAlive(this);
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.LoadDataForExe(string exePath, string searchPath, void* callback)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		int __retVal;
+		// Pin - Pin data in preparation for calling the P/Invoke.
+		fixed (void* __searchPath_native = &Utf16StringMarshaller.GetPinnableReference(searchPath))
+		fixed (void* __exePath_native = &Utf16StringMarshaller.GetPinnableReference(exePath))
+		{
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, ushort*, void*, int>)__vtable_native[6])(__this, (ushort*)__exePath_native, (ushort*)__searchPath_native, callback);
+		}
+
+		GC.KeepAlive(this);
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.LoadDataFromIStream(IStream stream)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		void* __stream_native = default;
+		int __retVal = default;
+
+		try
+		{
+			// Marshal - Convert managed data to native data.
+			__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+			{
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, int>)__vtable_native[7])(__this, __stream_native);
+			}
+
+			GC.KeepAlive(this);
+		}
+		finally
+		{
+			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
+			ComInterfaceMarshaller<IStream>.Free(__stream_native);
+		}
+
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.OpenSession(out ISession session)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		bool __invokeSucceeded = default!;
+		Unsafe.SkipInit(out session);
+		void* __session_native = default;
+		int __retVal = default;
+
+		try
+		{
+			{
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__session_native);
+			}
+
+			__invokeSucceeded = true;
+			GC.KeepAlive(this);
+			// Unmarshal - Convert native data to managed data.
+			session = ComInterfaceMarshaller<ISession>.ConvertToManaged(__session_native)!;
+		}
+		finally
+		{
+			if (__invokeSucceeded)
+			{
+				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
+				ComInterfaceMarshaller<ISession>.Free(__session_native);
+			}
+		}
+
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.LoadDataFromCodeViewInfo(string executable, string searchPath, uint infoSize, byte* info, void* callback)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		int __retVal;
+		// Pin - Pin data in preparation for calling the P/Invoke.
+		fixed (void* __searchPath_native = &Utf16StringMarshaller.GetPinnableReference(searchPath))
+		fixed (void* __executable_native = &Utf16StringMarshaller.GetPinnableReference(executable))
+		{
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, ushort*, uint, byte*, void*, int>)__vtable_native[9])(__this, (ushort*)__executable_native, (ushort*)__searchPath_native, infoSize, info, callback);
+		}
+
+		GC.KeepAlive(this);
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.LoadDataFromMiscInfo(string executable, string searchPath, uint exeTimestamp, uint debugTimestamp, uint exeSize, uint infoSize, byte* info, void* callback)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		int __retVal;
+		// Pin - Pin data in preparation for calling the P/Invoke.
+		fixed (void* __searchPath_native = &Utf16StringMarshaller.GetPinnableReference(searchPath))
+		fixed (void* __executable_native = &Utf16StringMarshaller.GetPinnableReference(executable))
+		{
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, ushort*, uint, uint, uint, uint, byte*, void*, int>)__vtable_native[10])(__this, (ushort*)__executable_native, (ushort*)__searchPath_native, exeTimestamp, debugTimestamp, exeSize, infoSize, info, callback);
+		}
+
+		GC.KeepAlive(this);
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.LoadDataFromPDB(string pdbPath, bool prefetchPDB)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		int __prefetchPDB_native;
+		int __retVal;
+		// Marshal - Convert managed data to native data.
+		__prefetchPDB_native = prefetchPDB ? 1 : 0;
+		// Pin - Pin data in preparation for calling the P/Invoke.
+		fixed (void* __pdbPath_native = &Utf16StringMarshaller.GetPinnableReference(pdbPath))
+		{
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, int, int>)__vtable_native[11])(__this, (ushort*)__pdbPath_native, __prefetchPDB_native);
+		}
+
+		GC.KeepAlive(this);
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, bool prefetchPDB)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		int __prefetchPDB_native;
+		int __retVal;
+		// Marshal - Convert managed data to native data.
+		__prefetchPDB_native = prefetchPDB ? 1 : 0;
+		// Pin - Pin data in preparation for calling the P/Invoke.
+		fixed (void* __pdbPath_native = &Utf16StringMarshaller.GetPinnableReference(pdbPath))
+		{
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, Guid*, uint, uint, int, int>)__vtable_native[12])(__this, (ushort*)__pdbPath_native, pdbSignature, signature, age, __prefetchPDB_native);
+		}
+
+		GC.KeepAlive(this);
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.LoadDataForExe(string executable, string searchPath, void* callback, bool prefetchPDB)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		int __prefetchPDB_native;
+		int __retVal;
+		// Marshal - Convert managed data to native data.
+		__prefetchPDB_native = prefetchPDB ? 1 : 0;
+		// Pin - Pin data in preparation for calling the P/Invoke.
+		fixed (void* __searchPath_native = &Utf16StringMarshaller.GetPinnableReference(searchPath))
+		fixed (void* __executable_native = &Utf16StringMarshaller.GetPinnableReference(executable))
+		{
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, ushort*, void*, int, int>)__vtable_native[13])(__this, (ushort*)__executable_native, (ushort*)__searchPath_native, callback, __prefetchPDB_native);
+		}
+
+		GC.KeepAlive(this);
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.LoadDataFromIStream(IStream stream, bool prefetchPDB)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		void* __stream_native = default;
+		int __prefetchPDB_native = default;
+		int __retVal = default;
+
+		try
+		{
+			// Marshal - Convert managed data to native data.
+			__prefetchPDB_native = prefetchPDB ? 1 : 0;
+			__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+			{
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, int, int>)__vtable_native[14])(__this, __stream_native, __prefetchPDB_native);
+			}
+
+			GC.KeepAlive(this);
+		}
+		finally
+		{
+			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
+			ComInterfaceMarshaller<IStream>.Free(__stream_native);
+		}
+
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.GetStreamSize(string stream, out ulong size)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		Unsafe.SkipInit(out size);
+		int __retVal;
+		// Pin - Pin data in preparation for calling the P/Invoke.
+		fixed (ulong* __size_native = &size)
+		fixed (void* __stream_native = &Utf16StringMarshaller.GetPinnableReference(stream))
+		{
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, ulong*, int>)__vtable_native[15])(__this, (ushort*)__stream_native, __size_native);
+		}
+
+		GC.KeepAlive(this);
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.GetStreamRawData(string stream, ulong byteOffset, ulong bufferSize, out ulong bytesWritten, byte* buffer)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		Unsafe.SkipInit(out bytesWritten);
+		int __retVal;
+		// Pin - Pin data in preparation for calling the P/Invoke.
+		fixed (ulong* __bytesWritten_native = &bytesWritten)
+		fixed (void* __stream_native = &Utf16StringMarshaller.GetPinnableReference(stream))
+		{
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, ulong, ulong, ulong*, byte*, int>)__vtable_native[16])(__this, (ushort*)__stream_native, byteOffset, bufferSize, __bytesWritten_native, buffer);
+		}
+
+		GC.KeepAlive(this);
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.SetMiniPDBErrorCallback(nint context, MiniPDBErrorCallback callback)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		nint __callback_native;
+		int __retVal;
+		// Marshal - Convert managed data to native data.
+		__callback_native = callback != null ? Marshal.GetFunctionPointerForDelegate(callback) : default;
+		{
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, nint, nint, int>)__vtable_native[17])(__this, context, __callback_native);
+		}
+
+		// NotifyForSuccessfulInvoke - Keep alive any managed objects that need to stay alive across the call.
+		System.GC.KeepAlive(callback);
+		GC.KeepAlive(this);
+		return __retVal;
+	}
+
+	[SkipLocalsInit]
+	int IDataSourceEx2.ValidatePDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, out bool valid)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
+		Unsafe.SkipInit(out valid);
+		int __valid_native;
+		int __retVal;
+		// Pin - Pin data in preparation for calling the P/Invoke.
+		fixed (void* __pdbPath_native = &Utf16StringMarshaller.GetPinnableReference(pdbPath))
+		{
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, Guid*, uint, uint, int*, int>)__vtable_native[18])(__this, (ushort*)__pdbPath_native, pdbSignature, signature, age, &__valid_native);
+		}
+
+		GC.KeepAlive(this);
+		// Unmarshal - Convert native data to managed data.
+		valid = __valid_native != 0;
+		return __retVal;
+	}
+
+	int IDataSource.GetLastError(out string error) => throw new UnreachableException();
+	int IDataSource.LoadDataFromPDB(string pdbPath) => throw new UnreachableException();
+	int IDataSource.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age) => throw new UnreachableException();
+	int IDataSource.LoadDataForExe(string exePath, string searchPath, void* callback) => throw new UnreachableException();
+	int IDataSource.LoadDataFromIStream(IStream stream) => throw new UnreachableException();
+	int IDataSource.OpenSession(out ISession session) => throw new UnreachableException();
+	int IDataSource.LoadDataFromCodeViewInfo(string executable, string searchPath, uint infoSize, byte* info, void* callback) => throw new UnreachableException();
+	int IDataSource.LoadDataFromMiscInfo(string executable, string searchPath, uint exeTimestamp, uint debugTimestamp, uint exeSize, uint infoSize, byte* info, void* callback) => throw new UnreachableException();
+	int IDataSourceEx.LoadDataFromPDB(string pdbPath, bool prefetchPDB) => throw new UnreachableException();
+	int IDataSourceEx.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, bool prefetchPDB) => throw new UnreachableException();
+	int IDataSourceEx.LoadDataForExe(string executable, string searchPath, void* callback, bool prefetchPDB) => throw new UnreachableException();
+	int IDataSourceEx.LoadDataFromIStream(IStream stream, bool prefetchPDB) => throw new UnreachableException();
+	int IDataSourceEx.GetStreamSize(string stream, out ulong size) => throw new UnreachableException();
+	int IDataSourceEx.GetStreamRawData(string stream, ulong byteOffset, ulong bufferSize, out ulong bytesWritten, byte* buffer) => throw new UnreachableException();
+	int IDataSourceEx.SetMiniPDBErrorCallback(nint context, MiniPDBErrorCallback callback) => throw new UnreachableException();
+	int IDataSourceEx.ValidatePDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, out bool valid) => throw new UnreachableException();
+}
+
+file unsafe partial interface InterfaceImplementation
+{
+	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
+	static internal int ABI_FindNamedStreams(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __name_native, NameSearchOptions searchOptions, void** __streams_native__param)
+	{
+		IDataSourceEx2 @this = default!;
+		string name = default!;
+		ref void* __streams_native = ref *__streams_native__param;
+		IEnumNamedStreams streams = default!;
+		int __retVal = default;
+
+		try
+		{
+			// Unmarshal - Convert native data to managed data.
+			name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
+			@this = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx2>(__this_native);
+			__retVal = @this.FindNamedStreams(name, searchOptions, out streams);
+			// Marshal - Convert managed data to native data.
+			__streams_native = ComInterfaceMarshaller<IEnumNamedStreams>.ConvertToUnmanaged(streams);
+		}
+		catch (Exception __exception)
+		{
+			__retVal = ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
+		}
+
+		return __retVal;
+	}
+}
+
+file unsafe partial interface InterfaceImplementation
+{
+	static internal void** CreateManagedVirtualFunctionTable()
+	{
+		void** vtable = (void**)RuntimeHelpers.AllocateTypeAssociatedMemory(typeof(IDataSourceEx2), sizeof(void*) * 20);
+		{
+			NativeMemory.Copy(StrategyBasedComWrappers.DefaultIUnknownInterfaceDetailsStrategy.GetIUnknownDerivedDetails(typeof(IDataSourceEx).TypeHandle)!.ManagedVirtualMethodTable, vtable, (nuint)(sizeof(void*) * 19));
+		}
+
+		{
+			vtable[19] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort*, NameSearchOptions, void**, int>)&ABI_FindNamedStreams;
+		}
+
+		return vtable;
+	}
+}
+
+namespace DiaSharp.SDK
+{
+	[IUnknownDerived<InterfaceInformation, InterfaceImplementation>]
+	public unsafe partial interface IDataSourceEx2
+	{
+
+		[SkipLocalsInit, PreserveSig]
+		new int GetLastError(out string error) => ((IDataSource)this).GetLastError(out error);
+
+		[SkipLocalsInit, PreserveSig]
+		new int LoadDataFromPDB(string pdbPath) => ((IDataSource)this).LoadDataFromPDB(pdbPath);
+
+		[SkipLocalsInit, PreserveSig]
+		new int LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age) => ((IDataSource)this).LoadAndValidateDataFromPDB(pdbPath, pdbSignature, signature, age);
+
+		[SkipLocalsInit, PreserveSig]
+		new int LoadDataForExe(string exePath, string searchPath, void* callback) => ((IDataSource)this).LoadDataForExe(exePath, searchPath, callback);
+
+		[SkipLocalsInit, PreserveSig]
+		new int LoadDataFromIStream(IStream stream) => ((IDataSource)this).LoadDataFromIStream(stream);
+
+		[SkipLocalsInit, PreserveSig]
+		new int OpenSession(out ISession session) => ((IDataSource)this).OpenSession(out session);
+
+		[SkipLocalsInit, PreserveSig]
+		new int LoadDataFromCodeViewInfo(string executable, string searchPath, uint infoSize, byte* info, void* callback) => ((IDataSource)this).LoadDataFromCodeViewInfo(executable, searchPath, infoSize, info, callback);
+
+		[SkipLocalsInit, PreserveSig]
+		new int LoadDataFromMiscInfo(string executable, string searchPath, uint exeTimestamp, uint debugTimestamp, uint exeSize, uint infoSize, byte* info, void* callback) => ((IDataSource)this).LoadDataFromMiscInfo(executable, searchPath, exeTimestamp, debugTimestamp, exeSize, infoSize, info, callback);
+
+		[SkipLocalsInit, PreserveSig]
+		new int LoadDataFromPDB(string pdbPath, bool prefetchPDB) => ((IDataSourceEx)this).LoadDataFromPDB(pdbPath, prefetchPDB);
+
+		[SkipLocalsInit, PreserveSig]
+		new int LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, bool prefetchPDB) => ((IDataSourceEx)this).LoadAndValidateDataFromPDB(pdbPath, pdbSignature, signature, age, prefetchPDB);
+
+		[SkipLocalsInit, PreserveSig]
+		new int LoadDataForExe(string executable, string searchPath, void* callback, bool prefetchPDB) => ((IDataSourceEx)this).LoadDataForExe(executable, searchPath, callback, prefetchPDB);
+
+		[SkipLocalsInit, PreserveSig]
+		new int LoadDataFromIStream(IStream stream, bool prefetchPDB) => ((IDataSourceEx)this).LoadDataFromIStream(stream, prefetchPDB);
+
+		[SkipLocalsInit, PreserveSig]
+		new int GetStreamSize(string stream, out ulong size) => ((IDataSourceEx)this).GetStreamSize(stream, out size);
+
+		[SkipLocalsInit, PreserveSig]
+		new int GetStreamRawData(string stream, ulong byteOffset, ulong bufferSize, out ulong bytesWritten, byte* buffer) => ((IDataSourceEx)this).GetStreamRawData(stream, byteOffset, bufferSize, out bytesWritten, buffer);
+
+		[SkipLocalsInit, PreserveSig]
+		new int SetMiniPDBErrorCallback(nint context, MiniPDBErrorCallback callback) => ((IDataSourceEx)this).SetMiniPDBErrorCallback(context, callback);
+
+		[SkipLocalsInit, PreserveSig]
+		new int ValidatePDB(string pdbPath, Guid* pdbSignature, uint signature, uint age, out bool valid) => ((IDataSourceEx)this).ValidatePDB(pdbPath, pdbSignature, signature, age, out valid);
+	}
+}

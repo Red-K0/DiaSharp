@@ -2,22 +2,19 @@ using DiaSharp.Interop;
 
 namespace DiaSharp.SDK.Enumerators;
 
-[GeneratedComInterface]
-[Guid("10F3DBD9-664F-4469-B808-9471C7A50538")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumSourceFiles
 {
-	IEnumVARIANT GetNewEnum();
+	int GetNewEnum(out IEnumVARIANT enumerator);
 
-	int GetCount();
+	int GetCount(out int count);
 
-	ISourceFile Item(uint index);
+	int Item(uint index, out ISourceFile file);
 
-	uint GetNext(uint fileCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISourceFile[] files);
+	unsafe int GetNext(uint fileCount, void** files, out uint filesFetched);
 
-	void Skip(uint fileCount);
+	int Skip(uint fileCount);
 
-	void Reset();
+	int Reset();
 
-	IEnumSourceFiles Clone();
+	int Clone(out IEnumSourceFiles enumerator);
 }

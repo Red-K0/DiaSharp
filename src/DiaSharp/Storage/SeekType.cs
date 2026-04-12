@@ -1,7 +1,7 @@
 ﻿namespace DiaSharp.Storage;
 
 /// <summary>
-/// Specifies the origin from which to calculate the new seek-pointer location, in <see cref="IStream.Seek(long, SeekType)"/>.
+/// Specifies the origin from which to calculate the new seek-pointer location, in <see cref="IStream.Seek(long, SeekType, out ulong)"/>.
 /// The new seek position is calculated using this value and the offset parameter.
 /// </summary>
 public enum SeekType

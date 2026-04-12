@@ -3,6 +3,12 @@ using DiaSharp.SDK;
 
 IDataSource dataSource = ComHelpers.CoCreateInstance<IDataSource>(Constants.DiaSourceGUID);
 
-dataSource.LoadDataFromPdb("DiaSharp.pdb");
+dataSource.LoadDataFromPDB("DiaSharp.pdb");
 
-Console.WriteLine(dataSource.OpenSession().GetGlobalScope().GetName());
+dataSource.OpenSession(out var session);
+
+session.GetGlobalScope(out var scope);
+
+scope.GetName(out string name);
+
+Console.WriteLine(name);

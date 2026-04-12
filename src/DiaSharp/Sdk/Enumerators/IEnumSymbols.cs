@@ -3,22 +3,19 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.SDK.Enumerators;
 
-[GeneratedComInterface]
-[Guid("CAB72C48-443B-48F5-9B0B-42F0820AB29A")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumSymbols
 {
-	IEnumVARIANT GetNewEnum();
+	int GetNewEnum(out IEnumVARIANT enumerator);
 
-	int GetCount();
+	int GetCount(out int count);
 
-	ISymbol Item(uint index);
+	int Item(uint index, out ISymbol symbol);
 
-	uint GetNext(uint symbolCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISymbol[] elements);
+	unsafe int GetNext(uint symbolCount, void** symbols, out uint symbolsFetched);
 
-	void Skip(uint symbolCount);
+	int Skip(uint symbolCount);
 
-	void Reset();
+	int Reset();
 
-	IEnumSymbols Clone();
+	int Clone(out IEnumSymbols enumerator);
 }

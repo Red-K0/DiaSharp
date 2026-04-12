@@ -2,18 +2,15 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.SDK.Enumerators;
 
-[GeneratedComInterface]
-[Guid("1E45BD02-BE45-4D71-BA32-0E576CFCD59F")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumSymbolsByAddressEx : IEnumSymbolsByAddress
 {
-	ISymbol GetSymbolByAddress([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint sectionNumber, uint offset);
+	int GetSymbolByAddress([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint sectionNumber, uint offset, out ISymbol symbol);
 
-	ISymbol GetSymbolByRVA([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint relativeVirtualAddress);
+	int GetSymbolByRVA([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint relativeVirtualAddress, out ISymbol symbol);
 
-	ISymbol GetSymbolByVA([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, ulong virtualAddress);
+	int GetSymbolByVA([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, ulong virtualAddress, out ISymbol symbol);
 
-	uint GetNext([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint symbolCount, [MarshalUsing(CountElementName = nameof(symbolCount))] out ISymbol[] symbols);
+	unsafe int GetNext([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint symbolCount, void** symbols, out uint symbolsFetched);
 
-	uint Prev([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint symbolCount, [MarshalUsing(CountElementName = nameof(symbolCount))] out ISymbol[] symbols);
+	unsafe int Prev([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint symbolCount, void** symbols, out uint symbolsFetched);
 }

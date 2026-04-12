@@ -2,27 +2,21 @@ using DiaSharp.Storage;
 
 namespace DiaSharp.SDK;
 
-[GeneratedComInterface]
-[Guid("9d416f9c-e184-45b2-a4f0-ce517f719e9b")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IPropertyStorage
 {
-	unsafe void* ReadMultiple(uint specifierCount, [MarshalUsing(CountElementName = nameof(specifierCount))] [In] PropertySpecifier[] specifiers);
+	unsafe int ReadMultiple(uint specifierCount, PropertySpecifier* specifiers, out void* propVariant);
 
-	[return: MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.BStr, SizeParamIndex = 0)]
-	string[] ReadPropertyNames(uint propertyIDCount, [MarshalUsing(CountElementName = nameof(propertyIDCount))] [In] uint[] propertyIDs);
+	unsafe int ReadPropertyNames(uint propertyIDCount, uint* propertyIDs, [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.BStr, SizeParamIndex = 0)] out string[] names);
 
-	IEnumStatPropertyStorage GetEnum();
+	int GetEnum(out IEnumStatPropertyStorage enumerator);
 
-	uint ReadUint(uint id);
+	int ReadUint(uint id, out uint value);
 
-	int ReadInt();
+	int ReadInt(out int value);
 
-	[return: MarshalAs(UnmanagedType.Bool)]
-	bool ReadBool(uint id);
+	int ReadBool(uint id, [MarshalAs(UnmanagedType.Bool)] out bool value);
 
-	ulong ReadUlong(uint id);
+	int ReadUlong(uint id, out ulong value);
 
-	[return: MarshalAs(UnmanagedType.BStr)]
-	string ReadBStr(uint id);
+	int ReadBStr(uint id, [MarshalAs(UnmanagedType.BStr)] out string value);
 }

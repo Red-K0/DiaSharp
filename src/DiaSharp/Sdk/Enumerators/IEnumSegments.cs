@@ -2,22 +2,19 @@ using DiaSharp.Interop;
 
 namespace DiaSharp.SDK.Enumerators;
 
-[GeneratedComInterface]
-[Guid("E8368CA9-01D1-419d-AC0C-E31235DBDA9F")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IEnumSegments
 {
-	IEnumVARIANT GetNewEnum();
+	int GetNewEnum( out IEnumVARIANT enumerator);
 
-	int GetCount();
+	int GetCount(out int count);
 
-	ISegment Item(uint index);
+	int Item(uint index, out ISegment segment);
 
-	uint GetNext(uint segmentCount, [MarshalUsing(CountElementName = MarshalUsingAttribute.ReturnsCountValue)] out ISegment[] segments);
+	unsafe int GetNext(uint segmentCount, void** segments, out uint segmentsFetched);
 
-	void Skip(uint segmentCount);
+	int Skip(uint segmentCount);
 
-	void Reset();
+	int Reset();
 
-	IEnumSegments Clone();
+	int Clone(out IEnumSegments enumerator);
 }

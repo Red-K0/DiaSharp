@@ -2,7 +2,7 @@
 
 namespace DiaSharp.COM;
 
-public static partial class ComHelpers
+public static unsafe partial class ComHelpers
 {
 	/// <summary>
 	///		Creates an instance of a specific class on a specific computer.
@@ -58,8 +58,8 @@ public static partial class ComHelpers
 	///		</list>
 	/// </returns>
 	[LibraryImport("ole32")]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "CoCreateInstanceEx is necessary for COM instantation.")]
-	public static unsafe partial int CoCreateInstanceEx(Guid* classID, void* outerIUnknown, ClassContext classContext, ServerInfo* serverInfo, uint resultCount, MultiQueryInterface* results);
+	[SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "CoCreateInstanceEx is necessary for COM instantation.")]
+	public static partial int CoCreateInstanceEx(Guid* classID, void* outerIUnknown, ClassContext classContext, ServerInfo* serverInfo, uint resultCount, MultiQueryInterface* results);
 
 	/// <summary>
 	/// Creates and default-initializes a single object of the class associated with a specified CLSID.
@@ -74,8 +74,8 @@ public static partial class ComHelpers
 	/// <param name="value"> Address of variable that receives the interface pointer requested in <paramref name="interfaceID"/>. Upon success, contains the requested pointer. Upon failure contains <see langword="null"/>. </param>
 	/// <returns></returns>
 	[LibraryImport("ole32")]
-	[System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "CoCreateInstance is necessary for COM instantation.")]
-	public static unsafe partial int CoCreateInstance(Guid* classID, void* outerIUnknown, ClassContext classContext, Guid* interfaceID, out void* value);
+	[SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "CoCreateInstance is necessary for COM instantation.")]
+	public static partial int CoCreateInstance(Guid* classID, void* outerIUnknown, ClassContext classContext, Guid* interfaceID, out void* value);
 
 	/// <summary>
 	/// Creates and default-initializes a single managed object of type <typeparamref name="I"/>.
@@ -87,7 +87,7 @@ public static partial class ComHelpers
 	/// <exception cref="ClassNotRegisteredException"/>
 	/// <exception cref="AggregateUnsupportedException"/>
 	/// <exception cref="InterfaceNotImplementedException"/>
-	public static unsafe I CoCreateInstance<I>(Guid classID, ClassContext classContext = ClassContext.InProcessServer) where I : class
+	public static I CoCreateInstance<I>(Guid classID, ClassContext classContext = ClassContext.InProcessServer) where I : class
 	{
 		int result = CoCreateInstance(&classID, null, classContext, Constants._IUnknownGUID, out void* value);
 

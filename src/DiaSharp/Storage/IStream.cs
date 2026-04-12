@@ -2,28 +2,25 @@ namespace DiaSharp.Storage;
 
 #pragma warning disable CA1711
 
-[GeneratedComInterface]
-[Guid("0000000C-0000-0000-C000-000000000046")]
-[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public partial interface IStream : ISequentialStream
 {
-	ulong Seek(long offset, SeekType origin);
+	int Seek(long offset, SeekType origin, out ulong newPosition);
 
-	void SetSize(ulong newSize);
+	int SetSize(ulong newSize);
 
-	ulong CopyTo(IStream stream, ulong byteCount, out ulong bytesRead);
+	int CopyTo(IStream stream, ulong byteCount, out ulong bytesRead, out ulong newPosition);
 
-	void Commit(CommitFlags flags);
+	int Commit(CommitFlags flags);
 
-	void Revert();
+	int Revert();
 
-	void LockRegion(ulong offset, ulong byteCount, LockType lockType);
+	int LockRegion(ulong offset, ulong byteCount, LockType lsockType);
 
-	void UnlockRegion(ulong offset, ulong byteCount, LockType lockType);
+	int UnlockRegion(ulong offset, ulong byteCount, LockType lockType);
 
-	void Stat(out StatStorage tag, StatName flag);
+	int Stat(out StatStorage tag, StatName flag);
 
-	void Clone(out IStream stream);
+	int Clone(out IStream stream);
 }
 
 #pragma warning restore CA1711
