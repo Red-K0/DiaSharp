@@ -32,7 +32,12 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 	{
 		int result = function(out T value);
 
-		if (result < 0) Marshal.ThrowExceptionForHR(result);
+		if (result == (int)KnownResult.S_FALSE) throw new InvalidOperationException("Property is unsupported in the object's current state.");
+
+		if (result < 0)
+		{
+			Marshal.ThrowExceptionForHR(result);
+		}
 
 		return value;
 	}
@@ -41,6 +46,8 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 	protected void ThrowOrSet<T>(Set<T> function, T value)
 	{
 		int result = function(value);
+
+		if (result == (int)KnownResult.S_FALSE) throw new InvalidOperationException("Property is unsupported in the object's current state.");
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 	}
