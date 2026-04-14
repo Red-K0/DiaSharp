@@ -6,7 +6,6 @@
 /// <remarks>
 /// Use the Symbol::GetbuiltInKind method to retrieve the built in type kind for a HLSL symbol.
 /// </remarks>
-[Obsolete(_Globals.HlslObsoleteMessage)]
 public enum BuiltIn
 {
 	Invalid = 0x0000,

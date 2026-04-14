@@ -334,10 +334,10 @@ public unsafe partial interface ISymbol
 
 	int GetIsOptimizedAway([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[PreserveSig, Obsolete(_Globals.HlslObsoleteMessage)]
+	[PreserveSig]
 	int GetBuiltInKind(out BuiltIn result);
 
-	[PreserveSig, Obsolete(_Globals.HlslObsoleteMessage)]
+	[PreserveSig]
 	int GetRegisterType(out Register result);
 
 	int GetBaseDataSlot(out uint result);
@@ -352,7 +352,7 @@ public unsafe partial interface ISymbol
 
 	int GetSizeInUdt(out uint result);
 
-	[PreserveSig, Obsolete(_Globals.HlslObsoleteMessage)]
+	[PreserveSig]
 	int GetMemorySpaceKind(out MemorySpace result);
 
 	int GetUnmodifiedTypeId(out uint result);

@@ -6,7 +6,6 @@
 /// <remarks>
 /// Use the Symbol::GetmemorySpaceKind method to retrieve the memory space kind for an HLSL symbol.
 /// </remarks>
-[Obsolete(_Globals.HlslObsoleteMessage)]
 public enum MemorySpace
 {
 	Data       = 0x00,

@@ -5437,11 +5437,9 @@ namespace DiaSharp.SDK.Symbols
 		new int GetIsOptimizedAway(out bool result) => ((ISymbol)this).GetIsOptimizedAway(out result);
 
 		[SkipLocalsInit, PreserveSig]
-		[Obsolete(_Globals.HlslObsoleteMessage)]
 		new int GetBuiltInKind(out BuiltIn result) => ((ISymbol)this).GetBuiltInKind(out result);
 
 		[SkipLocalsInit, PreserveSig]
-		[Obsolete(_Globals.HlslObsoleteMessage)]
 		new int GetRegisterType(out Register result) => ((ISymbol)this).GetRegisterType(out result);
 
 		[SkipLocalsInit, PreserveSig]
@@ -5463,7 +5461,6 @@ namespace DiaSharp.SDK.Symbols
 		new int GetSizeInUdt(out uint result) => ((ISymbol)this).GetSizeInUdt(out result);
 
 		[SkipLocalsInit, PreserveSig]
-		[Obsolete(_Globals.HlslObsoleteMessage)]
 		new int GetMemorySpaceKind(out MemorySpace result) => ((ISymbol)this).GetMemorySpaceKind(out result);
 
 		[SkipLocalsInit, PreserveSig]

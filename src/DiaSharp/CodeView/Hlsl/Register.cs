@@ -6,7 +6,6 @@
 /// <remarks>
 /// Retrieved via Symbol::GetregisterType for HLSL symbols.
 /// </remarks>
-[Obsolete(_Globals.HlslObsoleteMessage)]
 public enum Register
 {
 	Temp                          = 0,
