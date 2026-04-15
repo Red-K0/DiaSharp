@@ -9,7 +9,7 @@
 /// To translate an address, <c>addrA</c>, in image A to an address, <c>addrB</c>, in image B, perform the following steps:
 /// <list type="number">
 ///     <item> Search the map for the entry, <c>e</c>, with the largest <see cref="RelativeVirtualAddress"/> less than or equal to <c>addrA</c>. </item>
-///     <item> Set <c>delta = addrA - e.rva</c>. </item>
+///     <item> Set <c>delta = addrA - e.relativeVirtualAddress</c>. </item>
 ///     <item> Set <c>addrB = e.rvaTo + delta</c>. </item>
 /// </list>
 /// </para>

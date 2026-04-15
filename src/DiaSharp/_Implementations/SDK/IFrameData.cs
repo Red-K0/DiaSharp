@@ -46,13 +46,13 @@ file unsafe partial interface InterfaceImplementation : IFrameData
 	}
 
 	[SkipLocalsInit]
-	int IFrameData.GetRelativeVirtualAddress(out uint rva)
+	int IFrameData.GetRelativeVirtualAddress(out uint relativeVirtualAddress)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IFrameData));
-		Unsafe.SkipInit(out rva);
+		Unsafe.SkipInit(out relativeVirtualAddress);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __rva_native = &rva)
+		fixed (uint* __rva_native = &relativeVirtualAddress)
 		{
 			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[5])(__this, __rva_native);
 		}
@@ -403,16 +403,16 @@ file unsafe partial interface InterfaceImplementation
 	{
 		IFrameData @this = default!;
 		ref uint __rva_native = ref *__rva_native__param;
-		uint rva = default!;
+		uint relativeVirtualAddress = default!;
 		int __retVal = default;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native);
-			__retVal = @this.GetRelativeVirtualAddress(out rva);
+			__retVal = @this.GetRelativeVirtualAddress(out relativeVirtualAddress);
 			// Marshal - Convert managed data to native data.
-			__rva_native = rva;
+			__rva_native = relativeVirtualAddress;
 		}
 		catch (Exception __exception)
 		{

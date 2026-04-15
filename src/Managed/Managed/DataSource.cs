@@ -154,9 +154,7 @@ public sealed unsafe class DataSource() : ComObject<IDataSource>(ComHelpers.CoCr
 
 	public ulong GetStreamSize(string stream)
 	{
-		EnsureNotDisposed();
-
-		if (!TryQueryInterface(out IDataSourceEx? sourceEx)) throw new PlatformNotSupportedException("The IDataSourceEx interface is unsupported, please ensure the latest version of the DIA SDK is installed.");
+		IDataSourceEx sourceEx = EnsureAndQuery<IDataSourceEx>();
 
 		int result = sourceEx.GetStreamSize(stream, out ulong size);
 
@@ -186,9 +184,7 @@ public sealed unsafe class DataSource() : ComObject<IDataSource>(ComHelpers.CoCr
 
 	private MemoryStream GetStream(string stream, int start, ulong length, bool comSize)
 	{
-		EnsureNotDisposed();
-
-		if (!TryQueryInterface(out IDataSourceEx? sourceEx)) throw new PlatformNotSupportedException("The IDataSourceEx interface is unsupported, please ensure the latest version of the DIA SDK is installed.");
+		IDataSourceEx sourceEx = EnsureAndQuery<IDataSourceEx>();
 
 		// This is intentionally checked here, and not in accessing overloads.
 		// GetStreamSize can return a value greater than what we can represent, reaching a failure state.
@@ -227,9 +223,7 @@ public sealed unsafe class DataSource() : ComObject<IDataSource>(ComHelpers.CoCr
 
 	public IEnumerable<string> FindNamedStreams(string name, NameSearchOptions searchOptions = NameSearchOptions.None)
 	{
-		EnsureNotDisposed();
-
-		if (!TryQueryInterface(out IDataSourceEx2? sourceEx2)) throw new PlatformNotSupportedException("The IDataSourceEx2 interface is unsupported, please ensure the latest version of the DIA SDK is installed.");
+		IDataSourceEx2 sourceEx2 = EnsureAndQuery<IDataSourceEx2>();
 
 		int result = sourceEx2.FindNamedStreams(name, searchOptions, out IEnumNamedStreams streams);
 
@@ -260,9 +254,7 @@ public sealed unsafe class DataSource() : ComObject<IDataSource>(ComHelpers.CoCr
 
 	public bool ValidatePDB(string pdbPath, Guid guidSignature, uint signature, uint age, out bool privateSymbolsStripped)
 	{
-		EnsureNotDisposed();
-
-		if (!TryQueryInterface(out IDataSourceEx? sourceEx)) throw new PlatformNotSupportedException("The IDataSourceEx interface is unsupported, please ensure the latest version of the DIA SDK is installed.");
+		IDataSourceEx sourceEx = EnsureAndQuery<IDataSourceEx>();
 
 		int result = sourceEx.ValidatePDB(pdbPath, &guidSignature, signature, age, out privateSymbolsStripped);
 

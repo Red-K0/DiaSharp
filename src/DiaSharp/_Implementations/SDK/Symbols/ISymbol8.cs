@@ -82,13 +82,13 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.GetAssociatedSymbolRVA(out uint rva)
+	int ISymbol8.GetAssociatedSymbolRVA(out uint relativeVirtualAddress)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
-		Unsafe.SkipInit(out rva);
+		Unsafe.SkipInit(out relativeVirtualAddress);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __rva_native = &rva)
+		fixed (uint* __rva_native = &relativeVirtualAddress)
 		{
 			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[252])(__this, __rva_native);
 		}
@@ -98,7 +98,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.GeAassociatedSymbolAddress(out ulong address)
+	int ISymbol8.GetAssociatedSymbolAddress(out ulong address)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		Unsafe.SkipInit(out address);
@@ -5151,16 +5151,16 @@ file unsafe partial interface InterfaceImplementation
 	{
 		ISymbol8 @this = default!;
 		ref uint __rva_native = ref *__rva_native__param;
-		uint rva = default!;
+		uint relativeVirtualAddress = default!;
 		int __retVal = default;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol8>(__this_native);
-			__retVal = @this.GetAssociatedSymbolRVA(out rva);
+			__retVal = @this.GetAssociatedSymbolRVA(out relativeVirtualAddress);
 			// Marshal - Convert managed data to native data.
-			__rva_native = rva;
+			__rva_native = relativeVirtualAddress;
 		}
 		catch (Exception __exception)
 		{
@@ -5182,7 +5182,7 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol8>(__this_native);
-			__retVal = @this.GeAassociatedSymbolAddress(out address);
+			__retVal = @this.GetAssociatedSymbolAddress(out address);
 			// Marshal - Convert managed data to native data.
 			__address_native = address;
 		}

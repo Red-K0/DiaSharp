@@ -4819,13 +4819,13 @@ file unsafe partial interface InterfaceImplementation : ISymbol9
 	}
 
 	[SkipLocalsInit]
-	int ISymbol9.GetAssociatedSymbolRVA(out uint rva)
+	int ISymbol9.GetAssociatedSymbolRVA(out uint relativeVirtualAddress)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol9));
-		Unsafe.SkipInit(out rva);
+		Unsafe.SkipInit(out relativeVirtualAddress);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __rva_native = &rva)
+		fixed (uint* __rva_native = &relativeVirtualAddress)
 		{
 			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[252])(__this, __rva_native);
 		}
@@ -5099,8 +5099,8 @@ file unsafe partial interface InterfaceImplementation : ISymbol9
 	int ISymbol8.GetAssociatedSymbolKind(out AssociationKind kind) => throw new UnreachableException();
 	int ISymbol8.GetAssociatedSymbolSection(out uint section) => throw new UnreachableException();
 	int ISymbol8.GetAssociatedSymbolOffset(out uint offset) => throw new UnreachableException();
-	int ISymbol8.GetAssociatedSymbolRVA(out uint rva) => throw new UnreachableException();
-	int ISymbol8.GeAassociatedSymbolAddress(out ulong address) => throw new UnreachableException();
+	int ISymbol8.GetAssociatedSymbolRVA(out uint relativeVirtualAddress) => throw new UnreachableException();
+	int ISymbol8.GetAssociatedSymbolAddress(out ulong address) => throw new UnreachableException();
 }
 
 file unsafe partial interface InterfaceImplementation
@@ -5951,9 +5951,9 @@ namespace DiaSharp.SDK.Symbols
 		new int GetAssociatedSymbolOffset(out uint offset) => ((ISymbol8)this).GetAssociatedSymbolOffset(out offset);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetAssociatedSymbolRVA(out uint rva) => ((ISymbol8)this).GetAssociatedSymbolRVA(out rva);
+		new int GetAssociatedSymbolRVA(out uint relativeVirtualAddress) => ((ISymbol8)this).GetAssociatedSymbolRVA(out relativeVirtualAddress);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GeAassociatedSymbolAddress(out ulong address) => ((ISymbol8)this).GeAassociatedSymbolAddress(out address);
+		new int GeAassociatedSymbolAddress(out ulong address) => ((ISymbol8)this).GetAssociatedSymbolAddress(out address);
 	}
 }

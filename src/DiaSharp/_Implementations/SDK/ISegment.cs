@@ -127,13 +127,13 @@ file unsafe partial interface InterfaceImplementation : ISegment
 	}
 
 	[SkipLocalsInit]
-	int ISegment.GetRelativeVirtualAddress(out uint rva)
+	int ISegment.GetRelativeVirtualAddress(out uint relativeVirtualAddress)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISegment));
-		Unsafe.SkipInit(out rva);
+		Unsafe.SkipInit(out relativeVirtualAddress);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __rva_native = &rva)
+		fixed (uint* __rva_native = &relativeVirtualAddress)
 		{
 			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[10])(__this, __rva_native);
 		}
@@ -143,13 +143,13 @@ file unsafe partial interface InterfaceImplementation : ISegment
 	}
 
 	[SkipLocalsInit]
-	int ISegment.GetVirtualAddress(out ulong va)
+	int ISegment.GetVirtualAddress(out ulong virtualAddress)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISegment));
-		Unsafe.SkipInit(out va);
+		Unsafe.SkipInit(out virtualAddress);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (ulong* __va_native = &va)
+		fixed (ulong* __va_native = &virtualAddress)
 		{
 			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[11])(__this, __va_native);
 		}
@@ -334,16 +334,16 @@ file unsafe partial interface InterfaceImplementation
 	{
 		ISegment @this = default!;
 		ref uint __rva_native = ref *__rva_native__param;
-		uint rva = default!;
+		uint relativeVirtualAddress = default!;
 		int __retVal = default;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISegment>(__this_native);
-			__retVal = @this.GetRelativeVirtualAddress(out rva);
+			__retVal = @this.GetRelativeVirtualAddress(out relativeVirtualAddress);
 			// Marshal - Convert managed data to native data.
-			__rva_native = rva;
+			__rva_native = relativeVirtualAddress;
 		}
 		catch (Exception __exception)
 		{
@@ -358,16 +358,16 @@ file unsafe partial interface InterfaceImplementation
 	{
 		ISegment @this = default!;
 		ref ulong __va_native = ref *__va_native__param;
-		ulong va = default!;
+		ulong virtualAddress = default!;
 		int __retVal = default;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISegment>(__this_native);
-			__retVal = @this.GetVirtualAddress(out va);
+			__retVal = @this.GetVirtualAddress(out virtualAddress);
 			// Marshal - Convert managed data to native data.
-			__va_native = va;
+			__va_native = virtualAddress;
 		}
 		catch (Exception __exception)
 		{

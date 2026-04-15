@@ -10,7 +10,7 @@ public partial interface IFrameData
 
 	int GetAddressOffset(out uint offset);
 
-	int GetRelativeVirtualAddress(out uint rva);
+	int GetRelativeVirtualAddress(out uint relativeVirtualAddress);
 
 	int GetVirtualAddress(out ulong virtualAddress);
 

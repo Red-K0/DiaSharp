@@ -119,7 +119,7 @@ file unsafe partial interface InterfaceImplementation : IStackWalkHelper
 	}
 
 	[SkipLocalsInit]
-	int IStackWalkHelper.GetFrameForVA(ulong va, out IFrameData frame)
+	int IStackWalkHelper.GetFrameForVA(ulong virtualAddress, out IFrameData frame)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStackWalkHelper));
 		bool __invokeSucceeded = default!;
@@ -130,7 +130,7 @@ file unsafe partial interface InterfaceImplementation : IStackWalkHelper
 		try
 		{
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[8])(__this, va, &__frame_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[8])(__this, virtualAddress, &__frame_native);
 			}
 
 			__invokeSucceeded = true;
@@ -151,7 +151,7 @@ file unsafe partial interface InterfaceImplementation : IStackWalkHelper
 	}
 
 	[SkipLocalsInit]
-	int IStackWalkHelper.GetSymbolForVA(ulong va, out ISymbol symbol)
+	int IStackWalkHelper.GetSymbolForVA(ulong virtualAddress, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStackWalkHelper));
 		bool __invokeSucceeded = default!;
@@ -162,7 +162,7 @@ file unsafe partial interface InterfaceImplementation : IStackWalkHelper
 		try
 		{
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[9])(__this, va, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[9])(__this, virtualAddress, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -385,7 +385,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetFrameForVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong va, void** __frame_native__param)
+	static internal int ABI_GetFrameForVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong virtualAddress, void** __frame_native__param)
 	{
 		IStackWalkHelper @this = default!;
 		ref void* __frame_native = ref *__frame_native__param;
@@ -396,7 +396,7 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<IStackWalkHelper>(__this_native);
-			__retVal = @this.GetFrameForVA(va, out frame);
+			__retVal = @this.GetFrameForVA(virtualAddress, out frame);
 			// Marshal - Convert managed data to native data.
 			__frame_native = ComInterfaceMarshaller<IFrameData>.ConvertToUnmanaged(frame);
 		}
@@ -409,7 +409,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetSymbolForVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong va, void** __symbol_native__param)
+	static internal int ABI_GetSymbolForVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong virtualAddress, void** __symbol_native__param)
 	{
 		IStackWalkHelper @this = default!;
 		ref void* __symbol_native = ref *__symbol_native__param;
@@ -420,7 +420,7 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<IStackWalkHelper>(__this_native);
-			__retVal = @this.GetSymbolForVA(va, out symbol);
+			__retVal = @this.GetSymbolForVA(virtualAddress, out symbol);
 			// Marshal - Convert managed data to native data.
 			__symbol_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
 		}
