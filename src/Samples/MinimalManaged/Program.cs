@@ -4,7 +4,4 @@ DataSource source = new();
 
 source.LoadData("DiaSharp.pdb");
 
-foreach (string name in source.FindNamedStreams(""))
-{
-	Console.WriteLine(name);
-}
+Console.WriteLine(source.OpenSession().GlobalScope.Name);

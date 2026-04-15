@@ -8,8 +8,4 @@
 		<ProjectReference Include="..\DiaSharp\DiaSharp.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Enumerables\" />
-	</ItemGroup>
-
 </Project>
