@@ -9,6 +9,8 @@ namespace DiaSharp.Managed;
 
 public sealed unsafe class Session(ISession session) : ComObject<ISession>(session)
 {
+	#region ISession
+
 	public ulong LoadAddress
 	{
 		get => GetProp<ulong>(_native.GetLoadAddress);
@@ -550,4 +552,49 @@ public sealed unsafe class Session(ISession session) : ComObject<ISession>(sessi
 		return new(assembly);
 
 	}
+
+	#endregion
+
+	#region ISessionEx
+
+	public bool FastLinkPDB
+	{
+		get
+		{
+			ISessionEx session = EnsureAndQuery<ISessionEx>();
+
+			bool value = GetProp<bool>(session.IsFastLinkPDB);
+
+			ComHelpers.Release(ref session);
+
+			return value;
+		}
+	}
+
+	public bool PortablePDB
+	{
+		get
+		{
+			ISessionEx session = EnsureAndQuery<ISessionEx>();
+
+			bool value = GetProp<bool>(session.IsPortablePDB);
+
+			ComHelpers.Release(ref session);
+
+			return value;
+		}
+	}
+
+	public IEnumerable<byte[]> GetSourceLinkInfo(Symbol symbol)
+	{
+		ISessionEx session = EnsureAndQuery<ISessionEx>();
+
+		int result = session.GetSourceLinkInfo(symbol._native, out IEnumSourceLink enumerator);
+
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		return new SourceLinkEnumerable(enumerator);
+	}
+
+	#endregion
 }
