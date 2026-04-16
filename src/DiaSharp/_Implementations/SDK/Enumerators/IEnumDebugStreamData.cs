@@ -47,7 +47,7 @@ file unsafe partial interface InterfaceImplementation : IEnumDebugStreamData
 	[SkipLocalsInit]
 	int IEnumDebugStreamData.GetCount(out int count)
 	{
-		var (__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSectionContribs));
+		var (__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumDebugStreamData));
 		Unsafe.SkipInit(out count);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
@@ -319,7 +319,7 @@ file unsafe partial interface InterfaceImplementation
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
-			IEnumSectionContribs @this = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native);
+			IEnumDebugStreamData @this = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreamData>(__this_native);
 			__retVal = @this.Skip(dataCount);
 		}
 		catch (Exception __exception)
@@ -338,7 +338,7 @@ file unsafe partial interface InterfaceImplementation
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
-			IEnumSectionContribs @this = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native);
+			IEnumDebugStreamData @this = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreamData>(__this_native);
 			__retVal = @this.Reset();
 		}
 		catch (Exception __exception)
