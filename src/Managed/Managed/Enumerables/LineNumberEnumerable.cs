@@ -12,11 +12,16 @@ sealed internal class LineNumberEnumerable(IEnumLineNumbers native) : ComEnumera
 
 	private sealed class LineNumberEnumerator(IEnumLineNumbers native) : ComEnumerator(native)
 	{
-		protected override unsafe (int, LineNumber) MoveNextInternal()
+		protected override unsafe int MoveNextInternal(out LineNumber? value)
 		{
-			if (!ComEnumerableHelpers.TryGetSingle(_native.GetNext, out ILineNumber number)) return (1, null!);
+			if (!TryGetSingle(_native.GetNext, out ILineNumber number))
+			{
+				value = null;
+				return (int)KnownResult.S_FALSE;
+			}
 
-			return (0, new(number));
+			value = new(number);
+			return (int)KnownResult.S_OK;
 		}
 
 		protected override int ResetInternal() => _native.Reset();

@@ -1139,7 +1139,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindInlineeLinesByAddress(ISymbol parent, uint isect, uint offset, uint length, out IEnumLineNumbers lines)
+	int ISessionEx.FindInlineeLinesByAddress(ISymbol parent, uint sectionIndex, uint offset, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -1153,7 +1153,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, uint, void**, int>)__vtable_native[34])(__this, __parent_native, isect, offset, length, &__lines_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, uint, void**, int>)__vtable_native[34])(__this, __parent_native, sectionIndex, offset, length, &__lines_native);
 			}
 
 			__invokeSucceeded = true;
@@ -1803,32 +1803,24 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten)
+	int ISessionEx.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out fragmentsWritten);
 		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __fragmentsWritten_native = &fragmentsWritten)
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, uint, uint*, uint*, int>)__vtable_native[57])(__this, functionVA, functionSize, fragmentCount, buffer, __fragmentsWritten_native);
-		}
+
+		__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, uint, uint*, uint*, int>)__vtable_native[57])(__this, functionVA, functionSize, fragmentCount, buffer, fragmentLengths);
 
 		GC.KeepAlive(this);
 		return __retVal;
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten)
+	int ISessionEx.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out fragmentsWritten);
 		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __fragmentsWritten_native = &fragmentsWritten)
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, uint*, uint*, int>)__vtable_native[58])(__this, functionRVA, functionSize, fragmentCount, buffer, __fragmentsWritten_native);
-		}
+
+		__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, uint*, uint*, int>)__vtable_native[58])(__this, functionRVA, functionSize, fragmentCount, buffer, fragmentLengths);
 
 		GC.KeepAlive(this);
 		return __retVal;
@@ -1967,7 +1959,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	int ISession.FindInlineFramesByRVA(ISymbol parent, uint relativeVirtualAddress, out IEnumSymbols inlinees) => throw new UnreachableException();
 	int ISession.FindInlineFramesByVA(ISymbol parent, ulong virtualAddress, out IEnumSymbols inlinees) => throw new UnreachableException();
 	int ISession.FindInlineeLines(ISymbol parent, out IEnumLineNumbers lines) => throw new UnreachableException();
-	int ISession.FindInlineeLinesByAddress(ISymbol parent, uint isect, uint offset, uint length, out IEnumLineNumbers lines) => throw new UnreachableException();
+	int ISession.FindInlineeLinesByAddress(ISymbol parent, uint sectionIndex, uint offset, uint length, out IEnumLineNumbers lines) => throw new UnreachableException();
 	int ISession.FindInlineeLinesByRVA(ISymbol parent, uint relativeVirtualAddress, uint length, out IEnumLineNumbers lines) => throw new UnreachableException();
 	int ISession.FindInlineeLinesByVA(ISymbol parent, ulong virtualAddress, uint length, out IEnumLineNumbers lines) => throw new UnreachableException();
 	int ISession.FindInlineeLinesByLineNumber(ISymbol compiland, ISourceFile file, uint lineNumber, uint column, out IEnumLineNumbers lines) => throw new UnreachableException();
@@ -1990,8 +1982,8 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	int ISession.GetTypeMetadataTokenMap(uint bufferSize, out uint bytesWritten, byte* buffer) => throw new UnreachableException();
 	int ISession.GetNumberOfFunctionFragmentsForVA(ulong functionVA, uint functionSize, out uint fragmentCount) => throw new UnreachableException();
 	int ISession.GetNumberOfFunctionFragmentsForRVA(uint functionRVA, uint functionSize, out uint fragmentCount) => throw new UnreachableException();
-	int ISession.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten) => throw new UnreachableException();
-	int ISession.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten) => throw new UnreachableException();
+	int ISession.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths) => throw new UnreachableException();
+	int ISession.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths) => throw new UnreachableException();
 	int ISession.GetExports(out IEnumSymbols exports) => throw new UnreachableException();
 	int ISession.GetHeapAllocationSites(out IEnumSymbols sites) => throw new UnreachableException();
 	int ISession.FindInputAssemblyFile(ISymbol symbol, out IInputAssemblyFile assembly) => throw new UnreachableException();
@@ -2193,7 +2185,7 @@ namespace DiaSharp.SDK
 		new int FindInlineeLines(ISymbol parent, out IEnumLineNumbers lines) => ((ISession)this).FindInlineeLines(parent, out lines);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindInlineeLinesByAddress(ISymbol parent, uint isect, uint offset, uint length, out IEnumLineNumbers lines) => ((ISession)this).FindInlineeLinesByAddress(parent, isect, offset, length, out lines);
+		new int FindInlineeLinesByAddress(ISymbol parent, uint sectionIndex, uint offset, uint length, out IEnumLineNumbers lines) => ((ISession)this).FindInlineeLinesByAddress(parent, sectionIndex, offset, length, out lines);
 
 		[SkipLocalsInit, PreserveSig]
 		new int FindInlineeLinesByRVA(ISymbol parent, uint relativeVirtualAddress, uint length, out IEnumLineNumbers lines) => ((ISession)this).FindInlineeLinesByRVA(parent, relativeVirtualAddress, length, out lines);
@@ -2262,10 +2254,10 @@ namespace DiaSharp.SDK
 		new int GetNumberOfFunctionFragmentsForRVA(uint functionRVA, uint functionSize, out uint fragmentCount) => ((ISession)this).GetNumberOfFunctionFragmentsForRVA(functionRVA, functionSize, out fragmentCount);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten) => ((ISession)this).GetFunctionFragmentsForVA(functionVA, functionSize, fragmentCount, buffer, out fragmentsWritten);
+		new int GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths) => ((ISession)this).GetFunctionFragmentsForVA(functionVA, functionSize, fragmentCount, buffer, fragmentLengths);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten) => ((ISession)this).GetFunctionFragmentsForRVA(functionRVA, functionSize, fragmentCount, buffer, out fragmentsWritten);
+		new int GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths) => ((ISession)this).GetFunctionFragmentsForRVA(functionRVA, functionSize, fragmentCount, buffer, fragmentLengths);
 
 		[SkipLocalsInit, PreserveSig]
 		new int GetExports(out IEnumSymbols exports) => ((ISession)this).GetExports(out exports);

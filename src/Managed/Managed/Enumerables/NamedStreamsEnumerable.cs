@@ -11,7 +11,7 @@ sealed internal class NamedStreamsEnumerable(IEnumNamedStreams native) : ComEnum
 
 	private sealed class NamedStreamsEnumerator(IEnumNamedStreams native) : ComEnumerator(native)
 	{
-		protected override (int, string) MoveNextInternal() => (_native.GetNext(out string name), name);
+		protected override int MoveNextInternal(out string? value) => _native.GetNext(out value);
 
 		protected override int ResetInternal() => _native.Reset();
 	}

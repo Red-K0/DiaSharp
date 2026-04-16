@@ -125,7 +125,7 @@ file unsafe partial interface InterfaceImplementation : IEnumSymbolsByAddress
 	}
 
 	[SkipLocalsInit]
-	int IEnumSymbolsByAddress.Prev(uint symbolCount, void** symbols, out uint symbolsFetched)
+	int IEnumSymbolsByAddress.GetPrevious(uint symbolCount, void** symbols, out uint symbolsFetched)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSymbolsByAddress));
 		Unsafe.SkipInit(out symbolsFetched);
@@ -283,7 +283,7 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSymbolsByAddress>(__this_native);
-			__retVal = @this.Prev(symbolCount, symbols, out symbolsFetched);
+			__retVal = @this.GetPrevious(symbolCount, symbols, out symbolsFetched);
 			// Marshal - Convert managed data to native data.
 			__symbolsFetched_native = symbolsFetched;
 		}

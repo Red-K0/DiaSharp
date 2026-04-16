@@ -13,7 +13,7 @@ public partial interface IEnumDebugStreamData
 
 	unsafe int Item(uint index, uint bufferSize, uint* bytesWritten, byte* buffer);
 
-	unsafe int GetNext(uint dataCount, uint bufferSize, uint* bytesWritten, byte* dataBuffer, out uint elementsFetched);
+	unsafe int GetNext(uint dataCount, uint bufferSize, out uint bytesWritten, byte* dataBuffer, out uint elementsFetched);
 
 	int Skip(uint dataCount);
 

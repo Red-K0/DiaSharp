@@ -2,7 +2,7 @@
 
 namespace DiaSharp.COM;
 
-abstract internal class ComEnumerable<TEnum, TValue>(TEnum native) : ComObject<TEnum>(native), IEnumerable<TValue> where TEnum : class where TValue : notnull
+public abstract class ComEnumerable<TEnum, TValue>(TEnum native) : ComObject<TEnum>(native), IEnumerable<TValue> where TEnum : class where TValue : notnull
 {
 	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
@@ -27,11 +27,11 @@ abstract internal class ComEnumerable<TEnum, TValue>(TEnum native) : ComObject<T
 
 		object IEnumerator.Current => Current;
 
-		protected abstract (int, TValue) MoveNextInternal();
+		protected abstract int MoveNextInternal(out TValue? value);
 
 		public bool MoveNext()
 		{
-			(int result, TValue value) = MoveNextInternal();
+			int result = MoveNextInternal(out TValue? value);
 
 			if (result == (int)KnownResult.S_FALSE)
 			{
@@ -58,29 +58,5 @@ abstract internal class ComEnumerable<TEnum, TValue>(TEnum native) : ComObject<T
 
 			Current = default;
 		}
-	}
-}
-
-static unsafe internal class ComEnumerableHelpers
-{
-	public delegate int GetNext(uint count, void** values, out uint fetched);
-
-	public static bool TryGetSingle<I>(GetNext next, out I single) where I : class
-	{
-		void* value;
-
-		int result = next(1, &value, out _);
-
-		if (result == (int)KnownResult.S_FALSE)
-		{
-			single = default!;
-			return false;
-		}
-
-		if (result < 0) Marshal.ThrowExceptionForHR(result);
-
-		single = ComHelpers.Wrap<I>(value);
-
-		return true;
 	}
 }

@@ -110,15 +110,16 @@ file unsafe partial interface InterfaceImplementation : IEnumDebugStreamData
 	}
 
 	[SkipLocalsInit]
-	int IEnumDebugStreamData.GetNext(uint dataCount, uint bufferSize, uint* bytesWritten, byte* dataBuffer, out uint elementsFetched)
+	int IEnumDebugStreamData.GetNext(uint dataCount, uint bufferSize, out uint bytesWritten, byte* dataBuffer, out uint elementsFetched)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumDebugStreamData));
 		Unsafe.SkipInit(out elementsFetched);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
 		fixed(uint* __elementsFetched_native = &elementsFetched)
+		fixed(uint* __bytesWritten_native = &bytesWritten)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint*, byte*, uint*, int>)__vtable_native[7])(__this, dataCount, bufferSize, bytesWritten, dataBuffer, __elementsFetched_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint*, byte*, uint*, int>)__vtable_native[7])(__this, dataCount, bufferSize, __bytesWritten_native, dataBuffer, __elementsFetched_native);
 		}
 
 		// NotifyForSuccessfulInvoke - Keep alive any managed objects that need to stay alive across the call.
@@ -286,18 +287,19 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetNext(ComWrappers.ComInterfaceDispatch* __this_native, uint dataCount, uint bufferSize, uint* bytesWritten, byte* dataBuffer, uint* __elementsFetched_native__param)
+	static internal int ABI_GetNext(ComWrappers.ComInterfaceDispatch* __this_native, uint dataCount, uint bufferSize, uint* __bytesWritten_native__param, byte* dataBuffer, uint* __elementsFetched_native__param)
 	{
 		IEnumDebugStreamData @this = default!;
 		ref uint __elementsFetched_native = ref *__elementsFetched_native__param;
 		uint elementsFetched = default!;
+		uint bytesWritten = default!;
 		int __retVal = default;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreamData>(__this_native);
-			 __retVal = @this.GetNext(dataCount, bufferSize, bytesWritten, dataBuffer, out elementsFetched);
+			 __retVal = @this.GetNext(dataCount, bufferSize, out bytesWritten, dataBuffer, out elementsFetched);
 			// Marshal - Convert managed data to native data.
 			__elementsFetched_native = elementsFetched;
 		}

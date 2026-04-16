@@ -13,7 +13,7 @@ public partial interface IEnumSymbolsByAddress
 
 	unsafe int GetNext(uint symbolCount, void** symbols, out uint symbolsFetched);
 
-	unsafe int Prev(uint symbolCount, void** symbols, out uint symbolsFetched);
+	unsafe int GetPrevious(uint symbolCount, void** symbols, out uint symbolsFetched);
 
 	int Clone(out IEnumSymbolsByAddress enumeator);
 }

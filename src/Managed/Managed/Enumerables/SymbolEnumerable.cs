@@ -12,11 +12,16 @@ internal class SymbolEnumerable(IEnumSymbols native) : ComEnumerable<IEnumSymbol
 
 	private sealed class SymbolEnumerator(IEnumSymbols native) : ComEnumerator(native)
 	{
-		protected override unsafe (int, Symbol) MoveNextInternal()
+		protected override unsafe int MoveNextInternal(out Symbol? value)
 		{
-			if (!ComEnumerableHelpers.TryGetSingle(_native.GetNext, out ISymbol symbol)) return (1, null!);
+			if (!TryGetSingle(_native.GetNext, out ISymbol symbol))
+			{
+				value = null;
+				return (int)KnownResult.S_FALSE;
+			}
 
-			return (0, new(symbol));
+			value = new(symbol);
+			return (int)KnownResult.S_OK;
 		}
 
 		protected override int ResetInternal() => _native.Reset();

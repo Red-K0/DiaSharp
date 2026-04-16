@@ -2,6 +2,8 @@
 
 DataSource source = new();
 
-source.LoadData("DiaSharp.pdb");
+source.LoadData(@"DiaSharp.pdb");
 
-Console.WriteLine(source.OpenSession().GlobalScope.Name);
+Session session = source.OpenSession();
+
+Console.WriteLine(session.GlobalScope.Name);

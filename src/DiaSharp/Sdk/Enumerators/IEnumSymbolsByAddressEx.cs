@@ -13,5 +13,5 @@ public partial interface IEnumSymbolsByAddressEx : IEnumSymbolsByAddress
 
 	unsafe int GetNext([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint symbolCount, void** symbols, out uint symbolsFetched);
 
-	unsafe int Prev([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint symbolCount, void** symbols, out uint symbolsFetched);
+	unsafe int GetPrevious([MarshalAs(UnmanagedType.Bool)] bool promoteBlockSymbols, uint symbolCount, void** symbols, out uint symbolsFetched);
 }

@@ -1067,7 +1067,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindInlineeLinesByAddress(ISymbol parent, uint isect, uint offset, uint length, out IEnumLineNumbers lines)
+	int ISession.FindInlineeLinesByAddress(ISymbol parent, uint sectionIndex, uint offset, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -1081,7 +1081,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, uint, void**, int>)__vtable_native[34])(__this, __parent_native, isect, offset, length, &__lines_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, uint, void**, int>)__vtable_native[34])(__this, __parent_native, sectionIndex, offset, length, &__lines_native);
 			}
 
 			__invokeSucceeded = true;
@@ -1731,32 +1731,24 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten)
+	int ISession.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
-		Unsafe.SkipInit(out fragmentsWritten);
 		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __fragmentsWritten_native = &fragmentsWritten)
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, uint, uint*, uint*, int>)__vtable_native[57])(__this, functionVA, functionSize, fragmentCount, buffer, __fragmentsWritten_native);
-		}
+
+		__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, uint, uint*, uint*, int>)__vtable_native[57])(__this, functionVA, functionSize, fragmentCount, buffer, fragmentLengths);
 
 		GC.KeepAlive(this);
 		return __retVal;
 	}
 
 	[SkipLocalsInit]
-	int ISession.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten)
+	int ISession.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
-		Unsafe.SkipInit(out fragmentsWritten);
 		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __fragmentsWritten_native = &fragmentsWritten)
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, uint*, uint*, int>)__vtable_native[58])(__this, functionRVA, functionSize, fragmentCount, buffer, __fragmentsWritten_native);
-		}
+
+		__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, uint*, uint*, int>)__vtable_native[58])(__this, functionRVA, functionSize, fragmentCount, buffer, fragmentLengths);
 
 		GC.KeepAlive(this);
 		return __retVal;
@@ -2652,7 +2644,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindInlineeLinesByAddress(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, uint isect, uint offset, uint length, void** __lines_native__param)
+	static internal int ABI_FindInlineeLinesByAddress(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, uint sectionIndex, uint offset, uint length, void** __lines_native__param)
 	{
 		ISession @this = default!;
 		ISymbol parent = default!;
@@ -2665,7 +2657,7 @@ file unsafe partial interface InterfaceImplementation
 			// Unmarshal - Convert native data to managed data.
 			parent = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__parent_native)!;
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindInlineeLinesByAddress(parent, isect, offset, length, out lines);
+			__retVal = @this.FindInlineeLinesByAddress(parent, sectionIndex, offset, length, out lines);
 			// Marshal - Convert managed data to native data.
 			__lines_native = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToUnmanaged(lines);
 		}
@@ -3232,20 +3224,15 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetFunctionFragmentsForVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* __fragmentsWritten_native__param)
+	static internal int ABI_GetFunctionFragmentsForVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
-		ISession @this = default!;
-		ref uint __fragmentsWritten_native = ref *__fragmentsWritten_native__param;
-		uint fragmentsWritten = default!;
-		int __retVal = default;
+		int __retVal;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
-			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.GetFunctionFragmentsForVA(functionVA, functionSize, fragmentCount, buffer, out fragmentsWritten);
-			// Marshal - Convert managed data to native data.
-			__fragmentsWritten_native = fragmentsWritten;
+			ISession @this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
+			__retVal = @this.GetFunctionFragmentsForVA(functionVA, functionSize, fragmentCount, buffer, fragmentLengths);
 		}
 		catch (Exception __exception)
 		{
@@ -3256,20 +3243,15 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetFunctionFragmentsForRVA(ComWrappers.ComInterfaceDispatch* __this_native, uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* __fragmentsWritten_native__param)
+	static internal int ABI_GetFunctionFragmentsForRVA(ComWrappers.ComInterfaceDispatch* __this_native, uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
-		ISession @this = default!;
-		ref uint __fragmentsWritten_native = ref *__fragmentsWritten_native__param;
-		uint fragmentsWritten = default!;
-		int __retVal = default;
+		int __retVal;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
-			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.GetFunctionFragmentsForRVA(functionRVA, functionSize, fragmentCount, buffer, out fragmentsWritten);
-			// Marshal - Convert managed data to native data.
-			__fragmentsWritten_native = fragmentsWritten;
+			ISession @this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
+			__retVal = @this.GetFunctionFragmentsForRVA(functionRVA, functionSize, fragmentCount, buffer, fragmentLengths);
 		}
 		catch (Exception __exception)
 		{

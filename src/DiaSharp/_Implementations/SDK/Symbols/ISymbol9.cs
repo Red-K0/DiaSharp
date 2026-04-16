@@ -4835,7 +4835,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol9
 	}
 
 	[SkipLocalsInit]
-	int ISymbol9.GeAassociatedSymbolAddress(out ulong address)
+	int ISymbol9.GetAssociatedSymbolAddress(out ulong address)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol9));
 		Unsafe.SkipInit(out address);
@@ -5954,6 +5954,6 @@ namespace DiaSharp.SDK.Symbols
 		new int GetAssociatedSymbolRVA(out uint relativeVirtualAddress) => ((ISymbol8)this).GetAssociatedSymbolRVA(out relativeVirtualAddress);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GeAassociatedSymbolAddress(out ulong address) => ((ISymbol8)this).GetAssociatedSymbolAddress(out address);
+		new int GetAssociatedSymbolAddress(out ulong address) => ((ISymbol8)this).GetAssociatedSymbolAddress(out address);
 	}
 }

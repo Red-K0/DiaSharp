@@ -12,6 +12,7 @@ namespace DiaSharp.Managed;
 public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 {
 	#region ISymbol
+
 	public uint SymbolIndexID => GetProp<uint>(_native.GetSymbolIndexID);
 
 	public SymbolTag SymbolTag => GetProp<SymbolTag>(_native.GetSymbolTag);

@@ -141,7 +141,7 @@ file unsafe partial interface InterfaceImplementation : IEnumDebugStreams
 	}
 
 	[SkipLocalsInit]
-	int IEnumDebugStreams.Clone(out IEnumSymbolsByAddress enumerator)
+	int IEnumDebugStreams.Clone(out IEnumDebugStreams enumerator)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumDebugStreams));
 		bool __invokeSucceeded = default!;
@@ -158,14 +158,14 @@ file unsafe partial interface InterfaceImplementation : IEnumDebugStreams
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
 			// Unmarshal - Convert native data to managed data.
-			enumerator = ComInterfaceMarshaller<IEnumSymbolsByAddress>.ConvertToManaged(__enumerator_native)!;
+			enumerator = ComInterfaceMarshaller<IEnumDebugStreams>.ConvertToManaged(__enumerator_native)!;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
 				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbolsByAddress>.Free(__enumerator_native);
+				ComInterfaceMarshaller<IEnumDebugStreams>.Free(__enumerator_native);
 			}
 		}
 
@@ -326,7 +326,7 @@ file unsafe partial interface InterfaceImplementation
 	{
 		IEnumDebugStreams @this = default!;
 		ref void* __enumerator_native = ref *__enumerator_native__param;
-		IEnumSymbolsByAddress enumerator = default!;
+		IEnumDebugStreams enumerator = default!;
 		int __retVal = default;
 
 		try
@@ -337,7 +337,7 @@ file unsafe partial interface InterfaceImplementation
 			// NotifyForSuccessfulInvoke - Keep alive any managed objects that need to stay alive across the call.
 			__retVal = 0; // S_OK
 			// Marshal - Convert managed data to native data.
-			__enumerator_native = ComInterfaceMarshaller<IEnumSymbolsByAddress>.ConvertToUnmanaged(enumerator);
+			__enumerator_native = ComInterfaceMarshaller<IEnumDebugStreams>.ConvertToUnmanaged(enumerator);
 		}
 		catch (Exception __exception)
 		{

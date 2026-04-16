@@ -1,5 +1,6 @@
 ﻿using DiaSharp.CodeView;
 using DiaSharp.COM;
+using DiaSharp.Managed.Enumerables;
 using DiaSharp.SDK;
 using DiaSharp.SDK.Enumerators;
 
@@ -13,7 +14,7 @@ public class SourceFile(ISourceFile native) : ComObject<ISourceFile>(native)
 
 	public SourceChecksumType ChecksumType => GetProp<SourceChecksumType>(_native.GetChecksumType);
 
-	public IEnumSymbols Compilands => GetProp<IEnumSymbols>(_native.GetCompilands);
+	public IEnumerable<Symbol> Compilands => new SymbolEnumerable(GetProp<IEnumSymbols>(_native.GetCompilands));
 
 	public unsafe ReadOnlySpan<byte> Checksum => GetProp<byte>(_native.GetChecksum);
 }

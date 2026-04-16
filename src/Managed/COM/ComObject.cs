@@ -4,7 +4,7 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 {
 	private bool _disposed = false;
 
-	protected I _native = native;
+	internal I _native = native;
 
 	protected void EnsureNotDisposed() => ObjectDisposedException.ThrowIf(_disposed, this);
 
@@ -35,12 +35,15 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 		GC.SuppressFinalize(this);
 	}
 
+	#region Helpers
+
 	#region Property Helpers
 
 	#region Getters
 
 	protected unsafe delegate int GetBuffer<T>(uint bufferSize, out uint dataSize, T* buffer) where T : unmanaged;
-	protected unsafe delegate int GetBuffer(uint bufferSize, out uint dataSize, void** buffer);
+	protected unsafe delegate int GetBufferA(uint bufferSize, out uint dataSize, void** buffer);
+	protected unsafe delegate int GetBufferB(uint bufferSize, void** buffer, out uint dataSize);
 	protected delegate int Get<T>(out T value);
 
 	[StackTraceHidden, MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -81,7 +84,7 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 	}
 
 	[StackTraceHidden]
-	protected ReadOnlySpan<nint> GetProp(GetBuffer function, bool ensured = false)
+	protected ReadOnlySpan<nint> GetProp(GetBufferA function, bool ensured = false)
 	{
 		if (!ensured) EnsureNotDisposed();
 
@@ -96,6 +99,29 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 			void** elements = stackalloc void*[(int)size];
 
 			result = function(size, out _, elements);
+
+			if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+			return new(elements, (int)size);
+		}
+	}
+
+	[StackTraceHidden]
+	protected ReadOnlySpan<nint> GetProp(GetBufferB function, bool ensured = false)
+	{
+		if (!ensured) EnsureNotDisposed();
+
+		unsafe
+		{
+			int result = function(0, null, out uint size);
+
+			if (result == (int)KnownResult.S_FALSE) throw new InvalidOperationException("Property is unsupported in the object's current state.");
+
+			if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+			void** elements = stackalloc void*[(int)size];
+
+			result = function(size, elements, out _);
 
 			if (result < 0) Marshal.ThrowExceptionForHR(result);
 
@@ -134,4 +160,44 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 			? throw new PlatformNotSupportedException($"The {nameof(Q)} interface is unsupported, please ensure the latest version of the DIA SDK is installed.")
 			: queried;
 	}
+
+	protected static unsafe bool TryGetSingle<V>(GetBufferA next, out V single) where V : class
+	{
+		void* value;
+
+		int result = next(1, out _, &value);
+
+		if (result == (int)KnownResult.S_FALSE)
+		{
+			single = default!;
+			return false;
+		}
+
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		single = ComHelpers.Wrap<V>(value);
+
+		return true;
+	}
+
+	protected static unsafe bool TryGetSingle<V>(GetBufferB next, out V single) where V : class
+	{
+		void* value;
+
+		int result = next(1, &value, out _);
+
+		if (result == (int)KnownResult.S_FALSE)
+		{
+			single = default!;
+			return false;
+		}
+
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		single = ComHelpers.Wrap<V>(value);
+
+		return true;
+	}
+
+	#endregion
 }
