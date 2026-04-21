@@ -6,23 +6,22 @@ namespace DiaSharp.Managed.Enumerables;
 
 internal class InjectedSourceEnumerable(IEnumInjectedSources native) : ComEnumerable<IEnumInjectedSources, InjectedSource>(native)
 {
-	public override IEnumerator<InjectedSource> GetEnumerator() => new InjectedSourceEnumerator(CloneNative());
-	protected override IEnumInjectedSources CloneNative() => CloneInternal(_native.Clone(out IEnumInjectedSources clone), clone);
-
-	private sealed class InjectedSourceEnumerator(IEnumInjectedSources native) : ComEnumerator(native)
+	protected override unsafe bool TryFetchBatch()
 	{
-		protected override unsafe int MoveNextInternal(out InjectedSource? value)
-		{
-			if (!TryGetSingle(_native.GetNext, out IInjectedSource source))
-			{
-				value = null;
-				return (int)KnownResult.S_FALSE;
-			}
+		void** sources = stackalloc void*[(int)_batchSize];
 
-			value = new(source);
-			return (int)KnownResult.S_OK;
-		}
+		int result = _native.GetNext(_batchSize, sources, out uint sourcesFetched);
 
-		protected override int ResetInternal() => _native.Reset();
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		if (sourcesFetched == 0) return false;
+
+		InjectedSource[] managed = new InjectedSource[sourcesFetched];
+
+		for (int i = 0; i < sourcesFetched; i++) managed[i] = new(ComHelpers.Wrap<IInjectedSource>(sources[i]));
+
+		AddRangeToCache(managed);
+
+		return true;
 	}
 }

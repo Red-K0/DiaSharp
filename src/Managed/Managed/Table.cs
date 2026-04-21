@@ -1,34 +1,22 @@
 ﻿using DiaSharp.COM;
-using DiaSharp.Interop;
 using DiaSharp.SDK;
 
 namespace DiaSharp.Managed;
 
 public class Table(ITable native) : ComEnumerable<ITable, nint>(native)
 {
-	public override IEnumerator<nint> GetEnumerator() => new TableEnumerator(CloneNative());
-	protected override ITable CloneNative() => CloneInternal(_native.Clone(out IEnumUnknown? clone), ComHelpers.QueryInterface<IEnumUnknown, ITable>(clone));
-
-	private sealed class TableEnumerator(ITable native) : ComEnumerator(native)
+	protected override unsafe bool TryFetchBatch()
 	{
-		protected override unsafe int MoveNextInternal(out nint value)
-		{
-			void* pointer;
+		void** elements = stackalloc void*[(int)_batchSize];
 
-			int result = _native.GetNext(1, &pointer, out _);
+		int result = _native.GetNext(_batchSize, elements, out uint elementsFetched);
 
-			if (result < 0) Marshal.ThrowExceptionForHR(result);
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-			if (result == 1)
-			{
-				value = default;
-				return (int)KnownResult.S_FALSE;
-			}
+		if (elementsFetched == 0) return false;
 
-			value = (nint)pointer;
-			return (int)KnownResult.S_OK;
-		}
+		AddRangeToCache(new ReadOnlySpan<nint>(elements, (int)elementsFetched));
 
-		protected override int ResetInternal() => _native.Reset();
+		return true;
 	}
 }

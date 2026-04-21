@@ -6,23 +6,22 @@ namespace DiaSharp.Managed.Enumerables;
 
 internal class SourceFileEnumerable(IEnumSourceFiles native) : ComEnumerable<IEnumSourceFiles, SourceFile>(native)
 {
-	public override IEnumerator<SourceFile> GetEnumerator() => new SourceFileEnumerator(CloneNative());
-	protected override IEnumSourceFiles CloneNative() => CloneInternal(_native.Clone(out IEnumSourceFiles clone), clone);
-
-	private sealed class SourceFileEnumerator(IEnumSourceFiles native) : ComEnumerator(native)
+	protected override unsafe bool TryFetchBatch()
 	{
-		protected override unsafe int MoveNextInternal(out SourceFile? value)
-		{
-			if (!TryGetSingle(_native.GetNext, out ISourceFile file))
-			{
-				value = null;
-				return (int)KnownResult.S_FALSE;
-			}
+		void** files = stackalloc void*[(int)_batchSize];
 
-			value = new(file);
-			return (int)KnownResult.S_OK;
+		int result = _native.GetNext(_batchSize, files, out uint filesFetched);
 
-		}
-		protected override int ResetInternal() => _native.Reset();
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		if (filesFetched == 0) return false;
+
+		SourceFile[] managed = new SourceFile[filesFetched];
+
+		for (int i = 0; i < filesFetched; i++) managed[i] = new(ComHelpers.Wrap<ISourceFile>(files[i]));
+
+		AddRangeToCache(managed);
+
+		return true;
 	}
 }

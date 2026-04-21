@@ -6,24 +6,22 @@ namespace DiaSharp.Managed.Enumerables;
 
 sealed internal class LineNumberEnumerable(IEnumLineNumbers native) : ComEnumerable<IEnumLineNumbers, LineNumber>(native)
 {
-	public override IEnumerator<LineNumber> GetEnumerator() => new LineNumberEnumerator(CloneNative());
-
-	protected override IEnumLineNumbers CloneNative() => CloneInternal(_native.Clone(out IEnumLineNumbers clone), clone);
-
-	private sealed class LineNumberEnumerator(IEnumLineNumbers native) : ComEnumerator(native)
+	protected override unsafe bool TryFetchBatch()
 	{
-		protected override unsafe int MoveNextInternal(out LineNumber? value)
-		{
-			if (!TryGetSingle(_native.GetNext, out ILineNumber number))
-			{
-				value = null;
-				return (int)KnownResult.S_FALSE;
-			}
+		void** numbers = stackalloc void*[(int)_batchSize];
 
-			value = new(number);
-			return (int)KnownResult.S_OK;
-		}
+		int result = _native.GetNext(_batchSize, numbers, out uint numbersFetched);
 
-		protected override int ResetInternal() => _native.Reset();
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		if (numbersFetched == 0) return false;
+
+		LineNumber[] managed = new LineNumber[numbersFetched];
+
+		for (int i = 0; i < numbersFetched; i++) managed[i] = new(ComHelpers.Wrap<ILineNumber>(numbers[i]));
+
+		AddRangeToCache(managed);
+
+		return true;
 	}
 }

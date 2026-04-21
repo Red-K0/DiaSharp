@@ -5,23 +5,22 @@ namespace DiaSharp.Managed.Enumerables;
 
 internal class DebugStreamEnumerable(IEnumDebugStreams native) : ComEnumerable<IEnumDebugStreams, DebugStreamDataEnumerable>(native)
 {
-	public override IEnumerator<DebugStreamDataEnumerable> GetEnumerator() => new DebugStreamEnumerator(CloneNative());
-	protected override IEnumDebugStreams CloneNative() => CloneInternal(_native.Clone(out IEnumDebugStreams clone), clone);
-
-	private sealed class DebugStreamEnumerator(IEnumDebugStreams native) : ComEnumerator(native)
+	protected override unsafe bool TryFetchBatch()
 	{
-		protected override unsafe int MoveNextInternal(out DebugStreamDataEnumerable? value)
-		{
-			if (!TryGetSingle(_native.GetNext, out IEnumDebugStreamData enumerator))
-			{
-				value = null;
-				return (int)KnownResult.S_FALSE;
-			}
+		void** streams = stackalloc void*[(int)_batchSize];
 
-			value = new(enumerator);
-			return (int)KnownResult.S_OK;
-		}
+		int result = _native.GetNext(_batchSize, streams, out uint streamsFetched);
 
-		protected override int ResetInternal() => _native.Reset();
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		if (streamsFetched == 0) return false;
+
+		DebugStreamDataEnumerable[] managed = new DebugStreamDataEnumerable[streamsFetched];
+
+		for (int i = 0; i < streamsFetched; i++) managed[i] = new(ComHelpers.Wrap<IEnumDebugStreamData>(streams[i]));
+
+		AddRangeToCache(managed);
+
+		return true;
 	}
 }

@@ -5,17 +5,22 @@ namespace DiaSharp.Managed.Enumerables;
 
 internal class SourceLinkEnumerable(IEnumSourceLink native) : ComEnumerable<IEnumSourceLink, byte[]>(native)
 {
-	public override IEnumerator<byte[]> GetEnumerator() => new SourceLinkEnumerator(CloneNative());
-	protected override IEnumSourceLink CloneNative() => CloneInternal(_native.Clone(out IEnumSourceLink clone), clone);
-
-	private sealed class SourceLinkEnumerator(IEnumSourceLink native) : ComEnumerator(native)
+	protected override unsafe bool TryFetchBatch()
 	{
-		protected override unsafe int MoveNextInternal(out byte[]? value)
-		{
-			value = GetProp<byte>(_native.GetNext).ToArray();
+		int result = _native.SizeOfNext(out uint bufferSize);
 
-			return (int)KnownResult.S_OK;
-		}
-		protected override int ResetInternal() => _native.Reset();
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		byte[] managed = new byte[bufferSize];
+
+		fixed (byte* p = managed) result = _native.GetNext(bufferSize, out _, p);
+
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		if (result == (int)KnownResult.S_FALSE) return false;
+
+		AddToCache(managed);
+
+		return true;
 	}
 }

@@ -6,22 +6,22 @@ namespace DiaSharp.Managed.Enumerables;
 
 internal class TableEnumerable(IEnumTables native) : ComEnumerable<IEnumTables, Table>(native)
 {
-	public override IEnumerator<Table> GetEnumerator() => new TableEnumerator(CloneNative());
-	protected override IEnumTables CloneNative() => CloneInternal(_native.Clone(out IEnumTables enumerator), enumerator);
-
-	private sealed class TableEnumerator(IEnumTables native) : ComEnumerator(native)
+	protected override unsafe bool TryFetchBatch()
 	{
-		protected override unsafe int MoveNextInternal(out Table? value)
-		{
-			if (!TryGetSingle(_native.GetNext, out ITable table))
-			{
-				value = null;
-				return (int)KnownResult.S_FALSE;
-			}
+		void** tables = stackalloc void*[(int)_batchSize];
 
-			value = new(table);
-			return (int)KnownResult.S_OK;
-		}
-		protected override int ResetInternal() => _native.Reset();
+		int result = _native.GetNext(_batchSize, tables, out uint tablesFetched);
+
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		if (tablesFetched == 0) return false;
+
+		Table[] managed = new Table[tablesFetched];
+
+		for (int i = 0; i < tablesFetched; i++) managed[i] = new(ComHelpers.Wrap<ITable>(tables[i]));
+
+		AddRangeToCache(managed);
+
+		return true;
 	}
 }

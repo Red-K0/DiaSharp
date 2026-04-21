@@ -6,23 +6,22 @@ namespace DiaSharp.Managed.Enumerables;
 
 internal class InputAssemblyFileEnumerable(IEnumInputAssemblyFiles native) : ComEnumerable<IEnumInputAssemblyFiles, InputAssemblyFile>(native)
 {
-	public override IEnumerator<InputAssemblyFile> GetEnumerator() => new InputAssemblyFileEnumerator(CloneNative());
-	protected override IEnumInputAssemblyFiles CloneNative() => CloneInternal(_native.Clone(out IEnumInputAssemblyFiles clone), clone);
-
-	private sealed class InputAssemblyFileEnumerator(IEnumInputAssemblyFiles native) : ComEnumerator(native)
+	protected override unsafe bool TryFetchBatch()
 	{
-		protected override unsafe int MoveNextInternal(out InputAssemblyFile? value)
-		{
-			if (!TryGetSingle(_native.GetNext, out IInputAssemblyFile assembly))
-			{
-				value = null;
-				return (int)KnownResult.S_FALSE;
-			}
+		void** files = stackalloc void*[(int)_batchSize];
 
-			value = new(assembly);
-			return (int)KnownResult.S_OK;
-		}
+		int result = _native.GetNext(_batchSize, files, out uint filesFetched);
 
-		protected override int ResetInternal() => _native.Reset();
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		if (filesFetched == 0) return false;
+
+		InputAssemblyFile[] managed = new InputAssemblyFile[filesFetched];
+
+		for (int i = 0; i < filesFetched; i++) managed[i] = new(ComHelpers.Wrap<IInputAssemblyFile>(files[i]));
+
+		AddRangeToCache(managed);
+
+		return true;
 	}
 }

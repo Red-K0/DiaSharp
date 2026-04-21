@@ -4,26 +4,24 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.Managed.Enumerables;
 
-internal class SymbolEnumerable(IEnumSymbols native) : ComEnumerable<IEnumSymbols, Symbol>(native)
+public class SymbolEnumerable(IEnumSymbols native) : ComEnumerable<IEnumSymbols, Symbol>(native)
 {
-	public override IEnumerator<Symbol> GetEnumerator() => new SymbolEnumerator(CloneNative());
-
-	protected override IEnumSymbols CloneNative() => CloneInternal(_native.Clone(out IEnumSymbols clone), clone);
-
-	private sealed class SymbolEnumerator(IEnumSymbols native) : ComEnumerator(native)
+	protected override unsafe bool TryFetchBatch()
 	{
-		protected override unsafe int MoveNextInternal(out Symbol? value)
-		{
-			if (!TryGetSingle(_native.GetNext, out ISymbol symbol))
-			{
-				value = null;
-				return (int)KnownResult.S_FALSE;
-			}
+		void** symbols = stackalloc void*[(int)_batchSize];
 
-			value = new(symbol);
-			return (int)KnownResult.S_OK;
-		}
+		int result = _native.GetNext(_batchSize, symbols, out uint symbolsFetched);
 
-		protected override int ResetInternal() => _native.Reset();
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		if (symbolsFetched == 0) return false;
+
+		Symbol[] managed = new Symbol[symbolsFetched];
+
+		for (int i = 0; i < symbolsFetched; i++) managed[i] = new(ComHelpers.Wrap<ISymbol>(symbols[i]));
+
+		AddRangeToCache(managed);
+
+		return true;
 	}
 }

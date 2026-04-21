@@ -5,14 +5,16 @@ namespace DiaSharp.Managed.Enumerables;
 
 sealed internal class NamedStreamsEnumerable(IEnumNamedStreams native) : ComEnumerable<IEnumNamedStreams, string>(native)
 {
-	public override IEnumerator<string> GetEnumerator() => new NamedStreamsEnumerator(CloneNative());
-
-	protected override IEnumNamedStreams CloneNative() => CloneInternal(_native.Clone(out IEnumNamedStreams? clone), clone);
-
-	private sealed class NamedStreamsEnumerator(IEnumNamedStreams native) : ComEnumerator(native)
+	protected override bool TryFetchBatch()
 	{
-		protected override int MoveNextInternal(out string? value) => _native.GetNext(out value);
+		int result = _native.GetNext(out string name);
 
-		protected override int ResetInternal() => _native.Reset();
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		if (name is null) return false;
+
+		AddToCache(name);
+
+		return true;
 	}
 }
