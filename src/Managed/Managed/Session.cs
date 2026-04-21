@@ -13,14 +13,14 @@ public sealed unsafe class Session(ISession session) : ComObject<ISession>(sessi
 
 	public ulong LoadAddress
 	{
-		get => GetProp<ulong>(_native.GetLoadAddress);
+		get => GetS<ulong>(_native.GetLoadAddress)!.Value;
 
 		set => SetProp(_native.PutLoadAddress, value);
 	}
 
-	public Symbol GlobalScope => new(GetProp<ISymbol>(_native.GetGlobalScope));
+	public Symbol GlobalScope => new(GetC<ISymbol>(_native.GetGlobalScope)!);
 
-	public IEnumerable<Table> Tables => new TableEnumerable(GetProp<IEnumTables>(_native.GetEnumTables));
+	public IEnumerable<Table> Tables => new TableEnumerable(GetC<IEnumTables>(_native.GetEnumTables)!);
 
 	public IEnumerable<Symbol> FindChildren(Symbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions)
 	{
@@ -242,7 +242,7 @@ public sealed unsafe class Session(ISession session) : ComObject<ISession>(sessi
 		return new InjectedSourceEnumerable(sources); 
 	}
 
-	public IEnumerable<IEnumerable<byte[]>> DebugStreams => new DebugStreamEnumerable(GetProp<IEnumDebugStreams>(_native.GetEnumDebugStreams));
+	public IEnumerable<IEnumerable<byte[]>> DebugStreams => new DebugStreamEnumerable(GetC<IEnumDebugStreams>(_native.GetEnumDebugStreams)!);
 
 	public IEnumerable<Symbol> FindInlineFramesByAddress(Symbol parent, uint sectionIndex, uint offset)
 	{
@@ -413,7 +413,7 @@ public sealed unsafe class Session(ISession session) : ComObject<ISession>(sessi
 	{
 		EnsureNotDisposed();
 
-		int result = _native.FindILOffsetsByVA(symbol.VirtualAddress, (uint)symbol.Length, out IEnumLineNumbers lines);
+		int result = _native.FindILOffsetsByVA(symbol.VirtualAddress!.Value, (uint)symbol.Length!.Value, out IEnumLineNumbers lines);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
@@ -453,7 +453,7 @@ public sealed unsafe class Session(ISession session) : ComObject<ISession>(sessi
 		return new LineNumberEnumerable(lines);
 	}
 
-	public IEnumerable<InputAssemblyFile> InputAssemblyFiles => new InputAssemblyFileEnumerable(GetProp<IEnumInputAssemblyFiles>(_native.FindInputAssemblyFiles));
+	public IEnumerable<InputAssemblyFile> InputAssemblyFiles => new InputAssemblyFileEnumerable(GetC<IEnumInputAssemblyFiles>(_native.FindInputAssemblyFiles)!);
 
 	public InputAssemblyFile FindInputAssembly(uint index)
 	{
@@ -477,19 +477,19 @@ public sealed unsafe class Session(ISession session) : ComObject<ISession>(sessi
 		return new(assembly);
 	}
 
-	public uint FunctionMetadataTokenMapSize => GetProp<uint>(_native.GetFunctionMetadataTokenMapSize);
+	public uint FunctionMetadataTokenMapSize => GetS<uint>(_native.GetFunctionMetadataTokenMapSize)!.Value;
 
-	public ReadOnlySpan<byte> FunctionMetadataTokenMap => GetProp<byte>(_native.GetFunctionMetadataTokenMap);
+	public byte[] FunctionMetadataTokenMap => GetA<byte>(_native.GetFunctionMetadataTokenMap)!;
 
-	public uint TypeMetadataTokenMapSize => GetProp<uint>(_native.GetTypeMetadataTokenMapSize);
+	public uint TypeMetadataTokenMapSize => GetS<uint>(_native.GetTypeMetadataTokenMapSize)!.Value;
 
-	public ReadOnlySpan<byte> TypeMetadataTokenMap => GetProp<byte>(_native.GetTypeMetadataTokenMap);
+	public byte[] TypeMetadataTokenMap => GetA<byte>(_native.GetTypeMetadataTokenMap)!;
 
 	public uint GetNumberOfFunctionFragments(Symbol symbol)
 	{
 		EnsureNotDisposed();
 
-		int result = _native.GetNumberOfFunctionFragmentsForVA(symbol.VirtualAddress, (uint)symbol.Length, out uint count);
+		int result = _native.GetNumberOfFunctionFragmentsForVA(symbol.VirtualAddress!.Value, (uint)symbol.Length!.Value, out uint count);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
@@ -522,11 +522,11 @@ public sealed unsafe class Session(ISession session) : ComObject<ISession>(sessi
 	{
 		EnsureNotDisposed();
 
-		int length = (int)symbol.Length;
+		int length = (int)symbol.Length!;
 
 		uint* addresses = stackalloc uint[length], lengths = stackalloc uint[length];
 
-		int result = _native.GetFunctionFragmentsForVA(symbol.VirtualAddress, (uint)length, GetNumberOfFunctionFragments(symbol), addresses, lengths);
+		int result = _native.GetFunctionFragmentsForVA(symbol.VirtualAddress!.Value, (uint)length, GetNumberOfFunctionFragments(symbol), addresses, lengths);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
@@ -537,9 +537,9 @@ public sealed unsafe class Session(ISession session) : ComObject<ISession>(sessi
 		return fragments;
 	}
 
-	public IEnumerable<Symbol> Exports => new SymbolEnumerable(GetProp<IEnumSymbols>(_native.GetExports));
+	public IEnumerable<Symbol> Exports => new SymbolEnumerable(GetC<IEnumSymbols>(_native.GetExports)!);
 
-	public IEnumerable<Symbol> HeapAllocationSites => new SymbolEnumerable(GetProp<IEnumSymbols>(_native.GetHeapAllocationSites));
+	public IEnumerable<Symbol> HeapAllocationSites => new SymbolEnumerable(GetC<IEnumSymbols>(_native.GetHeapAllocationSites)!);
 
 	public InputAssemblyFile FindInputAssemblyFile(Symbol symbol)
 	{
@@ -563,7 +563,7 @@ public sealed unsafe class Session(ISession session) : ComObject<ISession>(sessi
 		{
 			ISessionEx session = EnsureAndQuery<ISessionEx>();
 
-			bool value = GetProp<bool>(session.IsFastLinkPDB);
+			bool value = GetS<bool>(session.IsFastLinkPDB)!.Value;
 
 			ComHelpers.Release(ref session);
 
@@ -577,7 +577,7 @@ public sealed unsafe class Session(ISession session) : ComObject<ISession>(sessi
 		{
 			ISessionEx session = EnsureAndQuery<ISessionEx>();
 
-			bool value = GetProp<bool>(session.IsPortablePDB);
+			bool value = GetS<bool>(session.IsPortablePDB)!.Value;
 
 			ComHelpers.Release(ref session);
 

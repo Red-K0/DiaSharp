@@ -13,268 +13,268 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 {
 	#region ISymbol
 
-	public uint SymbolIndexID => GetProp<uint>(_native.GetSymbolIndexID);
+	public uint? SymbolIndexID => GetS<uint>(_native.GetSymbolIndexID);
 
-	public SymbolTag SymbolTag => GetProp<SymbolTag>(_native.GetSymbolTag);
+	public SymbolTag? SymbolTag => GetS<SymbolTag>(_native.GetSymbolTag);
 
-	public string Name => GetProp<string>(_native.GetName);
+	public string? Name => GetC<string>(_native.GetName);
 
-	public Symbol LexicalParent => new(GetProp<ISymbol>(_native.GetLexicalParent));
+	public Symbol? LexicalParent => TryGetC(_native.GetLexicalParent, out ISymbol? native) ? new(native) : null;
 
-	public Symbol ClassParent => new(GetProp<ISymbol>(_native.GetClassParent));
+	public Symbol? ClassParent => TryGetC(_native.GetClassParent, out ISymbol? native) ? new(native) : null;
 
-	public Symbol SymbolType => new(GetProp<ISymbol>(_native.GetSymbolType));
+	public Symbol? SymbolType => TryGetC(_native.GetSymbolType, out ISymbol? native) ? new(native) : null;
 
-	public DataKind DataKind => GetProp<DataKind>(_native.GetDataKind);
+	public DataKind? DataKind => GetS<DataKind>(_native.GetDataKind);
 
-	public LocationType LocationType => GetProp<LocationType>(_native.GetLocationType);
+	public LocationType? LocationType => GetS<LocationType>(_native.GetLocationType);
 
-	public uint AddressSection => GetProp<uint>(_native.GetAddressSection);
+	public uint? AddressSection => GetS<uint>(_native.GetAddressSection);
 
-	public uint AddressOffset => GetProp<uint>(_native.GetAddressOffset);
+	public uint? AddressOffset => GetS<uint>(_native.GetAddressOffset);
 
-	public uint RelativeVirtualAddress => GetProp<uint>(_native.GetRelativeVirtualAddress);
+	public uint? RelativeVirtualAddress => GetS<uint>(_native.GetRelativeVirtualAddress);
 
-	public ulong VirtualAddress => GetProp<ulong>(_native.GetVirtualAddress);
+	public ulong? VirtualAddress => GetS<ulong>(_native.GetVirtualAddress);
 
-	public uint RegisterID => GetProp<uint>(_native.GetRegisterID);
+	public uint? RegisterID => GetS<uint>(_native.GetRegisterID);
 
-	public int Offset => GetProp<int>(_native.GetOffset);
+	public int? Offset => GetS<int>(_native.GetOffset);
 
-	public ulong Length => GetProp<ulong>(_native.GetLength);
+	public ulong? Length => GetS<ulong>(_native.GetLength);
 
-	public uint Slot => GetProp<uint>(_native.GetSlot);
+	public uint? Slot => GetS<uint>(_native.GetSlot);
 
-	public bool VolatileType => GetProp<bool>(_native.GetVolatileType);
+	public bool? VolatileType => GetS<bool>(_native.GetVolatileType);
 
-	public bool ConstType => GetProp<bool>(_native.GetConstType);
+	public bool? ConstType => GetS<bool>(_native.GetConstType);
 
-	public bool UnalignedType => GetProp<bool>(_native.GetUnalignedType);
+	public bool? UnalignedType => GetS<bool>(_native.GetUnalignedType);
 
-	public uint Access => GetProp<uint>(_native.GetAccess);
+	public uint? Access => GetS<uint>(_native.GetAccess);
 
-	public string LibraryName => GetProp<string>(_native.GetLibraryName);
+	public string? LibraryName => GetC<string>(_native.GetLibraryName);
 
-	public uint Platform => GetProp<uint>(_native.GetPlatform);
+	public uint? Platform => GetS<uint>(_native.GetPlatform);
 
-	public uint Language => GetProp<uint>(_native.GetLanguage);
+	public uint? Language => GetS<uint>(_native.GetLanguage);
 
-	public bool EditAndContinueEnabled => GetProp<bool>(_native.GetEditAndContinueEnabled);
+	public bool? EditAndContinueEnabled => GetS<bool>(_native.GetEditAndContinueEnabled);
 
-	public uint FrontendMajor => GetProp<uint>(_native.GetFrontendMajor);
+	public uint? FrontendMajor => GetS<uint>(_native.GetFrontendMajor);
 
-	public uint FrontendMinor => GetProp<uint>(_native.GetFrontendMinor);
+	public uint? FrontendMinor => GetS<uint>(_native.GetFrontendMinor);
 
-	public uint FrontendBuild => GetProp<uint>(_native.GetFrontendBuild);
+	public uint? FrontendBuild => GetS<uint>(_native.GetFrontendBuild);
 
-	public uint BackendMajor => GetProp<uint>(_native.GetBackendMajor);
+	public uint? BackendMajor => GetS<uint>(_native.GetBackendMajor);
 
-	public uint BackendMinor => GetProp<uint>(_native.GetBackendMinor);
+	public uint? BackendMinor => GetS<uint>(_native.GetBackendMinor);
 
-	public uint BackendBuild => GetProp<uint>(_native.GetBackendBuild);
+	public uint? BackendBuild => GetS<uint>(_native.GetBackendBuild);
 
-	public string SourceFileName => GetProp<string>(_native.GetSourceFileName);
+	public string? SourceFileName => GetC<string>(_native.GetSourceFileName);
 
-	public string Unused => GetProp<string>(_native.GetUnused);
+	public ThunkOrdinal? ThunkOrdinal => GetS<ThunkOrdinal>(_native.GetThunkOrdinal);
 
-	public ThunkOrdinal ThunkOrdinal => GetProp<ThunkOrdinal>(_native.GetThunkOrdinal);
+	public int? ThisAdjustor => GetS<int>(_native.GetThisAdjustor);
 
-	public int ThisAdjustor => GetProp<int>(_native.GetThisAdjustor);
+	public uint? VirtualBaseOffset => GetS<uint>(_native.GetVirtualBaseOffset);
 
-	public uint VirtualBaseOffset => GetProp<uint>(_native.GetVirtualBaseOffset);
+	public bool? IsVirtual => GetS<bool>(_native.GetIsVirtual);
 
-	public bool IsVirtual => GetProp<bool>(_native.GetIsVirtual);
+	public bool? IsIntro => GetS<bool>(_native.GetIsIntro);
 
-	public bool IsIntro => GetProp<bool>(_native.GetIsIntro);
+	public bool? IsPure => GetS<bool>(_native.GetIsPure);
 
-	public bool IsPure => GetProp<bool>(_native.GetIsPure);
+	public uint? CallingConvention => GetS<uint>(_native.GetCallingConvention);
 
-	public uint CallingConvention => GetProp<uint>(_native.GetCallingConvention);
+	public Variant? Value => GetS<Variant>(_native.GetValue);
 
-	public Variant Value => GetProp<Variant>(_native.GetValue);
+	public uint? BaseType => GetS<uint>(_native.GetBaseType);
 
-	public uint BaseType => GetProp<uint>(_native.GetBaseType);
+	public uint? Token => GetS<uint>(_native.GetToken);
 
-	public uint Token => GetProp<uint>(_native.GetToken);
+	public uint? Timestamp => GetS<uint>(_native.GetTimestamp);
 
-	public uint Timestamp => GetProp<uint>(_native.GetTimestamp);
+	public Guid? GUID => GetS<Guid>(_native.GetGUID);
 
-	public Guid GUID => GetProp<Guid>(_native.GetGUID);
+	public string? SymbolsFileName => GetC<string>(_native.GetSymbolsFileName);
 
-	public string SymbolsFileName => GetProp<string>(_native.GetSymbolsFileName);
+	public bool? IsReference => GetS<bool>(_native.GetIsReference);
 
-	public bool IsReference => GetProp<bool>(_native.GetIsReference);
+	public uint? Count => GetS<uint>(_native.GetCount);
 
-	public uint Count => GetProp<uint>(_native.GetCount);
+	public uint? BitPosition => GetS<uint>(_native.GetBitPosition);
 
-	public uint BitPosition => GetProp<uint>(_native.GetBitPosition);
+	public Symbol? ArrayIndexType => TryGetC(_native.GetArrayIndexType, out ISymbol? native) ? new(native) : null;
 
-	public Symbol ArrayIndexType => new(GetProp<ISymbol>(_native.GetArrayIndexType));
+	public bool? IsPacked => GetS<bool>(_native.GetIsPacked);
 
-	public bool IsPacked => GetProp<bool>(_native.GetIsPacked);
+	public bool? HasConstructor => GetS<bool>(_native.GetHasConstructor);
 
-	public bool HasConstructor => GetProp<bool>(_native.GetHasConstructor);
+	public bool? HasOverloadedOperator => GetS<bool>(_native.GetHasOverloadedOperator);
 
-	public bool HasOverloadedOperator => GetProp<bool>(_native.GetHasOverloadedOperator);
+	public bool? IsNested => GetS<bool>(_native.GetIsNested);
 
-	public bool IsNested => GetProp<bool>(_native.GetIsNested);
+	public bool? HasNestedTypes => GetS<bool>(_native.GetHasNestedTypes);
 
-	public bool HasNestedTypes => GetProp<bool>(_native.GetHasNestedTypes);
+	public bool? HasAssignmentOperator => GetS<bool>(_native.GetHasAssignmentOperator);
 
-	public bool HasAssignmentOperator => GetProp<bool>(_native.GetHasAssignmentOperator);
+	public bool? HasCastOperator => GetS<bool>(_native.GetHasCastOperator);
 
-	public bool HasCastOperator => GetProp<bool>(_native.GetHasCastOperator);
+	public bool? IsScoped => GetS<bool>(_native.GetIsScoped);
 
-	public bool IsScoped => GetProp<bool>(_native.GetIsScoped);
+	public bool? IsVirtualBaseClass => GetS<bool>(_native.GetIsVirtualBaseClass);
 
-	public bool IsVirtualBaseClass => GetProp<bool>(_native.GetIsVirtualBaseClass);
+	public bool? IsIndirectVirtualBaseClass => GetS<bool>(_native.GetIsIndirectVirtualBaseClass);
 
-	public bool IsIndirectVirtualBaseClass => GetProp<bool>(_native.GetIsIndirectVirtualBaseClass);
+	public int? VirtualBasePointerOffset => GetS<int>(_native.GetVirtualBasePointerOffset);
 
-	public int VirtualBasePointerOffset => GetProp<int>(_native.GetVirtualBasePointerOffset);
+	public Symbol? VirtualTableShape => TryGetC(_native.GetVirtualTableShape, out ISymbol? native) ? new(native) : null;
 
-	public Symbol VirtualTableShape => new(GetProp<ISymbol>(_native.GetVirtualTableShape));
+	public uint? LexicalParentID => GetS<uint>(_native.GetLexicalParentID);
 
-	public uint LexicalParentID => GetProp<uint>(_native.GetLexicalParentID);
+	public uint? ClassParentID => GetS<uint>(_native.GetClassParentID);
 
-	public uint ClassParentID => GetProp<uint>(_native.GetClassParentID);
+	public uint? TypeID => GetS<uint>(_native.GetTypeID);
 
-	public uint TypeID => GetProp<uint>(_native.GetTypeID);
+	public uint? ArrayIndexTypeID => GetS<uint>(_native.GetArrayIndexTypeID);
 
-	public uint ArrayIndexTypeID => GetProp<uint>(_native.GetArrayIndexTypeID);
+	public uint? VirtualTableShapeID => GetS<uint>(_native.GetVirtualTableShapeID);
 
-	public uint VirtualTableShapeID => GetProp<uint>(_native.GetVirtualTableShapeID);
+	public bool? IsCode => GetS<bool>(_native.GetIsCode);
 
-	public bool IsCode => GetProp<bool>(_native.GetIsCode);
+	public bool? IsFunction => GetS<bool>(_native.GetIsFunction);
 
-	public bool IsFunction => GetProp<bool>(_native.GetIsFunction);
+	public bool? IsManaged => GetS<bool>(_native.GetIsManaged);
 
-	public bool IsManaged => GetProp<bool>(_native.GetIsManaged);
+	public bool? IsMSIL => GetS<bool>(_native.GetIsMSIL);
 
-	public bool IsMSIL => GetProp<bool>(_native.GetIsMSIL);
+	public uint? VirtualBaseDisplacementIndex => GetS<uint>(_native.GetVirtualBaseDisplacementIndex);
 
-	public uint VirtualBaseDisplacementIndex => GetProp<uint>(_native.GetVirtualBaseDisplacementIndex);
+	public uint? Age => GetS<uint>(_native.GetAge);
 
-	public uint Age => GetProp<uint>(_native.GetAge);
+	public uint? Signature => GetS<uint>(_native.GetSignature);
 
-	public uint Signature => GetProp<uint>(_native.GetSignature);
+	public bool? IsCompilerGenerated => GetS<bool>(_native.GetIsCompilerGenerated);
 
-	public bool IsCompilerGenerated => GetProp<bool>(_native.GetIsCompilerGenerated);
+	public bool? IsAddressTaken => GetS<bool>(_native.GetIsAddressTaken);
 
-	public bool IsAddressTaken => GetProp<bool>(_native.GetIsAddressTaken);
+	public uint? Rank => GetS<uint>(_native.GetRank);
 
-	public uint Rank => GetProp<uint>(_native.GetRank);
+	public Symbol? LowerBound => TryGetC(_native.GetLowerBound, out ISymbol? native) ? new(native) : null;
 
-	public Symbol LowerBound => new(GetProp<ISymbol>(_native.GetLowerBound));
+	public Symbol? UpperBound => TryGetC(_native.GetUpperBound, out ISymbol? native) ? new(native) : null;
 
-	public Symbol UpperBound => new(GetProp<ISymbol>(_native.GetUpperBound));
+	public uint? LowerBoundID => GetS<uint>(_native.GetLowerBoundID);
 
-	public uint LowerBoundID => GetProp<uint>(_native.GetLowerBoundID);
+	public uint? UpperBoundID => GetS<uint>(_native.GetUpperBoundID);
 
-	public uint UpperBoundID => GetProp<uint>(_native.GetUpperBoundID);
+	public byte[]? DataBytes => GetA<byte>(_native.GetDataBytes);
 
-	public ReadOnlySpan<byte> DataBytes => GetProp<byte>(_native.GetDataBytes);
-
-	public IEnumerable<Symbol> FindChildrenUnaware(SymbolTag symbolTag, string name, NameSearchOptions compareFlags)
+	public IEnumerable<Symbol>? FindChildrenUnaware(SymbolTag symbolTag, string name, NameSearchOptions compareFlags)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindChildrenUnaware(symbolTag, name, compareFlags, out IEnumSymbols symbols);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public IEnumerable<Symbol> FindChildren(SymbolTag symbolTag, string name, NameSearchOptions compareFlags)
+	public IEnumerable<Symbol>? FindChildren(SymbolTag symbolTag, string name, NameSearchOptions compareFlags)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindChildren(symbolTag, name, compareFlags, out IEnumSymbols symbols);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public IEnumerable<Symbol> FindChildrenByAddress(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint sectionIndex, uint offset)
+	public IEnumerable<Symbol>? FindChildrenByAddress(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint sectionIndex, uint offset)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindChildrenByAddress(symbolTag, name, compareFlags, sectionIndex, offset, out IEnumSymbols symbols);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public IEnumerable<Symbol> FindChildrenByVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, ulong virtualAddress)
+	public IEnumerable<Symbol>? FindChildrenByVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, ulong virtualAddress)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindChildrenByVA(symbolTag, name, compareFlags, virtualAddress, out IEnumSymbols symbols);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public IEnumerable<Symbol> FindChildrenByRVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint relativeVirtualAddress)
+	public IEnumerable<Symbol>? FindChildrenByRVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint relativeVirtualAddress)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindChildrenByRVA(symbolTag, name, compareFlags, relativeVirtualAddress, out IEnumSymbols symbols);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public uint TargetSection => GetProp<uint>(_native.GetTargetSection);
+	public uint? TargetSection => GetS<uint>(_native.GetTargetSection);
 
-	public uint TargetOffset => GetProp<uint>(_native.GetTargetOffset);
+	public uint? TargetOffset => GetS<uint>(_native.GetTargetOffset);
 
-	public uint TargetRelativeVirtualAddress => GetProp<uint>(_native.GetTargetRelativeVirtualAddress);
+	public uint? TargetRelativeVirtualAddress => GetS<uint>(_native.GetTargetRelativeVirtualAddress);
 
-	public ulong TargetVirtualAddress => GetProp<ulong>(_native.GetTargetVirtualAddress);
+	public ulong? TargetVirtualAddress => GetS<ulong>(_native.GetTargetVirtualAddress);
 
-	public Native.ImageFileMachine MachineType => GetProp<Native.ImageFileMachine>(_native.GetMachineType);
+	public Native.ImageFileMachine? MachineType => GetS<Native.ImageFileMachine>(_native.GetMachineType);
 
-	public uint OemID => GetProp<uint>(_native.GetOemID);
+	public uint? OemID => GetS<uint>(_native.GetOemID);
 
-	public uint OemSymbolID => GetProp<uint>(_native.GetOemSymbolID);
+	public uint? OemSymbolID => GetS<uint>(_native.GetOemSymbolID);
 
-	public Symbol[] Types
+	public Symbol[]? Types
 	{
 		get
 		{
-			ReadOnlySpan<nint> elements = GetProp(_native.GetTypes);
+			void*[]? elements = GetProp(_native.GetTypes);
+
+			if (elements == null) return null;
 
 			Symbol[] symbols = new Symbol[elements.Length];
 
-			for (int i = 0; i < elements.Length; i++) symbols[i] = new(ComHelpers.Wrap<ISymbol>((void*)elements[i]));
+			for (int i = 0; i < elements.Length; i++) symbols[i] = new(ComHelpers.Wrap<ISymbol>(elements[i]));
 
 			return symbols;
 		}
 	}
 
-	public unsafe ReadOnlySpan<uint> TypeIDs => GetProp<uint>(_native.GetTypeIDs);
+	public unsafe uint[]? TypeIDs => GetA<uint>(_native.GetTypeIDs);
 
-	public Symbol ObjectPointerType => new(GetProp<ISymbol>(_native.GetObjectPointerType));
+	public Symbol? ObjectPointerType => TryGetC(_native.GetObjectPointerType, out ISymbol? native) ? new(native) : null;
 
-	public UdtKind UdtKind => GetProp<UdtKind>(_native.GetUdtKind);
+	public UdtKind? UdtKind => GetS<UdtKind>(_native.GetUdtKind);
 
-	public string GetUndecoratedName(UndecorateOptions undecorateOptions = UndecorateOptions.None)
+	public string? GetUndecoratedName(UndecorateOptions undecorateOptions = UndecorateOptions.None)
 	{
 		EnsureNotDisposed();
 
@@ -287,379 +287,379 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 		return undecorated;
 	}
 
-	public bool IsNoReturn => GetProp<bool>(_native.GetIsNoReturn);
+	public bool? IsNoReturn => GetS<bool>(_native.GetIsNoReturn);
 
-	public bool HasCustomCallingConvention => GetProp<bool>(_native.GetHasCustomCallingConvention);
+	public bool? HasCustomCallingConvention => GetS<bool>(_native.GetHasCustomCallingConvention);
 
-	public bool NoInline => GetProp<bool>(_native.GetNoInline);
+	public bool? NoInline => GetS<bool>(_native.GetNoInline);
 
-	public bool HasOptimizedCodeDebugInfo => GetProp<bool>(_native.GetHasOptimizedCodeDebugInfo);
+	public bool? HasOptimizedCodeDebugInfo => GetS<bool>(_native.GetHasOptimizedCodeDebugInfo);
 
-	public bool IsNotReached => GetProp<bool>(_native.GetIsNotReached);
+	public bool? IsNotReached => GetS<bool>(_native.GetIsNotReached);
 
-	public bool HasInterruptReturn => GetProp<bool>(_native.GetHasInterruptReturn);
+	public bool? HasInterruptReturn => GetS<bool>(_native.GetHasInterruptReturn);
 
-	public bool HasFarReturn => GetProp<bool>(_native.GetHasFarReturn);
+	public bool? HasFarReturn => GetS<bool>(_native.GetHasFarReturn);
 
-	public bool IsStatic => GetProp<bool>(_native.GetIsStatic);
+	public bool? IsStatic => GetS<bool>(_native.GetIsStatic);
 
-	public bool HasDebugInfo => GetProp<bool>(_native.GetHasDebugInfo);
+	public bool? HasDebugInfo => GetS<bool>(_native.GetHasDebugInfo);
 
-	public bool IsLTCG => GetProp<bool>(_native.GetIsLTCG);
+	public bool? IsLTCG => GetS<bool>(_native.GetIsLTCG);
 
-	public bool IsDataAligned => GetProp<bool>(_native.GetIsDataAligned);
+	public bool? IsDataAligned => GetS<bool>(_native.GetIsDataAligned);
 
-	public bool HasSecurityChecks => GetProp<bool>(_native.GetHasSecurityChecks);
+	public bool? HasSecurityChecks => GetS<bool>(_native.GetHasSecurityChecks);
 
-	public string CompilerName => GetProp<string>(_native.GetCompilerName);
+	public string? CompilerName => GetC<string>(_native.GetCompilerName);
 
-	public bool HasAlloca => GetProp<bool>(_native.GetHasAlloca);
+	public bool? HasAlloca => GetS<bool>(_native.GetHasAlloca);
 
-	public bool HasSetJump => GetProp<bool>(_native.GetHasSetJump);
+	public bool? HasSetJump => GetS<bool>(_native.GetHasSetJump);
 
-	public bool HasLongJump => GetProp<bool>(_native.GetHasLongJump);
+	public bool? HasLongJump => GetS<bool>(_native.GetHasLongJump);
 
-	public bool HasInlAsm => GetProp<bool>(_native.GetHasInlAsm);
+	public bool? HasInlAsm => GetS<bool>(_native.GetHasInlAsm);
 
-	public bool HasEH => GetProp<bool>(_native.GetHasEH);
+	public bool? HasEH => GetS<bool>(_native.GetHasEH);
 
-	public bool HasSEH => GetProp<bool>(_native.GetHasSEH);
+	public bool? HasSEH => GetS<bool>(_native.GetHasSEH);
 
-	public bool HasEHa => GetProp<bool>(_native.GetHasEHa);
+	public bool? HasEHa => GetS<bool>(_native.GetHasEHa);
 
-	public bool IsNaked => GetProp<bool>(_native.GetIsNaked);
+	public bool? IsNaked => GetS<bool>(_native.GetIsNaked);
 
-	public bool IsAggregated => GetProp<bool>(_native.GetIsAggregated);
+	public bool? IsAggregated => GetS<bool>(_native.GetIsAggregated);
 
-	public bool IsSplitted => GetProp<bool>(_native.GetIsSplitted);
+	public bool? IsSplitted => GetS<bool>(_native.GetIsSplitted);
 
-	public Symbol Container => new(GetProp<ISymbol>(_native.GetContainer));
+	public Symbol? Container => TryGetC(_native.GetContainer, out ISymbol? native) ? new(native) : null;
 
-	public bool InliningSpecified => GetProp<bool>(_native.GetInliningSpecified);
+	public bool? InliningSpecified => GetS<bool>(_native.GetInliningSpecified);
 
-	public bool NoStackOrderingSpecified => GetProp<bool>(_native.GetNoStackOrderingSpecified);
+	public bool? NoStackOrderingSpecified => GetS<bool>(_native.GetNoStackOrderingSpecified);
 
-	public Symbol VirtualBaseTableType => new(GetProp<ISymbol>(_native.GetVirtualBaseTableType));
+	public Symbol? VirtualBaseTableType => TryGetC(_native.GetVirtualBaseTableType, out ISymbol? native) ? new(native) : null;
 
-	public bool HasManagedCode => GetProp<bool>(_native.GetHasManagedCode);
+	public bool? HasManagedCode => GetS<bool>(_native.GetHasManagedCode);
 
-	public bool IsHotpatchable => GetProp<bool>(_native.GetIsHotpatchable);
+	public bool? IsHotpatchable => GetS<bool>(_native.GetIsHotpatchable);
 
-	public bool IsConvertedCIL => GetProp<bool>(_native.GetIsConvertedCIL);
+	public bool? IsConvertedCIL => GetS<bool>(_native.GetIsConvertedCIL);
 
-	public bool IsMSILNetmodule => GetProp<bool>(_native.GetIsMSILNetmodule);
+	public bool? IsMSILNetmodule => GetS<bool>(_native.GetIsMSILNetmodule);
 
-	public bool HasCTypes => GetProp<bool>(_native.GetHasCTypes);
+	public bool? HasCTypes => GetS<bool>(_native.GetHasCTypes);
 
-	public bool IsStripped => GetProp<bool>(_native.GetIsStripped);
+	public bool? IsStripped => GetS<bool>(_native.GetIsStripped);
 
-	public uint FrontendQFE => GetProp<uint>(_native.GetFrontendQFE);
+	public uint? FrontendQFE => GetS<uint>(_native.GetFrontendQFE);
 
-	public uint BackendQFE => GetProp<uint>(_native.GetBackendQFE);
+	public uint? BackendQFE => GetS<uint>(_native.GetBackendQFE);
 
-	public bool WasInlined => GetProp<bool>(_native.GetWasInlined);
+	public bool? WasInlined => GetS<bool>(_native.GetWasInlined);
 
-	public bool HasStrictGSCheck => GetProp<bool>(_native.GetHasStrictGSCheck);
+	public bool? HasStrictGSCheck => GetS<bool>(_native.GetHasStrictGSCheck);
 
-	public bool IsCxxReturnUdt => GetProp<bool>(_native.GetIsCxxReturnUdt);
+	public bool? IsCxxReturnUdt => GetS<bool>(_native.GetIsCxxReturnUdt);
 
-	public bool IsConstructorVirtualBase => GetProp<bool>(_native.GetIsConstructorVirtualBase);
+	public bool? IsConstructorVirtualBase => GetS<bool>(_native.GetIsConstructorVirtualBase);
 
-	public bool IsRValueReference => GetProp<bool>(_native.GetIsRValueReference);
+	public bool? IsRValueReference => GetS<bool>(_native.GetIsRValueReference);
 
-	public Symbol UnmodifiedType => new(GetProp<ISymbol>(_native.GetUnmodifiedType));
+	public Symbol? UnmodifiedType => TryGetC(_native.GetUnmodifiedType, out ISymbol? native) ? new(native) : null;
 
-	public bool FramePointerPresent => GetProp<bool>(_native.GetFramePointerPresent);
+	public bool? FramePointerPresent => GetS<bool>(_native.GetFramePointerPresent);
 
-	public bool HasSafeBuffers => GetProp<bool>(_native.GetHasSafeBuffers);
+	public bool? HasSafeBuffers => GetS<bool>(_native.GetHasSafeBuffers);
 
-	public bool IsIntrinsic => GetProp<bool>(_native.GetIsIntrinsic);
+	public bool? IsIntrinsic => GetS<bool>(_native.GetIsIntrinsic);
 
-	public bool IsSealed => GetProp<bool>(_native.GetIsSealed);
+	public bool? IsSealed => GetS<bool>(_native.GetIsSealed);
 
-	public bool HasHfaFloat => GetProp<bool>(_native.GetHasHfaFloat);
+	public bool? HasHfaFloat => GetS<bool>(_native.GetHasHfaFloat);
 
-	public bool HasHfaDouble => GetProp<bool>(_native.GetHasHfaDouble);
+	public bool? HasHfaDouble => GetS<bool>(_native.GetHasHfaDouble);
 
-	public uint LiveRangeStartAddressSection => GetProp<uint>(_native.GetLiveRangeStartAddressSection);
+	public uint? LiveRangeStartAddressSection => GetS<uint>(_native.GetLiveRangeStartAddressSection);
 
-	public uint LiveRangeStartAddressOffset => GetProp<uint>(_native.GetLiveRangeStartAddressOffset);
+	public uint? LiveRangeStartAddressOffset => GetS<uint>(_native.GetLiveRangeStartAddressOffset);
 
-	public uint LiveRangeStartRelativeVirtualAddress => GetProp<uint>(_native.GetLiveRangeStartRelativeVirtualAddress);
+	public uint? LiveRangeStartRelativeVirtualAddress => GetS<uint>(_native.GetLiveRangeStartRelativeVirtualAddress);
 
-	public uint LiveRangeCount => GetProp<uint>(_native.GetLiveRangeCount);
+	public uint? LiveRangeCount => GetS<uint>(_native.GetLiveRangeCount);
 
-	public ulong LiveRangeLength => GetProp<ulong>(_native.GetLiveRangeLength);
+	public ulong? LiveRangeLength => GetS<ulong>(_native.GetLiveRangeLength);
 
-	public uint OffsetInUdt => GetProp<uint>(_native.GetOffsetInUdt);
+	public uint? OffsetInUdt => GetS<uint>(_native.GetOffsetInUdt);
 
-	public uint ParamBasePointerRegisterID => GetProp<uint>(_native.GetParamBasePointerRegisterID);
+	public uint? ParamBasePointerRegisterID => GetS<uint>(_native.GetParamBasePointerRegisterID);
 
-	public uint LocalBasePointerRegisterID => GetProp<uint>(_native.GetLocalBasePointerRegisterID);
+	public uint? LocalBasePointerRegisterID => GetS<uint>(_native.GetLocalBasePointerRegisterID);
 
-	public bool IsLocationControlFlowDependent => GetProp<bool>(_native.GetIsLocationControlFlowDependent);
+	public bool? IsLocationControlFlowDependent => GetS<bool>(_native.GetIsLocationControlFlowDependent);
 
-	public uint Stride => GetProp<uint>(_native.GetStride);
+	public uint? Stride => GetS<uint>(_native.GetStride);
 
-	public uint NumberOfRows => GetProp<uint>(_native.GetNumberOfRows);
+	public uint? NumberOfRows => GetS<uint>(_native.GetNumberOfRows);
 
-	public uint NumberOfColumns => GetProp<uint>(_native.GetNumberOfColumns);
+	public uint? NumberOfColumns => GetS<uint>(_native.GetNumberOfColumns);
 
-	public bool IsMatrixRowMajor => GetProp<bool>(_native.GetIsMatrixRowMajor);
+	public bool? IsMatrixRowMajor => GetS<bool>(_native.GetIsMatrixRowMajor);
 
-	public ReadOnlySpan<uint> NumericProperties => GetProp<uint>(_native.GetNumericProperties);
+	public uint[]? NumericProperties => GetA<uint>(_native.GetNumericProperties);
 
-	public ReadOnlySpan<ushort> ModifierValues => GetProp<ushort>(_native.GetModifierValues);
+	public ushort[]? ModifierValues => GetA<ushort>(_native.GetModifierValues);
 
-	public bool IsReturnValue => GetProp<bool>(_native.GetIsReturnValue);
+	public bool? IsReturnValue => GetS<bool>(_native.GetIsReturnValue);
 
-	public bool IsOptimizedAway => GetProp<bool>(_native.GetIsOptimizedAway);
+	public bool? IsOptimizedAway => GetS<bool>(_native.GetIsOptimizedAway);
 
-	public BuiltIn BuiltInKind => GetProp<BuiltIn>(_native.GetBuiltInKind);
+	public BuiltIn? BuiltInKind => GetS<BuiltIn>(_native.GetBuiltInKind);
 
-	public Register RegisterType => GetProp<Register>(_native.GetRegisterType);
+	public Register? RegisterType => GetS<Register>(_native.GetRegisterType);
 
-	public uint BaseDataSlot => GetProp<uint>(_native.GetBaseDataSlot);
+	public uint? BaseDataSlot => GetS<uint>(_native.GetBaseDataSlot);
 
-	public uint BaseDataOffset => GetProp<uint>(_native.GetBaseDataOffset);
+	public uint? BaseDataOffset => GetS<uint>(_native.GetBaseDataOffset);
 
-	public uint TextureSlot => GetProp<uint>(_native.GetTextureSlot);
+	public uint? TextureSlot => GetS<uint>(_native.GetTextureSlot);
 
-	public uint SamplerSlot => GetProp<uint>(_native.GetSamplerSlot);
+	public uint? SamplerSlot => GetS<uint>(_native.GetSamplerSlot);
 
-	public uint UavSlot => GetProp<uint>(_native.GetUavSlot);
+	public uint? UavSlot => GetS<uint>(_native.GetUavSlot);
 
-	public uint SizeInUdt => GetProp<uint>(_native.GetSizeInUdt);
+	public uint? SizeInUdt => GetS<uint>(_native.GetSizeInUdt);
 
-	public MemorySpace MemorySpaceKind => GetProp<MemorySpace>(_native.GetMemorySpaceKind);
+	public MemorySpace? MemorySpaceKind => GetS<MemorySpace>(_native.GetMemorySpaceKind);
 
-	public uint UnmodifiedTypeId => GetProp<uint>(_native.GetUnmodifiedTypeId);
+	public uint? UnmodifiedTypeId => GetS<uint>(_native.GetUnmodifiedTypeId);
 
-	public uint SubTypeId => GetProp<uint>(_native.GetSubTypeId);
+	public uint? SubTypeId => GetS<uint>(_native.GetSubTypeId);
 
-	public Symbol SubType => new(GetProp<ISymbol>(_native.GetSubType));
+	public Symbol? SubType => TryGetC(_native.GetSubType, out ISymbol? native) ? new(native) : null;
 
-	public uint NumberOfModifiers => GetProp<uint>(_native.GetNumberOfModifiers);
+	public uint? NumberOfModifiers => GetS<uint>(_native.GetNumberOfModifiers);
 
-	public uint NumberOfRegisterIndices => GetProp<uint>(_native.GetNumberOfRegisterIndices);
+	public uint? NumberOfRegisterIndices => GetS<uint>(_native.GetNumberOfRegisterIndices);
 
-	public bool IsHLSLData => GetProp<bool>(_native.GetIsHLSLData);
+	public bool? IsHLSLData => GetS<bool>(_native.GetIsHLSLData);
 
-	public bool IsPointerToDataMember => GetProp<bool>(_native.GetIsPointerToDataMember);
+	public bool? IsPointerToDataMember => GetS<bool>(_native.GetIsPointerToDataMember);
 
-	public bool IsPointerToMemberFunction => GetProp<bool>(_native.GetIsPointerToMemberFunction);
+	public bool? IsPointerToMemberFunction => GetS<bool>(_native.GetIsPointerToMemberFunction);
 
-	public bool IsSingleInheritance => GetProp<bool>(_native.GetIsSingleInheritance);
+	public bool? IsSingleInheritance => GetS<bool>(_native.GetIsSingleInheritance);
 
-	public bool IsMultipleInheritance => GetProp<bool>(_native.GetIsMultipleInheritance);
+	public bool? IsMultipleInheritance => GetS<bool>(_native.GetIsMultipleInheritance);
 
-	public bool IsVirtualInheritance => GetProp<bool>(_native.GetIsVirtualInheritance);
+	public bool? IsVirtualInheritance => GetS<bool>(_native.GetIsVirtualInheritance);
 
-	public bool RestrictedType => GetProp<bool>(_native.GetRestrictedType);
+	public bool? RestrictedType => GetS<bool>(_native.GetRestrictedType);
 
-	public bool IsPointerBasedOnSymbolValue => GetProp<bool>(_native.GetIsPointerBasedOnSymbolValue);
+	public bool? IsPointerBasedOnSymbolValue => GetS<bool>(_native.GetIsPointerBasedOnSymbolValue);
 
-	public Symbol BaseSymbol => new(GetProp<ISymbol>(_native.GetBaseSymbol));
+	public Symbol? BaseSymbol => TryGetC(_native.GetBaseSymbol, out ISymbol? native) ? new(native) : null;
 
-	public uint BaseSymbolId => GetProp<uint>(_native.GetBaseSymbolId);
+	public uint? BaseSymbolId => GetS<uint>(_native.GetBaseSymbolId);
 
-	public string ObjectFileName => GetProp<string>(_native.GetObjectFileName);
+	public string? ObjectFileName => GetC<string>(_native.GetObjectFileName);
 
-	public bool IsAcceleratorGroupSharedLocal => GetProp<bool>(_native.GetIsAcceleratorGroupSharedLocal);
+	public bool? IsAcceleratorGroupSharedLocal => GetS<bool>(_native.GetIsAcceleratorGroupSharedLocal);
 
-	public bool IsAcceleratorPointerTagLiveRange => GetProp<bool>(_native.GetIsAcceleratorPointerTagLiveRange);
+	public bool? IsAcceleratorPointerTagLiveRange => GetS<bool>(_native.GetIsAcceleratorPointerTagLiveRange);
 
-	public bool IsAcceleratorStubFunction => GetProp<bool>(_native.GetIsAcceleratorStubFunction);
+	public bool? IsAcceleratorStubFunction => GetS<bool>(_native.GetIsAcceleratorStubFunction);
 
-	public uint NumberOfAcceleratorPointerTags => GetProp<uint>(_native.GetNumberOfAcceleratorPointerTags);
+	public uint? NumberOfAcceleratorPointerTags => GetS<uint>(_native.GetNumberOfAcceleratorPointerTags);
 
-	public bool IsSDL => GetProp<bool>(_native.GetIsSDL);
+	public bool? IsSDL => GetS<bool>(_native.GetIsSDL);
 
-	public bool IsWinRTPointer => GetProp<bool>(_native.GetIsWinRTPointer);
+	public bool? IsWinRTPointer => GetS<bool>(_native.GetIsWinRTPointer);
 
-	public bool IsRefUdt => GetProp<bool>(_native.GetIsRefUdt);
+	public bool? IsRefUdt => GetS<bool>(_native.GetIsRefUdt);
 
-	public bool IsValueUdt => GetProp<bool>(_native.GetIsValueUdt);
+	public bool? IsValueUdt => GetS<bool>(_native.GetIsValueUdt);
 
-	public bool IsInterfaceUdt => GetProp<bool>(_native.GetIsInterfaceUdt);
+	public bool? IsInterfaceUdt => GetS<bool>(_native.GetIsInterfaceUdt);
 
-	public IEnumerable<Symbol> FindInlineFramesByAddress(uint sectionIndex, uint offset)
+	public IEnumerable<Symbol>? FindInlineFramesByAddress(uint sectionIndex, uint offset)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindInlineFramesByAddress(sectionIndex, offset, out IEnumSymbols symbols);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public IEnumerable<Symbol> FindInlineFramesByRVA(uint relativeVirtualAddress)
+	public IEnumerable<Symbol>? FindInlineFramesByRVA(uint relativeVirtualAddress)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindInlineFramesByRVA(relativeVirtualAddress, out IEnumSymbols symbols);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public IEnumerable<Symbol> FindInlineFramesByVA(ulong virtualAddress)
+	public IEnumerable<Symbol>? FindInlineFramesByVA(ulong virtualAddress)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindInlineFramesByVA(virtualAddress, out IEnumSymbols symbols);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public IEnumerable<LineNumber> InlineeLines => new LineNumberEnumerable(GetProp<IEnumLineNumbers>(_native.FindInlineeLines));
+	public IEnumerable<LineNumber>? InlineeLines => TryGetC(_native.FindInlineeLines, out IEnumLineNumbers? native) ? new LineNumberEnumerable(native) : null;
 
-	public IEnumerable<LineNumber> FindInlineeLinesByAddress(uint sectionIndex, uint offset, uint length)
+	public IEnumerable<LineNumber>? FindInlineeLinesByAddress(uint sectionIndex, uint offset, uint length)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindInlineeLinesByAddress(sectionIndex, offset, length, out IEnumLineNumbers numbers);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new LineNumberEnumerable(numbers);
 	}
 
-	public IEnumerable<LineNumber> FindInlineeLinesByRVA(uint relativeVirtualAddress, uint length)
+	public IEnumerable<LineNumber>? FindInlineeLinesByRVA(uint relativeVirtualAddress, uint length)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindInlineeLinesByRVA(relativeVirtualAddress, length, out IEnumLineNumbers numbers);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new LineNumberEnumerable(numbers);
 	}
 
-	public IEnumerable<LineNumber> FindInlineeLinesByVA(ulong virtualAddress, uint length)
+	public IEnumerable<LineNumber>? FindInlineeLinesByVA(ulong virtualAddress, uint length)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindInlineeLinesByVA(virtualAddress, length, out IEnumLineNumbers numbers);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new LineNumberEnumerable(numbers);
 	}
 
-	public IEnumerable<Symbol> FindSymbolsForAcceleratorPointerTag(uint tagValue)
+	public IEnumerable<Symbol>? FindSymbolsForAcceleratorPointerTag(uint tagValue)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindSymbolsForAcceleratorPointerTag(tagValue, out IEnumSymbols symbols);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public IEnumerable<Symbol> FindSymbolsByRVAForAcceleratorPointerTag(uint tagValue, uint relativeVirtualAddress)
+	public IEnumerable<Symbol>? FindSymbolsByRVAForAcceleratorPointerTag(uint tagValue, uint relativeVirtualAddress)
 	{
 		EnsureNotDisposed();
 
 		int result = _native.FindSymbolsByRVAForAcceleratorPointerTag(tagValue, relativeVirtualAddress, out IEnumSymbols symbols);
 
-		if (result == 1) return [];
+		if (result == 1) return null;
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public ReadOnlySpan<uint> AcceleratorPointerTags => GetProp<uint>(_native.GetAcceleratorPointerTags);
+	public IEnumerable<uint>? AcceleratorPointerTags => GetA<uint>(_native.GetAcceleratorPointerTags);
 
-	public LineNumber SourceLineOnTypeDefinition => new(GetProp<ILineNumber>(_native.GetSourceLineOnTypeDefinition));
+	public LineNumber? SourceLineOnTypeDefinition => TryGetC(_native.GetSourceLineOnTypeDefinition, out ILineNumber? native) ? new(native) : null;
 
-	public bool IsPGO => GetProp<bool>(_native.GetIsPGO);
+	public bool? IsPGO => GetS<bool>(_native.GetIsPGO);
 
-	public bool HasValidPGOCounts => GetProp<bool>(_native.GetHasValidPGOCounts);
+	public bool? HasValidPGOCounts => GetS<bool>(_native.GetHasValidPGOCounts);
 
-	public bool IsOptimizedForSpeed => GetProp<bool>(_native.GetIsOptimizedForSpeed);
+	public bool? IsOptimizedForSpeed => GetS<bool>(_native.GetIsOptimizedForSpeed);
 
-	public uint PGOEntryCount => GetProp<uint>(_native.GetPGOEntryCount);
+	public uint? PGOEntryCount => GetS<uint>(_native.GetPGOEntryCount);
 
-	public uint PGOEdgeCount => GetProp<uint>(_native.GetPGOEdgeCount);
+	public uint? PGOEdgeCount => GetS<uint>(_native.GetPGOEdgeCount);
 
-	public ulong PGODynamicInstructionCount => GetProp<ulong>(_native.GetPGODynamicInstructionCount);
+	public ulong? PGODynamicInstructionCount => GetS<ulong>(_native.GetPGODynamicInstructionCount);
 
-	public uint StaticSize => GetProp<uint>(_native.GetStaticSize);
+	public uint? StaticSize => GetS<uint>(_native.GetStaticSize);
 
-	public uint FinalLiveStaticSize => GetProp<uint>(_native.GetFinalLiveStaticSize);
+	public uint? FinalLiveStaticSize => GetS<uint>(_native.GetFinalLiveStaticSize);
 
-	public string PhaseName => GetProp<string>(_native.GetPhaseName);
+	public string? PhaseName => GetC<string>(_native.GetPhaseName);
 
-	public bool HasControlFlowCheck => GetProp<bool>(_native.GetHasControlFlowCheck);
+	public bool? HasControlFlowCheck => GetS<bool>(_native.GetHasControlFlowCheck);
 
-	public bool IsConstantExport => GetProp<bool>(_native.GetIsConstantExport);
+	public bool? IsConstantExport => GetS<bool>(_native.GetIsConstantExport);
 
-	public bool IsDataExport => GetProp<bool>(_native.GetIsDataExport);
+	public bool? IsDataExport => GetS<bool>(_native.GetIsDataExport);
 
-	public bool PrivateExport => GetProp<bool>(_native.GetPrivateExport);
+	public bool? PrivateExport => GetS<bool>(_native.GetPrivateExport);
 
-	public bool NoNameExport => GetProp<bool>(_native.GetNoNameExport);
+	public bool? NoNameExport => GetS<bool>(_native.GetNoNameExport);
 
-	public bool ExportHasExplicitlyAssignedOrdinal => GetProp<bool>(_native.GetExportHasExplicitlyAssignedOrdinal);
+	public bool? ExportHasExplicitlyAssignedOrdinal => GetS<bool>(_native.GetExportHasExplicitlyAssignedOrdinal);
 
-	public bool ExportIsForwarder => GetProp<bool>(_native.GetExportIsForwarder);
+	public bool? ExportIsForwarder => GetS<bool>(_native.GetExportIsForwarder);
 
-	public uint Ordinal => GetProp<uint>(_native.GetOrdinal);
+	public uint? Ordinal => GetS<uint>(_native.GetOrdinal);
 
-	public uint FrameSize => GetProp<uint>(_native.GetFrameSize);
+	public uint? FrameSize => GetS<uint>(_native.GetFrameSize);
 
-	public uint ExceptionHandlerAddressSection => GetProp<uint>(_native.GetExceptionHandlerAddressSection);
+	public uint? ExceptionHandlerAddressSection => GetS<uint>(_native.GetExceptionHandlerAddressSection);
 
-	public uint ExceptionHandlerAddressOffset => GetProp<uint>(_native.GetExceptionHandlerAddressOffset);
+	public uint? ExceptionHandlerAddressOffset => GetS<uint>(_native.GetExceptionHandlerAddressOffset);
 
-	public uint ExceptionHandlerRelativeVirtualAddress => GetProp<uint>(_native.GetExceptionHandlerRelativeVirtualAddress);
+	public uint? ExceptionHandlerRelativeVirtualAddress => GetS<uint>(_native.GetExceptionHandlerRelativeVirtualAddress);
 
-	public ulong ExceptionHandlerVirtualAddress => GetProp<ulong>(_native.GetExceptionHandlerVirtualAddress);
+	public ulong? ExceptionHandlerVirtualAddress => GetS<ulong>(_native.GetExceptionHandlerVirtualAddress);
 
-	public InputAssemblyFile InputAssemblyFile => new(GetProp<IInputAssemblyFile>(_native.FindInputAssemblyFile));
+	public InputAssemblyFile? InputAssemblyFile => TryGetC(_native.FindInputAssemblyFile, out IInputAssemblyFile? native) ? new(native) : null;
 
-	public uint Characteristics => GetProp<uint>(_native.GetCharacteristics);
+	public uint? Characteristics => GetS<uint>(_native.GetCharacteristics);
 
-	public Symbol CoffGroup => new(GetProp<ISymbol>(_native.GetCoffGroup));
+	public Symbol? CoffGroup => TryGetC(_native.GetCoffGroup, out ISymbol? native) ? new(native) : null;
 
-	public uint BindID => GetProp<uint>(_native.GetBindID);
+	public uint? BindID => GetS<uint>(_native.GetBindID);
 
-	public uint BindSpace => GetProp<uint>(_native.GetBindSpace);
+	public uint? BindSpace => GetS<uint>(_native.GetBindSpace);
 
-	public uint BindSlot => GetProp<uint>(_native.GetBindSlot);
+	public uint? BindSlot => GetS<uint>(_native.GetBindSlot);
 
 	#endregion
 
 	#region ISymbol2
 
-	public bool ObjectiveCClass
+	public bool? ObjectiveCClass
 	{
 		get
 		{
 			ISymbol2 symbol = EnsureAndQuery<ISymbol2>();
 
-			bool value = GetProp<bool>(symbol.GetIsObjectiveCClass);
+			bool? value = GetS<bool>(symbol.GetIsObjectiveCClass);
 
 			ComHelpers.Release(ref symbol);
 
@@ -667,13 +667,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 		}
 	}
 
-	public bool ObjectiveCCategory
+	public bool? ObjectiveCCategory
 	{
 		get
 		{
 			ISymbol2 symbol = EnsureAndQuery<ISymbol2>();
 
-			bool value = GetProp<bool>(symbol.GetIsObjectiveCCategory);
+			bool? value = GetS<bool>(symbol.GetIsObjectiveCCategory);
 
 			ComHelpers.Release(ref symbol);
 
@@ -681,13 +681,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 		}
 	}
 
-	public bool ObjectiveCProtocol
+	public bool? ObjectiveCProtocol
 	{
 		get
 		{
 			ISymbol2 symbol = EnsureAndQuery<ISymbol2>();
 
-			bool value = GetProp<bool>(symbol.GetIsObjectiveCProtocol);
+			bool? value = GetS<bool>(symbol.GetIsObjectiveCProtocol);
 
 			ComHelpers.Release(ref symbol);
 
@@ -699,27 +699,27 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	#region ISymbol3
 
-	public Symbol Inlinee
+	public Symbol? Inlinee
 	{
 		get
 		{
 			ISymbol3 symbol = EnsureAndQuery<ISymbol3>();
 
-			ISymbol value = GetProp<ISymbol>(symbol.GetInlinee);
+			Symbol? value = TryGetC(symbol.GetInlinee, out ISymbol? native) ? new(native) : null;
 
 			ComHelpers.Release(ref symbol);
 
-			return new(value);
+			return value;
 		}
 	}
 
-	public uint InlineeID
+	public uint? InlineeID
 	{
 		get
 		{
 			ISymbol3 symbol = EnsureAndQuery<ISymbol3>();
 
-			uint value = GetProp<uint>(symbol.GetInlineeID);
+			uint? value = GetS<uint>(symbol.GetInlineeID);
 
 			ComHelpers.Release(ref symbol);
 
@@ -731,13 +731,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	#region ISymbol4
 
-	public bool NoExcept
+	public bool? NoExcept
 	{
 		get
 		{
 			ISymbol4 symbol = EnsureAndQuery<ISymbol4>();
 
-			bool value = GetProp<bool>(symbol.GetIsNoExcept);
+			bool? value = GetS<bool>(symbol.GetIsNoExcept);
 
 			ComHelpers.Release(ref symbol);
 
@@ -749,13 +749,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	#region ISymbol5
 
-	public bool AbsoluteAddress
+	public bool? AbsoluteAddress
 	{
 		get
 		{
 			ISymbol5 symbol = EnsureAndQuery<ISymbol5>();
 
-			bool value = GetProp<bool>(symbol.GetHasAbsoluteAddress);
+			bool? value = GetS<bool>(symbol.GetHasAbsoluteAddress);
 
 			ComHelpers.Release(ref symbol);
 
@@ -767,13 +767,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	#region ISymbol6
 
-	public bool StaticMemberFunction
+	public bool? StaticMemberFunction
 	{
 		get
 		{
 			ISymbol6 symbol = EnsureAndQuery<ISymbol6>();
 
-			bool value = GetProp<bool>(symbol.GetIsStaticMemberFunction);
+			bool? value = GetS<bool>(symbol.GetIsStaticMemberFunction);
 
 			ComHelpers.Release(ref symbol);
 
@@ -785,13 +785,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	#region ISymbol7
 
-	public bool SignedReturn
+	public bool? SignedReturn
 	{
 		get
 		{
 			ISymbol7 symbol = EnsureAndQuery<ISymbol7>();
 
-			bool value = GetProp<bool>(symbol.GetIsSignedReturn);
+			bool? value = GetS<bool>(symbol.GetIsSignedReturn);
 
 			ComHelpers.Release(ref symbol);
 
@@ -803,13 +803,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	#region ISymbol8
 
-	public CoroutineKind CoroutineKind
+	public CoroutineKind? CoroutineKind
 	{
 		get
 		{
 			ISymbol8 symbol = EnsureAndQuery<ISymbol8>();
 
-			CoroutineKind value = GetProp<CoroutineKind>(symbol.GetCoroutineKind);
+			CoroutineKind? value = GetS<CoroutineKind>(symbol.GetCoroutineKind);
 
 			ComHelpers.Release(ref symbol);
 
@@ -817,13 +817,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 		}
 	}
 
-	public AssociationKind AssociatedSymbolKind
+	public AssociationKind? AssociatedSymbolKind
 	{
 		get
 		{
 			ISymbol8 symbol = EnsureAndQuery<ISymbol8>();
 
-			AssociationKind value = GetProp<AssociationKind>(symbol.GetAssociatedSymbolKind);
+			AssociationKind? value = GetS<AssociationKind>(symbol.GetAssociatedSymbolKind);
 
 			ComHelpers.Release(ref symbol);
 
@@ -831,13 +831,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 		}
 	}
 
-	public uint AssociatedSymbolSection
+	public uint? AssociatedSymbolSection
 	{
 		get
 		{
 			ISymbol8 symbol = EnsureAndQuery<ISymbol8>();
 
-			uint value = GetProp<uint>(symbol.GetAssociatedSymbolSection);
+			uint? value = GetS<uint>(symbol.GetAssociatedSymbolSection);
 
 			ComHelpers.Release(ref symbol);
 
@@ -845,13 +845,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 		}
 	}
 
-	public uint AssociatedSymbolOffset
+	public uint? AssociatedSymbolOffset
 	{
 		get
 		{
 			ISymbol8 symbol = EnsureAndQuery<ISymbol8>();
 
-			uint value = GetProp<uint>(symbol.GetAssociatedSymbolOffset);
+			uint? value = GetS<uint>(symbol.GetAssociatedSymbolOffset);
 
 			ComHelpers.Release(ref symbol);
 
@@ -859,13 +859,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 		}
 	}
 
-	public uint AssociatedSymbolRVA
+	public uint? AssociatedSymbolRVA
 	{
 		get
 		{
 			ISymbol8 symbol = EnsureAndQuery<ISymbol8>();
 
-			uint value = GetProp<uint>(symbol.GetAssociatedSymbolRVA);
+			uint? value = GetS<uint>(symbol.GetAssociatedSymbolRVA);
 
 			ComHelpers.Release(ref symbol);
 
@@ -873,13 +873,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 		}
 	}
 
-	public ulong AssociatedSymbolAddress
+	public ulong? AssociatedSymbolAddress
 	{
 		get
 		{
 			ISymbol8 symbol = EnsureAndQuery<ISymbol8>();
 
-			ulong value = GetProp<ulong>(symbol.GetAssociatedSymbolAddress);
+			ulong? value = GetS<ulong>(symbol.GetAssociatedSymbolAddress);
 
 			ComHelpers.Release(ref symbol);
 
@@ -891,13 +891,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	#region ISymbol9
 
-	public uint FramePadSize
+	public uint? FramePadSize
 	{
 		get
 		{
 			ISymbol9 symbol = EnsureAndQuery<ISymbol9>();
 
-			uint value = GetProp<uint>(symbol.GetFramePadSize);
+			uint? value = GetS<uint>(symbol.GetFramePadSize);
 
 			ComHelpers.Release(ref symbol);
 
@@ -905,13 +905,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 		}
 	}
 
-	public uint FramePadOffset
+	public uint? FramePadOffset
 	{
 		get
 		{
 			ISymbol9 symbol = EnsureAndQuery<ISymbol9>();
 
-			uint value = GetProp<uint>(symbol.GetFramePadOffset);
+			uint? value = GetS<uint>(symbol.GetFramePadOffset);
 
 			ComHelpers.Release(ref symbol);
 
@@ -919,13 +919,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 		}
 	}
 
-	public bool RuntimeStaticChecked
+	public bool? RuntimeStaticChecked
 	{
 		get
 		{
 			ISymbol9 symbol = EnsureAndQuery<ISymbol9>();
 
-			bool value = GetProp<bool>(symbol.GetIsRuntimeStaticChecked);
+			bool? value = GetS<bool>(symbol.GetIsRuntimeStaticChecked);
 
 			ComHelpers.Release(ref symbol);
 
@@ -937,13 +937,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	#region ISymbol10
 
-	public ReadOnlySpan<byte> SourceLink
+	public byte[]? SourceLink
 	{
 		get
 		{
 			ISymbol10 symbol = EnsureAndQuery<ISymbol10>();
 
-			ReadOnlySpan<byte> value = GetProp<byte>(symbol.GetSourceLink);
+			byte[]? value = GetA<byte>(symbol.GetSourceLink);
 
 			ComHelpers.Release(ref symbol);
 
@@ -955,26 +955,31 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	#region ISymbol11
 
-	public void GetDiscriminatedUnionTag(out ISymbol tagType, out uint tagOffset, out TagValue tagMask)
-	{
-		ISymbol11 symbol = EnsureAndQuery<ISymbol11>();
-
-		int result = symbol.GetDiscriminatedUnionTag(out tagType, out tagOffset, out tagMask);
-
-		if (result == (int)KnownResult.S_FALSE) throw new InvalidOperationException("Property is unsupported in the object's current state.");
-
-		if (result < 0) Marshal.ThrowExceptionForHR(result);
-
-		ComHelpers.Release(ref symbol);
-	}
-
-	public ReadOnlySpan<TagValue> TagRanges
+	public DiscriminatedUnionTag? DiscriminatedUnionTag
 	{
 		get
 		{
 			ISymbol11 symbol = EnsureAndQuery<ISymbol11>();
 
-			ReadOnlySpan<TagValue> value = GetProp<TagValue>(symbol.GetTagRanges);
+			int result = symbol.GetDiscriminatedUnionTag(out ISymbol type, out uint offset, out TagValue mask);
+
+			ComHelpers.Release(ref symbol);
+
+			if (result == 1) return null;
+
+			if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+			return new(new(type), offset, mask);
+		}
+	}
+
+	public TagValue[]? TagRanges
+	{
+		get
+		{
+			ISymbol11 symbol = EnsureAndQuery<ISymbol11>();
+
+			TagValue[]? value = GetA<TagValue>(symbol.GetTagRanges);
 
 			ComHelpers.Release(ref symbol);
 

@@ -6,31 +6,31 @@ namespace DiaSharp.Managed;
 
 public class LineNumber(ILineNumber native) : ComObject<ILineNumber>(native)
 {
-	public Symbol Compiland => new(GetProp<ISymbol>(_native.GetCompiland));
+	public Symbol? Compiland => TryGetC(_native.GetCompiland, out ISymbol? native) ? new(native) : null;
 
-	public SourceFile SourceFile => new(GetProp<ISourceFile>(_native.GetSourceFile));
+	public SourceFile? SourceFile => TryGetC(_native.GetSourceFile, out ISourceFile? native) ? new(native) : null;
 
-	public uint Line => GetProp<uint>(_native.GetLineNumber);
+	public uint? Line => GetS<uint>(_native.GetLineNumber);
 
-	public uint LineEnd => GetProp<uint>(_native.GetLineNumberEnd);
+	public uint? LineEnd => GetS<uint>(_native.GetLineNumberEnd);
 
-	public uint ColumnNumber => GetProp<uint>(_native.GetColumnNumber);
+	public uint? ColumnNumber => GetS<uint>(_native.GetColumnNumber);
 
-	public uint ColumnNumberEnd => GetProp<uint>(_native.GetColumnNumberEnd);
+	public uint? ColumnNumberEnd => GetS<uint>(_native.GetColumnNumberEnd);
 
-	public uint SectionAddress => GetProp<uint>(_native.GetSectionAddress);
+	public uint? SectionAddress => GetS<uint>(_native.GetSectionAddress);
 
-	public uint OffsetAddress => GetProp<uint>(_native.GetOffsetAddress);
+	public uint? OffsetAddress => GetS<uint>(_native.GetOffsetAddress);
 
-	public uint RelativeVirtualAddress => GetProp<uint>(_native.GetRelativeVirtualAddress);
+	public uint? RelativeVirtualAddress => GetS<uint>(_native.GetRelativeVirtualAddress);
 
-	public ulong VirtualAddress => GetProp<ulong>(_native.GetVirtualAddress);
+	public ulong? VirtualAddress => GetS<ulong>(_native.GetVirtualAddress);
 
-	public uint Length => GetProp<uint>(_native.GetLength);
+	public uint? Length => GetS<uint>(_native.GetLength);
 
-	public uint SourceFileID => GetProp<uint>(_native.GetSourceFileID);
+	public uint? SourceFileID => GetS<uint>(_native.GetSourceFileID);
 
-	public int Statement => GetProp<int>(_native.GetStatement);
+	public int? Statement => GetS<int>(_native.GetStatement);
 
-	public uint CompilandID => GetProp< uint>(_native.GetCompilandID);
+	public uint? CompilandID => GetS<uint>(_native.GetCompilandID);
 }

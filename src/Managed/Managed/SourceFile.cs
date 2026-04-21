@@ -8,13 +8,13 @@ namespace DiaSharp.Managed;
 
 public class SourceFile(ISourceFile native) : ComObject<ISourceFile>(native)
 {
-	public uint UniqueID => GetProp<uint>(_native.GetUniqueID);
+	public uint? UniqueID => GetS<uint>(_native.GetUniqueID);
 
-	public string FileName => GetProp<string>(_native.GetFileName);
+	public string? FileName => GetC<string>(_native.GetFileName);
 
-	public SourceChecksumType ChecksumType => GetProp<SourceChecksumType>(_native.GetChecksumType);
+	public SourceChecksumType? ChecksumType => GetS<SourceChecksumType>(_native.GetChecksumType);
 
-	public IEnumerable<Symbol> Compilands => new SymbolEnumerable(GetProp<IEnumSymbols>(_native.GetCompilands));
+	public IEnumerable<Symbol>? Compilands => TryGetC(_native.GetCompilands, out IEnumSymbols? native) ? new SymbolEnumerable(native) : null;
 
-	public unsafe ReadOnlySpan<byte> Checksum => GetProp<byte>(_native.GetChecksum);
+	public unsafe ReadOnlySpan<byte> Checksum => GetA<byte>(_native.GetChecksum);
 }
