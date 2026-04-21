@@ -4,6 +4,10 @@
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.DisableRuntimeMarshallingAttribute"/>
+	</ItemGroup>
+
 	<PropertyGroup Label="Nuget">
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 

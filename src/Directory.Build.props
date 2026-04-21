@@ -1,4 +1,5 @@
 <Project>
+
 	<PropertyGroup>
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -28,4 +29,5 @@
 		<Using Include="System.Runtime.CompilerServices" />
 		<Using Include="System.Runtime.InteropServices" />
 	</ItemGroup>
+
 </Project>
