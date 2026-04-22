@@ -177,7 +177,7 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 	{
 		EnsureNotDisposed();
 
-		int result = _native.FindChildrenUnaware(symbolsymbolTag, name, compareFlags, out IEnumSymbols symbols);
+		int result = _native.FindChildrenUnaware(symbolTag, name, compareFlags, out IEnumSymbols symbols);
 
 		if (result == (int)KnownResult.S_FALSE) return null;
 
@@ -190,7 +190,7 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 	{
 		EnsureNotDisposed();
 
-		int result = _native.FindChildren(symbolsymbolTag, name, compareFlags, out IEnumSymbols symbols);
+		int result = _native.FindChildren(symbolTag, name, compareFlags, out IEnumSymbols symbols);
 
 		if (result == (int)KnownResult.S_FALSE) return null;
 
@@ -203,7 +203,7 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 	{
 		EnsureNotDisposed();
 
-		int result = _native.FindChildrenByAddress(symbolsymbolTag, name, compareFlags, sectionIndex, offset, out IEnumSymbols symbols);
+		int result = _native.FindChildrenByAddress(symbolTag, name, compareFlags, sectionIndex, offset, out IEnumSymbols symbols);
 
 		if (result == (int)KnownResult.S_FALSE) return null;
 
@@ -216,7 +216,7 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 	{
 		EnsureNotDisposed();
 
-		int result = _native.FindChildrenByVA(symbolsymbolTag, name, compareFlags, virtualAddress, out IEnumSymbols symbols);
+		int result = _native.FindChildrenByVA(symbolTag, name, compareFlags, virtualAddress, out IEnumSymbols symbols);
 
 		if (result == (int)KnownResult.S_FALSE) return null;
 
@@ -229,7 +229,7 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 	{
 		EnsureNotDisposed();
 
-		int result = _native.FindChildrenByRVA(symbolsymbolTag, name, compareFlags, relativeVirtualAddress, out IEnumSymbols symbols);
+		int result = _native.FindChildrenByRVA(symbolTag, name, compareFlags, relativeVirtualAddress, out IEnumSymbols symbols);
 
 		if (result == (int)KnownResult.S_FALSE) return null;
 

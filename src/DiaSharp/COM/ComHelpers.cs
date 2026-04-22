@@ -106,7 +106,7 @@ public static unsafe partial class ComHelpers
 				default: break;
 
 				case      ClassNotRegisteredException.HResultValue: throw new      ClassNotRegisteredException(classID, typeof(I), classContext);
-				case        AggregateUnsupportedException.HResultValue: throw new        AggregateUnsupportedException(classID, typeof(I));
+				case    AggregateUnsupportedException.HResultValue: throw new    AggregateUnsupportedException(classID, typeof(I));
 				case InterfaceNotImplementedException.HResultValue: throw new InterfaceNotImplementedException(classID, typeof(I));
 			}
 
