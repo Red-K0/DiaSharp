@@ -11,7 +11,7 @@ internal class DebugStreamDataEnumerable(IEnumDebugStreamData native) : ComEnume
 	// We then need to read each block as [uint size][byte[] bytes], where the blocks are contiguously laid out.
 	// This unfortunately leads to a temporarily doubled memory size if the approach of multiple batched items is used.
 	// As a result, a less time-optimal implementation is used, in exchange for not blowing up the heap.
-	protected override unsafe bool TryFetchBatch()
+	protected override unsafe uint TryFetchBatch()
 	{
 #if USE_LARGE_BUFFERS
 
@@ -19,7 +19,7 @@ internal class DebugStreamDataEnumerable(IEnumDebugStreamData native) : ComEnume
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-		if (allocSize == 0) return false;
+		if (allocSize == 0) return 0;
 
 		void* alloc = NativeMemory.Alloc(allocSize);
 
@@ -29,7 +29,7 @@ internal class DebugStreamDataEnumerable(IEnumDebugStreamData native) : ComEnume
 
 			if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-			if (fetched == 0) return false;
+			if (fetched == 0) return 0;
 
 			byte* pointer = (byte*)alloc;
 
@@ -48,7 +48,7 @@ internal class DebugStreamDataEnumerable(IEnumDebugStreamData native) : ComEnume
 				AddToCache(buffer);
 			}
 
-			return true;
+			return fetched;
 		}
 		finally
 		{
@@ -57,13 +57,15 @@ internal class DebugStreamDataEnumerable(IEnumDebugStreamData native) : ComEnume
 
 #else
 
+		uint totalFetched = 0;
+
 		for (int i = 0; i < _batchSize; i++)
 		{
 			int result = _native.GetNext(1, 0, out uint bufferSize, null, out uint fetched);
 
 			if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-			if (fetched == 0) return _objectCacheIndex != -1;
+			if (fetched == 0) return totalFetched;
 
 			if (bufferSize > int.MaxValue) throw new InvalidDataException(_dataSizeMessage);
 
@@ -74,9 +76,11 @@ internal class DebugStreamDataEnumerable(IEnumDebugStreamData native) : ComEnume
 			if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 			AddToCache(buffer);
+
+			totalFetched++;
 		}
 
-		return true;
+		return totalFetched;
 
 #endif
 	}

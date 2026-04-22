@@ -9,7 +9,7 @@ namespace DiaSharp.CodeView;
 /// <para> The C++ <see langword="friend"/> access specifier is not included here because it is typically used by non-member functions, which have access to both private and protected elements of a class. </para>
 /// <para> Use the Symbol::GetsymTag method to find symbols with <see cref="SymbolTag.Friend"/> access. </para>
 /// </remarks>
-public enum Access
+public enum Access : uint
 {
 	Private   = 0,
 	Public    = 1,

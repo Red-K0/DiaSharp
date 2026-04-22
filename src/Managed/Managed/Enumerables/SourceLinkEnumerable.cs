@@ -5,7 +5,7 @@ namespace DiaSharp.Managed.Enumerables;
 
 internal class SourceLinkEnumerable(IEnumSourceLink native) : ComEnumerable<IEnumSourceLink, byte[]>(native)
 {
-	protected override unsafe bool TryFetchBatch()
+	protected override unsafe uint TryFetchBatch()
 	{
 		int result = _native.SizeOfNext(out uint bufferSize);
 
@@ -17,10 +17,10 @@ internal class SourceLinkEnumerable(IEnumSourceLink native) : ComEnumerable<IEnu
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-		if (result == (int)KnownResult.S_FALSE) return false;
+		if (result == (int)KnownResult.S_FALSE) return 0;
 
 		AddToCache(managed);
 
-		return true;
+		return 1;
 	}
 }

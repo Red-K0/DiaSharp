@@ -485,15 +485,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.GetAccess(out uint result)
+	int ISymbol8.GetAccess(out Access result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		Unsafe.SkipInit(out result);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __result_native = &result)
+		fixed (Access* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[22])(__this, __result_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, Access*, int>)__vtable_native[22])(__this, __result_native);
 		}
 
 		GC.KeepAlive(this);
@@ -533,15 +533,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.GetPlatform(out uint result)
+	int ISymbol8.GetPlatform(out CpuType result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		Unsafe.SkipInit(out result);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __result_native = &result)
+		fixed (CpuType* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[24])(__this, __result_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, CpuType*, int>)__vtable_native[24])(__this, __result_native);
 		}
 
 		GC.KeepAlive(this);
@@ -549,15 +549,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.GetLanguage(out uint result)
+	int ISymbol8.GetLanguage(out CompileFlagLanguage result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		Unsafe.SkipInit(out result);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __result_native = &result)
+		fixed (CompileFlagLanguage* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[25])(__this, __result_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, CompileFlagLanguage*, int>)__vtable_native[25])(__this, __result_native);
 		}
 
 		GC.KeepAlive(this);
@@ -841,15 +841,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.GetCallingConvention(out uint result)
+	int ISymbol8.GetCallingConvention(out DiaSharp.CodeView.CallingConvention result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		Unsafe.SkipInit(out result);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __result_native = &result)
+		fixed (DiaSharp.CodeView.CallingConvention* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[41])(__this, __result_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, DiaSharp.CodeView.CallingConvention*, int>)__vtable_native[41])(__this, __result_native);
 		}
 
 		GC.KeepAlive(this);
@@ -873,15 +873,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.GetBaseType(out uint result)
+	int ISymbol8.GetBaseType(out BasicType result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		Unsafe.SkipInit(out result);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __result_native = &result)
+		fixed (BasicType* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[43])(__this, __result_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, BasicType*, int>)__vtable_native[43])(__this, __result_native);
 		}
 
 		GC.KeepAlive(this);
@@ -1658,7 +1658,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.FindChildrenUnaware(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, out IEnumSymbols result)
+	int ISymbol8.FindChildrenUnaware(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		bool __invokeSucceeded = default!;
@@ -1692,7 +1692,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.FindChildren(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, out IEnumSymbols result)
+	int ISymbol8.FindChildren(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		bool __invokeSucceeded = default!;
@@ -1726,7 +1726,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.FindChildrenByAddress(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result)
+	int ISymbol8.FindChildrenByAddress(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		bool __invokeSucceeded = default!;
@@ -1760,7 +1760,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.FindChildrenByVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result)
+	int ISymbol8.FindChildrenByVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		bool __invokeSucceeded = default!;
@@ -1794,7 +1794,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.FindChildrenByRVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result)
+	int ISymbol8.FindChildrenByRVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		bool __invokeSucceeded = default!;
@@ -2441,7 +2441,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.GetIsSplitted(out bool result)
+	int ISymbol8.GetIsSplit(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		Unsafe.SkipInit(out result);
@@ -4539,15 +4539,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	}
 
 	[SkipLocalsInit]
-	int ISymbol8.GetCharacteristics(out uint result)
+	int ISymbol8.GetCharacteristics(out SectionCharacteristics result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol8));
 		Unsafe.SkipInit(out result);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __result_native = &result)
+		fixed (SectionCharacteristics* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[234])(__this, __result_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, SectionCharacteristics*, int>)__vtable_native[234])(__this, __result_native);
 		}
 
 		GC.KeepAlive(this);
@@ -4820,10 +4820,10 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	int ISymbol.GetVolatileType(out bool result) => throw new UnreachableException();
 	int ISymbol.GetConstType(out bool result) => throw new UnreachableException();
 	int ISymbol.GetUnalignedType(out bool result) => throw new UnreachableException();
-	int ISymbol.GetAccess(out uint result) => throw new UnreachableException();
+	int ISymbol.GetAccess(out Access result) => throw new UnreachableException();
 	int ISymbol.GetLibraryName(out string result) => throw new UnreachableException();
-	int ISymbol.GetPlatform(out uint result) => throw new UnreachableException();
-	int ISymbol.GetLanguage(out uint result) => throw new UnreachableException();
+	int ISymbol.GetPlatform(out CpuType result) => throw new UnreachableException();
+	int ISymbol.GetLanguage(out CompileFlagLanguage result) => throw new UnreachableException();
 	int ISymbol.GetEditAndContinueEnabled(out bool result) => throw new UnreachableException();
 	int ISymbol.GetFrontendMajor(out uint result) => throw new UnreachableException();
 	int ISymbol.GetFrontendMinor(out uint result) => throw new UnreachableException();
@@ -4839,9 +4839,9 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	int ISymbol.GetIsVirtual(out bool result) => throw new UnreachableException();
 	int ISymbol.GetIsIntro(out bool result) => throw new UnreachableException();
 	int ISymbol.GetIsPure(out bool result) => throw new UnreachableException();
-	int ISymbol.GetCallingConvention(out uint result) => throw new UnreachableException();
+	int ISymbol.GetCallingConvention(out DiaSharp.CodeView.CallingConvention result) => throw new UnreachableException();
 	int ISymbol.GetValue(out Variant result) => throw new UnreachableException();
-	int ISymbol.GetBaseType(out uint result) => throw new UnreachableException();
+	int ISymbol.GetBaseType(out BasicType result) => throw new UnreachableException();
 	int ISymbol.GetToken(out uint result) => throw new UnreachableException();
 	int ISymbol.GetTimestamp(out uint result) => throw new UnreachableException();
 	int ISymbol.GetGUID(out Guid result) => throw new UnreachableException();
@@ -4883,11 +4883,11 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	int ISymbol.GetLowerBoundID(out uint result) => throw new UnreachableException();
 	int ISymbol.GetUpperBoundID(out uint result) => throw new UnreachableException();
 	int ISymbol.GetDataBytes(uint dataSize, out uint dataWritten, byte* buffer) => throw new UnreachableException();
-	int ISymbol.FindChildrenUnaware(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, out IEnumSymbols result) => throw new UnreachableException();
-	int ISymbol.FindChildren(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, out IEnumSymbols result) => throw new UnreachableException();
-	int ISymbol.FindChildrenByAddress(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result) => throw new UnreachableException();
-	int ISymbol.FindChildrenByVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result) => throw new UnreachableException();
-	int ISymbol.FindChildrenByRVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result) => throw new UnreachableException();
+	int ISymbol.FindChildrenUnaware(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result) => throw new UnreachableException();
+	int ISymbol.FindChildren(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result) => throw new UnreachableException();
+	int ISymbol.FindChildrenByAddress(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result) => throw new UnreachableException();
+	int ISymbol.FindChildrenByVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result) => throw new UnreachableException();
+	int ISymbol.FindChildrenByRVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result) => throw new UnreachableException();
 	int ISymbol.GetTargetSection(out uint result) => throw new UnreachableException();
 	int ISymbol.GetTargetOffset(out uint result) => throw new UnreachableException();
 	int ISymbol.GetTargetRelativeVirtualAddress(out uint result) => throw new UnreachableException();
@@ -4922,7 +4922,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	int ISymbol.GetHasEHa(out bool result) => throw new UnreachableException();
 	int ISymbol.GetIsNaked(out bool result) => throw new UnreachableException();
 	int ISymbol.GetIsAggregated(out bool result) => throw new UnreachableException();
-	int ISymbol.GetIsSplitted(out bool result) => throw new UnreachableException();
+	int ISymbol.GetIsSplit(out bool result) => throw new UnreachableException();
 	int ISymbol.GetContainer(out ISymbol result) => throw new UnreachableException();
 	int ISymbol.GetInliningSpecified(out bool result) => throw new UnreachableException();
 	int ISymbol.GetNoStackOrderingSpecified(out bool result) => throw new UnreachableException();
@@ -5032,7 +5032,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol8
 	int ISymbol.GetExceptionHandlerRelativeVirtualAddress(out uint result) => throw new UnreachableException();
 	int ISymbol.GetExceptionHandlerVirtualAddress(out ulong result) => throw new UnreachableException();
 	int ISymbol.FindInputAssemblyFile(out IInputAssemblyFile result) => throw new UnreachableException();
-	int ISymbol.GetCharacteristics(out uint result) => throw new UnreachableException();
+	int ISymbol.GetCharacteristics(out SectionCharacteristics result) => throw new UnreachableException();
 	int ISymbol.GetCoffGroup(out ISymbol result) => throw new UnreachableException();
 	int ISymbol.GetBindID(out uint result) => throw new UnreachableException();
 	int ISymbol.GetBindSpace(out uint result) => throw new UnreachableException();
@@ -5281,16 +5281,16 @@ namespace DiaSharp.SDK.Symbols
 		new int GetUnalignedType(out bool result) => ((ISymbol)this).GetUnalignedType(out result);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetAccess(out uint result) => ((ISymbol)this).GetAccess(out result);
+		new int GetAccess(out Access result) => ((ISymbol)this).GetAccess(out result);
 
 		[SkipLocalsInit, PreserveSig]
 		new int GetLibraryName(out string result) => ((ISymbol)this).GetLibraryName(out result);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetPlatform(out uint result) => ((ISymbol)this).GetPlatform(out result);
+		new int GetPlatform(out CpuType result) => ((ISymbol)this).GetPlatform(out result);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetLanguage(out uint result) => ((ISymbol)this).GetLanguage(out result);
+		new int GetLanguage(out CompileFlagLanguage result) => ((ISymbol)this).GetLanguage(out result);
 
 		[SkipLocalsInit, PreserveSig]
 		new int GetEditAndContinueEnabled(out bool result) => ((ISymbol)this).GetEditAndContinueEnabled(out result);
@@ -5338,13 +5338,13 @@ namespace DiaSharp.SDK.Symbols
 		new int GetIsPure(out bool result) => ((ISymbol)this).GetIsPure(out result);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetCallingConvention(out uint result) => ((ISymbol)this).GetCallingConvention(out result);
+		new int GetCallingConvention(out DiaSharp.CodeView.CallingConvention result) => ((ISymbol)this).GetCallingConvention(out result);
 
 		[SkipLocalsInit, PreserveSig]
 		new int GetValue(out Variant result) => ((ISymbol)this).GetValue(out result);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetBaseType(out uint result) => ((ISymbol)this).GetBaseType(out result);
+		new int GetBaseType(out BasicType result) => ((ISymbol)this).GetBaseType(out result);
 
 		[SkipLocalsInit, PreserveSig]
 		new int GetToken(out uint result) => ((ISymbol)this).GetToken(out result);
@@ -5470,19 +5470,19 @@ namespace DiaSharp.SDK.Symbols
 		new int GetDataBytes(uint dataSize, out uint dataWritten, byte* buffer) => ((ISymbol)this).GetDataBytes(dataSize, out dataWritten, buffer);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindChildrenUnaware(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, out IEnumSymbols result) => ((ISymbol)this).FindChildrenUnaware(symbolTag, name, compareFlags, out result);
+		new int FindChildrenUnaware(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result) => ((ISymbol)this).FindChildrenUnaware(symbolTag, name, compareFlags, out result);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindChildren(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, out IEnumSymbols result) => ((ISymbol)this).FindChildren(symbolTag, name, compareFlags, out result);
+		new int FindChildren(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result) => ((ISymbol)this).FindChildren(symbolTag, name, compareFlags, out result);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindChildrenByAddress(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result) => ((ISymbol)this).FindChildrenByAddress(symbolTag, name, compareFlags, sectionIndex, offset, out result);
+		new int FindChildrenByAddress(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result) => ((ISymbol)this).FindChildrenByAddress(symbolTag, name, compareFlags, sectionIndex, offset, out result);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindChildrenByVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result) => ((ISymbol)this).FindChildrenByVA(symbolTag, name, compareFlags, virtualAddress, out result);
+		new int FindChildrenByVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result) => ((ISymbol)this).FindChildrenByVA(symbolTag, name, compareFlags, virtualAddress, out result);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindChildrenByRVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result) => ((ISymbol)this).FindChildrenByRVA(symbolTag, name, compareFlags, relativeVirtualAddress, out result);
+		new int FindChildrenByRVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result) => ((ISymbol)this).FindChildrenByRVA(symbolTag, name, compareFlags, relativeVirtualAddress, out result);
 
 		[SkipLocalsInit, PreserveSig]
 		new int GetTargetSection(out uint result) => ((ISymbol)this).GetTargetSection(out result);
@@ -5587,7 +5587,7 @@ namespace DiaSharp.SDK.Symbols
 		new int GetIsAggregated(out bool result) => ((ISymbol)this).GetIsAggregated(out result);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetIsSplitted(out bool result) => ((ISymbol)this).GetIsSplitted(out result);
+		new int GetIsSplit(out bool result) => ((ISymbol)this).GetIsSplit(out result);
 
 		[SkipLocalsInit, PreserveSig]
 		new int GetContainer(out ISymbol result) => ((ISymbol)this).GetContainer(out result);
@@ -5917,7 +5917,7 @@ namespace DiaSharp.SDK.Symbols
 		new int FindInputAssemblyFile(out IInputAssemblyFile result) => ((ISymbol)this).FindInputAssemblyFile(out result);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetCharacteristics(out uint result) => ((ISymbol)this).GetCharacteristics(out result);
+		new int GetCharacteristics(out SectionCharacteristics result) => ((ISymbol)this).GetCharacteristics(out result);
 
 		[SkipLocalsInit, PreserveSig]
 		new int GetCoffGroup(out ISymbol result) => ((ISymbol)this).GetCoffGroup(out result);

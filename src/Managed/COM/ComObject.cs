@@ -4,7 +4,7 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 {
 	private static readonly object _unsupported = new();
 
-	private readonly Dictionary<string, object> _propertyCache = [];
+	private readonly Dictionary<int, object?> _propertyCache = [];
 
 	private bool _disposed = false;
 
@@ -45,13 +45,12 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 
 	#region Getters
 
+	protected unsafe delegate int GetBuffer(uint bufferSize, out uint dataSize, void** buffer);
 	protected unsafe delegate int GetBuffer<T>(uint bufferSize, out uint dataSize, T* buffer) where T : unmanaged;
-	protected unsafe delegate int GetBufferA(uint bufferSize, out uint dataSize, void** buffer);
-	protected unsafe delegate int GetBufferB(uint bufferSize, void** buffer, out uint dataSize);
-	protected delegate int GetF<T>(out T value);
+	protected delegate int GetSingle<T>(out T value);
 
 	[StackTraceHidden, MethodImpl(MethodImplOptions.AggressiveInlining)]
-	protected T? GetC<T>(GetF<T> function, bool ensured = false, [CallerMemberName] string key = "") where T : class
+	protected T? GetC<T>(GetSingle<T> function, bool ensured = false, [CallerLineNumber] int key = -1) where T : class
 	{
 		if (!ensured) EnsureNotDisposed();
 
@@ -79,35 +78,7 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 	}
 
 	[StackTraceHidden, MethodImpl(MethodImplOptions.AggressiveInlining)]
-	protected T? GetS<T>(GetF<T> function, bool ensured = false, [CallerMemberName] string key = "") where T : struct
-	{
-		if (!ensured) EnsureNotDisposed();
-
-		ref object? cached = ref CollectionsMarshal.GetValueRefOrAddDefault(_propertyCache, key, out bool exists);
-
-		if (exists) return !ReferenceEquals(cached, _unsupported) ? (T?)cached : null;
-
-		int result = function(out T value);
-
-		if (result == (int)KnownResult.S_FALSE)
-		{
-			cached = _unsupported;
-			return null;
-		}
-
-		if (result < 0)
-		{
-			_propertyCache.Remove(key);
-			Marshal.ThrowExceptionForHR(result);
-		}
-
-		cached = value;
-
-		return value;
-	}
-
-	[StackTraceHidden, MethodImpl(MethodImplOptions.AggressiveInlining)]
-	protected bool TryGetC<T>(GetF<T> function, [NotNullWhen(true)] out T? value, bool ensured = false, [CallerMemberName] string key = "") where T : class
+	protected bool TryGetC<T>(GetSingle<T> function, [NotNullWhen(true)] out T? value, bool ensured = false, [CallerLineNumber] int key = -1) where T : class
 	{
 		T? result = GetC(function, ensured, key);
 
@@ -116,8 +87,39 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 		return value != null;
 	}
 
+	[StackTraceHidden, MethodImpl(MethodImplOptions.AggressiveInlining)]
+	protected T? GetS<T>(GetSingle<T> function, bool ensured = false, [CallerLineNumber] int key = -1) where T : struct
+	{
+		if (!ensured) EnsureNotDisposed();
+
+		ref object? cached = ref CollectionsMarshal.GetValueRefOrAddDefault(_propertyCache, key, out bool exists);
+
+		if (exists) return !ReferenceEquals(cached, _unsupported) ? (T?)cached : null;
+
+		int result = function(out T value);
+
+		if (result == (int)KnownResult.S_FALSE)
+		{
+			cached = _unsupported;
+			return null;
+		}
+
+		if (result < 0)
+		{
+			_propertyCache.Remove(key);
+			Marshal.ThrowExceptionForHR(result);
+		}
+
+		cached = value;
+
+		return value;
+	}
+
+	[StackTraceHidden, MethodImpl(MethodImplOptions.AggressiveInlining)]
+	protected unsafe void*[]? GetA(GetBuffer function, bool ensured = false, [CallerLineNumber] int key = -1) => Unsafe.As<void*[]>(GetA(Unsafe.As<GetBuffer<nint>>(function), ensured, key));
+
 	[StackTraceHidden]
-	protected T[]? GetA<T>(GetBuffer<T> function, bool ensured = false, [CallerMemberName] string key = "") where T : unmanaged
+	protected T[]? GetA<T>(GetBuffer<T> function, bool ensured = false, [CallerLineNumber] int key = -1) where T : unmanaged
 	{
 		if (!ensured) EnsureNotDisposed();
 
@@ -147,76 +149,14 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 		}
 	}
 
-	[StackTraceHidden]
-	protected unsafe void*[]? GetProp(GetBufferA function, bool ensured = false, [CallerMemberName] string key = "")
-	{
-		if (!ensured) EnsureNotDisposed();
-
-		ref object? cached = ref CollectionsMarshal.GetValueRefOrAddDefault(_propertyCache, key, out bool exists);
-
-		if (exists) return !ReferenceEquals(cached, _unsupported) ? (void*[]?)cached : null;
-
-		unsafe
-		{
-			int result = function(0, out uint size, null);
-
-			if (result == (int)KnownResult.S_FALSE) return null;
-
-			if (result < 0) Marshal.ThrowExceptionForHR(result);
-
-			void** elements = stackalloc void*[(int)size];
-
-			result = function(size, out _, elements);
-
-			if (result < 0) Marshal.ThrowExceptionForHR(result);
-
-			void*[] array = Unsafe.As<void*[]>(new ReadOnlySpan<nint>(elements, (int)size).ToArray());
-
-			cached = array;
-
-			return array;
-		}
-	}
-
-	[StackTraceHidden]
-	protected unsafe void*[]? GetProp(GetBufferB function, bool ensured = false, [CallerMemberName] string key = "")
-	{
-		if (!ensured) EnsureNotDisposed();
-
-		ref object? cached = ref CollectionsMarshal.GetValueRefOrAddDefault(_propertyCache, key, out bool exists);
-
-		if (exists) return !ReferenceEquals(cached, _unsupported) ? (void*[]?)cached : null;
-
-		unsafe
-		{
-			int result = function(0, null, out uint size);
-
-			if (result == (int)KnownResult.S_FALSE) return null;
-
-			if (result < 0) Marshal.ThrowExceptionForHR(result);
-
-			void** elements = stackalloc void*[(int)size];
-
-			result = function(size, elements, out _);
-
-			if (result < 0) Marshal.ThrowExceptionForHR(result);
-
-			void*[] array = Unsafe.As<void*[]>(new ReadOnlySpan<nint>(elements, (int)size).ToArray());
-
-			cached = array;
-
-			return array;
-		}
-	}
-
 	#endregion
 
 	#region Setters
 
-	protected delegate int Set<T>(T value);
+	protected delegate int SetValue<T>(T? value);
 
 	[StackTraceHidden, MethodImpl(MethodImplOptions.AggressiveInlining)]
-	protected void SetProp<T>(Set<T> function, T value, bool ensured = false)
+	protected void Set<T>(SetValue<T> function, T? value, bool ensured = false, [CallerLineNumber] int key = -1)
 	{
 		if (!ensured) EnsureNotDisposed();
 
@@ -225,6 +165,10 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 		if (result == (int)KnownResult.S_FALSE) throw new InvalidOperationException("Property is unsupported in the object's current state.");
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+		// Invalidate the cached result (if any), but don't assign anything. We don't know how COM transforms the result of our assignment.
+
+		_propertyCache.Remove(key);
 	}
 
 	#endregion
@@ -239,44 +183,6 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 		return !TryQueryInterface(out Q? queried)
 			? throw new PlatformNotSupportedException($"The {nameof(Q)} interface is unsupported, please ensure the latest version of the DIA SDK is installed.")
 			: queried;
-	}
-
-	protected static unsafe bool TryGetSingle<V>(GetBufferA next, out V single) where V : class
-	{
-		void* value;
-
-		int result = next(1, out _, &value);
-
-		if (result == (int)KnownResult.S_FALSE)
-		{
-			single = default!;
-			return false;
-		}
-
-		if (result < 0) Marshal.ThrowExceptionForHR(result);
-
-		single = ComHelpers.Wrap<V>(value);
-
-		return true;
-	}
-
-	protected static unsafe bool TryGetSingle<V>(GetBufferB next, out V single) where V : class
-	{
-		void* value;
-
-		int result = next(1, &value, out _);
-
-		if (result == (int)KnownResult.S_FALSE)
-		{
-			single = default!;
-			return false;
-		}
-
-		if (result < 0) Marshal.ThrowExceptionForHR(result);
-
-		single = ComHelpers.Wrap<V>(value);
-
-		return true;
 	}
 
 	#endregion

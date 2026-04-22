@@ -5,7 +5,9 @@ namespace DiaSharp.Managed;
 
 public class Table(ITable native) : ComEnumerable<ITable, nint>(native)
 {
-	protected override unsafe bool TryFetchBatch()
+	private const string _dataSizeMessage = $"A table exceeds the maximum representable size. Use {nameof(ITable)}'s native implementation instead.";
+
+	protected override unsafe uint TryFetchBatch()
 	{
 		void** elements = stackalloc void*[(int)_batchSize];
 
@@ -13,10 +15,12 @@ public class Table(ITable native) : ComEnumerable<ITable, nint>(native)
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-		if (elementsFetched == 0) return false;
+		if (elementsFetched == 0) return 0;
+
+		if (elementsFetched > int.MaxValue) throw new InvalidDataException(_dataSizeMessage);
 
 		AddRangeToCache(new ReadOnlySpan<nint>(elements, (int)elementsFetched));
 
-		return true;
+		return elementsFetched;
 	}
 }

@@ -103,7 +103,7 @@ public sealed unsafe class DataSource() : ComObject<IDataSource>(ComHelpers.CoCr
 	[StackTraceHidden]
 	private static void HandleLoadResult(int result)
 	{
-		if (result == 0) return;
+		if (result == (int)KnownResult.S_OK) return;
 
 		switch ((KnownResult)result)
 		{
@@ -129,7 +129,7 @@ public sealed unsafe class DataSource() : ComObject<IDataSource>(ComHelpers.CoCr
 	{
 		int result = _native.OpenSession(out ISession session);
 
-		if (result == 0) return new(session);
+		if (result == (int)KnownResult.S_OK) return new(session);
 
 		switch ((KnownResult)result)
 		{
@@ -160,7 +160,7 @@ public sealed unsafe class DataSource() : ComObject<IDataSource>(ComHelpers.CoCr
 
 		ComHelpers.Release(ref sourceEx);
 
-		if (result == 0)
+		if (result == (int)KnownResult.S_OK)
 		{
 			if (size == 0)
 			{
@@ -199,7 +199,7 @@ public sealed unsafe class DataSource() : ComObject<IDataSource>(ComHelpers.CoCr
 
 		ComHelpers.Release(ref sourceEx);
 
-		if (result == 0)
+		if (result == (int)KnownResult.S_OK)
 		{
 			if (bytesWritten == 0)
 			{

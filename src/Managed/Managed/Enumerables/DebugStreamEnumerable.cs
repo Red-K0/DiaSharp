@@ -5,7 +5,7 @@ namespace DiaSharp.Managed.Enumerables;
 
 internal class DebugStreamEnumerable(IEnumDebugStreams native) : ComEnumerable<IEnumDebugStreams, DebugStreamDataEnumerable>(native)
 {
-	protected override unsafe bool TryFetchBatch()
+	protected override unsafe uint TryFetchBatch()
 	{
 		void** streams = stackalloc void*[(int)_batchSize];
 
@@ -13,7 +13,7 @@ internal class DebugStreamEnumerable(IEnumDebugStreams native) : ComEnumerable<I
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-		if (streamsFetched == 0) return false;
+		if (streamsFetched == 0) return 0;
 
 		DebugStreamDataEnumerable[] managed = new DebugStreamDataEnumerable[streamsFetched];
 
@@ -21,6 +21,6 @@ internal class DebugStreamEnumerable(IEnumDebugStreams native) : ComEnumerable<I
 
 		AddRangeToCache(managed);
 
-		return true;
+		return streamsFetched;
 	}
 }

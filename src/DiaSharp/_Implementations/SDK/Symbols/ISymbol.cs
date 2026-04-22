@@ -389,15 +389,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	}
 
 	[SkipLocalsInit]
-	int ISymbol.GetAccess(out uint result)
+	int ISymbol.GetAccess(out Access result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
 		Unsafe.SkipInit(out result);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __result_native = &result)
+		fixed (Access* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[22])(__this, __result_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, Access*, int>)__vtable_native[22])(__this, __result_native);
 		}
 
 		GC.KeepAlive(this);
@@ -437,15 +437,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	}
 
 	[SkipLocalsInit]
-	int ISymbol.GetPlatform(out uint result)
+	int ISymbol.GetPlatform(out CpuType result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
 		Unsafe.SkipInit(out result);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __result_native = &result)
+		fixed (CpuType* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[24])(__this, __result_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, CpuType*, int>)__vtable_native[24])(__this, __result_native);
 		}
 
 		GC.KeepAlive(this);
@@ -453,15 +453,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	}
 
 	[SkipLocalsInit]
-	int ISymbol.GetLanguage(out uint result)
+	int ISymbol.GetLanguage(out CompileFlagLanguage result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
 		Unsafe.SkipInit(out result);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __result_native = &result)
+		fixed (CompileFlagLanguage* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[25])(__this, __result_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, CompileFlagLanguage*, int>)__vtable_native[25])(__this, __result_native);
 		}
 
 		GC.KeepAlive(this);
@@ -745,15 +745,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	}
 
 	[SkipLocalsInit]
-	int ISymbol.GetCallingConvention(out uint result)
+	int ISymbol.GetCallingConvention(out DiaSharp.CodeView.CallingConvention result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
 		Unsafe.SkipInit(out result);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __result_native = &result)
+		fixed (DiaSharp.CodeView.CallingConvention* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[41])(__this, __result_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, DiaSharp.CodeView.CallingConvention*, int>)__vtable_native[41])(__this, __result_native);
 		}
 
 		GC.KeepAlive(this);
@@ -777,15 +777,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	}
 
 	[SkipLocalsInit]
-	int ISymbol.GetBaseType(out uint result)
+	int ISymbol.GetBaseType(out BasicType result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
 		Unsafe.SkipInit(out result);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __result_native = &result)
+		fixed (BasicType* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[43])(__this, __result_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, BasicType*, int>)__vtable_native[43])(__this, __result_native);
 		}
 
 		GC.KeepAlive(this);
@@ -1562,7 +1562,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	}
 
 	[SkipLocalsInit]
-	int ISymbol.FindChildrenUnaware(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, out IEnumSymbols result)
+	int ISymbol.FindChildrenUnaware(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
 		bool __invokeSucceeded = default!;
@@ -1596,7 +1596,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	}
 
 	[SkipLocalsInit]
-	int ISymbol.FindChildren(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, out IEnumSymbols result)
+	int ISymbol.FindChildren(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
 		bool __invokeSucceeded = default!;
@@ -1630,7 +1630,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	}
 
 	[SkipLocalsInit]
-	int ISymbol.FindChildrenByAddress(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result)
+	int ISymbol.FindChildrenByAddress(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
 		bool __invokeSucceeded = default!;
@@ -1664,7 +1664,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	}
 
 	[SkipLocalsInit]
-	int ISymbol.FindChildrenByVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result)
+	int ISymbol.FindChildrenByVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
 		bool __invokeSucceeded = default!;
@@ -1698,7 +1698,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	}
 
 	[SkipLocalsInit]
-	int ISymbol.FindChildrenByRVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result)
+	int ISymbol.FindChildrenByRVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
 		bool __invokeSucceeded = default!;
@@ -2345,7 +2345,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	}
 
 	[SkipLocalsInit]
-	int ISymbol.GetIsSplitted(out bool result)
+	int ISymbol.GetIsSplit(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
 		Unsafe.SkipInit(out result);
@@ -4443,15 +4443,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	}
 
 	[SkipLocalsInit]
-	int ISymbol.GetCharacteristics(out uint result)
+	int ISymbol.GetCharacteristics(out SectionCharacteristics result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
 		Unsafe.SkipInit(out result);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __result_native = &result)
+		fixed (SectionCharacteristics* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[234])(__this, __result_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, SectionCharacteristics*, int>)__vtable_native[234])(__this, __result_native);
 		}
 
 		GC.KeepAlive(this);
@@ -4998,11 +4998,11 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetAccess(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
+	static internal int ABI_GetAccess(ComWrappers.ComInterfaceDispatch* __this_native, Access* __result_native__param)
 	{
 		ISymbol @this = default!;
-		ref uint __result_native = ref *__result_native__param;
-		uint result = default!;
+		ref Access __result_native = ref *__result_native__param;
+		Access result = default!;
 		int __retVal = default;
 
 		try
@@ -5046,11 +5046,11 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetPlatform(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
+	static internal int ABI_GetPlatform(ComWrappers.ComInterfaceDispatch* __this_native, CpuType* __result_native__param)
 	{
 		ISymbol @this = default!;
-		ref uint __result_native = ref *__result_native__param;
-		uint result = default!;
+		ref CpuType __result_native = ref *__result_native__param;
+		CpuType result = default!;
 		int __retVal = default;
 
 		try
@@ -5070,11 +5070,11 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetLanguage(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
+	static internal int ABI_GetLanguage(ComWrappers.ComInterfaceDispatch* __this_native, CompileFlagLanguage* __result_native__param)
 	{
 		ISymbol @this = default!;
-		ref uint __result_native = ref *__result_native__param;
-		uint result = default!;
+		ref CompileFlagLanguage __result_native = ref *__result_native__param;
+		CompileFlagLanguage result = default!;
 		int __retVal = default;
 
 		try
@@ -5454,11 +5454,11 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetCallingConvention(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
+	static internal int ABI_GetCallingConvention(ComWrappers.ComInterfaceDispatch* __this_native, DiaSharp.CodeView.CallingConvention* __result_native__param)
 	{
 		ISymbol @this = default!;
-		ref uint __result_native = ref *__result_native__param;
-		uint result = default!;
+		ref DiaSharp.CodeView.CallingConvention __result_native = ref *__result_native__param;
+		DiaSharp.CodeView.CallingConvention result = default!;
 		int __retVal = default;
 
 		try
@@ -5502,11 +5502,11 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetBaseType(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
+	static internal int ABI_GetBaseType(ComWrappers.ComInterfaceDispatch* __this_native, BasicType* __result_native__param)
 	{
 		ISymbol @this = default!;
-		ref uint __result_native = ref *__result_native__param;
-		uint result = default!;
+		ref BasicType __result_native = ref *__result_native__param;
+		BasicType result = default!;
 		int __retVal = default;
 
 		try
@@ -7456,7 +7456,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetIsSplitted(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
+	static internal int ABI_GetIsSplit(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
 		ISymbol @this = default!;
 		ref int __result_native = ref *__result_native__param;
@@ -7467,7 +7467,7 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native);
-			__retVal = @this.GetIsSplitted(out result);
+			__retVal = @this.GetIsSplit(out result);
 			// Marshal - Convert managed data to native data.
 			__result_native = result ? 1 : 0;
 		}
@@ -10096,11 +10096,11 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetCharacteristics(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
+	static internal int ABI_GetCharacteristics(ComWrappers.ComInterfaceDispatch* __this_native, SectionCharacteristics* __result_native__param)
 	{
 		ISymbol @this = default!;
-		ref uint __result_native = ref *__result_native__param;
-		uint result = default!;
+		ref SectionCharacteristics __result_native = ref *__result_native__param;
+		SectionCharacteristics result = default!;
 		int __retVal = default;
 
 		try
@@ -10248,10 +10248,10 @@ file unsafe partial interface InterfaceImplementation
 			vtable[19] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetVolatileType;
 			vtable[20] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetConstType;
 			vtable[21] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetUnalignedType;
-			vtable[22] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetAccess;
+			vtable[22] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, Access*, int>)&ABI_GetAccess;
 			vtable[23] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ushort**, int>)&ABI_GetLibraryName;
-			vtable[24] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetPlatform;
-			vtable[25] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetLanguage;
+			vtable[24] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, CpuType*, int>)&ABI_GetPlatform;
+			vtable[25] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, CompileFlagLanguage*, int>)&ABI_GetLanguage;
 			vtable[26] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetEditAndContinueEnabled;
 			vtable[27] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetFrontendMajor;
 			vtable[28] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetFrontendMinor;
@@ -10267,9 +10267,9 @@ file unsafe partial interface InterfaceImplementation
 			vtable[38] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetIsVirtual;
 			vtable[39] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetIsIntro;
 			vtable[40] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetIsPure;
-			vtable[41] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetCallingConvention;
+			vtable[41] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, DiaSharp.CodeView.CallingConvention*, int>)&ABI_GetCallingConvention;
 			vtable[42] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, Variant*, int>)&ABI_GetValue;
-			vtable[43] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetBaseType;
+			vtable[43] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, BasicType*, int>)&ABI_GetBaseType;
 			vtable[44] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetToken;
 			vtable[45] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetTimestamp;
 			vtable[46] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, Guid*, int>)&ABI_GetGUID;
@@ -10350,7 +10350,7 @@ file unsafe partial interface InterfaceImplementation
 			vtable[121] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetHasEHa;
 			vtable[122] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetIsNaked;
 			vtable[123] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetIsAggregated;
-			vtable[124] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetIsSplitted;
+			vtable[124] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetIsSplit;
 			vtable[125] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, void**, int>)&ABI_GetContainer;
 			vtable[126] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetInliningSpecified;
 			vtable[127] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_GetNoStackOrderingSpecified;
@@ -10460,7 +10460,7 @@ file unsafe partial interface InterfaceImplementation
 			vtable[231] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetExceptionHandlerRelativeVirtualAddress;
 			vtable[232] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, ulong*, int>)&ABI_GetExceptionHandlerVirtualAddress;
 			vtable[233] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, void**, int>)&ABI_FindInputAssemblyFile;
-			vtable[234] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetCharacteristics;
+			vtable[234] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, SectionCharacteristics*, int>)&ABI_GetCharacteristics;
 			vtable[235] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, void**, int>)&ABI_GetCoffGroup;
 			vtable[236] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetBindID;
 			vtable[237] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_GetBindSpace;

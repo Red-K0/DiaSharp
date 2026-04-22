@@ -6,7 +6,7 @@ namespace DiaSharp.Managed.Enumerables;
 
 public class SymbolEnumerable(IEnumSymbols native) : ComEnumerable<IEnumSymbols, Symbol>(native)
 {
-	protected override unsafe bool TryFetchBatch()
+	protected override unsafe uint TryFetchBatch()
 	{
 		void** symbols = stackalloc void*[(int)_batchSize];
 
@@ -14,7 +14,7 @@ public class SymbolEnumerable(IEnumSymbols native) : ComEnumerable<IEnumSymbols,
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-		if (symbolsFetched == 0) return false;
+		if (symbolsFetched == 0) return 0;
 
 		Symbol[] managed = new Symbol[symbolsFetched];
 
@@ -22,6 +22,6 @@ public class SymbolEnumerable(IEnumSymbols native) : ComEnumerable<IEnumSymbols,
 
 		AddRangeToCache(managed);
 
-		return true;
+		return symbolsFetched;
 	}
 }

@@ -5,7 +5,7 @@ namespace DiaSharp.COM;
 public abstract class ComEnumerable<I, V>(I native, uint batchSize = 8) : ComObject<I>(native), IEnumerable<V> where I : class where V : notnull
 {
 	protected readonly uint _batchSize = batchSize;
-	private readonly object _cacheLock = new();
+	private readonly SemaphoreSlim _cacheLock = new(1);
 
 	protected volatile int _objectCacheIndex = -1;
 	protected volatile bool _completed;
@@ -17,24 +17,68 @@ public abstract class ComEnumerable<I, V>(I native, uint batchSize = 8) : ComObj
 
 	protected bool TryRequestItem(int index, out V value)
 	{
-		if (index > _objectCacheIndex)
+		bool? result = CheckExists(out value);
+
+		if (result == true) return true;
+
+		if (result == false) return false;
+
+		if (_cacheLock.Wait(0))
 		{
-			if (!_completed)
+			// We were first here, so the item cannot exist.
+			try
 			{
-				// Another lock could have added it.
-				lock (_cacheLock) { if (index <= _objectCacheIndex || !(_completed = !TryFetchBatch())) goto Success; }
+				uint fetched = TryFetchBatch();
+
+				if (fetched == 0)
+				{
+					_completed = true;
+					return false;
+				}
+
+				_completed = fetched < _batchSize;
+
+				value = _objectCache[index];
+
+				return true;
+			}
+			finally
+			{
+				_cacheLock.Release();
+			}
+		}
+		else
+		{
+			// Someone got the lock before us, so no fetch should trigger.
+			// Either it exists, or the enumeration is over.
+			_cacheLock.Wait(Timeout.Infinite);
+
+			try
+			{
+				return CheckExists(out value)!.Value;
+			}
+			finally
+			{
+				_cacheLock.Release();
+			}
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		bool? CheckExists(out V value)
+		{
+			if (index <= _objectCacheIndex)
+			{
+				value = _objectCache[index];
+				return true;
 			}
 
 			value = default!;
-			return false;
-		}
 
-	Success:
-		value = _objectCache[index];
-		return true;
+			return _completed ? false : null;
+		}
 	}
 
-	protected abstract bool TryFetchBatch();
+	protected abstract uint TryFetchBatch();
 
 	protected void AddToCache(V value)
 	{
@@ -64,16 +108,17 @@ public abstract class ComEnumerable<I, V>(I native, uint batchSize = 8) : ComObj
 		_objectCacheIndex = requiredLength - 1;
 	}
 
-	private sealed class ComEnumerator(ComEnumerable<I, V> parent) : IEnumerator<V>
+	private struct ComEnumerator(ComEnumerable<I, V> parent) : IEnumerator<V>
 	{
 		private readonly ComEnumerable<I, V> _parent = parent;
 		private int _index = -1;
 
 		public V Current { get; private set; } = default!;
-		object IEnumerator.Current => Current;
+		readonly object IEnumerator.Current => Current;
 
-		public void Dispose() {}
+		public readonly void Dispose() {}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool MoveNext()
 		{
 			if (!_parent.TryRequestItem(++_index, out V? value)) return false;

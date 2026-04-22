@@ -6,7 +6,7 @@ namespace DiaSharp.Managed.Enumerables;
 
 internal class TableEnumerable(IEnumTables native) : ComEnumerable<IEnumTables, Table>(native)
 {
-	protected override unsafe bool TryFetchBatch()
+	protected override unsafe uint TryFetchBatch()
 	{
 		void** tables = stackalloc void*[(int)_batchSize];
 
@@ -14,7 +14,7 @@ internal class TableEnumerable(IEnumTables native) : ComEnumerable<IEnumTables, 
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-		if (tablesFetched == 0) return false;
+		if (tablesFetched == 0) return 0;
 
 		Table[] managed = new Table[tablesFetched];
 
@@ -22,6 +22,6 @@ internal class TableEnumerable(IEnumTables native) : ComEnumerable<IEnumTables, 
 
 		AddRangeToCache(managed);
 
-		return true;
+		return tablesFetched;
 	}
 }

@@ -15,51 +15,51 @@ public sealed unsafe class Session(ISession session) : ComObject<ISession>(sessi
 	{
 		get => GetS<ulong>(_native.GetLoadAddress)!.Value;
 
-		set => SetProp(_native.PutLoadAddress, value);
+		set => Set(_native.PutLoadAddress, value);
 	}
 
 	public Symbol GlobalScope => new(GetC<ISymbol>(_native.GetGlobalScope)!);
 
 	public IEnumerable<Table> Tables => new TableEnumerable(GetC<IEnumTables>(_native.GetEnumTables)!);
 
-	public IEnumerable<Symbol> FindChildren(Symbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions)
+	public IEnumerable<Symbol> FindChildren(Symbol parent, SymbolTag symbolTag, string? name = null, NameSearchOptions searchOptions = NameSearchOptions.None)
 	{
 		EnsureNotDisposed();
 
-		int result = _native.FindChildrenEx(parent._native, tag, name, searchOptions, out IEnumSymbols symbols);
+		int result = _native.FindChildrenEx(parent._native, symbolTag, name, searchOptions, out IEnumSymbols symbols);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public IEnumerable<Symbol> FindChildrenByAddress(Symbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint sectionIndex, uint offset)
+	public IEnumerable<Symbol> FindChildrenByAddress(Symbol parent, SymbolTag symbolTag, uint sectionIndex, uint offset, string? name = null, NameSearchOptions searchOptions = NameSearchOptions.None)
 	{
 		EnsureNotDisposed();
 
-		int result = _native.FindChildrenExByAddress(parent._native, tag, name, searchOptions, sectionIndex, offset, out IEnumSymbols symbols);
+		int result = _native.FindChildrenExByAddress(parent._native, symbolTag, name, searchOptions, sectionIndex, offset, out IEnumSymbols symbols);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public IEnumerable<Symbol> FindChildrenByVA(Symbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, ulong virtualAddress)
+	public IEnumerable<Symbol> FindChildrenByVA(Symbol parent, SymbolTag symbolTag, ulong virtualAddress, string? name = null, NameSearchOptions searchOptions = NameSearchOptions.None)
 	{
 		EnsureNotDisposed();
 
-		int result = _native.FindChildrenExByVA(parent._native, tag, name, searchOptions, virtualAddress, out IEnumSymbols symbols);
+		int result = _native.FindChildrenExByVA(parent._native, symbolTag, name, searchOptions, virtualAddress, out IEnumSymbols symbols);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		return new SymbolEnumerable(symbols);
 	}
 
-	public IEnumerable<Symbol> FindChildrenByRVA(Symbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint relativeVirtualAddress)
+	public IEnumerable<Symbol> FindChildrenByRVA(Symbol parent, SymbolTag symbolTag, uint relativeVirtualAddress, string? name = null, NameSearchOptions searchOptions = NameSearchOptions.None)
 	{
 		EnsureNotDisposed();
 
-		int result = _native.FindChildrenExByRVA(parent._native, tag, name, searchOptions, relativeVirtualAddress, out IEnumSymbols symbols);
+		int result = _native.FindChildrenExByRVA(parent._native, symbolTag, name, searchOptions, relativeVirtualAddress, out IEnumSymbols symbols);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 

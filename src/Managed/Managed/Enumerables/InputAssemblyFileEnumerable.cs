@@ -6,7 +6,7 @@ namespace DiaSharp.Managed.Enumerables;
 
 internal class InputAssemblyFileEnumerable(IEnumInputAssemblyFiles native) : ComEnumerable<IEnumInputAssemblyFiles, InputAssemblyFile>(native)
 {
-	protected override unsafe bool TryFetchBatch()
+	protected override unsafe uint TryFetchBatch()
 	{
 		void** files = stackalloc void*[(int)_batchSize];
 
@@ -14,7 +14,7 @@ internal class InputAssemblyFileEnumerable(IEnumInputAssemblyFiles native) : Com
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-		if (filesFetched == 0) return false;
+		if (filesFetched == 0) return 0;
 
 		InputAssemblyFile[] managed = new InputAssemblyFile[filesFetched];
 
@@ -22,6 +22,6 @@ internal class InputAssemblyFileEnumerable(IEnumInputAssemblyFiles native) : Com
 
 		AddRangeToCache(managed);
 
-		return true;
+		return filesFetched;
 	}
 }

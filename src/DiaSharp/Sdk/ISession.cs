@@ -17,31 +17,31 @@ public partial interface ISession
 
 	int GetSymbolsByAddress(out IEnumSymbolsByAddress symbols);
 
-	int FindChildren(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, out IEnumSymbols symbols);
+	int FindChildren(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, out IEnumSymbols symbols);
 
-	int FindChildrenEx(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, out IEnumSymbols symbols);
+	int FindChildrenEx(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, out IEnumSymbols symbols);
 
-	int FindChildrenExByAddress(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint sectionIndex, uint offset, out IEnumSymbols symbols);
+	int FindChildrenExByAddress(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, uint sectionIndex, uint offset, out IEnumSymbols symbols);
 
-	int FindChildrenExByVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, ulong virtualAddress, out IEnumSymbols symbols);
+	int FindChildrenExByVA(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, ulong virtualAddress, out IEnumSymbols symbols);
 
-	int FindChildrenExByRVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint relativeVirtualAddress, out IEnumSymbols symbols);
+	int FindChildrenExByRVA(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, uint relativeVirtualAddress, out IEnumSymbols symbols);
 
-	int FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag tag, out ISymbol symbol);
+	int FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag symbolTag, out ISymbol symbol);
 
-	int FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out ISymbol symbol);
+	int FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag symbolTag, out ISymbol symbol);
 
-	int FindSymbolByVA(ulong virtualAddress, SymbolTag tag, out ISymbol symbol);
+	int FindSymbolByVA(ulong virtualAddress, SymbolTag symbolTag, out ISymbol symbol);
 
-	int FindSymbolByToken(uint token, SymbolTag tag, out ISymbol symbol);
+	int FindSymbolByToken(uint token, SymbolTag symbolTag, out ISymbol symbol);
 
 	int SymbolsAreEquivalent(ISymbol symbolA, ISymbol symbolB);
 
 	int SymbolByID(uint id, out ISymbol symbol);
 
-	int FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out int displacement, out ISymbol symbol);
+	int FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag symbolTag, out int displacement, out ISymbol symbol);
 
-	int FindSymbolByVA(ulong VirtualAddress, SymbolTag tag, out int displacement, out ISymbol symbol);
+	int FindSymbolByVA(ulong VirtualAddress, SymbolTag symbolTag, out int displacement, out ISymbol symbol);
 
 	int FindFile(ISymbol compiland, string name, NameSearchOptions searchOptions, out IEnumSourceFiles files);
 

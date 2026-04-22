@@ -6,7 +6,7 @@ namespace DiaSharp.Managed.Enumerables;
 
 internal class SourceFileEnumerable(IEnumSourceFiles native) : ComEnumerable<IEnumSourceFiles, SourceFile>(native)
 {
-	protected override unsafe bool TryFetchBatch()
+	protected override unsafe uint TryFetchBatch()
 	{
 		void** files = stackalloc void*[(int)_batchSize];
 
@@ -14,7 +14,7 @@ internal class SourceFileEnumerable(IEnumSourceFiles native) : ComEnumerable<IEn
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-		if (filesFetched == 0) return false;
+		if (filesFetched == 0) return 0;
 
 		SourceFile[] managed = new SourceFile[filesFetched];
 
@@ -22,6 +22,6 @@ internal class SourceFileEnumerable(IEnumSourceFiles native) : ComEnumerable<IEn
 
 		AddRangeToCache(managed);
 
-		return true;
+		return filesFetched;
 	}
 }

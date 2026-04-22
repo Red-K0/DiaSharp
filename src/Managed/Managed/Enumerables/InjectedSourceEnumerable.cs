@@ -6,7 +6,7 @@ namespace DiaSharp.Managed.Enumerables;
 
 internal class InjectedSourceEnumerable(IEnumInjectedSources native) : ComEnumerable<IEnumInjectedSources, InjectedSource>(native)
 {
-	protected override unsafe bool TryFetchBatch()
+	protected override unsafe uint TryFetchBatch()
 	{
 		void** sources = stackalloc void*[(int)_batchSize];
 
@@ -14,7 +14,7 @@ internal class InjectedSourceEnumerable(IEnumInjectedSources native) : ComEnumer
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-		if (sourcesFetched == 0) return false;
+		if (sourcesFetched == 0) return 0;
 
 		InjectedSource[] managed = new InjectedSource[sourcesFetched];
 
@@ -22,6 +22,6 @@ internal class InjectedSourceEnumerable(IEnumInjectedSources native) : ComEnumer
 
 		AddRangeToCache(managed);
 
-		return true;
+		return sourcesFetched;
 	}
 }

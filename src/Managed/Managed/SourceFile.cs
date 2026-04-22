@@ -16,5 +16,5 @@ public class SourceFile(ISourceFile native) : ComObject<ISourceFile>(native)
 
 	public IEnumerable<Symbol>? Compilands => TryGetC(_native.GetCompilands, out IEnumSymbols? native) ? new SymbolEnumerable(native) : null;
 
-	public unsafe ReadOnlySpan<byte> Checksum => GetA<byte>(_native.GetChecksum);
+	public unsafe byte[]? Checksum => GetA<byte>(_native.GetChecksum);
 }
