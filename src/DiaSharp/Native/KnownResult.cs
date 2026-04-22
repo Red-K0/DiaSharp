@@ -1,6 +1,8 @@
 ﻿using static DiaSharp.HR;
 
+#pragma warning disable IDE0130 // Intentional to prevent excessive usings.
 namespace DiaSharp;
+#pragma warning restore IDE0130
 
 file static class HR { public const uint BASE = ((uint)1 << 31) | ((uint)0x6d << 16), PDB = BASE | 1, DIA = BASE | 100, COFF = BASE | 200; }
 
