@@ -6,6 +6,9 @@ file static class HR { public const uint BASE = ((uint)1 << 31) | ((uint)0x6d <<
 
 internal enum KnownResult : uint
 {
+	S_OK                                   = 0,
+	S_FALSE                                = 1,
+
 	E_NOTIMPL                              = 0x80004001,
 	E_OUTOFMEMORY                          = 0x8007000E,
 	E_INVALIDARG                           = 0x80070057,

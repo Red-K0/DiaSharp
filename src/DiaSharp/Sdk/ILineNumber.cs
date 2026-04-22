@@ -21,9 +21,9 @@ public partial interface ILineNumber
 
 	int GetOffsetAddress(out uint offsetAddress);
 
-	int GetRelativeVirtualAddress(out uint rva);
+	int GetRelativeVirtualAddress(out uint relativeVirtualAddress);
 
-	int GetVirtualAddress(out ulong va);
+	int GetVirtualAddress(out ulong virtualAddress);
 
 	int GetLength(out uint length);
 

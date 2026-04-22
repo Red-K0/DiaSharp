@@ -18,9 +18,9 @@ public partial interface IStackWalkHelper
 
 	int SearchForReturnAddressStart(IFrameData frame, ulong address, out ulong startAddress);
 
-	int GetFrameForVA(ulong va, out IFrameData frame);
+	int GetFrameForVA(ulong virtualAddress, out IFrameData frame);
 
-	int GetSymbolForVA(ulong va, out ISymbol symbol);
+	int GetSymbolForVA(ulong virtualAddress, out ISymbol symbol);
 
 	unsafe int GetPDataForVA(ulong virtualAddress, uint bytesRequested, out uint bytesWritten, byte* buffer);
 

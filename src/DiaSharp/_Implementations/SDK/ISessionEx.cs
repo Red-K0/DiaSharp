@@ -212,7 +212,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindChildren(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, out IEnumSymbols symbols)
+	int ISessionEx.FindChildren(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -228,7 +228,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[8])(__this, __parent_native, tag, (ushort*)__name_native, searchOptions, &__symbols_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[8])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
@@ -252,7 +252,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindChildrenEx(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, out IEnumSymbols symbols)
+	int ISessionEx.FindChildrenEx(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -268,7 +268,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[9])(__this, __parent_native, tag, (ushort*)__name_native, searchOptions, &__symbols_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[9])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
@@ -292,7 +292,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindChildrenExByAddress(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint sectionIndex, uint offset, out IEnumSymbols symbols)
+	int ISessionEx.FindChildrenExByAddress(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, uint sectionIndex, uint offset, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -308,7 +308,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, uint, uint, void**, int>)__vtable_native[10])(__this, __parent_native, tag, (ushort*)__name_native, searchOptions, sectionIndex, offset, &__symbols_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, uint, uint, void**, int>)__vtable_native[10])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, sectionIndex, offset, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
@@ -332,7 +332,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindChildrenExByVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, ulong virtualAddress, out IEnumSymbols symbols)
+	int ISessionEx.FindChildrenExByVA(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, ulong virtualAddress, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -348,7 +348,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, ulong, void**, int>)__vtable_native[11])(__this, __parent_native, tag, (ushort*)__name_native, searchOptions, virtualAddress, &__symbols_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, ulong, void**, int>)__vtable_native[11])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, virtualAddress, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
@@ -372,7 +372,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindChildrenExByRVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint relativeVirtualAddress, out IEnumSymbols symbols)
+	int ISessionEx.FindChildrenExByRVA(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, uint relativeVirtualAddress, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -388,7 +388,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, uint, void**, int>)__vtable_native[12])(__this, __parent_native, tag, (ushort*)__name_native, searchOptions, relativeVirtualAddress, &__symbols_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, uint, void**, int>)__vtable_native[12])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, relativeVirtualAddress, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
@@ -412,7 +412,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag tag, out ISymbol symbol)
+	int ISessionEx.FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag symbolTag, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -423,7 +423,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 		try
 		{
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, SymbolTag, void**, int>)__vtable_native[13])(__this, sectionIndex, offset, tag, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, SymbolTag, void**, int>)__vtable_native[13])(__this, sectionIndex, offset, symbolTag, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -444,7 +444,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out ISymbol symbol)
+	int ISessionEx.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag symbolTag, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -455,7 +455,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 		try
 		{
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[14])(__this, relativeVirtualAddress, tag, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[14])(__this, relativeVirtualAddress, symbolTag, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -476,7 +476,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindSymbolByVA(ulong virtualAddress, SymbolTag tag, out ISymbol symbol)
+	int ISessionEx.FindSymbolByVA(ulong virtualAddress, SymbolTag symbolTag, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -487,7 +487,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 		try
 		{
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, void**, int>)__vtable_native[15])(__this, virtualAddress, tag, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, void**, int>)__vtable_native[15])(__this, virtualAddress, symbolTag, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -508,7 +508,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindSymbolByToken(uint token, SymbolTag tag, out ISymbol symbol)
+	int ISessionEx.FindSymbolByToken(uint token, SymbolTag symbolTag, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -519,7 +519,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 		try
 		{
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[16])(__this, token, tag, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[16])(__this, token, symbolTag, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -601,7 +601,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out int displacement, out ISymbol symbol)
+	int ISessionEx.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag symbolTag, out int displacement, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -615,7 +615,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (int* __displacement_native = &displacement)
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, int*, void**, int>)__vtable_native[19])(__this, relativeVirtualAddress, tag, __displacement_native, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, int*, void**, int>)__vtable_native[19])(__this, relativeVirtualAddress, symbolTag, __displacement_native, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -636,7 +636,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindSymbolByVA(ulong VirtualAddress, SymbolTag tag, out int displacement, out ISymbol symbol)
+	int ISessionEx.FindSymbolByVA(ulong VirtualAddress, SymbolTag symbolTag, out int displacement, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -650,7 +650,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (int* __displacement_native = &displacement)
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, int*, void**, int>)__vtable_native[20])(__this, VirtualAddress, tag, __displacement_native, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, int*, void**, int>)__vtable_native[20])(__this, VirtualAddress, symbolTag, __displacement_native, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -1139,7 +1139,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.FindInlineeLinesByAddress(ISymbol parent, uint isect, uint offset, uint length, out IEnumLineNumbers lines)
+	int ISessionEx.FindInlineeLinesByAddress(ISymbol parent, uint sectionIndex, uint offset, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
 		bool __invokeSucceeded = default!;
@@ -1153,7 +1153,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, uint, void**, int>)__vtable_native[34])(__this, __parent_native, isect, offset, length, &__lines_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, uint, void**, int>)__vtable_native[34])(__this, __parent_native, sectionIndex, offset, length, &__lines_native);
 			}
 
 			__invokeSucceeded = true;
@@ -1803,32 +1803,24 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten)
+	int ISessionEx.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out fragmentsWritten);
 		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __fragmentsWritten_native = &fragmentsWritten)
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, uint, uint*, uint*, int>)__vtable_native[57])(__this, functionVA, functionSize, fragmentCount, buffer, __fragmentsWritten_native);
-		}
+
+		__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, uint, uint*, uint*, int>)__vtable_native[57])(__this, functionVA, functionSize, fragmentCount, buffer, fragmentLengths);
 
 		GC.KeepAlive(this);
 		return __retVal;
 	}
 
 	[SkipLocalsInit]
-	int ISessionEx.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten)
+	int ISessionEx.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out fragmentsWritten);
 		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __fragmentsWritten_native = &fragmentsWritten)
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, uint*, uint*, int>)__vtable_native[58])(__this, functionRVA, functionSize, fragmentCount, buffer, __fragmentsWritten_native);
-		}
+
+		__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, uint*, uint*, int>)__vtable_native[58])(__this, functionRVA, functionSize, fragmentCount, buffer, fragmentLengths);
 
 		GC.KeepAlive(this);
 		return __retVal;
@@ -1941,19 +1933,19 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	int ISession.GetGlobalScope(out ISymbol scope) => throw new UnreachableException();
 	int ISession.GetEnumTables(out IEnumTables tables) => throw new UnreachableException();
 	int ISession.GetSymbolsByAddress(out IEnumSymbolsByAddress symbols) => throw new UnreachableException();
-	int ISession.FindChildren(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, out IEnumSymbols symbols) => throw new UnreachableException();
-	int ISession.FindChildrenEx(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, out IEnumSymbols symbols) => throw new UnreachableException();
-	int ISession.FindChildrenExByAddress(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint sectionIndex, uint offset, out IEnumSymbols symbols) => throw new UnreachableException();
-	int ISession.FindChildrenExByVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, ulong virtualAddress, out IEnumSymbols symbols) => throw new UnreachableException();
-	int ISession.FindChildrenExByRVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint relativeVirtualAddress, out IEnumSymbols symbols) => throw new UnreachableException();
-	int ISession.FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag tag, out ISymbol symbol) => throw new UnreachableException();
-	int ISession.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out ISymbol symbol) => throw new UnreachableException();
-	int ISession.FindSymbolByVA(ulong virtualAddress, SymbolTag tag, out ISymbol symbol) => throw new UnreachableException();
-	int ISession.FindSymbolByToken(uint token, SymbolTag tag, out ISymbol symbol) => throw new UnreachableException();
+	int ISession.FindChildren(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, out IEnumSymbols symbols) => throw new UnreachableException();
+	int ISession.FindChildrenEx(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, out IEnumSymbols symbols) => throw new UnreachableException();
+	int ISession.FindChildrenExByAddress(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, uint sectionIndex, uint offset, out IEnumSymbols symbols) => throw new UnreachableException();
+	int ISession.FindChildrenExByVA(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, ulong virtualAddress, out IEnumSymbols symbols) => throw new UnreachableException();
+	int ISession.FindChildrenExByRVA(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, uint relativeVirtualAddress, out IEnumSymbols symbols) => throw new UnreachableException();
+	int ISession.FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag symbolTag, out ISymbol symbol) => throw new UnreachableException();
+	int ISession.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag symbolTag, out ISymbol symbol) => throw new UnreachableException();
+	int ISession.FindSymbolByVA(ulong virtualAddress, SymbolTag symbolTag, out ISymbol symbol) => throw new UnreachableException();
+	int ISession.FindSymbolByToken(uint token, SymbolTag symbolTag, out ISymbol symbol) => throw new UnreachableException();
 	int ISession.SymbolsAreEquivalent(ISymbol symbolA, ISymbol symbolB) => throw new UnreachableException();
 	int ISession.SymbolByID(uint id, out ISymbol symbol) => throw new UnreachableException();
-	int ISession.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out int displacement, out ISymbol symbol) => throw new UnreachableException();
-	int ISession.FindSymbolByVA(ulong VirtualAddress, SymbolTag tag, out int displacement, out ISymbol symbol) => throw new UnreachableException();
+	int ISession.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag symbolTag, out int displacement, out ISymbol symbol) => throw new UnreachableException();
+	int ISession.FindSymbolByVA(ulong VirtualAddress, SymbolTag symbolTag, out int displacement, out ISymbol symbol) => throw new UnreachableException();
 	int ISession.FindFile(ISymbol compiland, string name, NameSearchOptions searchOptions, out IEnumSourceFiles files) => throw new UnreachableException();
 	int ISession.FindFileByID(uint uniqueId, out ISourceFile file) => throw new UnreachableException();
 	int ISession.FindLines(ISymbol compiland, ISourceFile file, out IEnumLineNumbers lines) => throw new UnreachableException();
@@ -1967,7 +1959,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	int ISession.FindInlineFramesByRVA(ISymbol parent, uint relativeVirtualAddress, out IEnumSymbols inlinees) => throw new UnreachableException();
 	int ISession.FindInlineFramesByVA(ISymbol parent, ulong virtualAddress, out IEnumSymbols inlinees) => throw new UnreachableException();
 	int ISession.FindInlineeLines(ISymbol parent, out IEnumLineNumbers lines) => throw new UnreachableException();
-	int ISession.FindInlineeLinesByAddress(ISymbol parent, uint isect, uint offset, uint length, out IEnumLineNumbers lines) => throw new UnreachableException();
+	int ISession.FindInlineeLinesByAddress(ISymbol parent, uint sectionIndex, uint offset, uint length, out IEnumLineNumbers lines) => throw new UnreachableException();
 	int ISession.FindInlineeLinesByRVA(ISymbol parent, uint relativeVirtualAddress, uint length, out IEnumLineNumbers lines) => throw new UnreachableException();
 	int ISession.FindInlineeLinesByVA(ISymbol parent, ulong virtualAddress, uint length, out IEnumLineNumbers lines) => throw new UnreachableException();
 	int ISession.FindInlineeLinesByLineNumber(ISymbol compiland, ISourceFile file, uint lineNumber, uint column, out IEnumLineNumbers lines) => throw new UnreachableException();
@@ -1990,8 +1982,8 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	int ISession.GetTypeMetadataTokenMap(uint bufferSize, out uint bytesWritten, byte* buffer) => throw new UnreachableException();
 	int ISession.GetNumberOfFunctionFragmentsForVA(ulong functionVA, uint functionSize, out uint fragmentCount) => throw new UnreachableException();
 	int ISession.GetNumberOfFunctionFragmentsForRVA(uint functionRVA, uint functionSize, out uint fragmentCount) => throw new UnreachableException();
-	int ISession.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten) => throw new UnreachableException();
-	int ISession.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten) => throw new UnreachableException();
+	int ISession.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths) => throw new UnreachableException();
+	int ISession.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths) => throw new UnreachableException();
 	int ISession.GetExports(out IEnumSymbols exports) => throw new UnreachableException();
 	int ISession.GetHeapAllocationSites(out IEnumSymbols sites) => throw new UnreachableException();
 	int ISession.FindInputAssemblyFile(ISymbol symbol, out IInputAssemblyFile assembly) => throw new UnreachableException();
@@ -2115,31 +2107,31 @@ namespace DiaSharp.SDK
 		new int GetSymbolsByAddress(out IEnumSymbolsByAddress symbols) => ((ISession)this).GetSymbolsByAddress(out symbols);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindChildren(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, out IEnumSymbols symbols) => ((ISession)this).FindChildren(parent, tag, name, searchOptions, out symbols);
+		new int FindChildren(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, out IEnumSymbols symbols) => ((ISession)this).FindChildren(parent, symbolTag, name, searchOptions, out symbols);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindChildrenEx(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, out IEnumSymbols symbols) => ((ISession)this).FindChildrenEx(parent, tag, name, searchOptions, out symbols);
+		new int FindChildrenEx(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, out IEnumSymbols symbols) => ((ISession)this).FindChildrenEx(parent, symbolTag, name, searchOptions, out symbols);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindChildrenExByAddress(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint sectionIndex, uint offset, out IEnumSymbols symbols) => ((ISession)this).FindChildrenExByAddress(parent, tag, name, searchOptions, sectionIndex, offset, out symbols);
+		new int FindChildrenExByAddress(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, uint sectionIndex, uint offset, out IEnumSymbols symbols) => ((ISession)this).FindChildrenExByAddress(parent, symbolTag, name, searchOptions, sectionIndex, offset, out symbols);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindChildrenExByVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, ulong virtualAddress, out IEnumSymbols symbols) => ((ISession)this).FindChildrenExByVA(parent, tag, name, searchOptions, virtualAddress, out symbols);
+		new int FindChildrenExByVA(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, ulong virtualAddress, out IEnumSymbols symbols) => ((ISession)this).FindChildrenExByVA(parent, symbolTag, name, searchOptions, virtualAddress, out symbols);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindChildrenExByRVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint relativeVirtualAddress, out IEnumSymbols symbols) => ((ISession)this).FindChildrenExByRVA(parent, tag, name, searchOptions, relativeVirtualAddress, out symbols);
+		new int FindChildrenExByRVA(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, uint relativeVirtualAddress, out IEnumSymbols symbols) => ((ISession)this).FindChildrenExByRVA(parent, symbolTag, name, searchOptions, relativeVirtualAddress, out symbols);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag tag, out ISymbol symbol) => ((ISession)this).FindSymbolByAddress(sectionIndex, offset, tag, out symbol);
+		new int FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag symbolTag, out ISymbol symbol) => ((ISession)this).FindSymbolByAddress(sectionIndex, offset, symbolTag, out symbol);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out ISymbol symbol) => ((ISession)this).FindSymbolByRVA(relativeVirtualAddress, tag, out symbol);
+		new int FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag symbolTag, out ISymbol symbol) => ((ISession)this).FindSymbolByRVA(relativeVirtualAddress, symbolTag, out symbol);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindSymbolByVA(ulong virtualAddress, SymbolTag tag, out ISymbol symbol) => ((ISession)this).FindSymbolByVA(virtualAddress, tag, out symbol);
+		new int FindSymbolByVA(ulong virtualAddress, SymbolTag symbolTag, out ISymbol symbol) => ((ISession)this).FindSymbolByVA(virtualAddress, symbolTag, out symbol);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindSymbolByToken(uint token, SymbolTag tag, out ISymbol symbol) => ((ISession)this).FindSymbolByToken(token, tag, out symbol);
+		new int FindSymbolByToken(uint token, SymbolTag symbolTag, out ISymbol symbol) => ((ISession)this).FindSymbolByToken(token, symbolTag, out symbol);
 
 		[SkipLocalsInit, PreserveSig]
 		new int SymbolsAreEquivalent(ISymbol symbolA, ISymbol symbolB) => ((ISession)this).SymbolsAreEquivalent(symbolA, symbolB);
@@ -2148,10 +2140,10 @@ namespace DiaSharp.SDK
 		new int SymbolByID(uint id, out ISymbol symbol) => ((ISession)this).SymbolByID(id, out symbol);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out int displacement, out ISymbol symbol) => ((ISession)this).FindSymbolByRVA(relativeVirtualAddress, tag, out displacement, out symbol);
+		new int FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag symbolTag, out int displacement, out ISymbol symbol) => ((ISession)this).FindSymbolByRVA(relativeVirtualAddress, symbolTag, out displacement, out symbol);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindSymbolByVA(ulong VirtualAddress, SymbolTag tag, out int displacement, out ISymbol symbol) => ((ISession)this).FindSymbolByVA(VirtualAddress, tag, out displacement, out symbol);
+		new int FindSymbolByVA(ulong VirtualAddress, SymbolTag symbolTag, out int displacement, out ISymbol symbol) => ((ISession)this).FindSymbolByVA(VirtualAddress, symbolTag, out displacement, out symbol);
 
 		[SkipLocalsInit, PreserveSig]
 		new int FindFile(ISymbol compiland, string name, NameSearchOptions searchOptions, out IEnumSourceFiles files) => ((ISession)this).FindFile(compiland, name, searchOptions, out files);
@@ -2193,7 +2185,7 @@ namespace DiaSharp.SDK
 		new int FindInlineeLines(ISymbol parent, out IEnumLineNumbers lines) => ((ISession)this).FindInlineeLines(parent, out lines);
 
 		[SkipLocalsInit, PreserveSig]
-		new int FindInlineeLinesByAddress(ISymbol parent, uint isect, uint offset, uint length, out IEnumLineNumbers lines) => ((ISession)this).FindInlineeLinesByAddress(parent, isect, offset, length, out lines);
+		new int FindInlineeLinesByAddress(ISymbol parent, uint sectionIndex, uint offset, uint length, out IEnumLineNumbers lines) => ((ISession)this).FindInlineeLinesByAddress(parent, sectionIndex, offset, length, out lines);
 
 		[SkipLocalsInit, PreserveSig]
 		new int FindInlineeLinesByRVA(ISymbol parent, uint relativeVirtualAddress, uint length, out IEnumLineNumbers lines) => ((ISession)this).FindInlineeLinesByRVA(parent, relativeVirtualAddress, length, out lines);
@@ -2262,10 +2254,10 @@ namespace DiaSharp.SDK
 		new int GetNumberOfFunctionFragmentsForRVA(uint functionRVA, uint functionSize, out uint fragmentCount) => ((ISession)this).GetNumberOfFunctionFragmentsForRVA(functionRVA, functionSize, out fragmentCount);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten) => ((ISession)this).GetFunctionFragmentsForVA(functionVA, functionSize, fragmentCount, buffer, out fragmentsWritten);
+		new int GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths) => ((ISession)this).GetFunctionFragmentsForVA(functionVA, functionSize, fragmentCount, buffer, fragmentLengths);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten) => ((ISession)this).GetFunctionFragmentsForRVA(functionRVA, functionSize, fragmentCount, buffer, out fragmentsWritten);
+		new int GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths) => ((ISession)this).GetFunctionFragmentsForRVA(functionRVA, functionSize, fragmentCount, buffer, fragmentLengths);
 
 		[SkipLocalsInit, PreserveSig]
 		new int GetExports(out IEnumSymbols exports) => ((ISession)this).GetExports(out exports);

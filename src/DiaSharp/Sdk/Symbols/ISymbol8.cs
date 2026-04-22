@@ -13,7 +13,7 @@ public unsafe partial interface ISymbol8 : ISymbol7
 
 	int GetAssociatedSymbolOffset(out uint offset);
 
-	int GetAssociatedSymbolRVA(out uint rva);
+	int GetAssociatedSymbolRVA(out uint relativeVirtualAddress);
 
-	int GeAassociatedSymbolAddress(out ulong address);
+	int GetAssociatedSymbolAddress(out ulong address);
 }

@@ -137,7 +137,7 @@ file unsafe partial interface InterfaceImplementation : IEnumSymbolsByAddressEx
 	}
 
 	[SkipLocalsInit]
-	int IEnumSymbolsByAddressEx.Prev(bool promoteBlockSymbols, uint symbolCount, void** symbols, out uint symbolsFetched)
+	int IEnumSymbolsByAddressEx.GetPrevious(bool promoteBlockSymbols, uint symbolCount, void** symbols, out uint symbolsFetched)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSymbolsByAddressEx));
 		Unsafe.SkipInit(out symbolsFetched);
@@ -268,7 +268,7 @@ file unsafe partial interface InterfaceImplementation : IEnumSymbolsByAddressEx
 	}
 
 	[SkipLocalsInit]
-	int IEnumSymbolsByAddressEx.Prev(uint symbolCount, void** symbols, out uint symbolsFetched)
+	int IEnumSymbolsByAddressEx.GetPrevious(uint symbolCount, void** symbols, out uint symbolsFetched)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSymbolsByAddressEx));
 		Unsafe.SkipInit(out symbolsFetched);
@@ -319,7 +319,7 @@ file unsafe partial interface InterfaceImplementation : IEnumSymbolsByAddressEx
 	int IEnumSymbolsByAddress.GetSymbolByRVA(uint relativeVirtualAddress, out ISymbol symbol) => throw new UnreachableException();
 	int IEnumSymbolsByAddress.GetSymbolByVA(ulong virtualAddress, out ISymbol symbol) => throw new UnreachableException();
 	int IEnumSymbolsByAddress.GetNext(uint symbolCount, void** symbols, out uint symbolsFetched) => throw new UnreachableException();
-	int IEnumSymbolsByAddress.Prev(uint symbolCount, void** symbols, out uint symbolsFetched) => throw new UnreachableException();
+	int IEnumSymbolsByAddress.GetPrevious(uint symbolCount, void** symbols, out uint symbolsFetched) => throw new UnreachableException();
 	int IEnumSymbolsByAddress.Clone(out IEnumSymbolsByAddress enumeator) => throw new UnreachableException();
 }
 
@@ -443,7 +443,7 @@ file unsafe partial interface InterfaceImplementation
 			// Unmarshal - Convert native data to managed data.
 			promoteBlockSymbols = __promoteBlockSymbols_native != 0;
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSymbolsByAddressEx>(__this_native);
-			__retVal = @this.Prev(promoteBlockSymbols, symbolCount, symbols, out symbolsFetched);
+			__retVal = @this.GetPrevious(promoteBlockSymbols, symbolCount, symbols, out symbolsFetched);
 			// Marshal - Convert managed data to native data.
 			__symbolsFetched_native = symbolsFetched;
 		}
@@ -496,7 +496,7 @@ namespace DiaSharp.SDK.Enumerators
 		new int GetNext(uint symbolCount, void** symbols, out uint symbolsFetched) => ((IEnumSymbolsByAddress)this).GetNext(symbolCount, symbols, out symbolsFetched);
 
 		[SkipLocalsInit, PreserveSig]
-		new int Prev(uint symbolCount, void** symbols, out uint symbolsFetched) => ((IEnumSymbolsByAddress)this).Prev(symbolCount, symbols, out symbolsFetched);
+		new int GetPrevious(uint symbolCount, void** symbols, out uint symbolsFetched) => ((IEnumSymbolsByAddress)this).GetPrevious(symbolCount, symbols, out symbolsFetched);
 
 		[SkipLocalsInit, PreserveSig]
 		new int Clone(out IEnumSymbolsByAddress enumeator) => ((IEnumSymbolsByAddress)this).Clone(out enumeator);

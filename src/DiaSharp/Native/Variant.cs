@@ -102,7 +102,6 @@ public struct VariantRecord : IEquatable<VariantRecord>
 	public static unsafe bool operator ==(VariantRecord left, VariantRecord right)
 	{
 		return sizeof(nint) == 8 ? *(UInt128*)&left == *(UInt128*)&right : *(ulong*)&left == *(ulong*)&right;
-
 	}
 
 	public static unsafe bool operator !=(VariantRecord left, VariantRecord right)

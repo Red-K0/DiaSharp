@@ -17,5 +17,5 @@ public partial interface IEnumDebugStreams
 
 	int Reset();
 
-	int Clone(out IEnumSymbolsByAddress enumerator);
+	int Clone(out IEnumDebugStreams enumerator);
 }

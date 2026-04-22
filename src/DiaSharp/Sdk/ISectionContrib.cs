@@ -11,9 +11,9 @@ public partial interface ISectionContrib
 
 	int GetAddressOffset(out uint offset);
 
-	int GetRelativeVirtualAddress(out uint rva);
+	int GetRelativeVirtualAddress(out uint relativeVirtualAddress);
 
-	int GetVirtualAddress(out ulong va);
+	int GetVirtualAddress(out ulong virtualAddress);
 
 	int GetLength(out uint length);
 

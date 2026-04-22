@@ -140,7 +140,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindChildren(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, out IEnumSymbols symbols)
+	int ISession.FindChildren(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -156,7 +156,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[8])(__this, __parent_native, tag, (ushort*)__name_native, searchOptions, &__symbols_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[8])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
@@ -180,7 +180,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindChildrenEx(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, out IEnumSymbols symbols)
+	int ISession.FindChildrenEx(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -196,7 +196,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[9])(__this, __parent_native, tag, (ushort*)__name_native, searchOptions, &__symbols_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[9])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
@@ -220,7 +220,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindChildrenExByAddress(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint sectionIndex, uint offset, out IEnumSymbols symbols)
+	int ISession.FindChildrenExByAddress(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, uint sectionIndex, uint offset, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -236,7 +236,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, uint, uint, void**, int>)__vtable_native[10])(__this, __parent_native, tag, (ushort*)__name_native, searchOptions, sectionIndex, offset, &__symbols_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, uint, uint, void**, int>)__vtable_native[10])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, sectionIndex, offset, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
@@ -260,7 +260,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindChildrenExByVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, ulong virtualAddress, out IEnumSymbols symbols)
+	int ISession.FindChildrenExByVA(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, ulong virtualAddress, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -276,7 +276,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, ulong, void**, int>)__vtable_native[11])(__this, __parent_native, tag, (ushort*)__name_native, searchOptions, virtualAddress, &__symbols_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, ulong, void**, int>)__vtable_native[11])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, virtualAddress, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
@@ -300,7 +300,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindChildrenExByRVA(ISymbol parent, SymbolTag tag, string name, NameSearchOptions searchOptions, uint relativeVirtualAddress, out IEnumSymbols symbols)
+	int ISession.FindChildrenExByRVA(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, uint relativeVirtualAddress, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -316,7 +316,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, uint, void**, int>)__vtable_native[12])(__this, __parent_native, tag, (ushort*)__name_native, searchOptions, relativeVirtualAddress, &__symbols_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, uint, void**, int>)__vtable_native[12])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, relativeVirtualAddress, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
@@ -340,7 +340,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag tag, out ISymbol symbol)
+	int ISession.FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag symbolTag, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -351,7 +351,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 		try
 		{
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, SymbolTag, void**, int>)__vtable_native[13])(__this, sectionIndex, offset, tag, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, SymbolTag, void**, int>)__vtable_native[13])(__this, sectionIndex, offset, symbolTag, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -372,7 +372,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out ISymbol symbol)
+	int ISession.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag symbolTag, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -383,7 +383,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 		try
 		{
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[14])(__this, relativeVirtualAddress, tag, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[14])(__this, relativeVirtualAddress, symbolTag, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -404,7 +404,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindSymbolByVA(ulong virtualAddress, SymbolTag tag, out ISymbol symbol)
+	int ISession.FindSymbolByVA(ulong virtualAddress, SymbolTag symbolTag, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -415,7 +415,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 		try
 		{
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, void**, int>)__vtable_native[15])(__this, virtualAddress, tag, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, void**, int>)__vtable_native[15])(__this, virtualAddress, symbolTag, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -436,7 +436,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindSymbolByToken(uint token, SymbolTag tag, out ISymbol symbol)
+	int ISession.FindSymbolByToken(uint token, SymbolTag symbolTag, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -447,7 +447,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 		try
 		{
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[16])(__this, token, tag, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[16])(__this, token, symbolTag, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -529,7 +529,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag tag, out int displacement, out ISymbol symbol)
+	int ISession.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag symbolTag, out int displacement, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -543,7 +543,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (int* __displacement_native = &displacement)
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, int*, void**, int>)__vtable_native[19])(__this, relativeVirtualAddress, tag, __displacement_native, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, int*, void**, int>)__vtable_native[19])(__this, relativeVirtualAddress, symbolTag, __displacement_native, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -564,7 +564,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindSymbolByVA(ulong VirtualAddress, SymbolTag tag, out int displacement, out ISymbol symbol)
+	int ISession.FindSymbolByVA(ulong VirtualAddress, SymbolTag symbolTag, out int displacement, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -578,7 +578,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 			// Pin - Pin data in preparation for calling the P/Invoke.
 			fixed (int* __displacement_native = &displacement)
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, int*, void**, int>)__vtable_native[20])(__this, VirtualAddress, tag, __displacement_native, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, int*, void**, int>)__vtable_native[20])(__this, VirtualAddress, symbolTag, __displacement_native, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -1067,7 +1067,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.FindInlineeLinesByAddress(ISymbol parent, uint isect, uint offset, uint length, out IEnumLineNumbers lines)
+	int ISession.FindInlineeLinesByAddress(ISymbol parent, uint sectionIndex, uint offset, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
 		bool __invokeSucceeded = default!;
@@ -1081,7 +1081,7 @@ file unsafe partial interface InterfaceImplementation : ISession
 			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, uint, void**, int>)__vtable_native[34])(__this, __parent_native, isect, offset, length, &__lines_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, uint, void**, int>)__vtable_native[34])(__this, __parent_native, sectionIndex, offset, length, &__lines_native);
 			}
 
 			__invokeSucceeded = true;
@@ -1731,32 +1731,24 @@ file unsafe partial interface InterfaceImplementation : ISession
 	}
 
 	[SkipLocalsInit]
-	int ISession.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten)
+	int ISession.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
-		Unsafe.SkipInit(out fragmentsWritten);
 		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __fragmentsWritten_native = &fragmentsWritten)
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, uint, uint*, uint*, int>)__vtable_native[57])(__this, functionVA, functionSize, fragmentCount, buffer, __fragmentsWritten_native);
-		}
+
+		__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, uint, uint*, uint*, int>)__vtable_native[57])(__this, functionVA, functionSize, fragmentCount, buffer, fragmentLengths);
 
 		GC.KeepAlive(this);
 		return __retVal;
 	}
 
 	[SkipLocalsInit]
-	int ISession.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, out uint fragmentsWritten)
+	int ISession.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISession));
-		Unsafe.SkipInit(out fragmentsWritten);
 		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __fragmentsWritten_native = &fragmentsWritten)
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, uint*, uint*, int>)__vtable_native[58])(__this, functionRVA, functionSize, fragmentCount, buffer, __fragmentsWritten_native);
-		}
+
+		__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, uint*, uint*, int>)__vtable_native[58])(__this, functionRVA, functionSize, fragmentCount, buffer, fragmentLengths);
 
 		GC.KeepAlive(this);
 		return __retVal;
@@ -1983,7 +1975,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindChildren(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, SymbolTag tag, ushort* __name_native, NameSearchOptions searchOptions, void** __symbols_native__param)
+	static internal int ABI_FindChildren(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, SymbolTag symbolTag, ushort* __name_native, NameSearchOptions searchOptions, void** __symbols_native__param)
 	{
 		ISession @this = default!;
 		ISymbol parent = default!;
@@ -1998,7 +1990,7 @@ file unsafe partial interface InterfaceImplementation
 			name = Utf16StringMarshaller.ConvertToManaged(__name_native)!;
 			parent = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__parent_native)!;
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindChildren(parent, tag, name, searchOptions, out symbols);
+			__retVal = @this.FindChildren(parent, symbolTag, name, searchOptions, out symbols);
 			// Marshal - Convert managed data to native data.
 			__symbols_native = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(symbols);
 		}
@@ -2011,7 +2003,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindChildrenEx(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, SymbolTag tag, ushort* __name_native, NameSearchOptions searchOptions, void** __symbols_native__param)
+	static internal int ABI_FindChildrenEx(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, SymbolTag symbolTag, ushort* __name_native, NameSearchOptions searchOptions, void** __symbols_native__param)
 	{
 		ISession @this = default!;
 		ISymbol parent = default!;
@@ -2026,7 +2018,7 @@ file unsafe partial interface InterfaceImplementation
 			name = Utf16StringMarshaller.ConvertToManaged(__name_native)!;
 			parent = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__parent_native)!;
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindChildrenEx(parent, tag, name, searchOptions, out symbols);
+			__retVal = @this.FindChildrenEx(parent, symbolTag, name, searchOptions, out symbols);
 			// Marshal - Convert managed data to native data.
 			__symbols_native = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(symbols);
 		}
@@ -2039,7 +2031,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindChildrenExByAddress(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, SymbolTag tag, ushort* __name_native, NameSearchOptions searchOptions, uint sectionIndex, uint offset, void** __symbols_native__param)
+	static internal int ABI_FindChildrenExByAddress(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, SymbolTag symbolTag, ushort* __name_native, NameSearchOptions searchOptions, uint sectionIndex, uint offset, void** __symbols_native__param)
 	{
 		ISession @this = default!;
 		ISymbol parent = default!;
@@ -2054,7 +2046,7 @@ file unsafe partial interface InterfaceImplementation
 			name = Utf16StringMarshaller.ConvertToManaged(__name_native)!;
 			parent = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__parent_native)!;
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindChildrenExByAddress(parent, tag, name, searchOptions, sectionIndex, offset, out symbols);
+			__retVal = @this.FindChildrenExByAddress(parent, symbolTag, name, searchOptions, sectionIndex, offset, out symbols);
 			// Marshal - Convert managed data to native data.
 			__symbols_native = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(symbols);
 		}
@@ -2067,7 +2059,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindChildrenExByVA(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, SymbolTag tag, ushort* __name_native, NameSearchOptions searchOptions, ulong virtualAddress, void** __symbols_native__param)
+	static internal int ABI_FindChildrenExByVA(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, SymbolTag symbolTag, ushort* __name_native, NameSearchOptions searchOptions, ulong virtualAddress, void** __symbols_native__param)
 	{
 		ISession @this = default!;
 		ISymbol parent = default!;
@@ -2082,7 +2074,7 @@ file unsafe partial interface InterfaceImplementation
 			name = Utf16StringMarshaller.ConvertToManaged(__name_native)!;
 			parent = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__parent_native)!;
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindChildrenExByVA(parent, tag, name, searchOptions, virtualAddress, out symbols);
+			__retVal = @this.FindChildrenExByVA(parent, symbolTag, name, searchOptions, virtualAddress, out symbols);
 			// Marshal - Convert managed data to native data.
 			__symbols_native = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(symbols);
 		}
@@ -2095,7 +2087,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindChildrenExByRVA(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, SymbolTag tag, ushort* __name_native, NameSearchOptions searchOptions, uint relativeVirtualAddress, void** __symbols_native__param)
+	static internal int ABI_FindChildrenExByRVA(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, SymbolTag symbolTag, ushort* __name_native, NameSearchOptions searchOptions, uint relativeVirtualAddress, void** __symbols_native__param)
 	{
 		ISession @this = default!;
 		ISymbol parent = default!;
@@ -2110,7 +2102,7 @@ file unsafe partial interface InterfaceImplementation
 			name = Utf16StringMarshaller.ConvertToManaged(__name_native)!;
 			parent = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__parent_native)!;
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindChildrenExByRVA(parent, tag, name, searchOptions, relativeVirtualAddress, out symbols);
+			__retVal = @this.FindChildrenExByRVA(parent, symbolTag, name, searchOptions, relativeVirtualAddress, out symbols);
 			// Marshal - Convert managed data to native data.
 			__symbols_native = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(symbols);
 		}
@@ -2123,7 +2115,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindSymbolByAddress(ComWrappers.ComInterfaceDispatch* __this_native, uint sectionIndex, uint offset, SymbolTag tag, void** __symbol_native__param)
+	static internal int ABI_FindSymbolByAddress(ComWrappers.ComInterfaceDispatch* __this_native, uint sectionIndex, uint offset, SymbolTag symbolTag, void** __symbol_native__param)
 	{
 		ISession @this = default!;
 		ref void* __symbol_native = ref *__symbol_native__param;
@@ -2134,7 +2126,7 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindSymbolByAddress(sectionIndex, offset, tag, out symbol);
+			__retVal = @this.FindSymbolByAddress(sectionIndex, offset, symbolTag, out symbol);
 			// Marshal - Convert managed data to native data.
 			__symbol_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
 		}
@@ -2147,7 +2139,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindSymbolByRVA(ComWrappers.ComInterfaceDispatch* __this_native, uint relativeVirtualAddress, SymbolTag tag, void** __symbol_native__param)
+	static internal int ABI_FindSymbolByRVA(ComWrappers.ComInterfaceDispatch* __this_native, uint relativeVirtualAddress, SymbolTag symbolTag, void** __symbol_native__param)
 	{
 		ISession @this = default!;
 		ref void* __symbol_native = ref *__symbol_native__param;
@@ -2158,7 +2150,7 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindSymbolByRVA(relativeVirtualAddress, tag, out symbol);
+			__retVal = @this.FindSymbolByRVA(relativeVirtualAddress, symbolTag, out symbol);
 			// Marshal - Convert managed data to native data.
 			__symbol_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
 		}
@@ -2171,7 +2163,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindSymbolByVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong virtualAddress, SymbolTag tag, void** __symbol_native__param)
+	static internal int ABI_FindSymbolByVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong virtualAddress, SymbolTag symbolTag, void** __symbol_native__param)
 	{
 		ISession @this = default!;
 		ref void* __symbol_native = ref *__symbol_native__param;
@@ -2182,7 +2174,7 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindSymbolByVA(virtualAddress, tag, out symbol);
+			__retVal = @this.FindSymbolByVA(virtualAddress, symbolTag, out symbol);
 			// Marshal - Convert managed data to native data.
 			__symbol_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
 		}
@@ -2195,7 +2187,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindSymbolByToken(ComWrappers.ComInterfaceDispatch* __this_native, uint token, SymbolTag tag, void** __symbol_native__param)
+	static internal int ABI_FindSymbolByToken(ComWrappers.ComInterfaceDispatch* __this_native, uint token, SymbolTag symbolTag, void** __symbol_native__param)
 	{
 		ISession @this = default!;
 		ref void* __symbol_native = ref *__symbol_native__param;
@@ -2206,7 +2198,7 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindSymbolByToken(token, tag, out symbol);
+			__retVal = @this.FindSymbolByToken(token, symbolTag, out symbol);
 			// Marshal - Convert managed data to native data.
 			__symbol_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
 		}
@@ -2264,7 +2256,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindSymbolByRVA(ComWrappers.ComInterfaceDispatch* __this_native, uint relativeVirtualAddress, SymbolTag tag, int* __displacement_native__param, void** __symbol_native__param)
+	static internal int ABI_FindSymbolByRVA(ComWrappers.ComInterfaceDispatch* __this_native, uint relativeVirtualAddress, SymbolTag symbolTag, int* __displacement_native__param, void** __symbol_native__param)
 	{
 		ISession @this = default!;
 		ref int __displacement_native = ref *__displacement_native__param;
@@ -2277,7 +2269,7 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindSymbolByRVA(relativeVirtualAddress, tag, out displacement, out symbol);
+			__retVal = @this.FindSymbolByRVA(relativeVirtualAddress, symbolTag, out displacement, out symbol);
 			// Marshal - Convert managed data to native data.
 			__symbol_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
 			__displacement_native = displacement;
@@ -2291,7 +2283,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindSymbolByVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong VirtualAddress, SymbolTag tag, int* __displacement_native__param, void** __symbol_native__param)
+	static internal int ABI_FindSymbolByVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong VirtualAddress, SymbolTag symbolTag, int* __displacement_native__param, void** __symbol_native__param)
 	{
 		ISession @this = default!;
 		ref int __displacement_native = ref *__displacement_native__param;
@@ -2304,7 +2296,7 @@ file unsafe partial interface InterfaceImplementation
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindSymbolByVA(VirtualAddress, tag, out displacement, out symbol);
+			__retVal = @this.FindSymbolByVA(VirtualAddress, symbolTag, out displacement, out symbol);
 			// Marshal - Convert managed data to native data.
 			__symbol_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
 			__displacement_native = displacement;
@@ -2652,7 +2644,7 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_FindInlineeLinesByAddress(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, uint isect, uint offset, uint length, void** __lines_native__param)
+	static internal int ABI_FindInlineeLinesByAddress(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, uint sectionIndex, uint offset, uint length, void** __lines_native__param)
 	{
 		ISession @this = default!;
 		ISymbol parent = default!;
@@ -2665,7 +2657,7 @@ file unsafe partial interface InterfaceImplementation
 			// Unmarshal - Convert native data to managed data.
 			parent = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__parent_native)!;
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.FindInlineeLinesByAddress(parent, isect, offset, length, out lines);
+			__retVal = @this.FindInlineeLinesByAddress(parent, sectionIndex, offset, length, out lines);
 			// Marshal - Convert managed data to native data.
 			__lines_native = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToUnmanaged(lines);
 		}
@@ -3232,20 +3224,15 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetFunctionFragmentsForVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* __fragmentsWritten_native__param)
+	static internal int ABI_GetFunctionFragmentsForVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
-		ISession @this = default!;
-		ref uint __fragmentsWritten_native = ref *__fragmentsWritten_native__param;
-		uint fragmentsWritten = default!;
-		int __retVal = default;
+		int __retVal;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
-			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.GetFunctionFragmentsForVA(functionVA, functionSize, fragmentCount, buffer, out fragmentsWritten);
-			// Marshal - Convert managed data to native data.
-			__fragmentsWritten_native = fragmentsWritten;
+			ISession @this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
+			__retVal = @this.GetFunctionFragmentsForVA(functionVA, functionSize, fragmentCount, buffer, fragmentLengths);
 		}
 		catch (Exception __exception)
 		{
@@ -3256,20 +3243,15 @@ file unsafe partial interface InterfaceImplementation
 	}
 
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetFunctionFragmentsForRVA(ComWrappers.ComInterfaceDispatch* __this_native, uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* __fragmentsWritten_native__param)
+	static internal int ABI_GetFunctionFragmentsForRVA(ComWrappers.ComInterfaceDispatch* __this_native, uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
-		ISession @this = default!;
-		ref uint __fragmentsWritten_native = ref *__fragmentsWritten_native__param;
-		uint fragmentsWritten = default!;
-		int __retVal = default;
+		int __retVal;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
-			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
-			__retVal = @this.GetFunctionFragmentsForRVA(functionRVA, functionSize, fragmentCount, buffer, out fragmentsWritten);
-			// Marshal - Convert managed data to native data.
-			__fragmentsWritten_native = fragmentsWritten;
+			ISession @this = ComWrappers.ComInterfaceDispatch.GetInstance<ISession>(__this_native);
+			__retVal = @this.GetFunctionFragmentsForRVA(functionRVA, functionSize, fragmentCount, buffer, fragmentLengths);
 		}
 		catch (Exception __exception)
 		{

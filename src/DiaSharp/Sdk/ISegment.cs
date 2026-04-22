@@ -17,7 +17,7 @@ public partial interface ISegment
 
 	int GetAddressSection(out uint section);
 
-	int GetRelativeVirtualAddress(out uint rva);
+	int GetRelativeVirtualAddress(out uint relativeVirtualAddress);
 
-	int GetVirtualAddress(out ulong va);
+	int GetVirtualAddress(out ulong virtualAddress);
 };

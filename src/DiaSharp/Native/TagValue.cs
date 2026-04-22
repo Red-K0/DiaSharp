@@ -5,7 +5,6 @@
 /// </summary>
 /// <remarks>
 /// A <see cref="TagValue"/> can represent various values relating to discriminated or tagged unions, like Rust's <see langword="enum"/> variants.<br/>
-/// An alternative way to think about the layout of a <see cref="TagValue"/> could be something like this:
 /// </remarks>
 [StructLayout(LayoutKind.Explicit, Pack = 1, Size = 17)]
 public readonly struct TagValue : IEquatable<TagValue>

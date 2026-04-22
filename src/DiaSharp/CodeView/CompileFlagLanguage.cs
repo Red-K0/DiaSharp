@@ -91,7 +91,6 @@ public enum CompileFlagLanguage
 	/// <summary>
 	/// Application language is High Level Shader Language.
 	/// </summary>
-	[Obsolete(_Globals.HlslObsoleteMessage)]
 	HLSL,
 
 	/// <summary>

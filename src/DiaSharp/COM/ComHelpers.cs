@@ -106,7 +106,7 @@ public static unsafe partial class ComHelpers
 				default: break;
 
 				case      ClassNotRegisteredException.HResultValue: throw new      ClassNotRegisteredException(classID, typeof(I), classContext);
-				case        AggregateUnsupportedException.HResultValue: throw new        AggregateUnsupportedException(classID, typeof(I));
+				case    AggregateUnsupportedException.HResultValue: throw new    AggregateUnsupportedException(classID, typeof(I));
 				case InterfaceNotImplementedException.HResultValue: throw new InterfaceNotImplementedException(classID, typeof(I));
 			}
 
@@ -128,15 +128,24 @@ public static unsafe partial class ComHelpers
 
 		void* value = null;
 
-		int hresult = query(unk, &interfaceID, &value);
+		int result = query(unk, &interfaceID, &value);
 
-		if (hresult < 0) Marshal.ThrowExceptionForHR(hresult);
+		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
 		Q queried = ComInterfaceMarshaller<Q>.ConvertToManaged(value)!;
 
 		ComInterfaceMarshaller<Q>.Free(value);
 
 		return queried;
+	}
+
+	public static unsafe I Wrap<I>(void* comPointer) where I : class
+	{
+		I comObject = ComInterfaceMarshaller<I>.ConvertToManaged(comPointer)!;
+
+		ComInterfaceMarshaller<I>.Free(comPointer);
+
+		return comObject;
 	}
 
 	public static unsafe void Release<I>(ref I comObject) where I : class

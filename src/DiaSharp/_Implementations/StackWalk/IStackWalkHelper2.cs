@@ -135,7 +135,7 @@ file unsafe partial interface InterfaceImplementation : IStackWalkHelper2
 	}
 
 	[SkipLocalsInit]
-	int IStackWalkHelper2.GetFrameForVA(ulong va, out IFrameData frame)
+	int IStackWalkHelper2.GetFrameForVA(ulong virtualAddress, out IFrameData frame)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStackWalkHelper2));
 		bool __invokeSucceeded = default!;
@@ -146,7 +146,7 @@ file unsafe partial interface InterfaceImplementation : IStackWalkHelper2
 		try
 		{
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[8])(__this, va, &__frame_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[8])(__this, virtualAddress, &__frame_native);
 			}
 
 			__invokeSucceeded = true;
@@ -167,7 +167,7 @@ file unsafe partial interface InterfaceImplementation : IStackWalkHelper2
 	}
 
 	[SkipLocalsInit]
-	int IStackWalkHelper2.GetSymbolForVA(ulong va, out ISymbol symbol)
+	int IStackWalkHelper2.GetSymbolForVA(ulong virtualAddress, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStackWalkHelper2));
 		bool __invokeSucceeded = default!;
@@ -178,7 +178,7 @@ file unsafe partial interface InterfaceImplementation : IStackWalkHelper2
 		try
 		{
 			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[9])(__this, va, &__symbol_native);
+				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[9])(__this, virtualAddress, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
@@ -282,8 +282,8 @@ file unsafe partial interface InterfaceImplementation : IStackWalkHelper2
 	int IStackWalkHelper.ReadMemory(MemoryType type, ulong virtualAddress, uint bufferSize, out uint bytesWritten, byte* buffer) => throw new UnreachableException();
 	int IStackWalkHelper.SearchForReturnAddress(IFrameData frame, out ulong address) => throw new UnreachableException();
 	int IStackWalkHelper.SearchForReturnAddressStart(IFrameData frame, ulong address, out ulong startAddress) => throw new UnreachableException();
-	int IStackWalkHelper.GetFrameForVA(ulong va, out IFrameData frame) => throw new UnreachableException();
-	int IStackWalkHelper.GetSymbolForVA(ulong va, out ISymbol symbol) => throw new UnreachableException();
+	int IStackWalkHelper.GetFrameForVA(ulong virtualAddress, out IFrameData frame) => throw new UnreachableException();
+	int IStackWalkHelper.GetSymbolForVA(ulong virtualAddress, out ISymbol symbol) => throw new UnreachableException();
 	int IStackWalkHelper.GetPDataForVA(ulong virtualAddress, uint bytesRequested, out uint bytesWritten, byte* buffer) => throw new UnreachableException();
 	int IStackWalkHelper.GetImageForVA(ulong virtualAddressContext, out ulong imageAddress) => throw new UnreachableException();
 	int IStackWalkHelper.GetAddressForVA(ulong virtualAddress, out uint equivalentSection, out uint fragmentCount) => throw new UnreachableException();
@@ -357,10 +357,10 @@ namespace DiaSharp.StackWalk
 		new int SearchForReturnAddressStart(IFrameData frame, ulong address, out ulong startAddress) => ((IStackWalkHelper)this).SearchForReturnAddressStart(frame, address, out startAddress);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetFrameForVA(ulong va, out IFrameData frame) => ((IStackWalkHelper)this).GetFrameForVA(va, out frame);
+		new int GetFrameForVA(ulong virtualAddress, out IFrameData frame) => ((IStackWalkHelper)this).GetFrameForVA(virtualAddress, out frame);
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetSymbolForVA(ulong va, out ISymbol symbol) => ((IStackWalkHelper)this).GetSymbolForVA(va, out symbol);
+		new int GetSymbolForVA(ulong virtualAddress, out ISymbol symbol) => ((IStackWalkHelper)this).GetSymbolForVA(virtualAddress, out symbol);
 
 		[SkipLocalsInit, PreserveSig]
 		new int GetPDataForVA(ulong virtualAddress, uint bytesRequested, out uint bytesWritten, byte* buffer) => ((IStackWalkHelper)this).GetPDataForVA(virtualAddress, bytesRequested, out bytesWritten, buffer);

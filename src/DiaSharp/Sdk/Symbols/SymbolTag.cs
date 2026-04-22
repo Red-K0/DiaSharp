@@ -31,12 +31,10 @@ public enum SymbolTag
 	/// <summary>
 	/// Indicates that the symbol contains extended attributes of the compiland.
 	/// </summary>
+	/// <remarks>
+	/// Retrieving these properties may require loading compiland symbols.
+	/// </remarks>
 	CompilandDetails,
-
-	/// <summary>
-	/// these properties may require loading compiland symbols.
-	/// </summary>
-	Retrieving,
 
 	/// <summary>
 	/// Indicates that the symbol is an environment string defined for the compiland.

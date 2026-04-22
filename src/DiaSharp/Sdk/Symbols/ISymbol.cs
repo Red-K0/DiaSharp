@@ -46,13 +46,13 @@ public unsafe partial interface ISymbol
 
 	int GetUnalignedType([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	int GetAccess(out uint result);
+	int GetAccess(out Access result);
 
 	int GetLibraryName([MarshalAs(UnmanagedType.BStr)] out string result);
 
-	int GetPlatform(out uint result);
+	int GetPlatform(out CpuType result);
 
-	int GetLanguage(out uint result);
+	int GetLanguage(out CompileFlagLanguage result);
 
 	int GetEditAndContinueEnabled([MarshalAs(UnmanagedType.Bool)] out bool result);
 
@@ -84,11 +84,11 @@ public unsafe partial interface ISymbol
 
 	int GetIsPure([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	int GetCallingConvention(out uint result);
+	int GetCallingConvention(out DiaSharp.CodeView.CallingConvention result);
 
 	int GetValue(out Variant result);
 
-	int GetBaseType(out uint result);
+	int GetBaseType(out BasicType result);
 
 	int GetToken(out uint result);
 
@@ -172,15 +172,15 @@ public unsafe partial interface ISymbol
 
 	unsafe int GetDataBytes(uint dataSize, out uint dataWritten, byte* buffer);
 
-	int FindChildrenUnaware(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, out IEnumSymbols result);
+	int FindChildrenUnaware(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result);
 
-	int FindChildren(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, out IEnumSymbols result);
+	int FindChildren(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result);
 
-	int FindChildrenByAddress(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result);
+	int FindChildrenByAddress(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result);
 
-	int FindChildrenByVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result);
+	int FindChildrenByVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result);
 
-	int FindChildrenByRVA(SymbolTag symbolTag, string name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result);
+	int FindChildrenByRVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result);
 
 	int GetTargetSection(out uint result);
 
@@ -190,7 +190,7 @@ public unsafe partial interface ISymbol
 
 	int GetTargetVirtualAddress(out ulong result);
 
-	int GetMachineType(out DiaSharp.Native.ImageFileMachine result);
+	int GetMachineType(out Native.ImageFileMachine result);
 
 	int GetOemID(out uint result);
 
@@ -250,7 +250,7 @@ public unsafe partial interface ISymbol
 
 	int GetIsAggregated([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	int GetIsSplitted([MarshalAs(UnmanagedType.Bool)] out bool result);
+	int GetIsSplit([MarshalAs(UnmanagedType.Bool)] out bool result);
 
 	int GetContainer(out ISymbol result);
 
@@ -334,10 +334,8 @@ public unsafe partial interface ISymbol
 
 	int GetIsOptimizedAway([MarshalAs(UnmanagedType.Bool)] out bool result);
 
-	[PreserveSig, Obsolete(_Globals.HlslObsoleteMessage)]
 	int GetBuiltInKind(out BuiltIn result);
 
-	[PreserveSig, Obsolete(_Globals.HlslObsoleteMessage)]
 	int GetRegisterType(out Register result);
 
 	int GetBaseDataSlot(out uint result);
@@ -352,7 +350,6 @@ public unsafe partial interface ISymbol
 
 	int GetSizeInUdt(out uint result);
 
-	[PreserveSig, Obsolete(_Globals.HlslObsoleteMessage)]
 	int GetMemorySpaceKind(out MemorySpace result);
 
 	int GetUnmodifiedTypeId(out uint result);
@@ -473,7 +470,7 @@ public unsafe partial interface ISymbol
 
 	int FindInputAssemblyFile(out IInputAssemblyFile result);
 
-	int GetCharacteristics(out uint result);
+	int GetCharacteristics(out SectionCharacteristics result);
 
 	int GetCoffGroup(out ISymbol result);
 
