@@ -19,7 +19,7 @@ public abstract class ComObject<TInterface>(TInterface native) : IDisposable whe
 
 		try
 		{
-			queried = ComHelpers.QueryInterface<TInterface, TQueried>(_native!);
+			queried = ComHelpers.QueryInterface<TInterface, TQueried>(_native);
 			return true;
 		}
 		catch
@@ -43,7 +43,7 @@ public abstract class ComObject<TInterface>(TInterface native) : IDisposable whe
 		// This dictionary can be massive.
 		if (disposing) _propertyCache.Clear();
 
-		ComHelpers.Release(ref _native!);
+		ComHelpers.Release(ref _native);
 
 		_disposed = true;
 	}

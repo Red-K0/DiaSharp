@@ -5,6 +5,7 @@ namespace DiaSharp.COM;
 public abstract class ComEnumerable<TInterface, TValue>(TInterface native) : ComObject<TInterface>(native), IEnumerable<TValue> where TInterface : class where TValue : notnull
 {
 	protected const uint BatchSize = 8;
+
 	private readonly SemaphoreSlim _cacheLock = new(1);
 
 	private volatile int _objectCacheIndex = -1;
