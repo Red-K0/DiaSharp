@@ -1,4 +1,6 @@
-﻿namespace DiaSharp.CodeView;
+﻿#pragma warning disable CA1720
+
+namespace DiaSharp.CodeView;
 
 /// <summary>
 /// Specifies a symbol's basic type.
@@ -36,8 +38,8 @@ public enum BasicType
 	/// <summary>
 	/// Basic type is a <see langword="uint"/> (16/32).
 	/// </summary>
-	UunsignedInteger = 7,
-	
+	UunisSignedInteger = 7,
+
 	/// <summary>
 	/// Basic type is a <see langword="float"/>.
 	/// </summary>
@@ -61,7 +63,7 @@ public enum BasicType
 	/// <summary>
 	/// Basic type is a <see langword="uint"/>.
 	/// </summary>
-	UnsignedLong = 14,
+	UnisSignedLong = 14,
 	
 	/// <summary>
 	/// Basic type is a currency.
@@ -118,3 +120,5 @@ public enum BasicType
 	/// </summary>
 	Vector = 35,
 }
+
+#pragma warning restore CA1720

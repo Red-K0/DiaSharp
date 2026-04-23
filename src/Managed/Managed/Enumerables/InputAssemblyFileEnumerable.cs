@@ -4,13 +4,13 @@ using DiaSharp.SDK.Enumerators;
 
 namespace DiaSharp.Managed.Enumerables;
 
-internal class InputAssemblyFileEnumerable(IEnumInputAssemblyFiles native) : ComEnumerable<IEnumInputAssemblyFiles, InputAssemblyFile>(native)
+sealed internal class InputAssemblyFileEnumerable(IEnumInputAssemblyFiles native) : ComEnumerable<IEnumInputAssemblyFiles, InputAssemblyFile>(native)
 {
 	protected override unsafe uint TryFetchBatch()
 	{
-		void** files = stackalloc void*[(int)_batchSize];
+		void** files = stackalloc void*[(int)BatchSize];
 
-		int result = _native.GetNext(_batchSize, files, out uint filesFetched);
+		int result = _native.GetNext(BatchSize, files, out uint filesFetched);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 

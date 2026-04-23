@@ -1,4 +1,4 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008
+﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
 using DiaSharp.SDK;
 using DiaSharp.Storage;
 
@@ -13,31 +13,29 @@ file unsafe class InterfaceInformation : IIUnknownInterfaceType
 file unsafe partial interface InterfaceImplementation : IDataSource
 {
 	[SkipLocalsInit]
-	int IDataSource.GetLastError(out string error)
+	int IDataSource.GetLastError(out string message)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSource));
 		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out error);
-		ushort* __error_native = default;
+		Unsafe.SkipInit(out message);
+		ushort* __message_native = default;
 		int __retVal = default;
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[3])(__this, &__error_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[3])(__this, &__message_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
 			// Unmarshal - Convert native data to managed data.
-			error = BStrStringMarshaller.ConvertToManaged(__error_native)!;
+			message = BStrStringMarshaller.ConvertToManaged(__message_native)!;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
 				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				BStrStringMarshaller.Free(__error_native);
+				BStrStringMarshaller.Free(__message_native);
 			}
 		}
 
@@ -127,9 +125,7 @@ file unsafe partial interface InterfaceImplementation : IDataSource
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__session_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__session_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -184,20 +180,20 @@ file unsafe partial interface InterfaceImplementation : IDataSource
 file unsafe partial interface InterfaceImplementation
 {
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
-	static internal int ABI_GetLastError(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __error_native__param)
+	static internal int ABI_GetLastError(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __message_native__param)
 	{
 		IDataSource @this = default!;
-		ref ushort* __error_native = ref *__error_native__param;
-		string error = default!;
+		ref ushort* __message_native = ref *__message_native__param;
+		string message = default!;
 		int __retVal = default;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSource>(__this_native);
-			__retVal = @this.GetLastError(out error);
+			__retVal = @this.GetLastError(out message);
 			// Marshal - Convert managed data to native data.
-			__error_native = BStrStringMarshaller.ConvertToUnmanaged(error);
+			__message_native = BStrStringMarshaller.ConvertToUnmanaged(message);
 		}
 		catch (Exception __exception)
 		{

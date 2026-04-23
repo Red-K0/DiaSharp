@@ -32,23 +32,16 @@ public readonly struct TagValue : IEquatable<TagValue>
 
 	public override readonly bool Equals(object? obj) => obj is TagValue value && this == value;
 
-	public override unsafe int GetHashCode()
-	{
-		HashCode code = new();
-
-		fixed (TagValue* value = &this) code.AddBytes(new(value, sizeof(TagValue)));
-
-		return code.ToHashCode();
-	}
+	public override unsafe int GetHashCode() => Extensions.GetHashCode(in this);
 
 	public static unsafe bool operator ==(TagValue left, TagValue right)
 	{
-		return new ReadOnlySpan<byte>(&left, sizeof(TagValue)) == new ReadOnlySpan<byte>(&right, sizeof(TagValue));
+		return Extensions.ValueEquals(&left, &right);
 	}
 
 	public static unsafe bool operator !=(TagValue left, TagValue right)
 	{
-		return new ReadOnlySpan<byte>(&left, sizeof(TagValue)) != new ReadOnlySpan<byte>(&right, sizeof(TagValue));
+		return !Extensions.ValueEquals(&left, &right);
 	}
 
 	public bool Equals(TagValue other) => this == other;

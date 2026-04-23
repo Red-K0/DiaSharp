@@ -7,40 +7,57 @@
 /// COM does not persist the user's password information.
 /// For applications that use passwords, please see the documentation on <see href="https://learn.microsoft.com/en-us/windows/win32/seccrypto/cryptography-portal">Cryptography</see> (CryptoAPI).
 /// </remarks>
-public unsafe struct AuthenticationIdentity
+[StructLayout(LayoutKind.Sequential)]
+public readonly unsafe struct AuthenticationIdentity(char* user, uint userLength, char* domain, uint domainLength, char* password, uint passwordLength) : IEquatable<AuthenticationIdentity>
 {
 	/// <summary>
 	/// The user's name.
 	/// </summary>
-	public char* User;
+	public readonly char* User = user;
 
 	/// <summary>
 	/// The length of <see cref="User"/>, without the terminating NULL.
 	/// </summary>
-	public uint UserLength;
+	public readonly uint UserLength = userLength;
 
 	/// <summary>
 	/// The domain or workgroup name.
 	/// </summary>
-	public char* Domain;
+	public readonly char* Domain = domain;
 
 	/// <summary>
 	/// The length of <see cref="Domain"/>, without the terminating NULL.
 	/// </summary>
-	public uint DomainLength;
+	public readonly uint DomainLength = domainLength;
 
 	/// <summary>
 	/// The user's password in the domain or workgroup.
 	/// </summary>
-	public char* Password;
+	public readonly char* Password = password;
 
 	/// <summary>
 	/// The length of <see cref="Password"/>, without the terminating NULL.
 	/// </summary>
-	public uint PasswordLength;
+	public readonly uint PasswordLength = passwordLength;
 
 	/// <summary>
 	/// Indicates whether the provided strings are Unicode strings.
 	/// </summary>
-	public IdentityFlags Flags;
+	public readonly IdentityFlags Flags = IdentityFlags.Unicode;
+
+	public override readonly bool Equals(object? obj) => obj is AuthenticationIdentity id && this == id;
+
+	public override readonly int GetHashCode() => Extensions.GetHashCode(in this);
+
+	public static bool operator ==(AuthenticationIdentity left, AuthenticationIdentity right)
+	{
+		return Extensions.ValueEquals(&left, &right);
+	}
+
+	public static bool operator !=(AuthenticationIdentity left, AuthenticationIdentity right)
+	{
+		return !Extensions.ValueEquals(&left, &right);
+	}
+
+	public readonly bool Equals(AuthenticationIdentity other) => this == other;
 }

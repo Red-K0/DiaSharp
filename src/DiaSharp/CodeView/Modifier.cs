@@ -2,11 +2,11 @@
 
 public enum Modifier
 {
-	Invalid = 0x0000,
+	Invalid                 = 0x0000,
 
-	Const     = 0x0001,
-	Volatile  = 0x0002,
-	Unaligned = 0x0003,
+	Const                   = 0x0001,
+	Volatile                = 0x0002,
+	Unaligned               = 0x0003,
 
 	HlslUniform             = 0x0200,
 	HlslLine                = 0x0201,

@@ -3,7 +3,7 @@ using DiaSharp.SDK.Enumerators;
 
 namespace DiaSharp.Managed.Enumerables;
 
-internal class DebugStreamDataEnumerable(IEnumDebugStreamData native) : ComEnumerable<IEnumDebugStreamData, byte[]>(native)
+sealed internal class DebugStreamDataEnumerable(IEnumDebugStreamData native) : ComEnumerable<IEnumDebugStreamData, byte[]>(native)
 {
 	private const string _dataSizeMessage = $"A debug stream's data exceeds the maximum representable size. Use {nameof(IEnumDebugStreamData)}'s native implementation instead.";
 
@@ -59,7 +59,7 @@ internal class DebugStreamDataEnumerable(IEnumDebugStreamData native) : ComEnume
 
 		uint totalFetched = 0;
 
-		for (int i = 0; i < _batchSize; i++)
+		for (int i = 0; i < BatchSize; i++)
 		{
 			int result = _native.GetNext(1, 0, out uint bufferSize, null, out uint fetched);
 

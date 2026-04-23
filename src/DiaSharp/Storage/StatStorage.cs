@@ -81,14 +81,7 @@ public unsafe struct StatStorage : IEquatable<StatStorage>
 
 	public override readonly bool Equals(object? obj) => obj is StatStorage storage && this == storage;
 
-	public override int GetHashCode()
-	{
-		HashCode code = new();
-
-		fixed (StatStorage* storage = &this) code.AddBytes(new(storage, sizeof(StatStorage)));
-
-		return code.ToHashCode();
-	}
+	public override readonly int GetHashCode() => Extensions.GetHashCode(in this);
 
 	public static bool operator ==(StatStorage left, StatStorage right)
 	{

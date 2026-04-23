@@ -1,4 +1,4 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008
+﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031, CA1031
 using DiaSharp.Interop;
 
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
@@ -22,9 +22,7 @@ file unsafe partial interface InterfaceImplementation : IEnumVARIANT
 
 		try
 		{
-			{
-				__invokeRetVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__retVal_native);
-			}
+			__invokeRetVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__retVal_native);
 
 			// NotifyForSuccessfulInvoke - Keep alive any managed objects that need to stay alive across the call.
 			Marshal.ThrowExceptionForHR(__invokeRetVal);

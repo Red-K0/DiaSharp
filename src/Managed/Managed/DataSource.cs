@@ -125,6 +125,7 @@ public sealed unsafe class DataSource() : ComObject<IDataSource>(ComHelpers.CoCr
 
 	#endregion
 
+	[SuppressMessage("Usage", "CA2201:Do not raise reserved exception types", Justification = "The CLR would translate the HRESULT to OutOfMemoryException regardless.")]
 	public Session OpenSession()
 	{
 		int result = _native.OpenSession(out ISession session);

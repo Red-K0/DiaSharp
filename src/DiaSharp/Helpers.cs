@@ -1,15 +1,24 @@
 ﻿using static DiaSharp.HR;
 
+[assembly: InternalsVisibleTo("Managed")]
+
 namespace DiaSharp;
 
 file static class HR { public const uint BASE = ((uint)1 << 31) | ((uint)0x6d << 16), PDB = BASE | 1, DIA = BASE | 100, COFF = BASE | 200; }
 
+[SuppressMessage("Naming", "CA1700:Do not name enum values 'Reserved'", Justification = "HRESULT name sourced from header file.")]
 internal enum KnownResult : uint
 {
-	S_OK                                   = 0,
-	S_FALSE                                = 1,
+	S_OK                                   = 0x00000000,
+	S_FALSE                                = 0x00000001,
+
+	CO_S_NOTALLINTERFACES                  = 0x00080012,
 
 	E_NOTIMPL                              = 0x80004001,
+	E_NOINTERFACE                          = 0x80004002,
+	CLASS_E_NOAGGREGATION                  = 0x80040110,
+	REGDB_E_CLASSNOTREG                    = 0x80040154,
+
 	E_OUTOFMEMORY                          = 0x8007000E,
 	E_INVALIDARG                           = 0x80070057,
 	E_UNEXPECTED                           = 0x8000FFFF,
@@ -56,4 +65,18 @@ internal enum KnownResult : uint
 
 	E_DIA_COFF_ACCESS                      = COFF + 0,
 	E_DIA_COMP_PDB_ACCESS                  = COFF + 1,
+}
+
+static internal class Extensions
+{
+	public static unsafe int GetHashCode<T>(ref readonly T o) where T : unmanaged
+	{
+		HashCode code = new();
+
+		fixed (T* ptr = &o) code.AddBytes(new(ptr, sizeof(T)));
+
+		return code.ToHashCode();
+	}
+
+	public static unsafe bool ValueEquals<T>(T* a, T* b) where T : unmanaged => new ReadOnlySpan<T>(a, sizeof(T)).SequenceEqual(new ReadOnlySpan<T>(b, sizeof(T)));
 }

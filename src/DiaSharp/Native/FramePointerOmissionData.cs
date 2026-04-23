@@ -84,14 +84,7 @@ public struct FramePointerOmissionData : IEquatable<FramePointerOmissionData>
 
 	public override readonly bool Equals(object? obj) => obj is FramePointerOmissionData data && this == data;
 
-	public override readonly unsafe int GetHashCode()
-	{
-		HashCode code = new();
-
-		fixed (FramePointerOmissionData* data = &this) code.AddBytes(new(data, sizeof(FramePointerOmissionData)));
-
-		return code.ToHashCode();
-	}
+	public override readonly unsafe int GetHashCode() => Extensions.GetHashCode(in this);
 
 	public static unsafe bool operator ==(FramePointerOmissionData left, FramePointerOmissionData right)
 	{

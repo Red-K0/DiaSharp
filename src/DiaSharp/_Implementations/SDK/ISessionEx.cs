@@ -1,4 +1,4 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008
+﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
 using DiaSharp.CodeView;
 using DiaSharp.SDK;
 using DiaSharp.SDK.Enumerators;
@@ -126,9 +126,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[5])(__this, &__scope_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[5])(__this, &__scope_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -158,9 +156,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__tables_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__tables_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -190,9 +186,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[7])(__this, &__symbols_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[7])(__this, &__symbols_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -422,9 +416,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, SymbolTag, void**, int>)__vtable_native[13])(__this, sectionIndex, offset, symbolTag, &__symbol_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, SymbolTag, void**, int>)__vtable_native[13])(__this, sectionIndex, offset, symbolTag, &__symbol_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -454,9 +446,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[14])(__this, relativeVirtualAddress, symbolTag, &__symbol_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[14])(__this, relativeVirtualAddress, symbolTag, &__symbol_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -486,9 +476,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, void**, int>)__vtable_native[15])(__this, virtualAddress, symbolTag, &__symbol_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, void**, int>)__vtable_native[15])(__this, virtualAddress, symbolTag, &__symbol_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -518,9 +506,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[16])(__this, token, symbolTag, &__symbol_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[16])(__this, token, symbolTag, &__symbol_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -579,9 +565,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[18])(__this, id, &__symbol_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[18])(__this, id, &__symbol_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -721,9 +705,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[22])(__this, uniqueId, &__file_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[22])(__this, uniqueId, &__file_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -794,9 +776,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[24])(__this, segment, offset, length, &__lines_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[24])(__this, segment, offset, length, &__lines_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -826,9 +806,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[25])(__this, relativeVirtualAddress, length, &__lines_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[25])(__this, relativeVirtualAddress, length, &__lines_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -858,9 +836,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[26])(__this, virtualAddress, length, &__lines_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[26])(__this, virtualAddress, length, &__lines_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -965,9 +941,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[29])(__this, &__streams_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[29])(__this, &__streams_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1525,9 +1499,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[45])(__this, sectionIndex, offset, length, &__lines_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[45])(__this, sectionIndex, offset, length, &__lines_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1557,9 +1529,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[46])(__this, relativeVirtualAddress, length, &__lines_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[46])(__this, relativeVirtualAddress, length, &__lines_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1589,9 +1559,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[47])(__this, virtualAddress, length, &__lines_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[47])(__this, virtualAddress, length, &__lines_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1621,9 +1589,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[48])(__this, &__files_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[48])(__this, &__files_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1653,9 +1619,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[49])(__this, index, &__assembly_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[49])(__this, index, &__assembly_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1685,9 +1649,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[50])(__this, uniqueId, &__assembly_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[50])(__this, uniqueId, &__assembly_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1837,9 +1799,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[59])(__this, &__exports_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[59])(__this, &__exports_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1869,9 +1829,7 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[60])(__this, &__sites_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[60])(__this, &__sites_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);

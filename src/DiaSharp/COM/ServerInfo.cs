@@ -30,14 +30,14 @@
 /// </para>
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct ServerInfo
+public readonly unsafe struct ServerInfo(char* name, AuthenticationInfo info) : IEquatable<ServerInfo>
 {
 	private readonly uint _reserved1;
 
 	/// <summary>
 	/// The name of the computer.
 	/// </summary>
-	public char* Name;
+	public readonly char* Name = name;
 
 	/// <summary>
 	/// A pointer to a <see cref="AuthenticationInfo"/> structure to override the default activation security for machine remote activations.
@@ -45,7 +45,23 @@ public unsafe struct ServerInfo
 	/// <remarks>
 	/// If set to <see langword="null"/>, indicates that default values should be used.
 	/// </remarks>
-	public AuthenticationInfo AuthenticationInfo;
+	public readonly AuthenticationInfo AuthenticationInfo = info;
 
 	private readonly uint _reserved2;
+
+	public override readonly bool Equals(object? obj) => obj is ServerInfo info && this == info;
+
+	public override readonly int GetHashCode() => Extensions.GetHashCode(in this);
+
+	public static bool operator ==(ServerInfo left, ServerInfo right)
+	{
+		return Extensions.ValueEquals(&left, &right);
+	}
+
+	public static bool operator !=(ServerInfo left, ServerInfo right)
+	{
+		return !Extensions.ValueEquals(&left, &right);
+	}
+
+	public readonly bool Equals(ServerInfo other) => this == other;
 }

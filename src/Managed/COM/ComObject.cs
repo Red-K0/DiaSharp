@@ -1,24 +1,25 @@
 ﻿namespace DiaSharp.COM;
 
-public abstract class ComObject<I>(I native) : IDisposable where I : class
+public abstract class ComObject<TInterface>(TInterface native) : IDisposable where TInterface : class
 {
 	private static readonly object _unsupported = new();
 
 	private readonly Dictionary<int, object?> _propertyCache = [];
 
-	private bool _disposed = false;
+	private bool _disposed;
 
-	internal I _native = native;
+	internal TInterface _native = native;
 
 	protected void EnsureNotDisposed() => ObjectDisposedException.ThrowIf(_disposed, this);
 
-	protected bool TryQueryInterface<Q>([NotNullWhen(true)] out Q? queried) where Q : class
+	[SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Failures are expected in this API.")]
+	protected bool TryQueryInterface<TQueried>([NotNullWhen(true)] out TQueried? queried) where TQueried : class
 	{
 		EnsureNotDisposed();
 
 		try
 		{
-			queried = ComHelpers.QueryInterface<I, Q>(_native!);
+			queried = ComHelpers.QueryInterface<TInterface, TQueried>(_native!);
 			return true;
 		}
 		catch
@@ -30,13 +31,21 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 
 	public void Dispose()
 	{
-		if (!_disposed)
-		{
-			ComHelpers.Release(ref _native!);
-			_disposed = true;
-		}
+		Dispose(true);
 
 		GC.SuppressFinalize(this);
+	}
+
+	protected virtual void Dispose(bool disposing)
+	{
+		if (_disposed) return;
+
+		// This dictionary can be massive.
+		if (disposing) _propertyCache.Clear();
+
+		ComHelpers.Release(ref _native!);
+
+		_disposed = true;
 	}
 
 	#region Helpers
@@ -125,7 +134,7 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 
 		ref object? cached = ref CollectionsMarshal.GetValueRefOrAddDefault(_propertyCache, key, out bool exists);
 
-		if (exists) return !ReferenceEquals(cached, _unsupported) ? (T[]?)cached : null;
+		if (exists) return ReferenceEquals(cached, _unsupported) ? null : (T[])((T[])cached!).Clone();
 
 		unsafe
 		{
@@ -135,17 +144,30 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 
 			if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-			T* elements = stackalloc T[(int)size];
+			T[] array;
 
-			result = function(size, out _, elements);
+			if (size * sizeof(T) < 4096)
+			{
+				T* elements = stackalloc T[(int)size];
 
-			if (result < 0) Marshal.ThrowExceptionForHR(result);
+				result = function(size, out _, elements);
 
-			T[] array = new ReadOnlySpan<T>(elements, (int)size).ToArray();
+				if (result < 0) Marshal.ThrowExceptionForHR(result);
+
+				array = new ReadOnlySpan<T>(elements, (int)size).ToArray();
+			}
+			else
+			{
+				array = new T[size];
+
+				fixed (T* elements = array) result = function(size, out _, elements);
+
+				if (result < 0) Marshal.ThrowExceptionForHR(result);
+			}
 
 			cached = array;
 
-			return array;
+			return (T[])array.Clone();
 		}
 	}
 
@@ -176,12 +198,12 @@ public abstract class ComObject<I>(I native) : IDisposable where I : class
 	#endregion
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	protected Q EnsureAndQuery<Q>() where Q : class
+	protected TQueried EnsureAndQuery<TQueried>() where TQueried : class
 	{
 		EnsureNotDisposed();
 
-		return !TryQueryInterface(out Q? queried)
-			? throw new PlatformNotSupportedException($"The {nameof(Q)} interface is unsupported, please ensure the latest version of the DIA SDK is installed.")
+		return !TryQueryInterface(out TQueried? queried)
+			? throw new PlatformNotSupportedException($"The {nameof(TQueried)} interface is unsupported, please ensure the latest version of the DIA SDK is installed.")
 			: queried;
 	}
 

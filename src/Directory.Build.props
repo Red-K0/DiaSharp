@@ -7,7 +7,7 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<AnalysisLevel>preview-all</AnalysisLevel>
+		<AnalysisLevel>latest-all</AnalysisLevel>
 		<IsAotCompatible>true</IsAotCompatible>
 		<WarningLevel>9999</WarningLevel>
 		<NoWarn>CS1591</NoWarn>

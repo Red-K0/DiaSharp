@@ -1,4 +1,4 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008
+﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
 using DiaSharp.Interop;
 using DiaSharp.SDK;
 using DiaSharp.SDK.Enumerators;
@@ -24,9 +24,7 @@ file unsafe partial interface InterfaceImplementation : IEnumFrameData
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__enumerator_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__enumerator_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -72,9 +70,7 @@ file unsafe partial interface InterfaceImplementation : IEnumFrameData
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[5])(__this, index, &__frameData_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[5])(__this, index, &__frameData_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -146,9 +142,7 @@ file unsafe partial interface InterfaceImplementation : IEnumFrameData
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[9])(__this, &__enumerator_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[9])(__this, &__enumerator_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -178,9 +172,7 @@ file unsafe partial interface InterfaceImplementation : IEnumFrameData
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[10])(__this, relativeVirtualAddress, &__frameData_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[10])(__this, relativeVirtualAddress, &__frameData_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -210,9 +202,7 @@ file unsafe partial interface InterfaceImplementation : IEnumFrameData
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[11])(__this, virtualAddress, &__frameData_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[11])(__this, virtualAddress, &__frameData_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);

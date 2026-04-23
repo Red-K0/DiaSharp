@@ -2,20 +2,20 @@
 
 namespace DiaSharp.COM;
 
-public abstract class ComEnumerable<I, V>(I native, uint batchSize = 8) : ComObject<I>(native), IEnumerable<V> where I : class where V : notnull
+public abstract class ComEnumerable<TInterface, TValue>(TInterface native) : ComObject<TInterface>(native), IEnumerable<TValue> where TInterface : class where TValue : notnull
 {
-	protected readonly uint _batchSize = batchSize;
+	protected const uint BatchSize = 8;
 	private readonly SemaphoreSlim _cacheLock = new(1);
 
-	protected volatile int _objectCacheIndex = -1;
-	protected volatile bool _completed;
+	private volatile int _objectCacheIndex = -1;
+	private volatile bool _completed;
 
-	protected V[] _objectCache = [];
+	private TValue[] _objectCache = [];
 
-	public IEnumerator<V> GetEnumerator() => new ComEnumerator(this);
+	public IEnumerator<TValue> GetEnumerator() => new ComEnumerator(this);
 	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-	protected bool TryRequestItem(int index, out V value)
+	protected bool TryRequestItem(int index, out TValue value)
 	{
 		bool? result = CheckExists(out value);
 
@@ -36,7 +36,7 @@ public abstract class ComEnumerable<I, V>(I native, uint batchSize = 8) : ComObj
 					return false;
 				}
 
-				_completed = fetched < _batchSize;
+				_completed = fetched < BatchSize;
 
 				value = _objectCache[index];
 
@@ -64,7 +64,7 @@ public abstract class ComEnumerable<I, V>(I native, uint batchSize = 8) : ComObj
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		bool? CheckExists(out V value)
+		bool? CheckExists(out TValue value)
 		{
 			if (index <= _objectCacheIndex)
 			{
@@ -80,7 +80,7 @@ public abstract class ComEnumerable<I, V>(I native, uint batchSize = 8) : ComObj
 
 	protected abstract uint TryFetchBatch();
 
-	protected void AddToCache(V value)
+	protected void AddToCache(TValue value)
 	{
 		int nextIndex = _objectCacheIndex + 1;
 
@@ -90,7 +90,7 @@ public abstract class ComEnumerable<I, V>(I native, uint batchSize = 8) : ComObj
 		_objectCacheIndex = nextIndex;
 	}
 
-	protected void AddRangeToCache(ReadOnlySpan<V> values)
+	protected void AddRangeToCache(ReadOnlySpan<TValue> values)
 	{
 		if (values.Length == 0) return;
 
@@ -108,12 +108,12 @@ public abstract class ComEnumerable<I, V>(I native, uint batchSize = 8) : ComObj
 		_objectCacheIndex = requiredLength - 1;
 	}
 
-	private struct ComEnumerator(ComEnumerable<I, V> parent) : IEnumerator<V>
+	private struct ComEnumerator(ComEnumerable<TInterface, TValue> parent) : IEnumerator<TValue>
 	{
-		private readonly ComEnumerable<I, V> _parent = parent;
+		private readonly ComEnumerable<TInterface, TValue> _parent = parent;
 		private int _index = -1;
 
-		public V Current { get; private set; } = default!;
+		public TValue Current { get; private set; } = default!;
 		readonly object IEnumerator.Current => Current;
 
 		public readonly void Dispose() {}
@@ -121,12 +121,23 @@ public abstract class ComEnumerable<I, V>(I native, uint batchSize = 8) : ComObj
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool MoveNext()
 		{
-			if (!_parent.TryRequestItem(++_index, out V? value)) return false;
+			if (!_parent.TryRequestItem(++_index, out TValue? value)) return false;
 
 			Current = value;
 			return true;
 		}
 
 		public void Reset() => _index = -1;
+	}
+
+	protected override void Dispose(bool disposing)
+	{
+		if (disposing)
+		{
+			_cacheLock.Dispose();
+			_objectCache = null!;
+		}
+
+		base.Dispose(disposing);
 	}
 }

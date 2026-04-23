@@ -3,13 +3,13 @@ using DiaSharp.SDK.Enumerators;
 
 namespace DiaSharp.Managed.Enumerables;
 
-internal class DebugStreamEnumerable(IEnumDebugStreams native) : ComEnumerable<IEnumDebugStreams, DebugStreamDataEnumerable>(native)
+sealed internal class DebugStreamEnumerable(IEnumDebugStreams native) : ComEnumerable<IEnumDebugStreams, DebugStreamDataEnumerable>(native)
 {
 	protected override unsafe uint TryFetchBatch()
 	{
-		void** streams = stackalloc void*[(int)_batchSize];
+		void** streams = stackalloc void*[(int)BatchSize];
 
-		int result = _native.GetNext(_batchSize, streams, out uint streamsFetched);
+		int result = _native.GetNext(BatchSize, streams, out uint streamsFetched);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 

@@ -9,9 +9,9 @@ public class Table(ITable native) : ComEnumerable<ITable, nint>(native)
 
 	protected override unsafe uint TryFetchBatch()
 	{
-		void** elements = stackalloc void*[(int)_batchSize];
+		void** elements = stackalloc void*[(int)BatchSize];
 
-		int result = _native.GetNext(_batchSize, elements, out uint elementsFetched);
+		int result = _native.GetNext(BatchSize, elements, out uint elementsFetched);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 

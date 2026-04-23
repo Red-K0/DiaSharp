@@ -1,4 +1,6 @@
-﻿using DiaSharp.Storage;
+﻿#pragma warning disable CA1031
+
+using DiaSharp.Storage;
 
 namespace DiaSharp.COM;
 
@@ -133,3 +135,5 @@ sealed internal class ComStream : IStream
 		return unchecked((int)KnownResult.E_NOTIMPL);
 	}
 }
+
+#pragma warning restore CA1031

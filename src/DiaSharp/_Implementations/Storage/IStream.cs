@@ -1,4 +1,4 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008
+﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
 using DiaSharp.Storage;
 
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
@@ -148,9 +148,7 @@ file unsafe partial interface InterfaceImplementation : IStream
 		int __retVal = default;
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[13])(__this, &__stream_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[13])(__this, &__stream_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);

@@ -5,5 +5,5 @@ public unsafe partial interface ISymbol3 : ISymbol2
 {
 	int GetInlinee(out ISymbol inlinee);
 
-	int GetInlineeID(out uint ID);
+	int GetInlineeID(out uint id);
 }

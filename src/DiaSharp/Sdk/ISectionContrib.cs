@@ -49,7 +49,7 @@ public partial interface ISectionContrib
 
 	int GetRelocationsCRC(out uint crc);
 
-	int GetCompilandID(out uint ID);
+	int GetCompilandID(out uint id);
 
 	int GetHas16BitCode([MarshalAs(UnmanagedType.Bool)] out bool value);
 }

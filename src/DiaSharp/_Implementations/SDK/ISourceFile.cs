@@ -1,4 +1,4 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008
+﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
 using DiaSharp.CodeView;
 using DiaSharp.SDK;
 using DiaSharp.SDK.Enumerators;
@@ -14,13 +14,13 @@ file unsafe class InterfaceInformation : IIUnknownInterfaceType
 file unsafe partial interface InterfaceImplementation : ISourceFile
 {
 	[SkipLocalsInit]
-	int ISourceFile.GetUniqueID(out uint ID)
+	int ISourceFile.GetUniqueID(out uint id)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISourceFile));
-		Unsafe.SkipInit(out ID);
+		Unsafe.SkipInit(out id);
 		int __retVal;
 		// Pin - Pin data in preparation for calling the P/Invoke.
-		fixed (uint* __ID_native = &ID)
+		fixed (uint* __ID_native = &id)
 		{
 			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[3])(__this, __ID_native);
 		}
@@ -40,9 +40,7 @@ file unsafe partial interface InterfaceImplementation : ISourceFile
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[4])(__this, &__name_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[4])(__this, &__name_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -88,9 +86,7 @@ file unsafe partial interface InterfaceImplementation : ISourceFile
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__compilands_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__compilands_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -133,16 +129,16 @@ file unsafe partial interface InterfaceImplementation
 	{
 		ISourceFile @this = default!;
 		ref uint __ID_native = ref *__ID_native__param;
-		uint ID = default!;
+		uint id = default!;
 		int __retVal = default;
 
 		try
 		{
 			// Unmarshal - Convert native data to managed data.
 			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISourceFile>(__this_native);
-			__retVal = @this.GetUniqueID(out ID);
+			__retVal = @this.GetUniqueID(out id);
 			// Marshal - Convert managed data to native data.
-			__ID_native = ID;
+			__ID_native = id;
 		}
 		catch (Exception __exception)
 		{

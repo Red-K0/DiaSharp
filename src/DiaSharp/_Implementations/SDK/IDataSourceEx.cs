@@ -1,4 +1,4 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008
+﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
 using DiaSharp.SDK;
 using DiaSharp.SDK.Callbacks;
 using DiaSharp.Storage;
@@ -168,31 +168,29 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 	}
 
 	[SkipLocalsInit]
-	int IDataSourceEx.GetLastError(out string error)
+	int IDataSourceEx.GetLastError(out string message)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
 		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out error);
-		ushort* __error_native = default;
+		Unsafe.SkipInit(out message);
+		ushort* __message_native = default;
 		int __retVal = default;
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[3])(__this, &__error_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[3])(__this, &__message_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
 			// Unmarshal - Convert native data to managed data.
-			error = BStrStringMarshaller.ConvertToManaged(__error_native)!;
+			message = BStrStringMarshaller.ConvertToManaged(__message_native)!;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
 				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				BStrStringMarshaller.Free(__error_native);
+				BStrStringMarshaller.Free(__message_native);
 			}
 		}
 
@@ -282,9 +280,7 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__session_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__session_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -335,7 +331,7 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 		return __retVal;
 	}
 
-	int IDataSource.GetLastError(out string error) => throw new UnreachableException();
+	int IDataSource.GetLastError(out string message) => throw new UnreachableException();
 	int IDataSource.LoadDataFromPDB(string pdbPath) => throw new UnreachableException();
 	int IDataSource.LoadAndValidateDataFromPDB(string pdbPath, Guid* pdbSignature, uint signature, uint age) => throw new UnreachableException();
 	int IDataSource.LoadDataForExe(string exePath, string searchPath, void* callback) => throw new UnreachableException();
@@ -563,7 +559,7 @@ namespace DiaSharp.SDK
 	{
 
 		[SkipLocalsInit, PreserveSig]
-		new int GetLastError(out string error) => ((IDataSource)this).GetLastError(out error);
+		new int GetLastError(out string message) => ((IDataSource)this).GetLastError(out message);
 
 		[SkipLocalsInit, PreserveSig]
 		new int LoadDataFromPDB(string pdbPath) => ((IDataSource)this).LoadDataFromPDB(pdbPath);

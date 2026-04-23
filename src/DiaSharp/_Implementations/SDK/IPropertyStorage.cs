@@ -1,4 +1,4 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008
+﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
 using DiaSharp.SDK;
 using DiaSharp.Storage;
 
@@ -41,9 +41,7 @@ file unsafe partial interface InterfaceImplementation : IPropertyStorage
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, nint**, int>)__vtable_native[4])(__this, propertyIDCount, propertyIDs, &__names_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, nint**, int>)__vtable_native[4])(__this, propertyIDCount, propertyIDs, &__names_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -90,9 +88,7 @@ file unsafe partial interface InterfaceImplementation : IPropertyStorage
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[5])(__this, &__enumerator_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[5])(__this, &__enumerator_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -187,9 +183,7 @@ file unsafe partial interface InterfaceImplementation : IPropertyStorage
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, ushort**, int>)__vtable_native[10])(__this, id, &__value_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, ushort**, int>)__vtable_native[10])(__this, id, &__value_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);

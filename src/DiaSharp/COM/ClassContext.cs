@@ -109,7 +109,7 @@ public enum ClassContext : uint
 	/// A Windows Store app can use this flag to launch an AA COM server without a strong name, or bind to an already-running COM server launched by a desktop application, if the following requirements are met:
 	/// <list type="bullet">
 	///		<item> The client is running with an IL of 'Medium' (for more information, see <see href="https://learn.microsoft.com/en-us/windows/win32/secauthz/mandatory-integrity-control">Mandatory Integrity Control</see>). </item>
-	///		<item> The client shares the same user in its token as the session ID's user. </item>
+	///		<item> The client shares the same user in its token as the session id's user. </item>
 	///		<item> The client is strongly named (containing an <see href="https://learn.microsoft.com/en-us/windows/win32/shell/appids">AUMID</see> in its token). </item>
 	///		<item> The client is not in session 0. </item>
 	/// </list>

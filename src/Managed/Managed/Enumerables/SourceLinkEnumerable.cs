@@ -3,7 +3,7 @@ using DiaSharp.SDK.Enumerators;
 
 namespace DiaSharp.Managed.Enumerables;
 
-internal class SourceLinkEnumerable(IEnumSourceLink native) : ComEnumerable<IEnumSourceLink, byte[]>(native)
+sealed internal class SourceLinkEnumerable(IEnumSourceLink native) : ComEnumerable<IEnumSourceLink, byte[]>(native)
 {
 	protected override unsafe uint TryFetchBatch()
 	{

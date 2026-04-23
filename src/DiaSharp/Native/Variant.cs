@@ -61,23 +61,16 @@ public struct Variant : IEquatable<Variant>
 
 	public override readonly bool Equals(object? obj) => obj is Variant variant && this == variant;
 
-	public override unsafe int GetHashCode()
-	{
-		HashCode code = new();
-
-		fixed (Variant* variant = &this) code.AddBytes(new(variant, sizeof(Variant)));
-
-		return code.ToHashCode();
-	}
+	public override readonly int GetHashCode() => Extensions.GetHashCode(in this);
 
 	public static unsafe bool operator ==(Variant left, Variant right)
 	{
-		return new ReadOnlySpan<byte>(&left, sizeof(Variant)) == new ReadOnlySpan<byte>(&right, sizeof(Variant));
+		return Extensions.ValueEquals(&left, &right);
 	}
 
 	public static unsafe bool operator !=(Variant left, Variant right)
 	{
-		return new ReadOnlySpan<byte>(&left, sizeof(Variant)) != new ReadOnlySpan<byte>(&right, sizeof(Variant));
+		return !Extensions.ValueEquals(&left, &right);
 	}
 
 	public readonly bool Equals(Variant other) => this == other;
@@ -86,18 +79,11 @@ public struct Variant : IEquatable<Variant>
 [StructLayout(LayoutKind.Sequential)]
 public struct VariantRecord : IEquatable<VariantRecord>
 {
-	public IntPtr Record, RecordInfo;
+	public nint Record, RecordInfo;
 
 	public override readonly bool Equals(object? obj) => obj is VariantRecord record && this == record;
 
-	public override readonly unsafe int GetHashCode()
-	{
-		HashCode code = new();
-
-		fixed (VariantRecord* record = &this) code.AddBytes(new(record, sizeof(VariantRecord)));
-
-		return code.ToHashCode();
-	}
+	public override readonly unsafe int GetHashCode() => Extensions.GetHashCode(in this);
 
 	public static unsafe bool operator ==(VariantRecord left, VariantRecord right)
 	{

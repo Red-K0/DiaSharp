@@ -4,13 +4,13 @@ using DiaSharp.SDK.Enumerators;
 
 namespace DiaSharp.Managed.Enumerables;
 
-internal class TableEnumerable(IEnumTables native) : ComEnumerable<IEnumTables, Table>(native)
+sealed internal class TableEnumerable(IEnumTables native) : ComEnumerable<IEnumTables, Table>(native)
 {
 	protected override unsafe uint TryFetchBatch()
 	{
-		void** tables = stackalloc void*[(int)_batchSize];
+		void** tables = stackalloc void*[(int)BatchSize];
 
-		int result = _native.GetNext(_batchSize, tables, out uint tablesFetched);
+		int result = _native.GetNext(BatchSize, tables, out uint tablesFetched);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 

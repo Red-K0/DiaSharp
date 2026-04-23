@@ -3,7 +3,7 @@ namespace DiaSharp.SDK;
 [Guid("3BFE56B0-390C-4863-9430-1F3D083B7684")]
 public partial interface IInputAssemblyFile
 {
-	int GetUniqueID(out uint ID);
+	int GetUniqueID(out uint id);
 
 	int GetIndex(out uint index);
 

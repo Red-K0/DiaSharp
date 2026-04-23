@@ -18,7 +18,7 @@ public unsafe struct ImageSectionHeader : IEquatable<ImageSectionHeader>
 	/// <summary>
 	/// The file address.
 	/// </summary>
-	[FieldOffset(08)] public uint PhysicalAddress;
+	[FieldOffset(08)] public readonly uint PhysicalAddress;
 
 	/// <summary>
 	/// The total size of the section when loaded into memory, in bytes.
@@ -27,7 +27,7 @@ public unsafe struct ImageSectionHeader : IEquatable<ImageSectionHeader>
 	/// <para> If this value is greater than <see cref="SizeOfRawData"/>, the section is filled with zeroes. </para>
 	/// <para> This field is valid only for executable images and should be set to 0 for object files. </para>
 	/// </remarks>
-	[FieldOffset(08)] public uint VirtualSize;
+	[FieldOffset(08)] public readonly uint VirtualSize;
 
 	/// <summary>
 	/// The address of the first byte of the section when loaded into memory, relative to the image base.
@@ -35,7 +35,7 @@ public unsafe struct ImageSectionHeader : IEquatable<ImageSectionHeader>
 	/// <remarks>
 	/// For object files, this is the address of the first byte before relocation is applied.
 	/// </remarks>
-	[FieldOffset(12)] public uint VirtualAddress;
+	[FieldOffset(12)] public readonly uint VirtualAddress;
 
 	/// <summary>
 	/// The size of the initialized data on disk, in bytes. This value must be a multiple of the FileAlignment member of the Win32 IMAGE_OPTIONAL_HEADER structure.
@@ -44,7 +44,7 @@ public unsafe struct ImageSectionHeader : IEquatable<ImageSectionHeader>
 	/// <para> If this value is less than <see cref="VirtualSize"/>, the remainder of the section is filled with zeroes. </para>
 	/// <para> If the section contains only uninitialized data, the member is zero. </para>
 	/// </remarks>
-	[FieldOffset(16)] public uint SizeOfRawData;
+	[FieldOffset(16)] public readonly uint SizeOfRawData;
 
 	/// <summary>
 	/// A file pointer to the first page within the COFF file. This value must be a multiple of the FileAlignment member of the Win32 IMAGE_OPTIONAL_HEADER structure.
@@ -52,7 +52,7 @@ public unsafe struct ImageSectionHeader : IEquatable<ImageSectionHeader>
 	/// <remarks>
 	/// If a section contains only uninitialized data, set this member is zero.
 	/// </remarks>
-	[FieldOffset(20)] public uint PointerToRawData;
+	[FieldOffset(20)] public readonly uint PointerToRawData;
 
 	/// <summary>
 	/// A file pointer to the beginning of the relocation entries for the section.
@@ -60,7 +60,7 @@ public unsafe struct ImageSectionHeader : IEquatable<ImageSectionHeader>
 	/// <remarks>
 	/// If there are no relocations, this value is zero.
 	/// </remarks>
-	[FieldOffset(24)] public uint PointerToRelocations;
+	[FieldOffset(24)] public readonly uint PointerToRelocations;
 
 	/// <summary>
 	/// A file pointer to the beginning of the line-number entries for the section.
@@ -68,7 +68,7 @@ public unsafe struct ImageSectionHeader : IEquatable<ImageSectionHeader>
 	/// <remarks>
 	///  If there are no COFF line numbers, this value is zero.
 	/// </remarks>
-	[FieldOffset(28)] public uint PointerToLinenumbers;
+	[FieldOffset(28)] public readonly uint PointerToLinenumbers;
 
 	/// <summary>
 	/// The number of relocation entries for the section.
@@ -76,37 +76,30 @@ public unsafe struct ImageSectionHeader : IEquatable<ImageSectionHeader>
 	/// <remarks>
 	/// This value is zero for executable images.
 	/// </remarks>
-	[FieldOffset(32)] public ushort NumberOfRelocations;
+	[FieldOffset(32)] public readonly ushort NumberOfRelocations;
 
 	/// <summary>
 	/// The number of line-number entries for the section.
 	/// </summary>
-	[FieldOffset(34)] public ushort NumberOfLinenumbers;
+	[FieldOffset(34)] public readonly ushort NumberOfLinenumbers;
 
 	/// <summary>
 	/// The characteristics of the image.
 	/// </summary>
-	[FieldOffset(36)] public SectionCharacteristics Characteristics;
+	[FieldOffset(36)] public readonly SectionCharacteristics Characteristics;
 
 	public override readonly bool Equals(object? obj) => obj is ImageSectionHeader header && this == header;
 
-	public override int GetHashCode()
-	{
-		HashCode code = new();
-
-		fixed (ImageSectionHeader* header = &this) code.AddBytes(new(header, sizeof(ImageSectionHeader)));
-
-		return code.ToHashCode();
-	}
+	public override readonly int GetHashCode() => Extensions.GetHashCode(in this);
 
 	public static bool operator ==(ImageSectionHeader left, ImageSectionHeader right)
 	{
-		return new ReadOnlySpan<byte>(&left, sizeof(ImageSectionHeader)) == new ReadOnlySpan<byte>(&right, sizeof(ImageSectionHeader));
+		return Extensions.ValueEquals(&left, &right);
 	}
 
 	public static bool operator !=(ImageSectionHeader left, ImageSectionHeader right)
 	{
-		return new ReadOnlySpan<byte>(&left, sizeof(ImageSectionHeader)) != new ReadOnlySpan<byte>(&right, sizeof(ImageSectionHeader));
+		return !Extensions.ValueEquals(&left, &right);
 	}
 
 	public readonly bool Equals(ImageSectionHeader other) => this == other;

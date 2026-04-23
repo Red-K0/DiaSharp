@@ -3,7 +3,8 @@
 /// <summary>
 /// Contains the authentication settings used while making a remote activation request from the client computer to the server computer.
 /// </summary>
-public unsafe struct AuthenticationInfo
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct AuthenticationInfo : IEquatable<AuthenticationInfo>
 {
 	/// <summary>
 	/// The authentication service to be used, defaults to <see cref="Authentication.WinNT"/>.
@@ -43,4 +44,20 @@ public unsafe struct AuthenticationInfo
 	/// Emulates the underlying <c>dwCapabilities</c> field, due to inherent <see langword="bool"/> behaviour. Must be set to <see langword="true"/> if Kerberos is required.
 	/// </summary>
 	public bool KerberosMutualAuth;
+
+	public override readonly bool Equals(object? obj) => obj is AuthenticationInfo info && this == info;
+
+	public override readonly int GetHashCode() => Extensions.GetHashCode(in this);
+
+	public static bool operator ==(AuthenticationInfo left, AuthenticationInfo right)
+	{
+		return Extensions.ValueEquals(&left, &right);
+	}
+
+	public static bool operator !=(AuthenticationInfo left, AuthenticationInfo right)
+	{
+		return !Extensions.ValueEquals(&left, &right);
+	}
+
+	public readonly bool Equals(AuthenticationInfo other) => this == other;
 }

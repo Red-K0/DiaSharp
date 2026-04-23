@@ -10,7 +10,7 @@ public static unsafe partial class ComHelpers
 	/// <remarks>
 	/// <para>
 	///		CoCreateInstanceEx creates a single uninitialized object associated with the given CLSID on a specified remote computer.
-	///		This is an extension of the function CoCreateInstance, which creates an object on the local computer only.
+	///		This is an extension of the function <see cref="CoCreateInstance(Guid*, void*, ClassContext, Guid*, out void*)"/>, which creates an object on the local computer only.
 	/// </para>
 	/// <para>
 	///		In addition, rather than requesting a single interface and obtaining a single pointer to that interface, CoCreateInstanceEx makes it possible to specify an array of structures.
@@ -34,31 +34,32 @@ public static unsafe partial class ComHelpers
 	///		This function can return one of the following values:
 	///		<list type="bullet">
 	///			<item>
-	///				(<c>0x00000000</c>) S_OK: Indicates success.
+	///				<see cref="KnownResult.S_OK"/>: Indicates success.
 	///			</item>
 	///			<item>
-	///				(<c>0x80070057</c>) E_INVALIDARG: Indicates that one or more arguments passed to the function are invalid.
+	///				<see cref="KnownResult.E_INVALIDARG"/>: Indicates that one or more arguments passed to the function are invalid.
 	///			</item>
 	///			<item>
-	///				(<c>0x80040154</c>) REGDB_E_CLASSNOTREG:
+	///				<see cref="KnownResult.REGDB_E_CLASSNOTREG"/>:
 	///				A specified class is not registered in the registration database.
 	///				Also can indicate that the type of server you requested in the <paramref name="classContext"/> enumeration is not registered or the values for the server types in the registry are corrupt.
 	///			</item>
 	///			<item>
-	///				(<c>0x80040110</c>) CLASS_E_NOAGGREGATION: This class cannot be created as part of an aggregate.
+	///				<see cref="KnownResult.CLASS_E_NOAGGREGATION"/>: This class cannot be created as part of an aggregate.
 	///			</item>
 	///			<item>
-	///				(<c>0x00080012</c>) CO_S_NOTALLINTERFACES:
+	///				<see cref="KnownResult.CO_S_NOTALLINTERFACES"/>:
 	///				At least one, but not all of the interfaces requested in the pResults array were successfully retrieved.
 	///				The <see cref="MultiQueryInterface.HResult"/> member of each of the structures in <paramref name="results"/> indicates whether the specific interface was returned.
 	///			</item>
 	///			<item>
-	///				(<c>0x80004002</c>) E_NOINTERFACE: None of the interfaces requested in the <paramref name="results"/> array were successfully retrieved.
+	///				<see cref="KnownResult.E_NOINTERFACE"/>: None of the interfaces requested in the <paramref name="results"/> array were successfully retrieved.
 	///			</item>
 	///		</list>
 	/// </returns>
 	[LibraryImport("ole32")]
 	[SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "CoCreateInstanceEx is necessary for COM instantation.")]
+	[SuppressMessage("Security", "CA5392:Use DefaultDllImportSearchPaths attribute for P/Invokes", Justification = "See https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-search-order.")]
 	public static partial int CoCreateInstanceEx(Guid* classID, void* outerIUnknown, ClassContext classContext, ServerInfo* serverInfo, uint resultCount, MultiQueryInterface* results);
 
 	/// <summary>
@@ -75,25 +76,26 @@ public static unsafe partial class ComHelpers
 	/// <returns></returns>
 	[LibraryImport("ole32")]
 	[SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible", Justification = "CoCreateInstance is necessary for COM instantation.")]
+	[SuppressMessage("Security", "CA5392:Use DefaultDllImportSearchPaths attribute for P/Invokes", Justification = "See https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-search-order.")]
 	public static partial int CoCreateInstance(Guid* classID, void* outerIUnknown, ClassContext classContext, Guid* interfaceID, out void* value);
 
 	/// <summary>
-	/// Creates and default-initializes a single managed object of type <typeparamref name="I"/>.
+	/// Creates and default-initializes a single managed object of type <typeparamref name="TInterface"/>.
 	/// </summary>
-	/// <typeparam name="I"> The interface to instantiate. </typeparam>
+	/// <typeparam name="TInterface"> The interface to instantiate. </typeparam>
 	/// <param name="classID"> The CLSID associated with the data and code that will be used to instantiate the object. </param>
 	/// <param name="classContext"> The context in which the code that manages the newly created object will run. </param>
 	/// <returns></returns>
 	/// <exception cref="ClassNotRegisteredException"/>
 	/// <exception cref="AggregateUnsupportedException"/>
 	/// <exception cref="InterfaceNotImplementedException"/>
-	public static I CoCreateInstance<I>(Guid classID, ClassContext classContext = ClassContext.InProcessServer) where I : class
+	public static TInterface CoCreateInstance<TInterface>(Guid classID, ClassContext classContext = ClassContext.InProcessServer) where TInterface : class
 	{
 		int result = CoCreateInstance(&classID, null, classContext, Constants._IUnknownGUID, out void* value);
 
 		if (result >= 0)
 		{
-			I? comObject = ComInterfaceMarshaller<I>.ConvertToManaged(value)!;
+			TInterface? comObject = ComInterfaceMarshaller<TInterface>.ConvertToManaged(value)!;
 
 			Marshal.Release((nint)value);
 
@@ -105,9 +107,9 @@ public static unsafe partial class ComHelpers
 			{
 				default: break;
 
-				case      ClassNotRegisteredException.HResultValue: throw new      ClassNotRegisteredException(classID, typeof(I), classContext);
-				case    AggregateUnsupportedException.HResultValue: throw new    AggregateUnsupportedException(classID, typeof(I));
-				case InterfaceNotImplementedException.HResultValue: throw new InterfaceNotImplementedException(classID, typeof(I));
+				case      ClassNotRegisteredException.HResultValue: throw new      ClassNotRegisteredException(classID, typeof(TInterface), classContext);
+				case    AggregateUnsupportedException.HResultValue: throw new    AggregateUnsupportedException(classID, typeof(TInterface));
+				case InterfaceNotImplementedException.HResultValue: throw new InterfaceNotImplementedException(classID, typeof(TInterface));
 			}
 
 			Marshal.ThrowExceptionForHR(result);
@@ -116,15 +118,15 @@ public static unsafe partial class ComHelpers
 		}
 	}
 
-	public static unsafe Q QueryInterface<I, Q>(I comObject) where I : class where Q : class
+	public static unsafe TQueried QueryInterface<TInterface, TQueried>(TInterface comObject) where TInterface : class where TQueried : class
 	{
-		void* unk = ComInterfaceMarshaller<I>.ConvertToUnmanaged(comObject);
+		void* unk = ComInterfaceMarshaller<TInterface>.ConvertToUnmanaged(comObject);
 
 		void** vtable = *(void***)unk;
 
 		delegate* unmanaged<void*, Guid*, void**, int> query = (delegate* unmanaged<void*, Guid*, void**, int>)vtable[0];
 
-		Guid interfaceID = typeof(Q).GUID;
+		Guid interfaceID = typeof(TQueried).GUID;
 
 		void* value = null;
 
@@ -132,27 +134,27 @@ public static unsafe partial class ComHelpers
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 
-		Q queried = ComInterfaceMarshaller<Q>.ConvertToManaged(value)!;
+		TQueried queried = ComInterfaceMarshaller<TQueried>.ConvertToManaged(value)!;
 
-		ComInterfaceMarshaller<Q>.Free(value);
+		ComInterfaceMarshaller<TQueried>.Free(value);
 
 		return queried;
 	}
 
-	public static unsafe I Wrap<I>(void* comPointer) where I : class
+	public static unsafe TInterface Wrap<TInterface>(void* comPointer) where TInterface : class
 	{
-		I comObject = ComInterfaceMarshaller<I>.ConvertToManaged(comPointer)!;
+		TInterface comObject = ComInterfaceMarshaller<TInterface>.ConvertToManaged(comPointer)!;
 
-		ComInterfaceMarshaller<I>.Free(comPointer);
+		ComInterfaceMarshaller<TInterface>.Free(comPointer);
 
 		return comObject;
 	}
 
-	public static unsafe void Release<I>(ref I comObject) where I : class
+	public static unsafe void Release<TInterface>(ref TInterface comObject) where TInterface : class
 	{
-		void* ptr = ComInterfaceMarshaller<I>.ConvertToUnmanaged(comObject);
+		void* ptr = ComInterfaceMarshaller<TInterface>.ConvertToUnmanaged(comObject);
 
-		ComInterfaceMarshaller<I>.Free(ptr);
+		ComInterfaceMarshaller<TInterface>.Free(ptr);
 
 		comObject = null!;
 	}

@@ -1,4 +1,4 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008
+﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
 using DiaSharp.Interop;
 using DiaSharp.SDK;
 
@@ -23,9 +23,7 @@ file unsafe partial interface InterfaceImplementation : ITable
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[7])(__this, &__enumerator_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[7])(__this, &__enumerator_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -55,9 +53,7 @@ file unsafe partial interface InterfaceImplementation : ITable
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[8])(__this, &__name_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[8])(__this, &__name_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -119,9 +115,7 @@ file unsafe partial interface InterfaceImplementation : ITable
 
 		try
 		{
-			{
-				__invokeRetVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__enumerator_native);
-			}
+			__invokeRetVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__enumerator_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);

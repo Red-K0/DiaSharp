@@ -8,9 +8,9 @@ sealed internal class LineNumberEnumerable(IEnumLineNumbers native) : ComEnumera
 {
 	protected override unsafe uint TryFetchBatch()
 	{
-		void** numbers = stackalloc void*[(int)_batchSize];
+		void** numbers = stackalloc void*[(int)BatchSize];
 
-		int result = _native.GetNext(_batchSize, numbers, out uint numbersFetched);
+		int result = _native.GetNext(BatchSize, numbers, out uint numbersFetched);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 

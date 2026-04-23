@@ -1,5 +1,6 @@
 ﻿namespace DiaSharp.COM.Exceptions;
 
+#pragma warning disable CA1032
 public sealed class ClassNotRegisteredException(Guid classID, Type? requestedInterface, ClassContext classContext) : COMException(CreateMessage(classID, requestedInterface, classContext), HResultValue)
 {
 	public Guid ClassID { get; } = classID;
@@ -22,3 +23,4 @@ public sealed class ClassNotRegisteredException(Guid classID, Type? requestedInt
 
 	}
 }
+#pragma warning restore CA1032

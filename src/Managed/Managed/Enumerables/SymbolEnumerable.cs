@@ -4,13 +4,13 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.Managed.Enumerables;
 
-public class SymbolEnumerable(IEnumSymbols native) : ComEnumerable<IEnumSymbols, Symbol>(native)
+sealed internal class SymbolEnumerable(IEnumSymbols native) : ComEnumerable<IEnumSymbols, Symbol>(native)
 {
 	protected override unsafe uint TryFetchBatch()
 	{
-		void** symbols = stackalloc void*[(int)_batchSize];
+		void** symbols = stackalloc void*[(int)BatchSize];
 
-		int result = _native.GetNext(_batchSize, symbols, out uint symbolsFetched);
+		int result = _native.GetNext(BatchSize, symbols, out uint symbolsFetched);
 
 		if (result < 0) Marshal.ThrowExceptionForHR(result);
 

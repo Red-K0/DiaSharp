@@ -1,4 +1,4 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008
+﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
 using DiaSharp.CodeView;
 using DiaSharp.Native;
 using DiaSharp.SDK;
@@ -145,9 +145,7 @@ file unsafe partial interface InterfaceImplementation : IStackWalkHelper2
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[8])(__this, virtualAddress, &__frame_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[8])(__this, virtualAddress, &__frame_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -177,9 +175,7 @@ file unsafe partial interface InterfaceImplementation : IStackWalkHelper2
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[9])(__this, virtualAddress, &__symbol_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[9])(__this, virtualAddress, &__symbol_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);

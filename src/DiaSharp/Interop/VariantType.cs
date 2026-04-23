@@ -34,7 +34,7 @@ public enum VariantType : ushort
 	IDispatch = 9,
 
 	/// <summary> An SCODE value. </summary>
-	Error = 10,
+	message = 10,
 
 	/// <summary> A Boolean value. True is -1 and false is 0. </summary>
 	Boolean = 11,
@@ -51,26 +51,26 @@ public enum VariantType : ushort
 	/// <summary> A character. </summary>
 	SignedByte = 16,
 
-	/// <summary> An unsigned character. </summary>
+	/// <summary> An unisSigned character. </summary>
 	Byte = 17,
 
-	/// <summary> An unsigned short. </summary>
-	UnsignedShort = 18,
+	/// <summary> An unisSigned short. </summary>
+	UnisSignedShort = 18,
 
-	/// <summary> An unsigned long. </summary>
-	UnsignedInteger = 19,
+	/// <summary> An unisSigned long. </summary>
+	UnisSignedInteger = 19,
 
 	/// <summary> A 64-bit integer. </summary>
 	Long = 20,
 
-	/// <summary> A 64-bit unsigned integer. </summary>
-	UnsignedLong = 21,
+	/// <summary> A 64-bit unisSigned integer. </summary>
+	UnisSignedLong = 21,
 
 	/// <summary> An integer. </summary>
 	UnknownInteger = 22,
 
-	/// <summary> An unsigned integer. </summary>
-	UnsignedUnknownInteger = 23,
+	/// <summary> An unisSigned integer. </summary>
+	UnisSignedUnknownInteger = 23,
 
 	/// <summary> A C-style void. </summary>
 	Void = 24,
@@ -99,11 +99,11 @@ public enum VariantType : ushort
 	/// <summary> A user-defined type. </summary>
 	UserDefinedRecord = 36,
 
-	/// <summary> A signed machine register size width. </summary>
+	/// <summary> A isSigned machine register size width. </summary>
 	NativeInteger = 37,
 
-	/// <summary> An unsigned machine register size width. </summary>
-	UnsignedNativeInteger = 38,
+	/// <summary> An unisSigned machine register size width. </summary>
+	UnisSignedNativeInteger = 38,
 
 	/// <summary> A FILETIME value. </summary>
 	FileTime = 64,
@@ -129,7 +129,7 @@ public enum VariantType : ushort
 	/// <summary> A clipboard format. </summary>
 	ClipboardFormat = 71,
 
-	/// <summary> A class ID. </summary>
+	/// <summary> A class id. </summary>
 	ClassID = 72,
 
 	/// <summary> A stream with a GUID version. </summary>

@@ -3,7 +3,7 @@
 namespace DiaSharp.Storage;
 
 /// <summary>
-/// The <see cref="PropertySpecifier"/> structure is used by many of the methods of <see cref="IPropertyStorage"/> to specify a property either by its ID, or its associated string name.
+/// The <see cref="PropertySpecifier"/> structure is used by many of the methods of <see cref="IPropertyStorage"/> to specify a property either by its id, or its associated string name.
 /// </summary>
 [StructLayout(LayoutKind.Explicit)]
 public readonly struct PropertySpecifier : IEquatable<PropertySpecifier>
@@ -16,7 +16,7 @@ public readonly struct PropertySpecifier : IEquatable<PropertySpecifier>
 	public readonly bool IsID;
 
 	/// <summary>
-	/// Specifies the value of the property ID. Use either this value or the following <see cref="Name"/>, not both.
+	/// Specifies the value of the property id. Use either this value or the following <see cref="Name"/>, not both.
 	/// </summary>
 	[FieldOffset(4)]
 	public readonly uint PropertyID;
@@ -29,14 +29,7 @@ public readonly struct PropertySpecifier : IEquatable<PropertySpecifier>
 
 	public override readonly bool Equals(object? obj) => obj is PropertySpecifier specifier && this == specifier;
 
-	public override unsafe int GetHashCode()
-	{
-		HashCode code = new();
-
-		fixed (PropertySpecifier* specifier = &this) code.AddBytes(new(specifier, sizeof(PropertySpecifier)));
-
-		return code.ToHashCode();
-	}
+	public override unsafe int GetHashCode() => Extensions.GetHashCode(in this);
 
 	public static unsafe bool operator ==(PropertySpecifier left, PropertySpecifier right)
 	{

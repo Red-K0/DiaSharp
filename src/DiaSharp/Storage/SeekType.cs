@@ -18,7 +18,7 @@ public enum SeekType
 	/// The new seek pointer is an offset relative to the current seek pointer location.
 	/// </summary>
 	/// <remarks>
-	/// In this case, the pffset parameter is the signed displacement from the current seek position.
+	/// In this case, the pffset parameter is the isSigned displacement from the current seek position.
 	/// </remarks>
 	Current,
 

@@ -6,6 +6,7 @@ using DiaSharp.SDK.Enumerators;
 
 namespace DiaSharp.Managed;
 
+[SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Readonly semantics are unnecessary.")]
 public class SourceFile(ISourceFile native) : ComObject<ISourceFile>(native)
 {
 	public uint? UniqueID => GetS<uint>(_native.GetUniqueID);

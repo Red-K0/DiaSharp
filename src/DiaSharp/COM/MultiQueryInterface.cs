@@ -13,7 +13,8 @@
 /// Each call would otherwise require a round-trip to the server.
 /// </para>
 /// </remarks>
-public unsafe struct MultiQueryInterface
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct MultiQueryInterface : IEquatable<MultiQueryInterface>
 {
 	/// <summary>
 	/// A pointer to an interface identifier.
@@ -29,4 +30,20 @@ public unsafe struct MultiQueryInterface
 	/// The return value of the QueryInterface call to locate the requested interface. This member must be 0 on input.
 	/// </summary>
 	public uint HResult;
+
+	public override readonly bool Equals(object? obj) => obj is MultiQueryInterface query && this == query;
+
+	public override readonly int GetHashCode() => Extensions.GetHashCode(in this);
+
+	public static bool operator ==(MultiQueryInterface left, MultiQueryInterface right)
+	{
+		return sizeof(nint) == 8 ? *(UInt128*)&left == *(UInt128*)&right : *(ulong*)&left == *(ulong*)&right && left.HResult == right.HResult;
+	}
+
+	public static bool operator !=(MultiQueryInterface left, MultiQueryInterface right)
+	{
+		return sizeof(nint) == 8 ? *(UInt128*)&left != *(UInt128*)&right : *(ulong*)&left != *(ulong*)&right ||  left.HResult != right.HResult;
+	}
+
+	public readonly bool Equals(MultiQueryInterface other) => this == other;
 }

@@ -3,6 +3,7 @@ using DiaSharp.SDK;
 
 namespace DiaSharp.Managed;
 
+[SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Readonly semantics are unnecessary.")]
 public class InjectedSource(IInjectedSource native) : ComObject<IInjectedSource>(native)
 {
 	public uint? CRC => GetS<uint>(_native.GetCRC);

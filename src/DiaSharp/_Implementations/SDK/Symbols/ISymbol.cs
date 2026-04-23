@@ -6,7 +6,7 @@ using DiaSharp.SDK.Enumerators;
 using DiaSharp.SDK.Symbols;
 using ImageFileMachine = DiaSharp.Native.ImageFileMachine;
 
-#pragma warning disable CS0612, CS0618, IDE0008
+#pragma warning disable CS0612, CS0618, IDE0008, CA1031
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
 {
 	public static Guid Iid { get; } = new([47, 123, 120, 203, 108, 189, 53, 70, 186, 82, 147, 49, 38, 189, 45, 205]);
@@ -60,9 +60,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[5])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[5])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -92,9 +90,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -124,9 +120,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[7])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[7])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -156,9 +150,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -415,9 +407,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[23])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[23])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -592,9 +582,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[33])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[33])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -624,9 +612,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[34])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[34])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -851,9 +837,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[47])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[47])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -932,9 +916,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[51])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[51])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1150,9 +1132,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[63])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[63])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1346,9 +1326,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[74])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[74])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1460,9 +1438,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[80])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[80])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1492,9 +1468,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[81])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[81])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1886,9 +1860,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[99])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[99])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -1934,9 +1906,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, UndecorateOptions, ushort**, int>)__vtable_native[101])(__this, undecorateOptions, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, UndecorateOptions, ushort**, int>)__vtable_native[101])(__this, undecorateOptions, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -2170,9 +2140,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[114])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[114])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -2372,9 +2340,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[125])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[125])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -2438,9 +2404,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[128])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[128])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -2689,9 +2653,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[142])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[142])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -3275,9 +3237,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[177])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[177])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -3475,9 +3435,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[188])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[188])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -3523,9 +3481,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[190])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[190])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -3707,9 +3663,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[200])(__this, sectionIndex, offset, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[200])(__this, sectionIndex, offset, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -3739,9 +3693,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[201])(__this, relativeVirtualAddress, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[201])(__this, relativeVirtualAddress, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -3771,9 +3723,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[202])(__this, virtualAddress, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[202])(__this, virtualAddress, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -3803,9 +3753,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[203])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[203])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -3835,9 +3783,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[204])(__this, sectionIndex, offset, length, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[204])(__this, sectionIndex, offset, length, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -3867,9 +3813,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[205])(__this, relativeVirtualAddress, length, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[205])(__this, relativeVirtualAddress, length, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -3899,9 +3843,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[206])(__this, virtualAddress, length, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[206])(__this, virtualAddress, length, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -3931,9 +3873,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[207])(__this, tagValue, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[207])(__this, tagValue, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -3963,9 +3903,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[208])(__this, tagValue, relativeVirtualAddress, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[208])(__this, tagValue, relativeVirtualAddress, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -4011,9 +3949,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[210])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[210])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -4174,9 +4110,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[219])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[219])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -4421,9 +4355,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[233])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[233])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);
@@ -4469,9 +4401,7 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 
 		try
 		{
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[235])(__this, &__result_native);
-			}
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[235])(__this, &__result_native);
 
 			__invokeSucceeded = true;
 			GC.KeepAlive(this);

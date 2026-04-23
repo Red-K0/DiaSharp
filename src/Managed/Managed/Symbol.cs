@@ -9,6 +9,7 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.Managed;
 
+[SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Readonly semantics are unnecessary.")]
 public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 {
 	#region ISymbol
@@ -97,6 +98,7 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	public uint? Timestamp => GetS<uint>(_native.GetTimestamp);
 
+	[SuppressMessage("Naming", "CA1720:Identifier contains type name", Justification = "The property name is consistent, even on 'System.Type'.")]
 	public Guid? GUID => GetS<Guid>(_native.GetGUID);
 
 	public string? SymbolsFileName => GetC<string>(_native.GetSymbolsFileName);

@@ -1,5 +1,6 @@
 ﻿namespace DiaSharp.COM.Exceptions;
 
+#pragma warning disable CA1032
 public sealed class AggregateUnsupportedException(Guid classID, Type? requestedInterface) : COMException(CreateMessage(classID, requestedInterface), HResultValue)
 {
 	public Guid ClassID { get; } = classID;
@@ -15,3 +16,4 @@ public sealed class AggregateUnsupportedException(Guid classID, Type? requestedI
 		return $"The COM class \"{classID}\" ({typeName}) cannot be created as part of an aggregate.";
 	}
 }
+#pragma warning restore CA1032

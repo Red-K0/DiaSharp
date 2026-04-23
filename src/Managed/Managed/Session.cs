@@ -11,12 +11,7 @@ public sealed unsafe class Session(ISession session) : ComObject<ISession>(sessi
 {
 	#region ISession
 
-	public ulong LoadAddress
-	{
-		get => GetS<ulong>(_native.GetLoadAddress)!.Value;
-
-		set => Set(_native.PutLoadAddress, value);
-	}
+	public ulong LoadAddress { get => GetS<ulong>(_native.GetLoadAddress)!.Value; set => Set(_native.PutLoadAddress, value); }
 
 	public Symbol GlobalScope => new(GetC<ISymbol>(_native.GetGlobalScope)!);
 
