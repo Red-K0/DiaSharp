@@ -19,8 +19,31 @@
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<IsTrimmable>true</IsTrimmable>
-		<PublishAot>true</PublishAot>
+
+		<Authors>Red-K0</Authors>
+
+		<RepositoryUrl>https://github.com/Red-K0/DiaSharp/</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+
+		<PackageProjectUrl>https://github.com/Red-K0/DiaSharp</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	
 	</PropertyGroup>
+
+	<PropertyGroup Label="Versioning">
+		<AssemblyVersion>$(Version)</AssemblyVersion>
+		<PackageVersion>$(Version)</PackageVersion>
+		<FileVersion>$(Version)</FileVersion>
+		<Version>0.1.0</Version>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md">
+			<PackagePath>\</PackagePath>
+			<Pack>True</Pack>
+		</None>
+	</ItemGroup>
 
 	<ItemGroup Label="Global Usings">
 		<Using Include="System.Reflection" />

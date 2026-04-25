@@ -1,6 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+		<PackageId>DiaSharp.Managed</PackageId>
+
+		<Description>High-level managed bindings for the native DiaSharp implementation.</Description>
+
 		<RootNamespace>DiaSharp</RootNamespace>
 	</PropertyGroup>
 

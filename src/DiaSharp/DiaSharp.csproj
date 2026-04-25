@@ -1,39 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+		<PackageId>DiaSharp</PackageId>
+
+		<Description>High-performance C# wrapper for the Microsoft DIA SDK.</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.DisableRuntimeMarshallingAttribute"/>
-	</ItemGroup>
-
-	<PropertyGroup Label="Nuget">
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-
-		<Title>DiaSharp</Title>
-		<Authors>Red-K0</Authors>
-
-		<RepositoryUrl>https://github.com/Red-K0/DiaSharp/</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-
-		<PackageProjectUrl>https://github.com/Red-K0/DiaSharp</PackageProjectUrl>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-	
-	</PropertyGroup>
-
-	<PropertyGroup Label="Versioning">
-		<AssemblyVersion>$(Version)</AssemblyVersion>
-		<PackageVersion>$(Version)</PackageVersion>
-		<FileVersion>$(Version)</FileVersion>
-		<Version>0.1.0</Version>
-	</PropertyGroup>
-
-	<ItemGroup>
-		<None Include="..\..\README.md">
-			<PackagePath>\</PackagePath>
-			<Pack>True</Pack>
-		</None>
 	</ItemGroup>
 
 	<ItemGroup Label="Global Usings">
