@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.Interop;
 using DiaSharp.SDK.Enumerators;
 
@@ -16,23 +17,15 @@ file unsafe partial interface InterfaceImplementation : IEnumDebugStreams
 	int IEnumDebugStreams.GetNewEnum(out IEnumVARIANT enumerator)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumDebugStreams));
-		bool __invokeSucceeded = false;
 		void* __enumerator_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__enumerator_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__enumerator_native);
 
-			__invokeSucceeded = true;
+		enumerator = ComInterfaceMarshaller<IEnumVARIANT>.ConvertToManaged(__enumerator_native)!;
 
-			enumerator = ComInterfaceMarshaller<IEnumVARIANT>.ConvertToManaged(__enumerator_native)!;
+		ComInterfaceMarshaller<IEnumVARIANT>.Free(__enumerator_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumVARIANT>.Free(__enumerator_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -50,23 +43,15 @@ file unsafe partial interface InterfaceImplementation : IEnumDebugStreams
 	int IEnumDebugStreams.Item(uint index, out IEnumDebugStreamData data)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumDebugStreams));
-		bool __invokeSucceeded = false;
 		void* __data_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[5])(__this, index, &__data_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[5])(__this, index, &__data_native);
 
-			__invokeSucceeded = true;
+		data = ComInterfaceMarshaller<IEnumDebugStreamData>.ConvertToManaged(__data_native)!;
 
-			data = ComInterfaceMarshaller<IEnumDebugStreamData>.ConvertToManaged(__data_native)!;
+		ComInterfaceMarshaller<IEnumDebugStreamData>.Free(__data_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumDebugStreamData>.Free(__data_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -100,23 +85,15 @@ file unsafe partial interface InterfaceImplementation : IEnumDebugStreams
 	int IEnumDebugStreams.Clone(out IEnumDebugStreams enumerator)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumDebugStreams));
-		bool __invokeSucceeded = false;
 		void* __enumerator_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[9])(__this, &__enumerator_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[9])(__this, &__enumerator_native);
 
-			__invokeSucceeded = true;
+		enumerator = ComInterfaceMarshaller<IEnumDebugStreams>.ConvertToManaged(__enumerator_native)!;
 
-			enumerator = ComInterfaceMarshaller<IEnumDebugStreams>.ConvertToManaged(__enumerator_native)!;
+		ComInterfaceMarshaller<IEnumDebugStreams>.Free(__enumerator_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumDebugStreams>.Free(__enumerator_native);
-		}
+		return __retVal;
 	}
 }
 
@@ -125,104 +102,55 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNewEnum(ComWrappers.ComInterfaceDispatch* __this_native, void** __enumerator_native__param)
 	{
-		try
-		{
-			int __retVal =ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).GetNewEnum(out IEnumVARIANT enumerator);
+		int __retVal =ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).GetNewEnum(out IEnumVARIANT enumerator);
 
-			*__enumerator_native__param = ComInterfaceMarshaller<IEnumVARIANT>.ConvertToUnmanaged(enumerator);
+		*__enumerator_native__param = ComInterfaceMarshaller<IEnumVARIANT>.ConvertToUnmanaged(enumerator);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetCount(ComWrappers.ComInterfaceDispatch* __this_native, int* __count_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).GetCount(out *__count_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).GetCount(out *__count_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Item(ComWrappers.ComInterfaceDispatch* __this_native, uint index, void** __data_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).Item(index, out IEnumDebugStreamData data);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).Item(index, out IEnumDebugStreamData data);
 
-			*__data_native__param = ComInterfaceMarshaller<IEnumDebugStreamData>.ConvertToUnmanaged(data);
+		*__data_native__param = ComInterfaceMarshaller<IEnumDebugStreamData>.ConvertToUnmanaged(data);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNext(ComWrappers.ComInterfaceDispatch* __this_native, uint streamCount, void** streams, uint* __streamsFetched_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).GetNext(streamCount, streams, out *__streamsFetched_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).GetNext(streamCount, streams, out *__streamsFetched_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Skip(ComWrappers.ComInterfaceDispatch* __this_native, uint streamCount)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).Skip(streamCount);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).Skip(streamCount);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Reset(ComWrappers.ComInterfaceDispatch* __this_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).Reset();
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).Reset();
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Clone(ComWrappers.ComInterfaceDispatch* __this_native, void** __enumerator_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).Clone(out IEnumDebugStreams enumerator);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumDebugStreams>(__this_native).Clone(out IEnumDebugStreams enumerator);
 
-			*__enumerator_native__param = ComInterfaceMarshaller<IEnumDebugStreams>.ConvertToUnmanaged(enumerator);
+		*__enumerator_native__param = ComInterfaceMarshaller<IEnumDebugStreams>.ConvertToUnmanaged(enumerator);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 }
 

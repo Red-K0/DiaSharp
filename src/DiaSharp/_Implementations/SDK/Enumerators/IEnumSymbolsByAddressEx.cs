@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.SDK.Enumerators;
 using DiaSharp.SDK.Symbols;
 
@@ -230,86 +231,43 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSymbolByAddress(ComWrappers.ComInterfaceDispatch* __this_native, int __promoteBlockSymbols_native, uint sectionNumber, uint offset, void** __symbol_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSymbolsByAddressEx>(__this_native).GetSymbolByAddress(__promoteBlockSymbols_native != 0, sectionNumber, offset, out ISymbol symbol);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSymbolsByAddressEx>(__this_native).GetSymbolByAddress(__promoteBlockSymbols_native != 0, sectionNumber, offset, out ISymbol symbol);
 
-			*__symbol_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
+		*__symbol_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSymbolByRVA(ComWrappers.ComInterfaceDispatch* __this_native, int __promoteBlockSymbols_native, uint relativeVirtualAddress, void** __symbol_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSymbolsByAddressEx>(__this_native).GetSymbolByRVA(__promoteBlockSymbols_native != 0, relativeVirtualAddress, out ISymbol symbol);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSymbolsByAddressEx>(__this_native).GetSymbolByRVA(__promoteBlockSymbols_native != 0, relativeVirtualAddress, out ISymbol symbol);
 
-			*__symbol_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
+		*__symbol_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSymbolByVA(ComWrappers.ComInterfaceDispatch* __this_native, int __promoteBlockSymbols_native, ulong virtualAddress, void** __symbol_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSymbolsByAddressEx>(__this_native).GetSymbolByVA(__promoteBlockSymbols_native != 0, virtualAddress, out ISymbol symbol);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSymbolsByAddressEx>(__this_native).GetSymbolByVA(__promoteBlockSymbols_native != 0, virtualAddress, out ISymbol symbol);
 
-			*__symbol_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
+		*__symbol_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNext(ComWrappers.ComInterfaceDispatch* __this_native, int __promoteBlockSymbols_native, uint symbolCount, void** symbols, uint* __symbolsFetched_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSymbolsByAddressEx>(__this_native).GetNext(__promoteBlockSymbols_native != 0, symbolCount, symbols, out uint symbolsFetched);
-
-			*__symbolsFetched_native__param = symbolsFetched;
-
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSymbolsByAddressEx>(__this_native).GetNext(__promoteBlockSymbols_native != 0, symbolCount, symbols, out *__symbolsFetched_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Prev(ComWrappers.ComInterfaceDispatch* __this_native, int __promoteBlockSymbols_native, uint symbolCount, void** symbols, uint* __symbolsFetched_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSymbolsByAddressEx>(__this_native).GetPrevious(__promoteBlockSymbols_native != 0, symbolCount, symbols, out uint symbolsFetched);
-
-			*__symbolsFetched_native__param = symbolsFetched;
-
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSymbolsByAddressEx>(__this_native).GetPrevious(__promoteBlockSymbols_native != 0, symbolCount, symbols, out *__symbolsFetched_native__param);
 	}
 }
 

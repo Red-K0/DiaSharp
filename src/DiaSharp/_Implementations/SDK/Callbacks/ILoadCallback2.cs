@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.SDK.Callbacks;
 
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
@@ -58,16 +59,11 @@ file unsafe partial interface InterfaceImplementation : ILoadCallback2
 
 		scoped BStrStringMarshaller.ManagedToUnmanagedIn __debugPath_native__marshaller = new();
 
-		try
-		{
-			__debugPath_native__marshaller.FromManaged(debugPath, stackalloc byte[BStrStringMarshaller.ManagedToUnmanagedIn.BufferSize]);
+		__debugPath_native__marshaller.FromManaged(debugPath, stackalloc byte[BStrStringMarshaller.ManagedToUnmanagedIn.BufferSize]);
 
-			return ((delegate* unmanaged[MemberFunction]<void*, ushort*, uint, int>)__vtable_native[4])(__this, __debugPath_native__marshaller.ToUnmanaged(), resultCode);
-		}
-		finally
-		{
-			__debugPath_native__marshaller.Free();
-		}
+		__debugPath_native__marshaller.Free();
+
+		return ((delegate* unmanaged[MemberFunction]<void*, ushort*, uint, int>)__vtable_native[4])(__this, __debugPath_native__marshaller.ToUnmanaged(), resultCode);
 	}
 
 	[SkipLocalsInit]
@@ -77,16 +73,11 @@ file unsafe partial interface InterfaceImplementation : ILoadCallback2
 
 		scoped BStrStringMarshaller.ManagedToUnmanagedIn __pdbPath_native__marshaller = new();
 
-		try
-		{
-			__pdbPath_native__marshaller.FromManaged(pdbPath, stackalloc byte[BStrStringMarshaller.ManagedToUnmanagedIn.BufferSize]);
+		__pdbPath_native__marshaller.FromManaged(pdbPath, stackalloc byte[BStrStringMarshaller.ManagedToUnmanagedIn.BufferSize]);
 
-			return ((delegate* unmanaged[MemberFunction]<void*, ushort*, uint, int>)__vtable_native[5])(__this, __pdbPath_native__marshaller.ToUnmanaged(), resultCode);
-		}
-		finally
-		{
-			__pdbPath_native__marshaller.Free();
-		}
+		__pdbPath_native__marshaller.Free();
+
+		return ((delegate* unmanaged[MemberFunction]<void*, ushort*, uint, int>)__vtable_native[5])(__this, __pdbPath_native__marshaller.ToUnmanaged(), resultCode);
 	}
 
 	[SkipLocalsInit]
@@ -117,53 +108,25 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_RestrictOriginalPathAccess(ComWrappers.ComInterfaceDispatch* __this_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ILoadCallback2>(__this_native).RestrictOriginalPathAccess();
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ILoadCallback2>(__this_native).RestrictOriginalPathAccess();
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_RestrictReferencePathAccess(ComWrappers.ComInterfaceDispatch* __this_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ILoadCallback2>(__this_native).RestrictReferencePathAccess();
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ILoadCallback2>(__this_native).RestrictReferencePathAccess();
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_RestrictDBGAccess(ComWrappers.ComInterfaceDispatch* __this_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ILoadCallback2>(__this_native).RestrictDBGAccess();
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ILoadCallback2>(__this_native).RestrictDBGAccess();
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_RestrictSystemRootAccess(ComWrappers.ComInterfaceDispatch* __this_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ILoadCallback2>(__this_native).RestrictSystemRootAccess();
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ILoadCallback2>(__this_native).RestrictSystemRootAccess();
 	}
 }
 

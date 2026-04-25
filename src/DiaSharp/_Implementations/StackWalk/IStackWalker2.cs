@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.CodeView;
 using DiaSharp.SDK.Enumerators;
 using DiaSharp.StackWalk;
@@ -17,56 +18,36 @@ file unsafe partial interface InterfaceImplementation : IStackWalker2
 	int IStackWalker2.GetEnumFrames(IStackWalkHelper helper, out IEnumStackFrames frames)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStackWalker2));
-		bool __invokeSucceeded = false;
-		void* __helper_native = null;
 		void* __frames_native = null;
 
-		try
-		{
-			__helper_native = ComInterfaceMarshaller<IStackWalkHelper>.ConvertToUnmanaged(helper);
+		void* __helper_native = ComInterfaceMarshaller<IStackWalkHelper>.ConvertToUnmanaged(helper);
 
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void**, int>)__vtable_native[3])(__this, __helper_native, &__frames_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void**, int>)__vtable_native[3])(__this, __helper_native, &__frames_native);
 
-			__invokeSucceeded = true;
+		frames = ComInterfaceMarshaller<IEnumStackFrames>.ConvertToManaged(__frames_native)!;
 
-			frames = ComInterfaceMarshaller<IEnumStackFrames>.ConvertToManaged(__frames_native)!;
+		ComInterfaceMarshaller<IEnumStackFrames>.Free(__frames_native);
+		ComInterfaceMarshaller<IStackWalkHelper>.Free(__helper_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumStackFrames>.Free(__frames_native);
-
-			ComInterfaceMarshaller<IStackWalkHelper>.Free(__helper_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IStackWalker2.GetEnumFrames(CpuType cpuType, IStackWalkHelper helper, out IEnumStackFrames frames)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStackWalker2));
-		bool __invokeSucceeded = false;
-		void* __helper_native = null;
 		void* __frames_native = null;
 
-		try
-		{
-			__helper_native = ComInterfaceMarshaller<IStackWalkHelper>.ConvertToUnmanaged(helper);
+		void* __helper_native = ComInterfaceMarshaller<IStackWalkHelper>.ConvertToUnmanaged(helper);
 
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, CpuType, void*, void**, int>)__vtable_native[4])(__this, cpuType, __helper_native, &__frames_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, CpuType, void*, void**, int>)__vtable_native[4])(__this, cpuType, __helper_native, &__frames_native);
 
-			__invokeSucceeded = true;
+		frames = ComInterfaceMarshaller<IEnumStackFrames>.ConvertToManaged(__frames_native)!;
 
-			frames = ComInterfaceMarshaller<IEnumStackFrames>.ConvertToManaged(__frames_native)!;
+		ComInterfaceMarshaller<IEnumStackFrames>.Free(__frames_native);
+		ComInterfaceMarshaller<IStackWalkHelper>.Free(__helper_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumStackFrames>.Free(__frames_native);
-
-			ComInterfaceMarshaller<IStackWalkHelper>.Free(__helper_native);
-		}
+		return __retVal;
 	}
 
 	int IStackWalker.GetEnumFrames(IStackWalkHelper helper, out IEnumStackFrames frames) => throw new UnreachableException();
@@ -90,7 +71,6 @@ namespace DiaSharp.StackWalk
 	[IUnknownDerived<InterfaceInformation, InterfaceImplementation>]
 	public partial interface IStackWalker2
 	{
-
 		[SkipLocalsInit, PreserveSig]
 		new int GetEnumFrames(IStackWalkHelper helper, out IEnumStackFrames frames) => ((IStackWalker)this).GetEnumFrames(helper, out frames);
 

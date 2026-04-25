@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.Interop;
 using DiaSharp.SDK;
 using DiaSharp.SDK.Enumerators;
@@ -17,23 +18,15 @@ file unsafe partial interface InterfaceImplementation : IEnumSectionContribs
 	int IEnumSectionContribs.GetNewEnum(out IEnumVARIANT enumerator)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSectionContribs));
-		bool __invokeSucceeded = false;
 		void* __enumerator_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__enumerator_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__enumerator_native);
 
-			__invokeSucceeded = true;
+		enumerator = ComInterfaceMarshaller<IEnumVARIANT>.ConvertToManaged(__enumerator_native)!;
 
-			enumerator = ComInterfaceMarshaller<IEnumVARIANT>.ConvertToManaged(__enumerator_native)!;
+		ComInterfaceMarshaller<IEnumVARIANT>.Free(__enumerator_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumVARIANT>.Free(__enumerator_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -51,23 +44,15 @@ file unsafe partial interface InterfaceImplementation : IEnumSectionContribs
 	int IEnumSectionContribs.Item(uint index, out ISectionContrib contrib)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSectionContribs));
-		bool __invokeSucceeded = false;
 		void* __contrib_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[5])(__this, index, &__contrib_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[5])(__this, index, &__contrib_native);
 
-			__invokeSucceeded = true;
+		contrib = ComInterfaceMarshaller<ISectionContrib>.ConvertToManaged(__contrib_native)!;
 
-			contrib = ComInterfaceMarshaller<ISectionContrib>.ConvertToManaged(__contrib_native)!;
+		ComInterfaceMarshaller<ISectionContrib>.Free(__contrib_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISectionContrib>.Free(__contrib_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -101,23 +86,15 @@ file unsafe partial interface InterfaceImplementation : IEnumSectionContribs
 	int IEnumSectionContribs.Clone(out IEnumSectionContribs enumerator)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSectionContribs));
-		bool __invokeSucceeded = false;
 		void* __enumerator_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[9])(__this, &__enumerator_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[9])(__this, &__enumerator_native);
 
-			__invokeSucceeded = true;
+		enumerator = ComInterfaceMarshaller<IEnumSectionContribs>.ConvertToManaged(__enumerator_native)!;
 
-			enumerator = ComInterfaceMarshaller<IEnumSectionContribs>.ConvertToManaged(__enumerator_native)!;
+		ComInterfaceMarshaller<IEnumSectionContribs>.Free(__enumerator_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSectionContribs>.Free(__enumerator_native);
-		}
+		return __retVal;
 	}
 }
 
@@ -126,104 +103,55 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNewEnum(ComWrappers.ComInterfaceDispatch* __this_native, void** __enumerator_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).GetNewEnum(out IEnumVARIANT enumerator);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).GetNewEnum(out IEnumVARIANT enumerator);
 
-			*__enumerator_native__param = ComInterfaceMarshaller<IEnumVARIANT>.ConvertToUnmanaged(enumerator);
+		*__enumerator_native__param = ComInterfaceMarshaller<IEnumVARIANT>.ConvertToUnmanaged(enumerator);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetCount(ComWrappers.ComInterfaceDispatch* __this_native, int* __count_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).GetCount(out *__count_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).GetCount(out *__count_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Item(ComWrappers.ComInterfaceDispatch* __this_native, uint index, void** __contrib_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).Item(index, out ISectionContrib contrib);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).Item(index, out ISectionContrib contrib);
 
-			*__contrib_native__param = ComInterfaceMarshaller<ISectionContrib>.ConvertToUnmanaged(contrib);
+		*__contrib_native__param = ComInterfaceMarshaller<ISectionContrib>.ConvertToUnmanaged(contrib);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNext(ComWrappers.ComInterfaceDispatch* __this_native, uint contribCount, void** contribs, uint* __contribsFetched_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).GetNext(contribCount, contribs, out *__contribsFetched_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).GetNext(contribCount, contribs, out *__contribsFetched_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Skip(ComWrappers.ComInterfaceDispatch* __this_native, uint contribCount)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).Skip(contribCount);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).Skip(contribCount);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Reset(ComWrappers.ComInterfaceDispatch* __this_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).Reset();
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).Reset();
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Clone(ComWrappers.ComInterfaceDispatch* __this_native, void** __enumerator_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).Clone(out IEnumSectionContribs enumerator);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSectionContribs>(__this_native).Clone(out IEnumSectionContribs enumerator);
 
-			*__enumerator_native__param = ComInterfaceMarshaller<IEnumSectionContribs>.ConvertToUnmanaged(enumerator);
+		*__enumerator_native__param = ComInterfaceMarshaller<IEnumSectionContribs>.ConvertToUnmanaged(enumerator);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 }
 

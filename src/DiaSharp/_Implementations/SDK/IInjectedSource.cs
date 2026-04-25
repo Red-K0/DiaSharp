@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.SDK;
 
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
@@ -37,69 +38,45 @@ file unsafe partial interface InterfaceImplementation : IInjectedSource
 	int IInjectedSource.GetFilename(out string name)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IInjectedSource));
-		bool __invokeSucceeded = false;
 		ushort* __name_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[5])(__this, &__name_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[5])(__this, &__name_native);
 
-			__invokeSucceeded = true;
+		name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
 
-			name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
+		BStrStringMarshaller.Free(__name_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) BStrStringMarshaller.Free(__name_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IInjectedSource.GetObjectFilename(out string name)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IInjectedSource));
-		bool __invokeSucceeded = false;
 		ushort* __name_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[6])(__this, &__name_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[6])(__this, &__name_native);
 
-			__invokeSucceeded = true;
+		name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
 
-			name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
+		BStrStringMarshaller.Free(__name_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) BStrStringMarshaller.Free(__name_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IInjectedSource.GetVirtualFilename(out string name)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IInjectedSource));
-		bool __invokeSucceeded = false;
 		ushort* __name_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[7])(__this, &__name_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[7])(__this, &__name_native);
 
-			__invokeSucceeded = true;
+		name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
 
-			name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
+		BStrStringMarshaller.Free(__name_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) BStrStringMarshaller.Free(__name_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -130,104 +107,55 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetCRC(ComWrappers.ComInterfaceDispatch* __this_native, uint* __crc_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetCRC(out *__crc_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetCRC(out *__crc_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLength(ComWrappers.ComInterfaceDispatch* __this_native, ulong* __length_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetLength(out *__length_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetLength(out *__length_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetFilename(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __name_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetFilename(out string name);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetFilename(out string name);
 
-			*__name_native__param = BStrStringMarshaller.ConvertToUnmanaged(name);
+		*__name_native__param = BStrStringMarshaller.ConvertToUnmanaged(name);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetObjectFilename(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __name_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetObjectFilename(out string name);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetObjectFilename(out string name);
 
-			*__name_native__param = BStrStringMarshaller.ConvertToUnmanaged(name);
+		*__name_native__param = BStrStringMarshaller.ConvertToUnmanaged(name);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetVirtualFilename(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __name_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetVirtualFilename(out string name);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetVirtualFilename(out string name);
 
-			*__name_native__param = BStrStringMarshaller.ConvertToUnmanaged(name);
+		*__name_native__param = BStrStringMarshaller.ConvertToUnmanaged(name);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSourceCompression(ComWrappers.ComInterfaceDispatch* __this_native, uint* __compression_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetSourceCompression(out *__compression_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetSourceCompression(out *__compression_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSource(ComWrappers.ComInterfaceDispatch* __this_native, uint dataSize, uint* __bytesWritten_native__param, byte* buffer)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetSource(dataSize, out *__bytesWritten_native__param, buffer);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IInjectedSource>(__this_native).GetSource(dataSize, out *__bytesWritten_native__param, buffer);
 	}
 }
 

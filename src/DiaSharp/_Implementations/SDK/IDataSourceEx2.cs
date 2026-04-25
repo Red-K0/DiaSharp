@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.CodeView;
 using DiaSharp.SDK;
 using DiaSharp.SDK.Callbacks;
@@ -19,53 +20,36 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 	int IDataSourceEx2.FindNamedStreams(string name, NameSearchOptions searchOptions, out IEnumNamedStreams streams)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
-		bool __invokeSucceeded = false;
 		void* __streams_native = null;
-		int __retVal;
 
 		scoped BStrStringMarshaller.ManagedToUnmanagedIn __name_native__marshaller = new();
 
-		try
-		{
-			__name_native__marshaller.FromManaged(name, stackalloc byte[BStrStringMarshaller.ManagedToUnmanagedIn.BufferSize]);
+		__name_native__marshaller.FromManaged(name, stackalloc byte[BStrStringMarshaller.ManagedToUnmanagedIn.BufferSize]);
 
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, NameSearchOptions, void**, int>)__vtable_native[19])(__this, __name_native__marshaller.ToUnmanaged(), searchOptions, &__streams_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, NameSearchOptions, void**, int>)__vtable_native[19])(__this, __name_native__marshaller.ToUnmanaged(), searchOptions, &__streams_native);
 
-			__invokeSucceeded = true;
+		streams = ComInterfaceMarshaller<IEnumNamedStreams>.ConvertToManaged(__streams_native)!;
 
-			streams = ComInterfaceMarshaller<IEnumNamedStreams>.ConvertToManaged(__streams_native)!;
+		ComInterfaceMarshaller<IEnumNamedStreams>.Free(__streams_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumNamedStreams>.Free(__streams_native);
+		__name_native__marshaller.Free();
 
-			__name_native__marshaller.Free();
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IDataSourceEx2.GetLastError(out string message)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
-		bool __invokeSucceeded = false;
 		ushort* __message_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[3])(__this, &__message_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[3])(__this, &__message_native);
 
-			__invokeSucceeded = true;
+		message = BStrStringMarshaller.ConvertToManaged(__message_native)!;
 
-			message = BStrStringMarshaller.ConvertToManaged(__message_native)!;
+		BStrStringMarshaller.Free(__message_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) BStrStringMarshaller.Free(__message_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -108,39 +92,26 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
 		void* __stream_native = null;
 
-		try
-		{
-			__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+		__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
 
-			return ((delegate* unmanaged[MemberFunction]<void*, void*, int>)__vtable_native[7])(__this, __stream_native);
-		}
-		finally
-		{
-			ComInterfaceMarshaller<IStream>.Free(__stream_native);
-		}
+		ComInterfaceMarshaller<IStream>.Free(__stream_native);
+
+		return ((delegate* unmanaged[MemberFunction]<void*, void*, int>)__vtable_native[7])(__this, __stream_native);
 	}
 
 	[SkipLocalsInit]
 	int IDataSourceEx2.OpenSession(out ISession session)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
-		bool __invokeSucceeded = false;
 		void* __session_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__session_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__session_native);
 
-			__invokeSucceeded = true;
+		session = ComInterfaceMarshaller<ISession>.ConvertToManaged(__session_native)!;
 
-			session = ComInterfaceMarshaller<ISession>.ConvertToManaged(__session_native)!;
+		ComInterfaceMarshaller<ISession>.Free(__session_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISession>.Free(__session_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -207,16 +178,11 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
 		void* __stream_native = null;
 
-		try
-		{
-			__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+		__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
 
-			return ((delegate* unmanaged[MemberFunction]<void*, void*, int, int>)__vtable_native[14])(__this, __stream_native, prefetchPDB ? 1 : 0);
-		}
-		finally
-		{
-			ComInterfaceMarshaller<IStream>.Free(__stream_native);
-		}
+		ComInterfaceMarshaller<IStream>.Free(__stream_native);
+
+		return ((delegate* unmanaged[MemberFunction]<void*, void*, int, int>)__vtable_native[14])(__this, __stream_native, prefetchPDB ? 1 : 0);
 	}
 
 	[SkipLocalsInit]
@@ -291,18 +257,11 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindNamedStreams(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __name_native, NameSearchOptions searchOptions, void** __streams_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx2>(__this_native).FindNamedStreams(BStrStringMarshaller.ConvertToManaged(__name_native)!, searchOptions, out IEnumNamedStreams streams);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx2>(__this_native).FindNamedStreams(BStrStringMarshaller.ConvertToManaged(__name_native)!, searchOptions, out IEnumNamedStreams streams);
 
-			*__streams_native__param = ComInterfaceMarshaller<IEnumNamedStreams>.ConvertToUnmanaged(streams);
+		*__streams_native__param = ComInterfaceMarshaller<IEnumNamedStreams>.ConvertToUnmanaged(streams);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 }
 
@@ -325,7 +284,6 @@ namespace DiaSharp.SDK
 	[IUnknownDerived<InterfaceInformation, InterfaceImplementation>]
 	public unsafe partial interface IDataSourceEx2
 	{
-
 		[SkipLocalsInit, PreserveSig]
 		new int GetLastError(out string message) => ((IDataSource)this).GetLastError(out message);
 

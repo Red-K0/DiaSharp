@@ -3,11 +3,11 @@
 [Guid("00020404-0000-0000-C000-000000000046")]
 public partial interface IEnumVARIANT
 {
-	IEnumVARIANT Clone();
+	int Clone(out IEnumVARIANT enumerator);
 
-	unsafe uint GetNext(uint elementCount, void** elements);
+	unsafe int GetNext(uint elementCount, void** elements, out uint elementsFetched);
 
-	void Reset();
+	int Reset();
 
-	uint Skip();
+	int Skip(uint elementCount);
 }

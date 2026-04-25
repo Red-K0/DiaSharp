@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.Storage;
 
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
@@ -15,24 +16,15 @@ file unsafe partial interface InterfaceImplementation : IEnumStatPropertyStorage
 	int IEnumStatPropertyStorage.Clone(out IEnumStatPropertyStorage enumerator)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumStatPropertyStorage));
-		bool __invokeSucceeded = false;
 		void* __enumerator_native = null;
-		int __retVal;
 
-		try
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__enumerator_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__enumerator_native);
 
-			__invokeSucceeded = true;
+		enumerator = ComInterfaceMarshaller<IEnumStatPropertyStorage>.ConvertToManaged(__enumerator_native)!;
 
-			enumerator = ComInterfaceMarshaller<IEnumStatPropertyStorage>.ConvertToManaged(__enumerator_native)!;
+		ComInterfaceMarshaller<IEnumStatPropertyStorage>.Free(__enumerator_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumStatPropertyStorage>.Free(__enumerator_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -68,57 +60,29 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Clone(ComWrappers.ComInterfaceDispatch* __this_native, void** __enumerator_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumStatPropertyStorage>(__this_native).Clone(out IEnumStatPropertyStorage enumerator);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumStatPropertyStorage>(__this_native).Clone(out IEnumStatPropertyStorage enumerator);
 
-			*__enumerator_native__param = ComInterfaceMarshaller<IEnumStatPropertyStorage>.ConvertToUnmanaged(enumerator);
+		*__enumerator_native__param = ComInterfaceMarshaller<IEnumStatPropertyStorage>.ConvertToUnmanaged(enumerator);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNext(ComWrappers.ComInterfaceDispatch* __this_native, uint propertyCount, StatPropertyStorage* properties, uint* __propertiesWritten_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumStatPropertyStorage>(__this_native).GetNext(propertyCount, properties, out *__propertiesWritten_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumStatPropertyStorage>(__this_native).GetNext(propertyCount, properties, out *__propertiesWritten_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Reset(ComWrappers.ComInterfaceDispatch* __this_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumStatPropertyStorage>(__this_native).Reset();
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumStatPropertyStorage>(__this_native).Reset();
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Skip(ComWrappers.ComInterfaceDispatch* __this_native, uint propertyCount)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumStatPropertyStorage>(__this_native).Skip(propertyCount);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumStatPropertyStorage>(__this_native).Skip(propertyCount);
 	}
 }
 

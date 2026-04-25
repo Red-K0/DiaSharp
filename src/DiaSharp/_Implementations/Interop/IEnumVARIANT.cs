@@ -1,5 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031, CA1031
-using DiaSharp;
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.Interop;
 
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
@@ -13,117 +13,76 @@ file unsafe class InterfaceInformation : IIUnknownInterfaceType
 file unsafe partial interface InterfaceImplementation : IEnumVARIANT
 {
 	[SkipLocalsInit]
-	IEnumVARIANT IEnumVARIANT.Clone()
+	int IEnumVARIANT.Clone(out IEnumVARIANT enumerator)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumVARIANT));
-		bool __invokeSucceeded = false;
-		void* __retVal_native = null;
+		void* __enumerator_native = null;
 
-		try
-		{
-			Marshal.ThrowExceptionForHR(((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__retVal_native));
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__enumerator_native);
 
-			__invokeSucceeded = true;
+		enumerator = ComInterfaceMarshaller<IEnumVARIANT>.ConvertToManaged(__enumerator_native)!;
 
-			return ComInterfaceMarshaller<IEnumVARIANT>.ConvertToManaged(__retVal_native)!;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumVARIANT>.Free(__retVal_native);
-		}
-	}
-
-	[SkipLocalsInit]
-	uint IEnumVARIANT.GetNext(uint elementCount, void** elements)
-	{
-		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumVARIANT));
-		uint __retVal;
-
-		Marshal.ThrowExceptionForHR(((delegate* unmanaged[MemberFunction]<void*, uint, void**, uint*, int>)__vtable_native[4])(__this, elementCount, elements, &__retVal));
+		ComInterfaceMarshaller<IEnumVARIANT>.Free(__enumerator_native);
 
 		return __retVal;
 	}
 
 	[SkipLocalsInit]
-	void IEnumVARIANT.Reset()
+	int IEnumVARIANT.GetNext(uint elementCount, void** elements, out uint elementsFetched)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumVARIANT));
 
-		Marshal.ThrowExceptionForHR(((delegate* unmanaged[MemberFunction]<void*, int>)__vtable_native[5])(__this));
+		fixed (uint* __elementsFetched_native = &elementsFetched)
+		{
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, void**, uint*, int>)__vtable_native[4])(__this, elementCount, elements, __elementsFetched_native);
+		}
 	}
 
 	[SkipLocalsInit]
-	uint IEnumVARIANT.Skip()
+	int IEnumVARIANT.Reset()
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumVARIANT));
-		uint __retVal;
 
-		Marshal.ThrowExceptionForHR(((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[6])(__this, &__retVal));
+		return ((delegate* unmanaged[MemberFunction]<void*, int>)__vtable_native[5])(__this);
+	}
 
-		return __retVal;
+	[SkipLocalsInit]
+	int IEnumVARIANT.Skip(uint elementCount)
+	{
+		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumVARIANT));
+
+		return ((delegate* unmanaged[MemberFunction]<void*, uint, int>)__vtable_native[6])(__this, elementCount);
 	}
 }
 
 file unsafe partial interface InterfaceImplementation
 {
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
-	static internal int ABI_Clone(ComWrappers.ComInterfaceDispatch* __this_native, void** __invokeRetValUnmanaged__param)
+	static internal int ABI_Clone(ComWrappers.ComInterfaceDispatch* __this_native, void** __enumerator_native__param)
 	{
-		try
-		{
-			*__invokeRetValUnmanaged__param = ComInterfaceMarshaller<IEnumVARIANT>.ConvertToUnmanaged(ComWrappers.ComInterfaceDispatch.GetInstance<IEnumVARIANT>(__this_native).Clone());
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumVARIANT>(__this_native).Clone(out IEnumVARIANT enumerator);
 
-			return (int)KnownResult.S_OK;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		*__enumerator_native__param = ComInterfaceMarshaller<IEnumVARIANT>.ConvertToUnmanaged(enumerator);
+
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
-	static internal int ABI_GetNext(ComWrappers.ComInterfaceDispatch* __this_native, uint elementCount, void** elements, uint* __invokeRetValUnmanaged__param)
+	static internal int ABI_GetNext(ComWrappers.ComInterfaceDispatch* __this_native, uint elementCount, void** elements, uint* __elementsFetched_native__param)
 	{
-		try
-		{
-			*__invokeRetValUnmanaged__param = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumVARIANT>(__this_native).GetNext(elementCount, elements);
-
-			return (int)KnownResult.S_FALSE;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumVARIANT>(__this_native).GetNext(elementCount, elements, out *__elementsFetched_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Reset(ComWrappers.ComInterfaceDispatch* __this_native)
 	{
-		try
-		{
-			ComWrappers.ComInterfaceDispatch.GetInstance<IEnumVARIANT>(__this_native).Reset();
-
-			return (int)KnownResult.S_OK;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumVARIANT>(__this_native).Reset();
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
-	static internal int ABI_Skip(ComWrappers.ComInterfaceDispatch* __this_native, uint* __invokeRetValUnmanaged__param)
+	static internal int ABI_Skip(ComWrappers.ComInterfaceDispatch* __this_native, uint elementCount)
 	{
-		try
-		{
-			*__invokeRetValUnmanaged__param = ComWrappers.ComInterfaceDispatch.GetInstance<IEnumVARIANT>(__this_native).Skip();
-
-			return (int)KnownResult.S_OK;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumVARIANT>(__this_native).Skip(elementCount);
 	}
 }
 
@@ -138,7 +97,7 @@ file unsafe partial interface InterfaceImplementation
 		vtable[3] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, void**, int>)&ABI_Clone;
 		vtable[4] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint, void**, uint*, int>)&ABI_GetNext;
 		vtable[5] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int>)&ABI_Reset;
-		vtable[6] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint*, int>)&ABI_Skip;
+		vtable[6] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint, int>)&ABI_Skip;
 
 		return vtable;
 	}

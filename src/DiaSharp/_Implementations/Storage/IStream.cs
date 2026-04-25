@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.Storage;
 
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
@@ -34,27 +35,20 @@ file unsafe partial interface InterfaceImplementation : IStream
 	int IStream.CopyTo(IStream stream, ulong byteCount, out ulong bytesRead, out ulong newPosition)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStream));
-		void* __stream_native = null;
+		int __retVal;
 
-		try
+		void* __stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+
+		fixed (ulong* __newPosition_native = &newPosition)
+		fixed (ulong* __bytesRead_native = &bytesRead)
 		{
-			int __retVal;
-
-			__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
-
-			fixed (ulong* __newPosition_native = &newPosition)
-			fixed (ulong* __bytesRead_native = &bytesRead)
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, ulong, ulong*, ulong*, int>)__vtable_native[7])(__this, __stream_native, byteCount, __bytesRead_native, __newPosition_native);
-			}
-
-
-			return __retVal;
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, ulong, ulong*, ulong*, int>)__vtable_native[7])(__this, __stream_native, byteCount, __bytesRead_native, __newPosition_native);
 		}
-		finally
-		{
-			ComInterfaceMarshaller<IStream>.Free(__stream_native);
-		}
+
+
+		ComInterfaceMarshaller<IStream>.Free(__stream_native);
+
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -104,23 +98,15 @@ file unsafe partial interface InterfaceImplementation : IStream
 	int IStream.Clone(out IStream stream)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStream));
-		bool __invokeSucceeded = false;
 		void* __stream_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[13])(__this, &__stream_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[13])(__this, &__stream_native);
 
-			__invokeSucceeded = true;
+		stream = ComInterfaceMarshaller<IStream>.ConvertToManaged(__stream_native)!;
 
-			stream = ComInterfaceMarshaller<IStream>.ConvertToManaged(__stream_native)!;
+		ComInterfaceMarshaller<IStream>.Free(__stream_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IStream>.Free(__stream_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -154,122 +140,59 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Seek(ComWrappers.ComInterfaceDispatch* __this_native, long offset, SeekType origin, ulong* __newPosition_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).Seek(offset, origin, out *__newPosition_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).Seek(offset, origin, out *__newPosition_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_SetSize(ComWrappers.ComInterfaceDispatch* __this_native, ulong newSize)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).SetSize(newSize);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).SetSize(newSize);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_CopyTo(ComWrappers.ComInterfaceDispatch* __this_native, void* __stream_native, ulong byteCount, ulong* __bytesRead_native__param, ulong* __newPosition_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).CopyTo(ComInterfaceMarshaller<IStream>.ConvertToManaged(__stream_native)!, byteCount, out *__bytesRead_native__param, out *__newPosition_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).CopyTo(ComInterfaceMarshaller<IStream>.ConvertToManaged(__stream_native)!, byteCount, out *__bytesRead_native__param, out *__newPosition_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Commit(ComWrappers.ComInterfaceDispatch* __this_native, CommitFlags flags)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).Commit(flags);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).Commit(flags);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Revert(ComWrappers.ComInterfaceDispatch* __this_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).Revert();
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).Revert();
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_LockRegion(ComWrappers.ComInterfaceDispatch* __this_native, ulong offset, ulong byteCount, LockType lsockType)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).LockRegion(offset, byteCount, lsockType);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).LockRegion(offset, byteCount, lsockType);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_UnlockRegion(ComWrappers.ComInterfaceDispatch* __this_native, ulong offset, ulong byteCount, LockType lockType)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).UnlockRegion(offset, byteCount, lockType);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).UnlockRegion(offset, byteCount, lockType);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Stat(ComWrappers.ComInterfaceDispatch* __this_native, StatStorage* __tag_native__param, StatName flag)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).Stat(out *__tag_native__param, flag);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).Stat(out *__tag_native__param, flag);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Clone(ComWrappers.ComInterfaceDispatch* __this_native, void** __stream_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).Clone(out IStream stream);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IStream>(__this_native).Clone(out IStream stream);
 
-			*__stream_native__param = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+		*__stream_native__param = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 }
 
@@ -300,7 +223,6 @@ namespace DiaSharp.Storage
 	[IUnknownDerived<InterfaceInformation, InterfaceImplementation>]
 	public unsafe partial interface IStream
 	{
-
 		[SkipLocalsInit, PreserveSig]
 		new int Read(byte* value, uint byteCount, out uint bytesRead) => ((ISequentialStream)this).Read(value, byteCount, out bytesRead);
 

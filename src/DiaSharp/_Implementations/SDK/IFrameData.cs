@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.Native;
 using DiaSharp.SDK;
 using DiaSharp.StackWalk;
@@ -127,26 +128,15 @@ file unsafe partial interface InterfaceImplementation : IFrameData
 	int IFrameData.GetProgram(out string name)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IFrameData));
-		bool __invokeSucceeded = false;
 		ushort* __name_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[13])(__this, &__name_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[13])(__this, &__name_native);
 
-			__invokeSucceeded = true;
+		name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
 
-			name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
+		BStrStringMarshaller.Free(__name_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded)
-			{
-				BStrStringMarshaller.Free(__name_native);
-			}
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -216,46 +206,29 @@ file unsafe partial interface InterfaceImplementation : IFrameData
 	int IFrameData.GetFunctionParent(out IFrameData parentData)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IFrameData));
-		bool __invokeSucceeded = false;
 		void* __parentData_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[19])(__this, &__parentData_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[19])(__this, &__parentData_native);
 
-			__invokeSucceeded = true;
+		parentData = ComInterfaceMarshaller<IFrameData>.ConvertToManaged(__parentData_native)!;
 
-			parentData = ComInterfaceMarshaller<IFrameData>.ConvertToManaged(__parentData_native)!;
+		ComInterfaceMarshaller<IFrameData>.Free(__parentData_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IFrameData>.Free(__parentData_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IFrameData.Execute(IStackWalkFrame stackFrame)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IFrameData));
-		void* __stackFrame_native = null;
 
-		try
-		{
-			int __retVal;
+		void* __stackFrame_native = ComInterfaceMarshaller<IStackWalkFrame>.ConvertToUnmanaged(stackFrame);
 
-			__stackFrame_native = ComInterfaceMarshaller<IStackWalkFrame>.ConvertToUnmanaged(stackFrame);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, int>)__vtable_native[20])(__this, __stackFrame_native);
 
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, int>)__vtable_native[20])(__this, __stackFrame_native);
+		ComInterfaceMarshaller<IStackWalkFrame>.Free(__stackFrame_native);
 
-
-			return __retVal;
-		}
-		finally
-		{
-			ComInterfaceMarshaller<IStackWalkFrame>.Free(__stackFrame_native);
-		}
+		return __retVal;
 	}
 }
 
@@ -264,259 +237,133 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetAddressSection(ComWrappers.ComInterfaceDispatch* __this_native, uint* __section_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetAddressSection(out *__section_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetAddressSection(out *__section_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetAddressOffset(ComWrappers.ComInterfaceDispatch* __this_native, uint* __offset_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetAddressOffset(out *__offset_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetAddressOffset(out *__offset_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetRelativeVirtualAddress(ComWrappers.ComInterfaceDispatch* __this_native, uint* __rva_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetRelativeVirtualAddress(out *__rva_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetRelativeVirtualAddress(out *__rva_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetVirtualAddress(ComWrappers.ComInterfaceDispatch* __this_native, ulong* __virtualAddress_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetVirtualAddress(out *__virtualAddress_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetVirtualAddress(out *__virtualAddress_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBlockLength(ComWrappers.ComInterfaceDispatch* __this_native, uint* __blockLength_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetBlockLength(out *__blockLength_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetBlockLength(out *__blockLength_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLocalsLength(ComWrappers.ComInterfaceDispatch* __this_native, uint* __length_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetLocalsLength(out *__length_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetLocalsLength(out *__length_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetParamsLength(ComWrappers.ComInterfaceDispatch* __this_native, uint* __length_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetParamsLength(out *__length_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetParamsLength(out *__length_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetMaxStack(ComWrappers.ComInterfaceDispatch* __this_native, uint* __maxStack_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetMaxStack(out *__maxStack_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetMaxStack(out *__maxStack_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetPrologueLength(ComWrappers.ComInterfaceDispatch* __this_native, uint* __length_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetPrologueLength(out *__length_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetPrologueLength(out *__length_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSavedRegistersLength(ComWrappers.ComInterfaceDispatch* __this_native, uint* __length_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetSavedRegistersLength(out *__length_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetSavedRegistersLength(out *__length_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetProgram(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __name_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetProgram(out string name);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetProgram(out string name);
 
-			*__name_native__param = BStrStringMarshaller.ConvertToUnmanaged(name);
+		*__name_native__param = BStrStringMarshaller.ConvertToUnmanaged(name);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSystemExceptionHandling(ComWrappers.ComInterfaceDispatch* __this_native, int* __enabled_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetSystemExceptionHandling(out bool enabled);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetSystemExceptionHandling(out bool enabled);
 
-			*__enabled_native__param = enabled ? 1 : 0;
+		*__enabled_native__param = enabled ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetCppExceptionHandling(ComWrappers.ComInterfaceDispatch* __this_native, int* __enabled_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetCppExceptionHandling(out bool enabled);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetCppExceptionHandling(out bool enabled);
 
-			*__enabled_native__param = enabled ? 1 : 0;
+		*__enabled_native__param = enabled ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsFunctionStart(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetIsFunctionStart(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetIsFunctionStart(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetAllocatesBasePointer(ComWrappers.ComInterfaceDispatch* __this_native, int* __allocates_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetAllocatesBasePointer(out bool allocates);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetAllocatesBasePointer(out bool allocates);
 
-			*__allocates_native__param = allocates ? 1 : 0;
+		*__allocates_native__param = allocates ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetFrameType(ComWrappers.ComInterfaceDispatch* __this_native, StackFrameType* __type_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetFrameType(out *__type_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetFrameType(out *__type_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetFunctionParent(ComWrappers.ComInterfaceDispatch* __this_native, void** __parentData_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetFunctionParent(out IFrameData parentData);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).GetFunctionParent(out IFrameData parentData);
 
-			*__parentData_native__param = ComInterfaceMarshaller<IFrameData>.ConvertToUnmanaged(parentData);
+		*__parentData_native__param = ComInterfaceMarshaller<IFrameData>.ConvertToUnmanaged(parentData);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Execute(ComWrappers.ComInterfaceDispatch* __this_native, void* __stackFrame_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).Execute(ComInterfaceMarshaller<IStackWalkFrame>.ConvertToManaged(__stackFrame_native)!);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IFrameData>(__this_native).Execute(ComInterfaceMarshaller<IStackWalkFrame>.ConvertToManaged(__stackFrame_native)!);
 	}
 }
 

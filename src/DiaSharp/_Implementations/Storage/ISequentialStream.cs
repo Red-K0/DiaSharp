@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.Storage;
 
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
@@ -39,27 +40,13 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Read(ComWrappers.ComInterfaceDispatch* __this_native, byte* value, uint byteCount, uint* __bytesRead_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISequentialStream>(__this_native).Read(value, byteCount, out *__bytesRead_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISequentialStream>(__this_native).Read(value, byteCount, out *__bytesRead_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_Write(ComWrappers.ComInterfaceDispatch* __this_native, byte* value, uint byteCount, uint* __bytesWritten_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISequentialStream>(__this_native).Write(value, byteCount, out *__bytesWritten_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISequentialStream>(__this_native).Write(value, byteCount, out *__bytesWritten_native__param);
 	}
 }
 

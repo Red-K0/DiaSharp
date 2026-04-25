@@ -6,7 +6,8 @@ using DiaSharp.SDK.Enumerators;
 using DiaSharp.SDK.Symbols;
 using ImageFileMachine = DiaSharp.Native.ImageFileMachine;
 
-#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+#pragma warning disable IDE0008, IDE0022
+
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
 {
 	public static Guid Iid { get; } = new([47, 123, 120, 203, 108, 189, 53, 70, 186, 82, 147, 49, 38, 189, 45, 205]);
@@ -43,95 +44,60 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		ushort* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[5])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[5])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
 
-			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+		BStrStringMarshaller.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded)
-			{
-				BStrStringMarshaller.Free(__result_native);
-			}
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.GetLexicalParent(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.GetClassParent(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[7])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[7])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.GetSymbolType(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -298,26 +264,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetLibraryName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		ushort* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[23])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[23])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
 
-			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+		BStrStringMarshaller.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded)
-			{
-				BStrStringMarshaller.Free(__result_native);
-			}
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -425,52 +380,30 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetSourceFileName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		ushort* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[33])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[33])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
 
-			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+		BStrStringMarshaller.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded)
-			{
-				BStrStringMarshaller.Free(__result_native);
-			}
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.GetUnused(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		ushort* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[34])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[34])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
 
-			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+		BStrStringMarshaller.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded)
-			{
-				BStrStringMarshaller.Free(__result_native);
-			}
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -615,26 +548,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetSymbolsFileName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		ushort* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[47])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[47])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
 
-			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+		BStrStringMarshaller.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded)
-			{
-				BStrStringMarshaller.Free(__result_native);
-			}
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -676,23 +598,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetArrayIndexType(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[51])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[51])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -840,23 +754,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetVirtualTableShape(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[63])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[63])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -981,26 +887,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetUndecoratedName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		ushort* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[74])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[74])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
 
-			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+		BStrStringMarshaller.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded)
-			{
-				BStrStringMarshaller.Free(__result_native);
-			}
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -1066,46 +961,30 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetLowerBound(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[80])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[80])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.GetUpperBound(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[81])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[81])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -1145,140 +1024,100 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.FindChildrenUnaware(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
+		int __retVal;
+
+		fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 		{
-			int __retVal;
-
-			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[85])(__this, symbolTag, (ushort*)__name_native, compareFlags, &__result_native);
-			}
-
-			__invokeSucceeded = true;
-
-			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
-
-			return __retVal;
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[85])(__this, symbolTag, (ushort*)__name_native, compareFlags, &__result_native);
 		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-		}
+
+		result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+		ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
+
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.FindChildren(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
+		int __retVal;
+
+		fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 		{
-			int __retVal;
-
-			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[86])(__this, symbolTag, (ushort*)__name_native, compareFlags, &__result_native);
-			}
-
-			__invokeSucceeded = true;
-
-			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
-
-			return __retVal;
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[86])(__this, symbolTag, (ushort*)__name_native, compareFlags, &__result_native);
 		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-		}
+
+		result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+		ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
+
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.FindChildrenByAddress(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
+		int __retVal;
+
+		fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 		{
-			int __retVal;
-
-			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, uint, uint, void**, int>)__vtable_native[87])(__this, symbolTag, (ushort*)__name_native, compareFlags, sectionIndex, offset, &__result_native);
-			}
-
-			__invokeSucceeded = true;
-
-			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
-
-			return __retVal;
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, uint, uint, void**, int>)__vtable_native[87])(__this, symbolTag, (ushort*)__name_native, compareFlags, sectionIndex, offset, &__result_native);
 		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-		}
+
+		result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+		ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
+
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.FindChildrenByVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
+		int __retVal;
+
+		fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 		{
-			int __retVal;
-
-			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, ulong, void**, int>)__vtable_native[88])(__this, symbolTag, (ushort*)__name_native, compareFlags, virtualAddress, &__result_native);
-			}
-
-			__invokeSucceeded = true;
-
-			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
-
-			return __retVal;
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, ulong, void**, int>)__vtable_native[88])(__this, symbolTag, (ushort*)__name_native, compareFlags, virtualAddress, &__result_native);
 		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-		}
+
+		result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+		ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
+
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.FindChildrenByRVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
+		int __retVal;
+
+		fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 		{
-			int __retVal;
-
-			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, uint, void**, int>)__vtable_native[89])(__this, symbolTag, (ushort*)__name_native, compareFlags, relativeVirtualAddress, &__result_native);
-			}
-
-			__invokeSucceeded = true;
-
-			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
-
-			return __retVal;
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, uint, void**, int>)__vtable_native[89])(__this, symbolTag, (ushort*)__name_native, compareFlags, relativeVirtualAddress, &__result_native);
 		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-		}
+
+		result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+		ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
+
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -1384,23 +1223,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetObjectPointerType(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[99])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[99])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -1418,26 +1249,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetUndecoratedName(UndecorateOptions undecorateOptions, out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		ushort* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, UndecorateOptions, ushort**, int>)__vtable_native[101])(__this, undecorateOptions, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, UndecorateOptions, ushort**, int>)__vtable_native[101])(__this, undecorateOptions, &__result_native);
 
-			__invokeSucceeded = true;
+		result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
 
-			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+		BStrStringMarshaller.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded)
-			{
-				BStrStringMarshaller.Free(__result_native);
-			}
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -1600,26 +1420,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetCompilerName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		ushort* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[114])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[114])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
 
-			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+		BStrStringMarshaller.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded)
-			{
-				BStrStringMarshaller.Free(__result_native);
-			}
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -1756,23 +1565,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetContainer(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[125])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[125])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -1805,23 +1606,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetVirtualBaseTableType(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[128])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[128])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -1993,23 +1786,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetUnmodifiedType(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[142])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[142])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -2410,23 +2195,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetSubType(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[177])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[177])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -2559,23 +2336,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetBaseSymbol(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[188])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[188])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -2593,26 +2362,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetObjectFileName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		ushort* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[190])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[190])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
 
-			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+		BStrStringMarshaller.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded)
-			{
-				BStrStringMarshaller.Free(__result_native);
-			}
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -2734,207 +2492,135 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.FindInlineFramesByAddress(uint sectionIndex, uint offset, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[200])(__this, sectionIndex, offset, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[200])(__this, sectionIndex, offset, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.FindInlineFramesByRVA(uint relativeVirtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[201])(__this, relativeVirtualAddress, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[201])(__this, relativeVirtualAddress, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.FindInlineFramesByVA(ulong virtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[202])(__this, virtualAddress, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[202])(__this, virtualAddress, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.FindInlineeLines(out IEnumLineNumbers result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[203])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[203])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.FindInlineeLinesByAddress(uint sectionIndex, uint offset, uint length, out IEnumLineNumbers result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[204])(__this, sectionIndex, offset, length, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[204])(__this, sectionIndex, offset, length, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.FindInlineeLinesByRVA(uint relativeVirtualAddress, uint length, out IEnumLineNumbers result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[205])(__this, relativeVirtualAddress, length, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[205])(__this, relativeVirtualAddress, length, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.FindInlineeLinesByVA(ulong virtualAddress, uint length, out IEnumLineNumbers result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[206])(__this, virtualAddress, length, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[206])(__this, virtualAddress, length, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.FindSymbolsForAcceleratorPointerTag(uint tagValue, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[207])(__this, tagValue, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[207])(__this, tagValue, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol.FindSymbolsByRVAForAcceleratorPointerTag(uint tagValue, uint relativeVirtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[208])(__this, tagValue, relativeVirtualAddress, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[208])(__this, tagValue, relativeVirtualAddress, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -2952,23 +2638,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetSourceLineOnTypeDefinition(out ILineNumber result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[210])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[210])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ILineNumber>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ILineNumber>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ILineNumber>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ILineNumber>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -3069,26 +2747,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetPhaseName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		ushort* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[219])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[219])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
 
-			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+		BStrStringMarshaller.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded)
-			{
-				BStrStringMarshaller.Free(__result_native);
-			}
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -3252,23 +2919,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.FindInputAssemblyFile(out IInputAssemblyFile result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[233])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[233])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<IInputAssemblyFile>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<IInputAssemblyFile>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<IInputAssemblyFile>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IInputAssemblyFile>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -3286,23 +2945,15 @@ file unsafe partial interface InterfaceImplementation : ISymbol
 	int ISymbol.GetCoffGroup(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol));
-		bool __invokeSucceeded = false;
 		void* __result_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[235])(__this, &__result_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[235])(__this, &__result_native);
 
-			__invokeSucceeded = true;
+		result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
 
-			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -3344,3637 +2995,1985 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSymbolIndexID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSymbolIndexID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSymbolIndexID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSymbolTag(ComWrappers.ComInterfaceDispatch* __this_native, SymbolTag* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSymbolTag(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSymbolTag(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetName(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetName(out string result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetName(out string result);
 
-			*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
+		*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLexicalParent(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLexicalParent(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLexicalParent(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetClassParent(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetClassParent(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetClassParent(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSymbolType(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSymbolType(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSymbolType(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetDataKind(ComWrappers.ComInterfaceDispatch* __this_native, DataKind* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetDataKind(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetDataKind(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLocationType(ComWrappers.ComInterfaceDispatch* __this_native, LocationType* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLocationType(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLocationType(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetAddressSection(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetAddressSection(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetAddressSection(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetAddressOffset(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetAddressOffset(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetAddressOffset(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetRelativeVirtualAddress(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetRelativeVirtualAddress(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetRelativeVirtualAddress(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetVirtualAddress(ComWrappers.ComInterfaceDispatch* __this_native, ulong* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualAddress(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualAddress(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetRegisterID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetRegisterID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetRegisterID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetOffset(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetOffset(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetOffset(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLength(ComWrappers.ComInterfaceDispatch* __this_native, ulong* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLength(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLength(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSlot(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSlot(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSlot(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetVolatileType(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVolatileType(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVolatileType(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetConstType(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetConstType(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetConstType(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetUnalignedType(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUnalignedType(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUnalignedType(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetAccess(ComWrappers.ComInterfaceDispatch* __this_native, Access* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetAccess(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetAccess(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLibraryName(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLibraryName(out string result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLibraryName(out string result);
 
-			*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
+		*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetPlatform(ComWrappers.ComInterfaceDispatch* __this_native, CpuType* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetPlatform(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetPlatform(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLanguage(ComWrappers.ComInterfaceDispatch* __this_native, CompileFlagLanguage* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLanguage(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLanguage(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetEditAndContinueEnabled(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetEditAndContinueEnabled(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetEditAndContinueEnabled(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetFrontendMajor(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFrontendMajor(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFrontendMajor(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetFrontendMinor(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFrontendMinor(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFrontendMinor(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetFrontendBuild(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFrontendBuild(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFrontendBuild(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBackendMajor(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBackendMajor(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBackendMajor(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBackendMinor(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBackendMinor(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBackendMinor(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBackendBuild(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBackendBuild(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBackendBuild(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSourceFileName(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSourceFileName(out string result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSourceFileName(out string result);
 
-			*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
+		*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetUnused(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUnused(out string result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUnused(out string result);
 
-			*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
+		*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetThunkOrdinal(ComWrappers.ComInterfaceDispatch* __this_native, ThunkOrdinal* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetThunkOrdinal(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetThunkOrdinal(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetThisAdjustor(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetThisAdjustor(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetThisAdjustor(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetVirtualBaseOffset(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualBaseOffset(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualBaseOffset(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsVirtual(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsVirtual(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsVirtual(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsIntro(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsIntro(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsIntro(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsPure(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsPure(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsPure(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetCallingConvention(ComWrappers.ComInterfaceDispatch* __this_native, DiaSharp.CodeView.CallingConvention* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetCallingConvention(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetCallingConvention(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetValue(ComWrappers.ComInterfaceDispatch* __this_native, Variant* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetValue(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetValue(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBaseType(ComWrappers.ComInterfaceDispatch* __this_native, BasicType* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBaseType(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBaseType(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetToken(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetToken(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetToken(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetTimestamp(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTimestamp(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTimestamp(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetGUID(ComWrappers.ComInterfaceDispatch* __this_native, Guid* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetGUID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetGUID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSymbolsFileName(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSymbolsFileName(out string result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSymbolsFileName(out string result);
 
-			*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
+		*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsReference(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsReference(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsReference(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetCount(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetCount(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetCount(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBitPosition(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBitPosition(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBitPosition(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetArrayIndexType(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetArrayIndexType(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetArrayIndexType(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsPacked(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsPacked(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsPacked(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasConstructor(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasConstructor(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasConstructor(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasOverloadedOperator(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasOverloadedOperator(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasOverloadedOperator(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsNested(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsNested(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsNested(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasNestedTypes(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasNestedTypes(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasNestedTypes(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasAssignmentOperator(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasAssignmentOperator(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasAssignmentOperator(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasCastOperator(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasCastOperator(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasCastOperator(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsScoped(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsScoped(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsScoped(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsVirtualBaseClass(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsVirtualBaseClass(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsVirtualBaseClass(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsIndirectVirtualBaseClass(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsIndirectVirtualBaseClass(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsIndirectVirtualBaseClass(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetVirtualBasePointerOffset(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualBasePointerOffset(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualBasePointerOffset(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetVirtualTableShape(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualTableShape(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualTableShape(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLexicalParentID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLexicalParentID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLexicalParentID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetClassParentID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetClassParentID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetClassParentID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetTypeID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTypeID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTypeID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetArrayIndexTypeID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetArrayIndexTypeID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetArrayIndexTypeID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetVirtualTableShapeID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualTableShapeID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualTableShapeID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsCode(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsCode(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsCode(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsFunction(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsFunction(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsFunction(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsManaged(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsManaged(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsManaged(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsMSIL(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsMSIL(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsMSIL(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetVirtualBaseDisplacementIndex(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualBaseDisplacementIndex(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualBaseDisplacementIndex(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetUndecoratedName(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUndecoratedName(out string result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUndecoratedName(out string result);
 
-			*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
+		*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetAge(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetAge(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetAge(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSignature(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSignature(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSignature(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsCompilerGenerated(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsCompilerGenerated(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsCompilerGenerated(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsAddressTaken(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsAddressTaken(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsAddressTaken(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetRank(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetRank(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetRank(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLowerBound(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLowerBound(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLowerBound(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetUpperBound(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUpperBound(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUpperBound(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLowerBoundID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLowerBoundID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLowerBoundID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetUpperBoundID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUpperBoundID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUpperBoundID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetDataBytes(ComWrappers.ComInterfaceDispatch* __this_native, uint dataSize, uint* __dataWritten_native__param, byte* buffer)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetDataBytes(dataSize, out uint dataWritten, buffer);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetDataBytes(dataSize, out uint dataWritten, buffer);
 
-			*__dataWritten_native__param = dataWritten;
+		*__dataWritten_native__param = dataWritten;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindChildrenUnaware(ComWrappers.ComInterfaceDispatch* __this_native, SymbolTag symbolTag, ushort* __name_native, NameSearchOptions compareFlags, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindChildrenUnaware(symbolTag, Utf16StringMarshaller.ConvertToManaged(__name_native), compareFlags, out IEnumSymbols result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindChildrenUnaware(symbolTag, Utf16StringMarshaller.ConvertToManaged(__name_native), compareFlags, out IEnumSymbols result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindChildren(ComWrappers.ComInterfaceDispatch* __this_native, SymbolTag symbolTag, ushort* __name_native, NameSearchOptions compareFlags, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindChildren(symbolTag, Utf16StringMarshaller.ConvertToManaged(__name_native), compareFlags, out IEnumSymbols result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindChildren(symbolTag, Utf16StringMarshaller.ConvertToManaged(__name_native), compareFlags, out IEnumSymbols result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindChildrenByAddress(ComWrappers.ComInterfaceDispatch* __this_native, SymbolTag symbolTag, ushort* __name_native, NameSearchOptions compareFlags, uint sectionIndex, uint offset, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = 	ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindChildrenByAddress(symbolTag, Utf16StringMarshaller.ConvertToManaged(__name_native), compareFlags, sectionIndex, offset, out IEnumSymbols result);
+		int __retVal = 	ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindChildrenByAddress(symbolTag, Utf16StringMarshaller.ConvertToManaged(__name_native), compareFlags, sectionIndex, offset, out IEnumSymbols result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindChildrenByVA(ComWrappers.ComInterfaceDispatch* __this_native, SymbolTag symbolTag, ushort* __name_native, NameSearchOptions compareFlags, ulong virtualAddress, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindChildrenByVA(symbolTag, Utf16StringMarshaller.ConvertToManaged(__name_native), compareFlags, virtualAddress, out IEnumSymbols result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindChildrenByVA(symbolTag, Utf16StringMarshaller.ConvertToManaged(__name_native), compareFlags, virtualAddress, out IEnumSymbols result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindChildrenByRVA(ComWrappers.ComInterfaceDispatch* __this_native, SymbolTag symbolTag, ushort* __name_native, NameSearchOptions compareFlags, uint relativeVirtualAddress, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindChildrenByRVA(symbolTag, Utf16StringMarshaller.ConvertToManaged(__name_native), compareFlags, relativeVirtualAddress, out IEnumSymbols result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindChildrenByRVA(symbolTag, Utf16StringMarshaller.ConvertToManaged(__name_native), compareFlags, relativeVirtualAddress, out IEnumSymbols result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetTargetSection(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTargetSection(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTargetSection(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetTargetOffset(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTargetOffset(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTargetOffset(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetTargetRelativeVirtualAddress(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTargetRelativeVirtualAddress(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTargetRelativeVirtualAddress(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetTargetVirtualAddress(ComWrappers.ComInterfaceDispatch* __this_native, ulong* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTargetVirtualAddress(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTargetVirtualAddress(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetMachineType(ComWrappers.ComInterfaceDispatch* __this_native, ImageFileMachine* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetMachineType(out ImageFileMachine result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetMachineType(out ImageFileMachine result);
 
-			*__result_native__param = result;
+		*__result_native__param = result;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetOemID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetOemID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetOemID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetOemSymbolID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetOemSymbolID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetOemSymbolID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetTypes(ComWrappers.ComInterfaceDispatch* __this_native, uint typeCount, uint* __typesWritten_native__param, void** buffer)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTypes(typeCount, out uint typesWritten, buffer);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTypes(typeCount, out uint typesWritten, buffer);
 
-			*__typesWritten_native__param = typesWritten;
+		*__typesWritten_native__param = typesWritten;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetTypeIDs(ComWrappers.ComInterfaceDispatch* __this_native, uint typeIDCount, uint* __typeIDsWritten_native__param, uint* buffer)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTypeIDs(typeIDCount, out uint typeIDsWritten, buffer);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTypeIDs(typeIDCount, out uint typeIDsWritten, buffer);
 
-			*__typeIDsWritten_native__param = typeIDsWritten;
+		*__typeIDsWritten_native__param = typeIDsWritten;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetObjectPointerType(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetObjectPointerType(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetObjectPointerType(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetUdtKind(ComWrappers.ComInterfaceDispatch* __this_native, UdtKind* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUdtKind(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUdtKind(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetUndecoratedName(ComWrappers.ComInterfaceDispatch* __this_native, UndecorateOptions undecorateOptions, ushort** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUndecoratedName(undecorateOptions, out string result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUndecoratedName(undecorateOptions, out string result);
 
-			*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
+		*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsNoReturn(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsNoReturn(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsNoReturn(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasCustomCallingConvention(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasCustomCallingConvention(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasCustomCallingConvention(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNoInline(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNoInline(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNoInline(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasOptimizedCodeDebugInfo(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasOptimizedCodeDebugInfo(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasOptimizedCodeDebugInfo(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsNotReached(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsNotReached(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsNotReached(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasInterruptReturn(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasInterruptReturn(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasInterruptReturn(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasFarReturn(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasFarReturn(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasFarReturn(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsStatic(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsStatic(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsStatic(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasDebugInfo(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasDebugInfo(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasDebugInfo(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsLTCG(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsLTCG(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsLTCG(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsDataAligned(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsDataAligned(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsDataAligned(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasSecurityChecks(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasSecurityChecks(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasSecurityChecks(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetCompilerName(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetCompilerName(out string result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetCompilerName(out string result);
 
-			*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
+		*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasAlloca(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasAlloca(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasAlloca(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasSetJump(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasSetJump(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasSetJump(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasLongJump(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasLongJump(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasLongJump(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasInlAsm(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasInlAsm(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasInlAsm(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasEH(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasEH(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasEH(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasSEH(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasSEH(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasSEH(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasEHa(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasEHa(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasEHa(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsNaked(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsNaked(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsNaked(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsAggregated(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsAggregated(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsAggregated(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsSplit(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsSplit(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsSplit(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetContainer(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetContainer(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetContainer(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetInliningSpecified(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetInliningSpecified(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetInliningSpecified(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNoStackOrderingSpecified(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNoStackOrderingSpecified(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNoStackOrderingSpecified(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetVirtualBaseTableType(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualBaseTableType(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetVirtualBaseTableType(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasManagedCode(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasManagedCode(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasManagedCode(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsHotpatchable(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsHotpatchable(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsHotpatchable(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsConvertedCIL(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsConvertedCIL(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsConvertedCIL(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsMSILNetmodule(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsMSILNetmodule(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsMSILNetmodule(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasCTypes(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasCTypes(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasCTypes(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsStripped(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsStripped(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsStripped(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetFrontendQFE(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFrontendQFE(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFrontendQFE(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBackendQFE(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBackendQFE(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBackendQFE(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetWasInlined(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetWasInlined(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetWasInlined(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasStrictGSCheck(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasStrictGSCheck(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasStrictGSCheck(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsCxxReturnUdt(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsCxxReturnUdt(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsCxxReturnUdt(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsConstructorVirtualBase(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsConstructorVirtualBase(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsConstructorVirtualBase(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsRValueReference(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsRValueReference(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsRValueReference(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetUnmodifiedType(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUnmodifiedType(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUnmodifiedType(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetFramePointerPresent(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFramePointerPresent(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFramePointerPresent(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasSafeBuffers(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasSafeBuffers(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasSafeBuffers(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsIntrinsic(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsIntrinsic(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsIntrinsic(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsSealed(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsSealed(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsSealed(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasHfaFloat(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasHfaFloat(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasHfaFloat(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasHfaDouble(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasHfaDouble(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasHfaDouble(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLiveRangeStartAddressSection(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLiveRangeStartAddressSection(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLiveRangeStartAddressSection(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLiveRangeStartAddressOffset(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLiveRangeStartAddressOffset(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLiveRangeStartAddressOffset(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLiveRangeStartRelativeVirtualAddress(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLiveRangeStartRelativeVirtualAddress(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLiveRangeStartRelativeVirtualAddress(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLiveRangeCount(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLiveRangeCount(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLiveRangeCount(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLiveRangeLength(ComWrappers.ComInterfaceDispatch* __this_native, ulong* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLiveRangeLength(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLiveRangeLength(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetOffsetInUdt(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetOffsetInUdt(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetOffsetInUdt(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetParamBasePointerRegisterID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetParamBasePointerRegisterID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetParamBasePointerRegisterID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLocalBasePointerRegisterID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLocalBasePointerRegisterID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetLocalBasePointerRegisterID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsLocationControlFlowDependent(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsLocationControlFlowDependent(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsLocationControlFlowDependent(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetStride(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetStride(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetStride(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNumberOfRows(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNumberOfRows(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNumberOfRows(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNumberOfColumns(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNumberOfColumns(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNumberOfColumns(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsMatrixRowMajor(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsMatrixRowMajor(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsMatrixRowMajor(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNumericProperties(ComWrappers.ComInterfaceDispatch* __this_native, uint propertyCount, uint* __countWritten_native__param, uint* buffer)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNumericProperties(propertyCount, out uint countWritten, buffer);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNumericProperties(propertyCount, out uint countWritten, buffer);
 
-			*__countWritten_native__param = countWritten;
+		*__countWritten_native__param = countWritten;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetModifierValues(ComWrappers.ComInterfaceDispatch* __this_native, uint propertyCount, uint* __countWritten_native__param, ushort* buffer)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetModifierValues(propertyCount, out uint countWritten, buffer);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetModifierValues(propertyCount, out uint countWritten, buffer);
 
-			*__countWritten_native__param = countWritten;
+		*__countWritten_native__param = countWritten;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsReturnValue(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsReturnValue(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsReturnValue(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsOptimizedAway(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsOptimizedAway(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsOptimizedAway(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBuiltInKind(ComWrappers.ComInterfaceDispatch* __this_native, BuiltIn* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBuiltInKind(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBuiltInKind(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetRegisterType(ComWrappers.ComInterfaceDispatch* __this_native, Register* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetRegisterType(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetRegisterType(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBaseDataSlot(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBaseDataSlot(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBaseDataSlot(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBaseDataOffset(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBaseDataOffset(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBaseDataOffset(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetTextureSlot(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTextureSlot(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetTextureSlot(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSamplerSlot(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSamplerSlot(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSamplerSlot(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetUavSlot(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUavSlot(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUavSlot(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSizeInUdt(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSizeInUdt(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSizeInUdt(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetMemorySpaceKind(ComWrappers.ComInterfaceDispatch* __this_native, MemorySpace* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetMemorySpaceKind(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetMemorySpaceKind(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetUnmodifiedTypeId(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUnmodifiedTypeId(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetUnmodifiedTypeId(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSubTypeId(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSubTypeId(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSubTypeId(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSubType(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSubType(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSubType(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNumberOfModifiers(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNumberOfModifiers(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNumberOfModifiers(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNumberOfRegisterIndices(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNumberOfRegisterIndices(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNumberOfRegisterIndices(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsHLSLData(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsHLSLData(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsHLSLData(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsPointerToDataMember(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsPointerToDataMember(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsPointerToDataMember(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsPointerToMemberFunction(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsPointerToMemberFunction(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsPointerToMemberFunction(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsSingleInheritance(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsSingleInheritance(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsSingleInheritance(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsMultipleInheritance(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsMultipleInheritance(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsMultipleInheritance(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsVirtualInheritance(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsVirtualInheritance(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsVirtualInheritance(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetRestrictedType(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetRestrictedType(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetRestrictedType(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsPointerBasedOnSymbolValue(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsPointerBasedOnSymbolValue(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsPointerBasedOnSymbolValue(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBaseSymbol(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBaseSymbol(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBaseSymbol(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBaseSymbolId(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBaseSymbolId(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBaseSymbolId(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetObjectFileName(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetObjectFileName(out string result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetObjectFileName(out string result);
 
-			*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
+		*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsAcceleratorGroupSharedLocal(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsAcceleratorGroupSharedLocal(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsAcceleratorGroupSharedLocal(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsAcceleratorPointerTagLiveRange(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsAcceleratorPointerTagLiveRange(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsAcceleratorPointerTagLiveRange(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsAcceleratorStubFunction(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsAcceleratorStubFunction(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsAcceleratorStubFunction(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNumberOfAcceleratorPointerTags(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNumberOfAcceleratorPointerTags(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNumberOfAcceleratorPointerTags(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsSDL(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsSDL(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsSDL(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsWinRTPointer(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsWinRTPointer(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsWinRTPointer(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsRefUdt(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsRefUdt(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsRefUdt(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsValueUdt(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsValueUdt(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsValueUdt(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsInterfaceUdt(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsInterfaceUdt(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsInterfaceUdt(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindInlineFramesByAddress(ComWrappers.ComInterfaceDispatch* __this_native, uint sectionIndex, uint offset, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineFramesByAddress(sectionIndex, offset, out IEnumSymbols result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineFramesByAddress(sectionIndex, offset, out IEnumSymbols result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindInlineFramesByRVA(ComWrappers.ComInterfaceDispatch* __this_native, uint relativeVirtualAddress, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineFramesByRVA(relativeVirtualAddress, out IEnumSymbols result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineFramesByRVA(relativeVirtualAddress, out IEnumSymbols result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindInlineFramesByVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong virtualAddress, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineFramesByVA(virtualAddress, out IEnumSymbols result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineFramesByVA(virtualAddress, out IEnumSymbols result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindInlineeLines(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineeLines(out IEnumLineNumbers result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineeLines(out IEnumLineNumbers result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindInlineeLinesByAddress(ComWrappers.ComInterfaceDispatch* __this_native, uint sectionIndex, uint offset, uint length, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineeLinesByAddress(sectionIndex, offset, length, out IEnumLineNumbers result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineeLinesByAddress(sectionIndex, offset, length, out IEnumLineNumbers result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindInlineeLinesByRVA(ComWrappers.ComInterfaceDispatch* __this_native, uint relativeVirtualAddress, uint length, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineeLinesByRVA(relativeVirtualAddress, length, out IEnumLineNumbers result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineeLinesByRVA(relativeVirtualAddress, length, out IEnumLineNumbers result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindInlineeLinesByVA(ComWrappers.ComInterfaceDispatch* __this_native, ulong virtualAddress, uint length, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineeLinesByVA(virtualAddress, length, out IEnumLineNumbers result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInlineeLinesByVA(virtualAddress, length, out IEnumLineNumbers result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindSymbolsForAcceleratorPointerTag(ComWrappers.ComInterfaceDispatch* __this_native, uint tagValue, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindSymbolsForAcceleratorPointerTag(tagValue, out IEnumSymbols result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindSymbolsForAcceleratorPointerTag(tagValue, out IEnumSymbols result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindSymbolsByRVAForAcceleratorPointerTag(ComWrappers.ComInterfaceDispatch* __this_native, uint tagValue, uint relativeVirtualAddress, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindSymbolsByRVAForAcceleratorPointerTag(tagValue, relativeVirtualAddress, out IEnumSymbols result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindSymbolsByRVAForAcceleratorPointerTag(tagValue, relativeVirtualAddress, out IEnumSymbols result);
 
-			*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetAcceleratorPointerTags(ComWrappers.ComInterfaceDispatch* __this_native, uint tagCount, uint* __tagsWritten_native__param, uint* buffer)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetAcceleratorPointerTags(tagCount, out uint tagsWritten, buffer);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetAcceleratorPointerTags(tagCount, out uint tagsWritten, buffer);
 
-			*__tagsWritten_native__param = tagsWritten;
+		*__tagsWritten_native__param = tagsWritten;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSourceLineOnTypeDefinition(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSourceLineOnTypeDefinition(out ILineNumber result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetSourceLineOnTypeDefinition(out ILineNumber result);
 
-			*__result_native__param = ComInterfaceMarshaller<ILineNumber>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ILineNumber>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsPGO(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsPGO(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsPGO(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasValidPGOCounts(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasValidPGOCounts(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasValidPGOCounts(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsOptimizedForSpeed(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsOptimizedForSpeed(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsOptimizedForSpeed(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetPGOEntryCount(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetPGOEntryCount(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetPGOEntryCount(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetPGOEdgeCount(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetPGOEdgeCount(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetPGOEdgeCount(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetPGODynamicInstructionCount(ComWrappers.ComInterfaceDispatch* __this_native, ulong* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetPGODynamicInstructionCount(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetPGODynamicInstructionCount(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetStaticSize(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetStaticSize(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetStaticSize(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetFinalLiveStaticSize(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFinalLiveStaticSize(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFinalLiveStaticSize(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetPhaseName(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetPhaseName(out string result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetPhaseName(out string result);
 
-			*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
+		*__result_native__param = BStrStringMarshaller.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasControlFlowCheck(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasControlFlowCheck(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetHasControlFlowCheck(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsConstantExport(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsConstantExport(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsConstantExport(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsDataExport(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsDataExport(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetIsDataExport(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetPrivateExport(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetPrivateExport(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetPrivateExport(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNoNameExport(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNoNameExport(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetNoNameExport(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetExportHasExplicitlyAssignedOrdinal(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetExportHasExplicitlyAssignedOrdinal(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetExportHasExplicitlyAssignedOrdinal(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetExportIsForwarder(ComWrappers.ComInterfaceDispatch* __this_native, int* __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetExportIsForwarder(out bool result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetExportIsForwarder(out bool result);
 
-			*__result_native__param = result ? 1 : 0;
+		*__result_native__param = result ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetOrdinal(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetOrdinal(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetOrdinal(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetFrameSize(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFrameSize(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetFrameSize(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetExceptionHandlerAddressSection(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetExceptionHandlerAddressSection(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetExceptionHandlerAddressSection(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetExceptionHandlerAddressOffset(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetExceptionHandlerAddressOffset(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetExceptionHandlerAddressOffset(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetExceptionHandlerRelativeVirtualAddress(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetExceptionHandlerRelativeVirtualAddress(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetExceptionHandlerRelativeVirtualAddress(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetExceptionHandlerVirtualAddress(ComWrappers.ComInterfaceDispatch* __this_native, ulong* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetExceptionHandlerVirtualAddress(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetExceptionHandlerVirtualAddress(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_FindInputAssemblyFile(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInputAssemblyFile(out IInputAssemblyFile result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).FindInputAssemblyFile(out IInputAssemblyFile result);
 
-			*__result_native__param = ComInterfaceMarshaller<IInputAssemblyFile>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<IInputAssemblyFile>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetCharacteristics(ComWrappers.ComInterfaceDispatch* __this_native, SectionCharacteristics* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetCharacteristics(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetCharacteristics(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetCoffGroup(ComWrappers.ComInterfaceDispatch* __this_native, void** __result_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetCoffGroup(out ISymbol result);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetCoffGroup(out ISymbol result);
 
-			*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
+		*__result_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(result);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBindID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBindID(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBindID(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBindSpace(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBindSpace(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBindSpace(out *__result_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetBindSlot(ComWrappers.ComInterfaceDispatch* __this_native, uint* __result_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBindSlot(out *__result_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol>(__this_native).GetBindSlot(out *__result_native__param);
 	}
 }
 

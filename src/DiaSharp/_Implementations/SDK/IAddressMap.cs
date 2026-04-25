@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.Native;
 using DiaSharp.SDK;
 
@@ -95,113 +96,57 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsAddressMapEnabled(ComWrappers.ComInterfaceDispatch* __this_native, int* __enabled_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).GetIsAddressMapEnabled(out bool enabled);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).GetIsAddressMapEnabled(out bool enabled);
 
-			*__enabled_native__param = enabled ? 1 : 0;
+		*__enabled_native__param = enabled ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_SetIsAddressMapEnabled(ComWrappers.ComInterfaceDispatch* __this_native, int __enabled_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).SetIsAddressMapEnabled(__enabled_native != 0);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).SetIsAddressMapEnabled(__enabled_native != 0);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsRelativeVirtualAddressEnabled(ComWrappers.ComInterfaceDispatch* __this_native, int* __enabled_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).GetIsRelativeVirtualAddressEnabled(out bool enabled);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).GetIsRelativeVirtualAddressEnabled(out bool enabled);
 
-			*__enabled_native__param = enabled ? 1 : 0;
+		*__enabled_native__param = enabled ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_SetIsRelativeVirtualAddressEnabled(ComWrappers.ComInterfaceDispatch* __this_native, int __enabled_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).SetIsRelativeVirtualAddressEnabled(__enabled_native != 0);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).SetIsRelativeVirtualAddressEnabled(__enabled_native != 0);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetImageAlignment(ComWrappers.ComInterfaceDispatch* __this_native, uint* __alignment_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).GetImageAlignment(out *__alignment_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).GetImageAlignment(out *__alignment_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_SetImageAlignment(ComWrappers.ComInterfaceDispatch* __this_native, uint value)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).SetImageAlignment(value);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).SetImageAlignment(value);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_SetImageHeaders(ComWrappers.ComInterfaceDispatch* __this_native, uint dataSize, ImageSectionHeader* data, int __originalHeaders_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).SetImageHeaders(dataSize, data, __originalHeaders_native != 0);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).SetImageHeaders(dataSize, data, __originalHeaders_native != 0);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_SetAddressMap(ComWrappers.ComInterfaceDispatch* __this_native, uint dataSize, AddressMapEntry* data, int __imageToSymbols_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).SetAddressMap(dataSize, data, __imageToSymbols_native != 0);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IAddressMap>(__this_native).SetAddressMap(dataSize, data, __imageToSymbols_native != 0);
 	}
 }
 

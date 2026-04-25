@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.CodeView;
 using DiaSharp.SDK.Enumerators;
 using DiaSharp.StackWalk;
@@ -17,56 +18,36 @@ file unsafe partial interface InterfaceImplementation : IStackWalker
 	int IStackWalker.GetEnumFrames(IStackWalkHelper helper, out IEnumStackFrames frames)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStackWalker));
-		bool __invokeSucceeded = false;
-		void* __helper_native = null;
 		void* __frames_native = null;
 
-		try
-		{
-			__helper_native = ComInterfaceMarshaller<IStackWalkHelper>.ConvertToUnmanaged(helper);
+		void* __helper_native = ComInterfaceMarshaller<IStackWalkHelper>.ConvertToUnmanaged(helper);
 
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void**, int>)__vtable_native[3])(__this, __helper_native, &__frames_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void**, int>)__vtable_native[3])(__this, __helper_native, &__frames_native);
 
-			__invokeSucceeded = true;
+		frames = ComInterfaceMarshaller<IEnumStackFrames>.ConvertToManaged(__frames_native)!;
 
-			frames = ComInterfaceMarshaller<IEnumStackFrames>.ConvertToManaged(__frames_native)!;
+		ComInterfaceMarshaller<IEnumStackFrames>.Free(__frames_native);
+		ComInterfaceMarshaller<IStackWalkHelper>.Free(__helper_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumStackFrames>.Free(__frames_native);
-
-			ComInterfaceMarshaller<IStackWalkHelper>.Free(__helper_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IStackWalker.GetEnumFrames(CpuType cpuType, IStackWalkHelper helper, out IEnumStackFrames frames)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStackWalker));
-		bool __invokeSucceeded = false;
-		void* __helper_native = null;
 		void* __frames_native = null;
 
-		try
-		{
-			__helper_native = ComInterfaceMarshaller<IStackWalkHelper>.ConvertToUnmanaged(helper);
+		void* __helper_native = ComInterfaceMarshaller<IStackWalkHelper>.ConvertToUnmanaged(helper);
 
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, CpuType, void*, void**, int>)__vtable_native[4])(__this, cpuType, __helper_native, &__frames_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, CpuType, void*, void**, int>)__vtable_native[4])(__this, cpuType, __helper_native, &__frames_native);
 
-			__invokeSucceeded = true;
+		frames = ComInterfaceMarshaller<IEnumStackFrames>.ConvertToManaged(__frames_native)!;
 
-			frames = ComInterfaceMarshaller<IEnumStackFrames>.ConvertToManaged(__frames_native)!;
+		ComInterfaceMarshaller<IEnumStackFrames>.Free(__frames_native);
+		ComInterfaceMarshaller<IStackWalkHelper>.Free(__helper_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumStackFrames>.Free(__frames_native);
-
-			ComInterfaceMarshaller<IStackWalkHelper>.Free(__helper_native);
-		}
+		return __retVal;
 	}
 }
 
@@ -75,35 +56,21 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetEnumFrames(ComWrappers.ComInterfaceDispatch* __this_native, void* __helper_native, void** __frames_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IStackWalker>(__this_native).GetEnumFrames(ComInterfaceMarshaller<IStackWalkHelper>.ConvertToManaged(__helper_native)!, out IEnumStackFrames frames);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IStackWalker>(__this_native).GetEnumFrames(ComInterfaceMarshaller<IStackWalkHelper>.ConvertToManaged(__helper_native)!, out IEnumStackFrames frames);
 
-			*__frames_native__param = ComInterfaceMarshaller<IEnumStackFrames>.ConvertToUnmanaged(frames);
+		*__frames_native__param = ComInterfaceMarshaller<IEnumStackFrames>.ConvertToUnmanaged(frames);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetEnumFrames(ComWrappers.ComInterfaceDispatch* __this_native, CpuType cpuType, void* __helper_native, void** __frames_native__param)
 	{
-		try
-		{
-			int __retVal =ComWrappers.ComInterfaceDispatch.GetInstance<IStackWalker>(__this_native).GetEnumFrames(cpuType, ComInterfaceMarshaller<IStackWalkHelper>.ConvertToManaged(__helper_native)!, out IEnumStackFrames frames);
+		int __retVal =ComWrappers.ComInterfaceDispatch.GetInstance<IStackWalker>(__this_native).GetEnumFrames(cpuType, ComInterfaceMarshaller<IStackWalkHelper>.ConvertToManaged(__helper_native)!, out IEnumStackFrames frames);
 
-			*__frames_native__param = ComInterfaceMarshaller<IEnumStackFrames>.ConvertToUnmanaged(frames);
+		*__frames_native__param = ComInterfaceMarshaller<IEnumStackFrames>.ConvertToUnmanaged(frames);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 }
 

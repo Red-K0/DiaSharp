@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.SDK;
 
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
@@ -16,9 +17,9 @@ file unsafe partial interface InterfaceImplementation : IInputAssemblyFile
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IInputAssemblyFile));
 
-		fixed (uint* __ID_native = &id)
+		fixed (uint* __id_native = &id)
 		{
-			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[3])(__this, __ID_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[3])(__this, __id_native);
 		}
 	}
 
@@ -61,23 +62,15 @@ file unsafe partial interface InterfaceImplementation : IInputAssemblyFile
 	int IInputAssemblyFile.GetFilename(out string name)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IInputAssemblyFile));
-		bool __invokeSucceeded = false;
 		ushort* __name_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[7])(__this, &__name_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[7])(__this, &__name_native);
 
-			__invokeSucceeded = true;
+		name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
 
-			name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
+		BStrStringMarshaller.Free(__name_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) BStrStringMarshaller.Free(__name_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -97,87 +90,45 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetUniqueID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __id_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native).GetUniqueID(out *__id_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native).GetUniqueID(out *__id_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIndex(ComWrappers.ComInterfaceDispatch* __this_native, uint* __index_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native).GetIndex(out *__index_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native).GetIndex(out *__index_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetTimestamp(ComWrappers.ComInterfaceDispatch* __this_native, uint* __timestamp_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native).GetTimestamp(out *__timestamp_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native).GetTimestamp(out *__timestamp_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetWasPDBAvailableAtILMerge(ComWrappers.ComInterfaceDispatch* __this_native, int* __available_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native).GetWasPDBAvailableAtILMerge(out bool available);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native).GetWasPDBAvailableAtILMerge(out bool available);
 
-			*__available_native__param = available ? 1 : 0;
+		*__available_native__param = available ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetFilename(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __name_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native).GetFilename(out string name);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native).GetFilename(out string name);
 
-			*__name_native__param = BStrStringMarshaller.ConvertToUnmanaged(name);
+		*__name_native__param = BStrStringMarshaller.ConvertToUnmanaged(name);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetVersion(ComWrappers.ComInterfaceDispatch* __this_native, uint bufferSize, uint* __dataSize_native__param, byte* buffer)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native).GetVersion(bufferSize, out *__dataSize_native__param, buffer);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IInputAssemblyFile>(__this_native).GetVersion(bufferSize, out *__dataSize_native__param, buffer);
 	}
 }
 

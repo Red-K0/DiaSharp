@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.SDK.Callbacks;
 
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
@@ -25,14 +26,7 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_ReadExecutableAtRVA(ComWrappers.ComInterfaceDispatch* __this_native, uint relativeVirtualAddress, uint executableSize, uint* bytesWritten, byte* buffer)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IReadExeAtRVACallback>(__this_native).ReadExecutableAtRVA(relativeVirtualAddress, executableSize, bytesWritten, buffer);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IReadExeAtRVACallback>(__this_native).ReadExecutableAtRVA(relativeVirtualAddress, executableSize, bytesWritten, buffer);
 	}
 }
 

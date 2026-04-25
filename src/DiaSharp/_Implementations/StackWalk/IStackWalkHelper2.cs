@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.CodeView;
 using DiaSharp.Native;
 using DiaSharp.SDK;
@@ -60,88 +61,68 @@ file unsafe partial interface InterfaceImplementation : IStackWalkHelper2
 	int IStackWalkHelper2.SearchForReturnAddress(IFrameData frame, out ulong address)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStackWalkHelper2));
-		void* __frame_native = null;
 
-		try
-		{
-			__frame_native = ComInterfaceMarshaller<IFrameData>.ConvertToUnmanaged(frame);
+		void* __frame_native = ComInterfaceMarshaller<IFrameData>.ConvertToUnmanaged(frame);
 
-			fixed (ulong* __address_native = &address)
-			{
-				return ((delegate* unmanaged[MemberFunction]<void*, void*, ulong*, int>)__vtable_native[6])(__this, __frame_native, __address_native);
-			}
-		}
-		finally
+		int __retVal;
+
+		fixed (ulong* __address_native = &address)
 		{
-			ComInterfaceMarshaller<IFrameData>.Free(__frame_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, ulong*, int>)__vtable_native[6])(__this, __frame_native, __address_native);
 		}
+
+		ComInterfaceMarshaller<IFrameData>.Free(__frame_native);
+
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IStackWalkHelper2.SearchForReturnAddressStart(IFrameData frame, ulong address, out ulong startAddress)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStackWalkHelper2));
-		void* __frame_native = null;
 
-		try
-		{
-			__frame_native = ComInterfaceMarshaller<IFrameData>.ConvertToUnmanaged(frame);
+		void* __frame_native = ComInterfaceMarshaller<IFrameData>.ConvertToUnmanaged(frame);
 
-			fixed (ulong* __startAddress_native = &startAddress)
-			{
-				return ((delegate* unmanaged[MemberFunction]<void*, void*, ulong, ulong*, int>)__vtable_native[7])(__this, __frame_native, address, __startAddress_native);
-			}
-		}
-		finally
+		int __retVal;
+
+		fixed (ulong* __startAddress_native = &startAddress)
 		{
-			ComInterfaceMarshaller<IFrameData>.Free(__frame_native);
+			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, ulong, ulong*, int>)__vtable_native[7])(__this, __frame_native, address, __startAddress_native);
 		}
+
+		ComInterfaceMarshaller<IFrameData>.Free(__frame_native);
+
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IStackWalkHelper2.GetFrameForVA(ulong virtualAddress, out IFrameData frame)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStackWalkHelper2));
-		bool __invokeSucceeded = false;
 		void* __frame_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[8])(__this, virtualAddress, &__frame_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[8])(__this, virtualAddress, &__frame_native);
 
-			__invokeSucceeded = true;
+		frame = ComInterfaceMarshaller<IFrameData>.ConvertToManaged(__frame_native)!;
 
-			frame = ComInterfaceMarshaller<IFrameData>.ConvertToManaged(__frame_native)!;
+		ComInterfaceMarshaller<IFrameData>.Free(__frame_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IFrameData>.Free(__frame_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IStackWalkHelper2.GetSymbolForVA(ulong virtualAddress, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IStackWalkHelper2));
-		bool __invokeSucceeded = false;
 		void* __symbol_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[9])(__this, virtualAddress, &__symbol_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[9])(__this, virtualAddress, &__symbol_native);
 
-			__invokeSucceeded = true;
+		symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
 
-			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -216,14 +197,7 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetPointerAuthenticationMask(ComWrappers.ComInterfaceDispatch* __this_native, ulong pointerValue, ulong* __mask_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IStackWalkHelper2>(__this_native).GetPointerAuthenticationMask(pointerValue, out *__mask_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IStackWalkHelper2>(__this_native).GetPointerAuthenticationMask(pointerValue, out *__mask_native__param);
 	}
 }
 
@@ -246,7 +220,6 @@ namespace DiaSharp.StackWalk
 	[IUnknownDerived<InterfaceInformation, InterfaceImplementation>]
 	public unsafe partial interface IStackWalkHelper2
 	{
-
 		[SkipLocalsInit, PreserveSig]
 		new int GetRegisterValue(HostRegister index, out ulong value) => ((IStackWalkHelper)this).GetRegisterValue(index, out value);
 

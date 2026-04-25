@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.SDK.Enumerators;
 
 file unsafe class InterfaceInformation : IIUnknownInterfaceType
@@ -86,23 +87,15 @@ file unsafe partial interface InterfaceImplementation : IEnumSourceLink2
 	int IEnumSourceLink2.Clone(out IEnumSourceLink enumerator)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSourceLink2));
-		bool __invokeSucceeded = false;
 		void* __enumerator_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__enumerator_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__enumerator_native);
 
-			__invokeSucceeded = true;
+		enumerator = ComInterfaceMarshaller<IEnumSourceLink>.ConvertToManaged(__enumerator_native)!;
 
-			enumerator = ComInterfaceMarshaller<IEnumSourceLink>.ConvertToManaged(__enumerator_native)!;
+		ComInterfaceMarshaller<IEnumSourceLink>.Free(__enumerator_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSourceLink>.Free(__enumerator_native);
-		}
+		return __retVal;
 	}
 
 	int IEnumSourceLink.Count(out uint count) => throw new UnreachableException();
@@ -118,27 +111,13 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_SizeOfNext(ComWrappers.ComInterfaceDispatch* __this_native, ulong* __size_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSourceLink2>(__this_native).SizeOfNext(out *__size_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSourceLink2>(__this_native).SizeOfNext(out *__size_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNext(ComWrappers.ComInterfaceDispatch* __this_native, ulong bufferSize, ulong* __bytesWritten_native__param, byte* buffer)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSourceLink2>(__this_native).GetNext(bufferSize, out *__bytesWritten_native__param, buffer);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IEnumSourceLink2>(__this_native).GetNext(bufferSize, out *__bytesWritten_native__param, buffer);
 	}
 }
 
@@ -162,7 +141,6 @@ namespace DiaSharp.SDK.Enumerators
 	[IUnknownDerived<InterfaceInformation, InterfaceImplementation>]
 	public unsafe partial interface IEnumSourceLink2
 	{
-
 		[SkipLocalsInit, PreserveSig]
 		new int Count(out uint count) => ((IEnumSourceLink)this).Count(out count);
 

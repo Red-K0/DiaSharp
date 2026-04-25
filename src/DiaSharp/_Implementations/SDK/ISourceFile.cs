@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.CodeView;
 using DiaSharp.SDK;
 using DiaSharp.SDK.Enumerators;
@@ -18,9 +19,9 @@ file unsafe partial interface InterfaceImplementation : ISourceFile
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISourceFile));
 
-		fixed (uint* __ID_native = &id)
+		fixed (uint* __id_native = &id)
 		{
-			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[3])(__this, __ID_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[3])(__this, __id_native);
 		}
 	}
 
@@ -28,23 +29,15 @@ file unsafe partial interface InterfaceImplementation : ISourceFile
 	int ISourceFile.GetFileName(out string name)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISourceFile));
-		bool __invokeSucceeded = false;
 		ushort* __name_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[4])(__this, &__name_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[4])(__this, &__name_native);
 
-			__invokeSucceeded = true;
+		name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
 
-			name = BStrStringMarshaller.ConvertToManaged(__name_native)!;
+		BStrStringMarshaller.Free(__name_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) BStrStringMarshaller.Free(__name_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -62,23 +55,15 @@ file unsafe partial interface InterfaceImplementation : ISourceFile
 	int ISourceFile.GetCompilands(out IEnumSymbols compilands)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISourceFile));
-		bool __invokeSucceeded = false;
 		void* __compilands_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__compilands_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__compilands_native);
 
-			__invokeSucceeded = true;
+		compilands = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__compilands_native)!;
 
-			compilands = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__compilands_native)!;
+		ComInterfaceMarshaller<IEnumSymbols>.Free(__compilands_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__compilands_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -96,76 +81,41 @@ file unsafe partial interface InterfaceImplementation : ISourceFile
 file unsafe partial interface InterfaceImplementation
 {
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
-	static internal int ABI_GetUniqueID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __ID_native__param)
+	static internal int ABI_GetUniqueID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __id_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISourceFile>(__this_native).GetUniqueID(out *__ID_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISourceFile>(__this_native).GetUniqueID(out *__id_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetFileName(ComWrappers.ComInterfaceDispatch* __this_native, ushort** __name_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISourceFile>(__this_native).GetFileName(out string name);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISourceFile>(__this_native).GetFileName(out string name);
 
-			*__name_native__param = BStrStringMarshaller.ConvertToUnmanaged(name);
+		*__name_native__param = BStrStringMarshaller.ConvertToUnmanaged(name);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetChecksumType(ComWrappers.ComInterfaceDispatch* __this_native, SourceChecksumType* __type_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISourceFile>(__this_native).GetChecksumType(out *__type_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISourceFile>(__this_native).GetChecksumType(out *__type_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetCompilands(ComWrappers.ComInterfaceDispatch* __this_native, void** __compilands_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISourceFile>(__this_native).GetCompilands(out IEnumSymbols compilands);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISourceFile>(__this_native).GetCompilands(out IEnumSymbols compilands);
 
-			*__compilands_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(compilands);
+		*__compilands_native__param = ComInterfaceMarshaller<IEnumSymbols>.ConvertToUnmanaged(compilands);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetChecksum(ComWrappers.ComInterfaceDispatch* __this_native, uint bufferSize, uint* __bytesWritten_native__param, byte* buffer)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISourceFile>(__this_native).GetChecksum(bufferSize, out *__bytesWritten_native__param, buffer);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISourceFile>(__this_native).GetChecksum(bufferSize, out *__bytesWritten_native__param, buffer);
 	}
 }
 

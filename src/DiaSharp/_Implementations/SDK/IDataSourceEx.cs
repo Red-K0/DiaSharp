@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.SDK;
 using DiaSharp.SDK.Callbacks;
 using DiaSharp.Storage;
@@ -53,16 +54,11 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
 		void* __stream_native = null;
 
-		try
-		{
-			__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+		__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
 
-			return ((delegate* unmanaged[MemberFunction]<void*, void*, int, int>)__vtable_native[14])(__this, __stream_native, prefetchPDB ? 1 : 0);
-		}
-		finally
-		{
-			ComInterfaceMarshaller<IStream>.Free(__stream_native);
-		}
+		ComInterfaceMarshaller<IStream>.Free(__stream_native);
+
+		return ((delegate* unmanaged[MemberFunction]<void*, void*, int, int>)__vtable_native[14])(__this, __stream_native, prefetchPDB ? 1 : 0);
 	}
 
 	[SkipLocalsInit]
@@ -93,12 +89,8 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 	int IDataSourceEx.SetMiniPDBErrorCallback(nint context, MiniPDBErrorCallback callback)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
-		nint __callback_native;
 
-		__callback_native = callback != null ? Marshal.GetFunctionPointerForDelegate(callback) : default;
-		{
-			return ((delegate* unmanaged[MemberFunction]<void*, nint, nint, int>)__vtable_native[17])(__this, context, __callback_native);
-		}
+		return ((delegate* unmanaged[MemberFunction]<void*, nint, nint, int>)__vtable_native[17])(__this, context, callback != null ? Marshal.GetFunctionPointerForDelegate(callback) : default);
 	}
 
 	[SkipLocalsInit]
@@ -122,23 +114,15 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 	int IDataSourceEx.GetLastError(out string message)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
-		bool __invokeSucceeded = false;
 		ushort* __message_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[3])(__this, &__message_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[3])(__this, &__message_native);
 
-			__invokeSucceeded = true;
+		message = BStrStringMarshaller.ConvertToManaged(__message_native)!;
 
-			message = BStrStringMarshaller.ConvertToManaged(__message_native)!;
+		BStrStringMarshaller.Free(__message_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) 				BStrStringMarshaller.Free(__message_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -179,45 +163,29 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 	int IDataSourceEx.LoadDataFromIStream(IStream stream)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
-		void* __stream_native = null;
 
-		try
-		{
-			int __retVal;
+		void* __stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
 
-			__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, int>)__vtable_native[7])(__this, __stream_native);
 
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, int>)__vtable_native[7])(__this, __stream_native);
+		ComInterfaceMarshaller<IStream>.Free(__stream_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			ComInterfaceMarshaller<IStream>.Free(__stream_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IDataSourceEx.OpenSession(out ISession session)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
-		bool __invokeSucceeded = false;
 		void* __session_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__session_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__session_native);
 
-			__invokeSucceeded = true;
+		session = ComInterfaceMarshaller<ISession>.ConvertToManaged(__session_native)!;
 
-			session = ComInterfaceMarshaller<ISession>.ConvertToManaged(__session_native)!;
+		ComInterfaceMarshaller<ISession>.Free(__session_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISession>.Free(__session_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -259,109 +227,53 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_LoadDataFromPDB(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native, int __prefetchPDB_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).LoadDataFromPDB(Utf16StringMarshaller.ConvertToManaged(__pdbPath_native)!, __prefetchPDB_native != 0);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).LoadDataFromPDB(Utf16StringMarshaller.ConvertToManaged(__pdbPath_native)!, __prefetchPDB_native != 0);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_LoadAndValidateDataFromPDB(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native, Guid* pdbSignature, uint signature, uint age, int __prefetchPDB_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).LoadAndValidateDataFromPDB(Utf16StringMarshaller.ConvertToManaged(__pdbPath_native)!, pdbSignature, signature, age, __prefetchPDB_native != 0);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).LoadAndValidateDataFromPDB(Utf16StringMarshaller.ConvertToManaged(__pdbPath_native)!, pdbSignature, signature, age, __prefetchPDB_native != 0);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_LoadDataForExe(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __executable_native, ushort* __searchPath_native, void* callback, int __prefetchPDB_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).LoadDataForExe(Utf16StringMarshaller.ConvertToManaged(__executable_native)!, Utf16StringMarshaller.ConvertToManaged(__searchPath_native)!, callback, __prefetchPDB_native != 0);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).LoadDataForExe(Utf16StringMarshaller.ConvertToManaged(__executable_native)!, Utf16StringMarshaller.ConvertToManaged(__searchPath_native)!, callback, __prefetchPDB_native != 0);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_LoadDataFromIStream(ComWrappers.ComInterfaceDispatch* __this_native, void* __stream_native, int __prefetchPDB_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).LoadDataFromIStream(ComInterfaceMarshaller<IStream>.ConvertToManaged(__stream_native)!, __prefetchPDB_native != 0);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).LoadDataFromIStream(ComInterfaceMarshaller<IStream>.ConvertToManaged(__stream_native)!, __prefetchPDB_native != 0);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetStreamSize(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __stream_native, ulong* __size_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).GetStreamSize(Utf16StringMarshaller.ConvertToManaged(__stream_native)!, out *__size_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).GetStreamSize(Utf16StringMarshaller.ConvertToManaged(__stream_native)!, out *__size_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetStreamRawData(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __stream_native, ulong byteOffset, ulong bufferSize, ulong* __bytesWritten_native__param, byte* buffer)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).GetStreamRawData(Utf16StringMarshaller.ConvertToManaged(__stream_native)!, byteOffset, bufferSize, out *__bytesWritten_native__param, buffer);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).GetStreamRawData(Utf16StringMarshaller.ConvertToManaged(__stream_native)!, byteOffset, bufferSize, out *__bytesWritten_native__param, buffer);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_SetMiniPDBErrorCallback(ComWrappers.ComInterfaceDispatch* __this_native, nint context, nint __callback_native)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).SetMiniPDBErrorCallback(context, __callback_native != default ? Marshal.GetDelegateForFunctionPointer<MiniPDBErrorCallback>(__callback_native) : default!);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).SetMiniPDBErrorCallback(context, __callback_native != default ? Marshal.GetDelegateForFunctionPointer<MiniPDBErrorCallback>(__callback_native) : default!);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_ValidatePDB(ComWrappers.ComInterfaceDispatch* __this_native, ushort* __pdbPath_native, Guid* pdbSignature, uint signature, uint age, int* __valid_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).ValidatePDB(Utf16StringMarshaller.ConvertToManaged(__pdbPath_native)!, pdbSignature, signature, age, out bool valid);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<IDataSourceEx>(__this_native).ValidatePDB(Utf16StringMarshaller.ConvertToManaged(__pdbPath_native)!, pdbSignature, signature, age, out bool valid);
 
-			*__valid_native__param = valid ? 1 : 0;
+		*__valid_native__param = valid ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 }
 
@@ -391,7 +303,6 @@ namespace DiaSharp.SDK
 	[IUnknownDerived<InterfaceInformation, InterfaceImplementation>]
 	public unsafe partial interface IDataSourceEx
 	{
-
 		[SkipLocalsInit, PreserveSig]
 		new int GetLastError(out string message) => ((IDataSource)this).GetLastError(out message);
 

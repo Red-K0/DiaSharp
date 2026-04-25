@@ -1,4 +1,5 @@
-﻿#pragma warning disable CS0612, CS0618, IDE0008, CA1031
+﻿#pragma warning disable IDE0008, IDE0022
+
 using DiaSharp.SDK;
 using DiaSharp.SDK.Symbols;
 
@@ -16,23 +17,15 @@ file unsafe partial interface InterfaceImplementation : ISectionContrib
 	int ISectionContrib.GetCompiland(out ISymbol compiland)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISectionContrib));
-		bool __invokeSucceeded = false;
 		void* __compiland_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__compiland_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[3])(__this, &__compiland_native);
 
-			__invokeSucceeded = true;
+		compiland = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__compiland_native)!;
 
-			compiland = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__compiland_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__compiland_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__compiland_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -324,377 +317,209 @@ file unsafe partial interface InterfaceImplementation
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetCompiland(ComWrappers.ComInterfaceDispatch* __this_native, void** __compiland_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetCompiland(out ISymbol compiland);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetCompiland(out ISymbol compiland);
 
-			*__compiland_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(compiland);
+		*__compiland_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(compiland);
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetAddressSection(ComWrappers.ComInterfaceDispatch* __this_native, uint* __section_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetAddressSection(out *__section_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetAddressSection(out *__section_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetAddressOffset(ComWrappers.ComInterfaceDispatch* __this_native, uint* __offset_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetAddressOffset(out *__offset_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetAddressOffset(out *__offset_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetRelativeVirtualAddress(ComWrappers.ComInterfaceDispatch* __this_native, uint* __rva_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetRelativeVirtualAddress(out *__rva_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetRelativeVirtualAddress(out *__rva_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetVirtualAddress(ComWrappers.ComInterfaceDispatch* __this_native, ulong* __va_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetVirtualAddress(out *__va_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetVirtualAddress(out *__va_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetLength(ComWrappers.ComInterfaceDispatch* __this_native, uint* __length_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetLength(out *__length_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetLength(out *__length_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNotPaged(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetNotPaged(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetNotPaged(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNoPad(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetNoPad(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetNoPad(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasCode(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetHasCode(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetHasCode(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasInitializedData(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetHasInitializedData(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetHasInitializedData(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHasUninitializedData(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetHasUninitializedData(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetHasUninitializedData(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsInformational(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsInformational(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsInformational(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsRemoved(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsRemoved(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsRemoved(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsCOMDAT(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsCOMDAT(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsCOMDAT(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsDiscardable(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsDiscardable(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsDiscardable(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetNotCached(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetNotCached(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetNotCached(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsShareable(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsShareable(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsShareable(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsExecutable(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsExecutable(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsExecutable(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsReadable(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsReadable(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsReadable(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetIsWriteable(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsWriteable(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetIsWriteable(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetDataCRC(ComWrappers.ComInterfaceDispatch* __this_native, uint* __crc_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetDataCRC(out *__crc_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetDataCRC(out *__crc_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetRelocationsCRC(ComWrappers.ComInterfaceDispatch* __this_native, uint* __crc_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetRelocationsCRC(out *__crc_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetRelocationsCRC(out *__crc_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetCompilandID(ComWrappers.ComInterfaceDispatch* __this_native, uint* __id_native__param)
 	{
-		try
-		{
-			return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetCompilandID(out *__id_native__param);
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetCompilandID(out *__id_native__param);
 	}
 
 	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetHas16BitCode(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		try
-		{
-			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetHas16BitCode(out bool value);
+		int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISectionContrib>(__this_native).GetHas16BitCode(out bool value);
 
-			*__value_native__param = value ? 1 : 0;
+		*__value_native__param = value ? 1 : 0;
 
-			return __retVal;
-		}
-		catch (Exception __exception)
-		{
-			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
-		}
+		return __retVal;
 	}
 }
 
