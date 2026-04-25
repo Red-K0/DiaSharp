@@ -1,6 +1,6 @@
 ﻿using DiaSharp.Managed;
 
-DataSource source = new();
+using DataSource source = new();
 
 source.LoadData(@"DiaSharp.pdb");
 
