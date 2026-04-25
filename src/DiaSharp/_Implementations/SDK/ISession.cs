@@ -261,10 +261,12 @@ file unsafe partial interface InterfaceImplementation : ISession
 
 		void *__symbolA_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbolA), __symbolB_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbolB);
 
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void*, int>)__vtable_native[17])(__this, __symbolA_native, __symbolB_native);
+
 		ComInterfaceMarshaller<ISymbol>.Free(__symbolB_native);
 		ComInterfaceMarshaller<ISymbol>.Free(__symbolA_native);
 
-		return ((delegate* unmanaged[MemberFunction]<void*, void*, void*, int>)__vtable_native[17])(__this, __symbolA_native, __symbolB_native);
+		return __retVal;
 	}
 
 	[SkipLocalsInit]

@@ -52,13 +52,14 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx
 	int IDataSourceEx.LoadDataFromIStream(IStream stream, bool prefetchPDB)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx));
-		void* __stream_native = null;
 
-		__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+		void* __stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, int, int>)__vtable_native[14])(__this, __stream_native, prefetchPDB ? 1 : 0);
 
 		ComInterfaceMarshaller<IStream>.Free(__stream_native);
 
-		return ((delegate* unmanaged[MemberFunction]<void*, void*, int, int>)__vtable_native[14])(__this, __stream_native, prefetchPDB ? 1 : 0);
+		return __retVal;
 	}
 
 	[SkipLocalsInit]

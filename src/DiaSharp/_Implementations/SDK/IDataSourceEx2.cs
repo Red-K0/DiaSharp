@@ -90,13 +90,14 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 	int IDataSourceEx2.LoadDataFromIStream(IStream stream)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
-		void* __stream_native = null;
 
-		__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+		void* __stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, int>)__vtable_native[7])(__this, __stream_native);
 
 		ComInterfaceMarshaller<IStream>.Free(__stream_native);
 
-		return ((delegate* unmanaged[MemberFunction]<void*, void*, int>)__vtable_native[7])(__this, __stream_native);
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -176,13 +177,14 @@ file unsafe partial interface InterfaceImplementation : IDataSourceEx2
 	int IDataSourceEx2.LoadDataFromIStream(IStream stream, bool prefetchPDB)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IDataSourceEx2));
-		void* __stream_native = null;
 
-		__stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+		void* __stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
+
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, int, int>)__vtable_native[14])(__this, __stream_native, prefetchPDB ? 1 : 0);
 
 		ComInterfaceMarshaller<IStream>.Free(__stream_native);
 
-		return ((delegate* unmanaged[MemberFunction]<void*, void*, int, int>)__vtable_native[14])(__this, __stream_native, prefetchPDB ? 1 : 0);
+		return __retVal;
 	}
 
 	[SkipLocalsInit]

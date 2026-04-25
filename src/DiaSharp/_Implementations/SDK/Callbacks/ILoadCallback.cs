@@ -29,9 +29,11 @@ file unsafe partial interface InterfaceImplementation : ILoadCallback
 
 		__debugPath_native__marshaller.FromManaged(debugPath, stackalloc byte[BStrStringMarshaller.ManagedToUnmanagedIn.BufferSize]);
 
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, uint, int>)__vtable_native[4])(__this, __debugPath_native__marshaller.ToUnmanaged(), resultCode);
+
 		__debugPath_native__marshaller.Free();
 
-		return ((delegate* unmanaged[MemberFunction]<void*, ushort*, uint, int>)__vtable_native[4])(__this, __debugPath_native__marshaller.ToUnmanaged(), resultCode);
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -43,9 +45,11 @@ file unsafe partial interface InterfaceImplementation : ILoadCallback
 
 		__pdbPath_native__marshaller.FromManaged(pdbPath, stackalloc byte[BStrStringMarshaller.ManagedToUnmanagedIn.BufferSize]);
 
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, uint, int>)__vtable_native[5])(__this, __pdbPath_native__marshaller.ToUnmanaged(), resultCode);
+
 		__pdbPath_native__marshaller.Free();
 
-		return ((delegate* unmanaged[MemberFunction]<void*, ushort*, uint, int>)__vtable_native[5])(__this, __pdbPath_native__marshaller.ToUnmanaged(), resultCode);
+		return __retVal;
 	}
 
 	[SkipLocalsInit]

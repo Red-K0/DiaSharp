@@ -69,9 +69,11 @@ file unsafe partial interface InterfaceImplementation : IDataSource
 
 		void* __stream_native = ComInterfaceMarshaller<IStream>.ConvertToUnmanaged(stream);
 
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, int>)__vtable_native[7])(__this, __stream_native);
+
 		ComInterfaceMarshaller<IStream>.Free(__stream_native);
 
-		return ((delegate* unmanaged[MemberFunction]<void*, void*, int>)__vtable_native[7])(__this, __stream_native);
+		return __retVal;
 	}
 
 	[SkipLocalsInit]

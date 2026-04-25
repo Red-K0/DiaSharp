@@ -17,69 +17,45 @@ file unsafe partial interface InterfaceImplementation : IEnumSymbolsByAddressEx
 	int IEnumSymbolsByAddressEx.GetSymbolByAddress(bool promoteBlockSymbols, uint sectionNumber, uint offset, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSymbolsByAddressEx));
-		bool __invokeSucceeded = false;
 		void* __symbol_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int, uint, uint, void**, int>)__vtable_native[9])(__this, promoteBlockSymbols ? 1 : 0, sectionNumber, offset, &__symbol_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int, uint, uint, void**, int>)__vtable_native[9])(__this, promoteBlockSymbols ? 1 : 0, sectionNumber, offset, &__symbol_native);
 
-			__invokeSucceeded = true;
+		symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
 
-			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IEnumSymbolsByAddressEx.GetSymbolByRVA(bool promoteBlockSymbols, uint relativeVirtualAddress, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSymbolsByAddressEx));
-		bool __invokeSucceeded = false;
 		void* __symbol_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int, uint, void**, int>)__vtable_native[10])(__this, promoteBlockSymbols ? 1 : 0, relativeVirtualAddress, &__symbol_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int, uint, void**, int>)__vtable_native[10])(__this, promoteBlockSymbols ? 1 : 0, relativeVirtualAddress, &__symbol_native);
 
-			__invokeSucceeded = true;
+		symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
 
-			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IEnumSymbolsByAddressEx.GetSymbolByVA(bool promoteBlockSymbols, ulong virtualAddress, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSymbolsByAddressEx));
-		bool __invokeSucceeded = false;
 		void* __symbol_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int, ulong, void**, int>)__vtable_native[11])(__this, promoteBlockSymbols ? 1 : 0, virtualAddress, &__symbol_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int, ulong, void**, int>)__vtable_native[11])(__this, promoteBlockSymbols ? 1 : 0, virtualAddress, &__symbol_native);
 
-			__invokeSucceeded = true;
+		symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
 
-			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -108,69 +84,45 @@ file unsafe partial interface InterfaceImplementation : IEnumSymbolsByAddressEx
 	int IEnumSymbolsByAddressEx.GetSymbolByAddress(uint sectionNumber, uint offset, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSymbolsByAddressEx));
-		bool __invokeSucceeded = false;
 		void* __symbol_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[3])(__this, sectionNumber, offset, &__symbol_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[3])(__this, sectionNumber, offset, &__symbol_native);
 
-			__invokeSucceeded = true;
+		symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
 
-			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IEnumSymbolsByAddressEx.GetSymbolByRVA(uint relativeVirtualAddress, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSymbolsByAddressEx));
-		bool __invokeSucceeded = false;
 		void* __symbol_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[4])(__this, relativeVirtualAddress, &__symbol_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[4])(__this, relativeVirtualAddress, &__symbol_native);
 
-			__invokeSucceeded = true;
+		symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
 
-			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int IEnumSymbolsByAddressEx.GetSymbolByVA(ulong virtualAddress, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSymbolsByAddressEx));
-		bool __invokeSucceeded = false;
 		void* __symbol_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[5])(__this, virtualAddress, &__symbol_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[5])(__this, virtualAddress, &__symbol_native);
 
-			__invokeSucceeded = true;
+		symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
 
-			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+		ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-		}
+		return __retVal;
 	}
 
 	[SkipLocalsInit]
@@ -199,23 +151,15 @@ file unsafe partial interface InterfaceImplementation : IEnumSymbolsByAddressEx
 	int IEnumSymbolsByAddressEx.Clone(out IEnumSymbolsByAddress enumeator)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(IEnumSymbolsByAddressEx));
-		bool __invokeSucceeded = false;
 		void* __enumeator_native = null;
 
-		try
-		{
-			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__enumeator_native);
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__enumeator_native);
 
-			__invokeSucceeded = true;
+		enumeator = ComInterfaceMarshaller<IEnumSymbolsByAddress>.ConvertToManaged(__enumeator_native)!;
 
-			enumeator = ComInterfaceMarshaller<IEnumSymbolsByAddress>.ConvertToManaged(__enumeator_native)!;
+		ComInterfaceMarshaller<IEnumSymbolsByAddress>.Free(__enumeator_native);
 
-			return __retVal;
-		}
-		finally
-		{
-			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbolsByAddress>.Free(__enumeator_native);
-		}
+		return __retVal;
 	}
 
 	int IEnumSymbolsByAddress.GetSymbolByAddress(uint sectionNumber, uint offset, out ISymbol symbol) => throw new UnreachableException();
