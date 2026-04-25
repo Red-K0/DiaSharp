@@ -21,16 +21,13 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetDiscriminatedUnionTag(out ISymbol tagType, out uint tagOffset, out TagValue tagMask)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out tagType);
-		Unsafe.SkipInit(out tagOffset);
-		Unsafe.SkipInit(out tagMask);
-		void* __tagType_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __tagType_native = null;
 
 		try
 		{
-			// Pin - Pin data in preparation for calling the P/Invoke.
+			int __retVal;
+
 			fixed (TagValue* __tagMask_native = &tagMask)
 			fixed (uint* __tagOffset_native = &tagOffset)
 			{
@@ -38,364 +35,265 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			tagType = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__tagType_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__tagType_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__tagType_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetTagRanges(uint valueCount, out uint filledValueCount, TagValue* rangeValues)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out filledValueCount);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __filledValueCount_native = &filledValueCount)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, TagValue*, int>)__vtable_native[259])(__this, valueCount, __filledValueCount_native, rangeValues);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, TagValue*, int>)__vtable_native[259])(__this, valueCount, __filledValueCount_native, rangeValues);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetSymbolIndexID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[3])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[3])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetSymbolTag(out SymbolTag result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (SymbolTag* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag*, int>)__vtable_native[4])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, SymbolTag*, int>)__vtable_native[4])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		ushort* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		ushort* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[5])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[5])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
 				BStrStringMarshaller.Free(__result_native);
 			}
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLexicalParent(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetClassParent(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[7])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[7])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetSymbolType(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[8])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetDataKind(out DataKind result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (DataKind* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, DataKind*, int>)__vtable_native[9])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, DataKind*, int>)__vtable_native[9])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLocationType(out LocationType result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (LocationType* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, LocationType*, int>)__vtable_native[10])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, LocationType*, int>)__vtable_native[10])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetAddressSection(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[11])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[11])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetAddressOffset(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[12])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[12])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetRelativeVirtualAddress(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[13])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[13])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetVirtualAddress(out ulong result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (ulong* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[14])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[14])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetRegisterID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[15])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[15])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetOffset(out int result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (int* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[16])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[16])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLength(out ulong result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (ulong* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[17])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[17])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetSlot(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[18])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[18])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetVolatileType(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[19])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[19])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -403,16 +301,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetConstType(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[20])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[20])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -420,16 +314,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetUnalignedType(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[21])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[21])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -437,94 +327,71 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetAccess(out Access result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (Access* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, Access*, int>)__vtable_native[22])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, Access*, int>)__vtable_native[22])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLibraryName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		ushort* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		ushort* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[23])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[23])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
 				BStrStringMarshaller.Free(__result_native);
 			}
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetPlatform(out CpuType result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (CpuType* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, CpuType*, int>)__vtable_native[24])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, CpuType*, int>)__vtable_native[24])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLanguage(out CompileFlagLanguage result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (CompileFlagLanguage* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, CompileFlagLanguage*, int>)__vtable_native[25])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, CompileFlagLanguage*, int>)__vtable_native[25])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetEditAndContinueEnabled(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[26])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[26])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -532,220 +399,163 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetFrontendMajor(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[27])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[27])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetFrontendMinor(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[28])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[28])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetFrontendBuild(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[29])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[29])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetBackendMajor(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[30])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[30])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetBackendMinor(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[31])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[31])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetBackendBuild(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[32])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[32])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetSourceFileName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		ushort* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		ushort* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[33])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[33])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
 				BStrStringMarshaller.Free(__result_native);
 			}
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetUnused(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		ushort* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		ushort* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[34])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[34])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
 				BStrStringMarshaller.Free(__result_native);
 			}
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetThunkOrdinal(out ThunkOrdinal result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (ThunkOrdinal* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ThunkOrdinal*, int>)__vtable_native[35])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, ThunkOrdinal*, int>)__vtable_native[35])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetThisAdjustor(out int result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (int* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[36])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[36])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetVirtualBaseOffset(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[37])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[37])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsVirtual(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[38])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[38])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -753,16 +563,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsIntro(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[39])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[39])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -770,16 +576,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsPure(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[40])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[40])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -787,142 +589,104 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetCallingConvention(out DiaSharp.CodeView.CallingConvention result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (DiaSharp.CodeView.CallingConvention* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, DiaSharp.CodeView.CallingConvention*, int>)__vtable_native[41])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, DiaSharp.CodeView.CallingConvention*, int>)__vtable_native[41])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetValue(out Variant result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (Variant* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, Variant*, int>)__vtable_native[42])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, Variant*, int>)__vtable_native[42])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetBaseType(out BasicType result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (BasicType* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, BasicType*, int>)__vtable_native[43])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, BasicType*, int>)__vtable_native[43])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetToken(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[44])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[44])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetTimestamp(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[45])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[45])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetGUID(out Guid result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (Guid* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, Guid*, int>)__vtable_native[46])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, Guid*, int>)__vtable_native[46])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetSymbolsFileName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		ushort* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		ushort* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[47])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[47])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
 				BStrStringMarshaller.Free(__result_native);
 			}
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsReference(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[48])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[48])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -930,78 +694,57 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetCount(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[49])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[49])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetBitPosition(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[50])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[50])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetArrayIndexType(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[51])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[51])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsPacked(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[52])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[52])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1009,16 +752,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasConstructor(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[53])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[53])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1026,16 +765,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasOverloadedOperator(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[54])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[54])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1043,16 +778,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsNested(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[55])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[55])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1060,16 +791,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasNestedTypes(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[56])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[56])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1077,16 +804,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasAssignmentOperator(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[57])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[57])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1094,16 +817,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasCastOperator(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[58])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[58])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1111,16 +830,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsScoped(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[59])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[59])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1128,16 +843,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsVirtualBaseClass(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[60])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[60])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1145,16 +856,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsIndirectVirtualBaseClass(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[61])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[61])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1162,142 +869,101 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetVirtualBasePointerOffset(out int result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (int* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[62])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[62])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetVirtualTableShape(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[63])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[63])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLexicalParentID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[64])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[64])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetClassParentID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[65])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[65])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetTypeID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[66])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[66])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetArrayIndexTypeID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[67])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[67])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetVirtualTableShapeID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[68])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[68])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsCode(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[69])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[69])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1305,16 +971,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsFunction(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[70])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[70])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1322,16 +984,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsManaged(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[71])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[71])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1339,16 +997,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsMSIL(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[72])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[72])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1356,94 +1010,71 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetVirtualBaseDisplacementIndex(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[73])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[73])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetUndecoratedName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		ushort* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		ushort* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[74])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[74])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
 				BStrStringMarshaller.Free(__result_native);
 			}
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetAge(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[75])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[75])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetSignature(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[76])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[76])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsCompilerGenerated(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[77])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[77])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1451,16 +1082,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsAddressTaken(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[78])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[78])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1468,530 +1095,401 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetRank(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[79])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[79])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLowerBound(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[80])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[80])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetUpperBound(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[81])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[81])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLowerBoundID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[82])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[82])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetUpperBoundID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[83])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[83])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetDataBytes(uint dataSize, out uint dataWritten, byte* buffer)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out dataWritten);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __dataWritten_native = &dataWritten)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, byte*, int>)__vtable_native[84])(__this, dataSize, __dataWritten_native, buffer);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, byte*, int>)__vtable_native[84])(__this, dataSize, __dataWritten_native, buffer);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindChildrenUnaware(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			// Pin - Pin data in preparation for calling the P/Invoke.
+			int __retVal;
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[85])(__this, symbolTag, (ushort*)__name_native, compareFlags, &__result_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindChildren(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			// Pin - Pin data in preparation for calling the P/Invoke.
+			int __retVal;
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[86])(__this, symbolTag, (ushort*)__name_native, compareFlags, &__result_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindChildrenByAddress(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint sectionIndex, uint offset, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			// Pin - Pin data in preparation for calling the P/Invoke.
+			int __retVal;
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, uint, uint, void**, int>)__vtable_native[87])(__this, symbolTag, (ushort*)__name_native, compareFlags, sectionIndex, offset, &__result_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindChildrenByVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, ulong virtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			// Pin - Pin data in preparation for calling the P/Invoke.
+			int __retVal;
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, ulong, void**, int>)__vtable_native[88])(__this, symbolTag, (ushort*)__name_native, compareFlags, virtualAddress, &__result_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindChildrenByRVA(SymbolTag symbolTag, string? name, NameSearchOptions compareFlags, uint relativeVirtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			// Pin - Pin data in preparation for calling the P/Invoke.
+			int __retVal;
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, SymbolTag, ushort*, NameSearchOptions, uint, void**, int>)__vtable_native[89])(__this, symbolTag, (ushort*)__name_native, compareFlags, relativeVirtualAddress, &__result_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetTargetSection(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[90])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[90])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetTargetOffset(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[91])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[91])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetTargetRelativeVirtualAddress(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[92])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[92])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetTargetVirtualAddress(out ulong result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (ulong* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[93])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[93])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetMachineType(out ImageFileMachine result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (ImageFileMachine* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ImageFileMachine*, int>)__vtable_native[94])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, ImageFileMachine*, int>)__vtable_native[94])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetOemID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[95])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[95])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetOemSymbolID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[96])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[96])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetTypes(uint typeCount, out uint typesWritten, void** buffer)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out typesWritten);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __typesWritten_native = &typesWritten)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, void**, int>)__vtable_native[97])(__this, typeCount, __typesWritten_native, buffer);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, void**, int>)__vtable_native[97])(__this, typeCount, __typesWritten_native, buffer);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetTypeIDs(uint typeIDCount, out uint typeIDsWritten, uint* buffer)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out typeIDsWritten);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __typeIDsWritten_native = &typeIDsWritten)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, uint*, int>)__vtable_native[98])(__this, typeIDCount, __typeIDsWritten_native, buffer);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, uint*, int>)__vtable_native[98])(__this, typeIDCount, __typeIDsWritten_native, buffer);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetObjectPointerType(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[99])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[99])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetUdtKind(out UdtKind result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (UdtKind* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, UdtKind*, int>)__vtable_native[100])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, UdtKind*, int>)__vtable_native[100])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetUndecoratedName(UndecorateOptions undecorateOptions, out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		ushort* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		ushort* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, UndecorateOptions, ushort**, int>)__vtable_native[101])(__this, undecorateOptions, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, UndecorateOptions, ushort**, int>)__vtable_native[101])(__this, undecorateOptions, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
 				BStrStringMarshaller.Free(__result_native);
 			}
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsNoReturn(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[102])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[102])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -1999,16 +1497,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasCustomCallingConvention(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[103])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[103])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2016,16 +1510,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetNoInline(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[104])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[104])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2033,16 +1523,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasOptimizedCodeDebugInfo(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[105])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[105])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2050,16 +1536,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsNotReached(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[106])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[106])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2067,16 +1549,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasInterruptReturn(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[107])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[107])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2084,16 +1562,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasFarReturn(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[108])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[108])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2101,16 +1575,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsStatic(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[109])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[109])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2118,16 +1588,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasDebugInfo(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[110])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[110])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2135,16 +1601,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsLTCG(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[111])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[111])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2152,16 +1614,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsDataAligned(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[112])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[112])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2169,16 +1627,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasSecurityChecks(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[113])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[113])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2186,46 +1640,38 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetCompilerName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		ushort* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		ushort* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[114])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[114])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
 				BStrStringMarshaller.Free(__result_native);
 			}
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetHasAlloca(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[115])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[115])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2233,16 +1679,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasSetJump(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[116])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[116])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2250,16 +1692,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasLongJump(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[117])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[117])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2267,16 +1705,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasInlAsm(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[118])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[118])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2284,16 +1718,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasEH(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[119])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[119])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2301,16 +1731,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasSEH(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[120])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[120])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2318,16 +1744,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasEHa(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[121])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[121])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2335,16 +1757,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsNaked(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[122])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[122])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2352,16 +1770,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsAggregated(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[123])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[123])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2369,16 +1783,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsSplit(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[124])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[124])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2386,46 +1796,35 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetContainer(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[125])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[125])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetInliningSpecified(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[126])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[126])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2433,16 +1832,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetNoStackOrderingSpecified(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[127])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[127])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2450,46 +1845,35 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetVirtualBaseTableType(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[128])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[128])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetHasManagedCode(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[129])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[129])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2497,16 +1881,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsHotpatchable(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[130])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[130])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2514,16 +1894,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsConvertedCIL(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[131])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[131])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2531,16 +1907,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsMSILNetmodule(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[132])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[132])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2548,16 +1920,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasCTypes(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[133])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[133])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2565,16 +1933,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsStripped(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[134])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[134])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2582,48 +1946,34 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetFrontendQFE(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[135])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[135])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetBackendQFE(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[136])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[136])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetWasInlined(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[137])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[137])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2631,16 +1981,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasStrictGSCheck(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[138])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[138])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2648,16 +1994,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsCxxReturnUdt(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[139])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[139])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2665,16 +2007,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsConstructorVirtualBase(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[140])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[140])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2682,16 +2020,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsRValueReference(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[141])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[141])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2699,46 +2033,35 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetUnmodifiedType(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[142])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[142])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetFramePointerPresent(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[143])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[143])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2746,16 +2069,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasSafeBuffers(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[144])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[144])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2763,16 +2082,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsIntrinsic(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[145])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[145])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2780,16 +2095,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsSealed(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[146])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[146])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2797,16 +2108,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasHfaFloat(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[147])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[147])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2814,16 +2121,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasHfaDouble(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[148])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[148])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2831,144 +2134,100 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetLiveRangeStartAddressSection(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[149])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[149])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLiveRangeStartAddressOffset(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[150])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[150])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLiveRangeStartRelativeVirtualAddress(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[151])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[151])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLiveRangeCount(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[152])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[152])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLiveRangeLength(out ulong result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (ulong* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[153])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[153])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetOffsetInUdt(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[154])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[154])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetParamBasePointerRegisterID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[155])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[155])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetLocalBasePointerRegisterID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[156])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[156])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsLocationControlFlowDependent(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[157])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[157])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -2976,64 +2235,45 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetStride(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[158])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[158])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetNumberOfRows(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[159])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[159])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetNumberOfColumns(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[160])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[160])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsMatrixRowMajor(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[161])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[161])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3041,48 +2281,34 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetNumericProperties(uint propertyCount, out uint countWritten, uint* buffer)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out countWritten);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __countWritten_native = &countWritten)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, uint*, int>)__vtable_native[162])(__this, propertyCount, __countWritten_native, buffer);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, uint*, int>)__vtable_native[162])(__this, propertyCount, __countWritten_native, buffer);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetModifierValues(uint propertyCount, out uint countWritten, ushort* buffer)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out countWritten);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __countWritten_native = &countWritten)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, ushort*, int>)__vtable_native[163])(__this, propertyCount, __countWritten_native, buffer);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, ushort*, int>)__vtable_native[163])(__this, propertyCount, __countWritten_native, buffer);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsReturnValue(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[164])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[164])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3090,16 +2316,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsOptimizedAway(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[165])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[165])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3107,254 +2329,178 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetBuiltInKind(out BuiltIn result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (BuiltIn* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, BuiltIn*, int>)__vtable_native[166])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, BuiltIn*, int>)__vtable_native[166])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetRegisterType(out Register result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (Register* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, Register*, int>)__vtable_native[167])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, Register*, int>)__vtable_native[167])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetBaseDataSlot(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[168])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[168])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetBaseDataOffset(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[169])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[169])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetTextureSlot(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[170])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[170])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetSamplerSlot(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[171])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[171])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetUavSlot(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[172])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[172])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetSizeInUdt(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[173])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[173])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetMemorySpaceKind(out MemorySpace result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (MemorySpace* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, MemorySpace*, int>)__vtable_native[174])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, MemorySpace*, int>)__vtable_native[174])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetUnmodifiedTypeId(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[175])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[175])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetSubTypeId(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[176])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[176])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetSubType(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[177])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[177])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetNumberOfModifiers(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[178])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[178])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetNumberOfRegisterIndices(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[179])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[179])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsHLSLData(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[180])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[180])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3362,16 +2508,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsPointerToDataMember(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[181])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[181])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3379,16 +2521,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsPointerToMemberFunction(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[182])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[182])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3396,16 +2534,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsSingleInheritance(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[183])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[183])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3413,16 +2547,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsMultipleInheritance(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[184])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[184])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3430,16 +2560,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsVirtualInheritance(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[185])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[185])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3447,16 +2573,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetRestrictedType(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[186])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[186])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3464,16 +2586,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsPointerBasedOnSymbolValue(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[187])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[187])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3481,92 +2599,72 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetBaseSymbol(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[188])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[188])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetBaseSymbolId(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[189])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[189])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetObjectFileName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		ushort* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		ushort* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[190])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[190])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
 				BStrStringMarshaller.Free(__result_native);
 			}
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsAcceleratorGroupSharedLocal(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[191])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[191])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3574,16 +2672,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsAcceleratorPointerTagLiveRange(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[192])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[192])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3591,16 +2685,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsAcceleratorStubFunction(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[193])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[193])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3608,32 +2698,23 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetNumberOfAcceleratorPointerTags(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[194])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[194])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsSDL(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[195])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[195])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3641,16 +2722,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsWinRTPointer(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[196])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[196])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3658,16 +2735,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsRefUdt(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[197])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[197])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3675,16 +2748,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsValueUdt(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[198])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[198])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3692,16 +2761,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsInterfaceUdt(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[199])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[199])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -3709,332 +2774,253 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.FindInlineFramesByAddress(uint sectionIndex, uint offset, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[200])(__this, sectionIndex, offset, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[200])(__this, sectionIndex, offset, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindInlineFramesByRVA(uint relativeVirtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[201])(__this, relativeVirtualAddress, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[201])(__this, relativeVirtualAddress, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindInlineFramesByVA(ulong virtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[202])(__this, virtualAddress, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, void**, int>)__vtable_native[202])(__this, virtualAddress, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindInlineeLines(out IEnumLineNumbers result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[203])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[203])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindInlineeLinesByAddress(uint sectionIndex, uint offset, uint length, out IEnumLineNumbers result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[204])(__this, sectionIndex, offset, length, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[204])(__this, sectionIndex, offset, length, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindInlineeLinesByRVA(uint relativeVirtualAddress, uint length, out IEnumLineNumbers result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[205])(__this, relativeVirtualAddress, length, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[205])(__this, relativeVirtualAddress, length, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindInlineeLinesByVA(ulong virtualAddress, uint length, out IEnumLineNumbers result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[206])(__this, virtualAddress, length, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[206])(__this, virtualAddress, length, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindSymbolsForAcceleratorPointerTag(uint tagValue, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[207])(__this, tagValue, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[207])(__this, tagValue, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindSymbolsByRVAForAcceleratorPointerTag(uint tagValue, uint relativeVirtualAddress, out IEnumSymbols result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[208])(__this, tagValue, relativeVirtualAddress, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[208])(__this, tagValue, relativeVirtualAddress, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetAcceleratorPointerTags(uint tagCount, out uint tagsWritten, uint* buffer)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out tagsWritten);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __tagsWritten_native = &tagsWritten)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, uint*, int>)__vtable_native[209])(__this, tagCount, __tagsWritten_native, buffer);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, uint*, int>)__vtable_native[209])(__this, tagCount, __tagsWritten_native, buffer);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetSourceLineOnTypeDefinition(out ILineNumber result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[210])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[210])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ILineNumber>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ILineNumber>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ILineNumber>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsPGO(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[211])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[211])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -4042,16 +3028,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasValidPGOCounts(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[212])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[212])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -4059,16 +3041,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsOptimizedForSpeed(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[213])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[213])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -4076,126 +3054,93 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetPGOEntryCount(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[214])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[214])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetPGOEdgeCount(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[215])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[215])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetPGODynamicInstructionCount(out ulong result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (ulong* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[216])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[216])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetStaticSize(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[217])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[217])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetFinalLiveStaticSize(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[218])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[218])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetPhaseName(out string result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		ushort* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		ushort* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[219])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort**, int>)__vtable_native[219])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = BStrStringMarshaller.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
 			if (__invokeSucceeded)
 			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
 				BStrStringMarshaller.Free(__result_native);
 			}
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetHasControlFlowCheck(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[220])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[220])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -4203,16 +3148,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsConstantExport(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[221])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[221])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -4220,16 +3161,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsDataExport(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[222])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[222])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -4237,16 +3174,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetPrivateExport(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[223])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[223])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -4254,16 +3187,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetNoNameExport(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[224])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[224])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -4271,16 +3200,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetExportHasExplicitlyAssignedOrdinal(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[225])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[225])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -4288,16 +3213,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetExportIsForwarder(out bool result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
 		int __result_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[226])(__this, &__result_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[226])(__this, &__result_native);
+
 		result = __result_native != 0;
+
 		return __retVal;
 	}
 
@@ -4305,236 +3226,168 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetOrdinal(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[227])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[227])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetFrameSize(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[228])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[228])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetExceptionHandlerAddressSection(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[229])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[229])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetExceptionHandlerAddressOffset(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[230])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[230])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetExceptionHandlerRelativeVirtualAddress(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[231])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[231])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetExceptionHandlerVirtualAddress(out ulong result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (ulong* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[232])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[232])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.FindInputAssemblyFile(out IInputAssemblyFile result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[233])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[233])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<IInputAssemblyFile>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IInputAssemblyFile>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IInputAssemblyFile>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetCharacteristics(out SectionCharacteristics result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (SectionCharacteristics* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, SectionCharacteristics*, int>)__vtable_native[234])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, SectionCharacteristics*, int>)__vtable_native[234])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetCoffGroup(out ISymbol result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out result);
-		void* __result_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __result_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[235])(__this, &__result_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[235])(__this, &__result_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			result = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__result_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__result_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__result_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetBindID(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[236])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[236])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetBindSpace(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[237])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[237])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetBindSlot(out uint result)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out result);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __result_native = &result)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[238])(__this, __result_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[238])(__this, __result_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsObjectiveCClass(out bool value)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out value);
 		int __value_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[239])(__this, &__value_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
-		value = __value_native != 0;
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[239])(__this, &__value_native);
+
+		value = __value_native != 0;
+
 		return __retVal;
 	}
 
@@ -4542,16 +3395,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsObjectiveCCategory(out bool value)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out value);
 		int __value_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[240])(__this, &__value_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
-		value = __value_native != 0;
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[240])(__this, &__value_native);
+
+		value = __value_native != 0;
+
 		return __retVal;
 	}
 
@@ -4559,16 +3408,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsObjectiveCProtocol(out bool value)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out value);
 		int __value_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[241])(__this, &__value_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
-		value = __value_native != 0;
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[241])(__this, &__value_native);
+
+		value = __value_native != 0;
+
 		return __retVal;
 	}
 
@@ -4576,62 +3421,46 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetInlinee(out ISymbol inlinee)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out inlinee);
-		void* __inlinee_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __inlinee_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[242])(__this, &__inlinee_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[242])(__this, &__inlinee_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			inlinee = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__inlinee_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__inlinee_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__inlinee_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetInlineeID(out uint id)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out id);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __ID_native = &id)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[243])(__this, __ID_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[243])(__this, __ID_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsNoExcept(out bool noexcept)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out noexcept);
 		int __noexcept_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[244])(__this, &__noexcept_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
-		noexcept = __noexcept_native != 0;
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[244])(__this, &__noexcept_native);
+
+		noexcept = __noexcept_native != 0;
+
 		return __retVal;
 	}
 
@@ -4639,16 +3468,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetHasAbsoluteAddress(out bool absolute)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out absolute);
 		int __absolute_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[245])(__this, &__absolute_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
-		absolute = __absolute_native != 0;
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[245])(__this, &__absolute_native);
+
+		absolute = __absolute_native != 0;
+
 		return __retVal;
 	}
 
@@ -4656,16 +3481,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsStaticMemberFunction(out bool isStatic)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out isStatic);
 		int __isStatic_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[246])(__this, &__isStatic_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
-		isStatic = __isStatic_native != 0;
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[246])(__this, &__isStatic_native);
+
+		isStatic = __isStatic_native != 0;
+
 		return __retVal;
 	}
 
@@ -4673,16 +3494,12 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetIsSignedReturn(out bool isSigned)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out isSigned);
 		int __isSigned_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[247])(__this, &__isSigned_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
-		isSigned = __isSigned_native != 0;
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[247])(__this, &__isSigned_native);
+
+		isSigned = __isSigned_native != 0;
+
 		return __retVal;
 	}
 
@@ -4690,144 +3507,100 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetCoroutineKind(out CoroutineKind kind)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out kind);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (CoroutineKind* __kind_native = &kind)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, CoroutineKind*, int>)__vtable_native[248])(__this, __kind_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, CoroutineKind*, int>)__vtable_native[248])(__this, __kind_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetAssociatedSymbolKind(out AssociationKind kind)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out kind);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (AssociationKind* __kind_native = &kind)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, AssociationKind*, int>)__vtable_native[249])(__this, __kind_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, AssociationKind*, int>)__vtable_native[249])(__this, __kind_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetAssociatedSymbolSection(out uint section)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out section);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __section_native = &section)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[250])(__this, __section_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[250])(__this, __section_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetAssociatedSymbolOffset(out uint offset)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out offset);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __offset_native = &offset)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[251])(__this, __offset_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[251])(__this, __offset_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetAssociatedSymbolRVA(out uint relativeVirtualAddress)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out relativeVirtualAddress);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __rva_native = &relativeVirtualAddress)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[252])(__this, __rva_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[252])(__this, __rva_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetAssociatedSymbolAddress(out ulong address)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out address);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (ulong* __address_native = &address)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[253])(__this, __address_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[253])(__this, __address_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetFramePadSize(out uint size)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out size);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __size_native = &size)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[254])(__this, __size_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[254])(__this, __size_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetFramePadOffset(out uint offset)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out offset);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __offset_native = &offset)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[255])(__this, __offset_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[255])(__this, __offset_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISymbol11.GetIsRuntimeStaticChecked(out bool enabled)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out enabled);
 		int __enabled_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[256])(__this, &__enabled_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
-		enabled = __enabled_native != 0;
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[256])(__this, &__enabled_native);
+
+		enabled = __enabled_native != 0;
+
 		return __retVal;
 	}
 
@@ -4835,16 +3608,11 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 	int ISymbol11.GetSourceLink(uint bufferSize, out uint blobSize, byte* buffer)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISymbol11));
-		Unsafe.SkipInit(out blobSize);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __blobSize_native = &blobSize)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, byte*, int>)__vtable_native[257])(__this, bufferSize, __blobSize_native, buffer);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, byte*, int>)__vtable_native[257])(__this, bufferSize, __blobSize_native, buffer);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	int ISymbol.GetSymbolIndexID(out uint result) => throw new UnreachableException();
@@ -5106,58 +3874,34 @@ file unsafe partial interface InterfaceImplementation : ISymbol11
 
 file unsafe partial interface InterfaceImplementation
 {
-	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
+	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetDiscriminatedUnionTag(ComWrappers.ComInterfaceDispatch* __this_native, void** __tagType_native__param, uint* __tagOffset_native__param, TagValue* __tagMask_native__param)
 	{
-		ISymbol11 @this = default!;
-		ref void* __tagType_native = ref *__tagType_native__param;
-		ISymbol tagType = default!;
-		ref uint __tagOffset_native = ref *__tagOffset_native__param;
-		uint tagOffset = default!;
-		ref TagValue __tagMask_native = ref *__tagMask_native__param;
-		TagValue tagMask = default!;
-		int __retVal = default;
-
 		try
 		{
-			// Unmarshal - Convert native data to managed data.
-			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol11>(__this_native);
-			__retVal = @this.GetDiscriminatedUnionTag(out tagType, out tagOffset, out tagMask);
-			// Marshal - Convert managed data to native data.
-			__tagMask_native = tagMask;
-			__tagOffset_native = tagOffset;
-			__tagType_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(tagType);
+			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol11>(__this_native).GetDiscriminatedUnionTag(out ISymbol tagType, out *__tagOffset_native__param, out *__tagMask_native__param);
+
+			*__tagType_native__param = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(tagType);
+
+			return __retVal;
 		}
 		catch (Exception __exception)
 		{
-			__retVal = ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
+			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
 		}
-
-		return __retVal;
 	}
 
-	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
+	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetTagRanges(ComWrappers.ComInterfaceDispatch* __this_native, uint valueCount, uint* __filledValueCount_native__param, TagValue* rangeValues)
 	{
-		ISymbol11 @this = default!;
-		ref uint __filledValueCount_native = ref *__filledValueCount_native__param;
-		uint filledValueCount = default!;
-		int __retVal = default;
-
 		try
 		{
-			// Unmarshal - Convert native data to managed data.
-			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol11>(__this_native);
-			__retVal = @this.GetTagRanges(valueCount, out filledValueCount, rangeValues);
-			// Marshal - Convert managed data to native data.
-			__filledValueCount_native = filledValueCount;
+			return ComWrappers.ComInterfaceDispatch.GetInstance<ISymbol11>(__this_native).GetTagRanges(valueCount, out *__filledValueCount_native__param, rangeValues);
 		}
 		catch (Exception __exception)
 		{
-			__retVal = ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
+			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
 		}
-
-		return __retVal;
 	}
 }
 
@@ -5166,14 +3910,11 @@ file unsafe partial interface InterfaceImplementation
 	static internal void** CreateManagedVirtualFunctionTable()
 	{
 		void** vtable = (void**)RuntimeHelpers.AllocateTypeAssociatedMemory(typeof(ISymbol11), sizeof(void*) * 260);
-		{
-			NativeMemory.Copy(StrategyBasedComWrappers.DefaultIUnknownInterfaceDetailsStrategy.GetIUnknownDerivedDetails(typeof(ISymbol10).TypeHandle)!.ManagedVirtualMethodTable, vtable, (nuint)(sizeof(void*) * 258));
-		}
 
-		{
-			vtable[258] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, void**, uint*, TagValue*, int>)&ABI_GetDiscriminatedUnionTag;
-			vtable[259] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint, uint*, TagValue*, int>)&ABI_GetTagRanges;
-		}
+		NativeMemory.Copy(StrategyBasedComWrappers.DefaultIUnknownInterfaceDetailsStrategy.GetIUnknownDerivedDetails(typeof(ISymbol10).TypeHandle)!.ManagedVirtualMethodTable, vtable, (nuint)(sizeof(void*) * 258));
+
+		vtable[258] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, void**, uint*, TagValue*, int>)&ABI_GetDiscriminatedUnionTag;
+		vtable[259] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, uint, uint*, TagValue*, int>)&ABI_GetTagRanges;
 
 		return vtable;
 	}

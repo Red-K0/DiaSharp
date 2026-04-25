@@ -18,16 +18,12 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	int ISessionEx.IsFastLinkPDB(out bool value)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out value);
 		int __value_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[62])(__this, &__value_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[62])(__this, &__value_native);
+
 		value = __value_native != 0;
+
 		return __retVal;
 	}
 
@@ -35,16 +31,12 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	int ISessionEx.IsPortablePDB(out bool value)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out value);
 		int __value_native;
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[63])(__this, &__value_native);
-		}
 
-		GC.KeepAlive(this);
-		// Unmarshal - Convert native data to managed data.
+		int __retVal = ((delegate* unmanaged[MemberFunction]<void*, int*, int>)__vtable_native[63])(__this, &__value_native);
+
 		value = __value_native != 0;
+
 		return __retVal;
 	}
 
@@ -52,1838 +44,1399 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 	int ISessionEx.GetSourceLinkInfo(ISymbol parent, out IEnumSourceLink link)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out link);
-		void* __parent_native = default;
-		void* __link_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __link_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void**, int>)__vtable_native[64])(__this, __parent_native, &__link_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void**, int>)__vtable_native[64])(__this, __parent_native, &__link_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			link = ComInterfaceMarshaller<IEnumSourceLink>.ConvertToManaged(__link_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSourceLink>.Free(__link_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSourceLink>.Free(__link_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetLoadAddress(out ulong address)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out address);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (ulong* __address_native = &address)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[3])(__this, __address_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, ulong*, int>)__vtable_native[3])(__this, __address_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.PutLoadAddress(ulong address)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		int __retVal;
-		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, int>)__vtable_native[4])(__this, address);
-		}
 
-		GC.KeepAlive(this);
-		return __retVal;
+		return ((delegate* unmanaged[MemberFunction]<void*, ulong, int>)__vtable_native[4])(__this, address);
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetGlobalScope(out ISymbol scope)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out scope);
-		void* __scope_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __scope_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[5])(__this, &__scope_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[5])(__this, &__scope_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			scope = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__scope_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__scope_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__scope_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetEnumTables(out IEnumTables tables)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out tables);
-		void* __tables_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __tables_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__tables_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[6])(__this, &__tables_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			tables = ComInterfaceMarshaller<IEnumTables>.ConvertToManaged(__tables_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumTables>.Free(__tables_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumTables>.Free(__tables_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetSymbolsByAddress(out IEnumSymbolsByAddress symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbols);
-		void* __symbols_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __symbols_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[7])(__this, &__symbols_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[7])(__this, &__symbols_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbols = ComInterfaceMarshaller<IEnumSymbolsByAddress>.ConvertToManaged(__symbols_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbolsByAddress>.Free(__symbols_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbolsByAddress>.Free(__symbols_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindChildren(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbols);
-		void* __parent_native = default;
-		void* __symbols_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __symbols_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			// Pin - Pin data in preparation for calling the P/Invoke.
+
+			int __retVal;
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[8])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbols = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__symbols_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindChildrenEx(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbols);
-		void* __parent_native = default;
-		void* __symbols_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __symbols_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			// Pin - Pin data in preparation for calling the P/Invoke.
+
+			int __retVal;
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, void**, int>)__vtable_native[9])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbols = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__symbols_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindChildrenExByAddress(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, uint sectionIndex, uint offset, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbols);
-		void* __parent_native = default;
-		void* __symbols_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __symbols_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
+			int __retVal;
+
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			// Pin - Pin data in preparation for calling the P/Invoke.
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, uint, uint, void**, int>)__vtable_native[10])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, sectionIndex, offset, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbols = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__symbols_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindChildrenExByVA(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, ulong virtualAddress, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbols);
-		void* __parent_native = default;
-		void* __symbols_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __symbols_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
+			int __retVal;
+
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			// Pin - Pin data in preparation for calling the P/Invoke.
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, ulong, void**, int>)__vtable_native[11])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, virtualAddress, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbols = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__symbols_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindChildrenExByRVA(ISymbol parent, SymbolTag symbolTag, string? name, NameSearchOptions searchOptions, uint relativeVirtualAddress, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbols);
-		void* __parent_native = default;
-		void* __symbols_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __symbols_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
+			int __retVal;
+
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			// Pin - Pin data in preparation for calling the P/Invoke.
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, SymbolTag, ushort*, NameSearchOptions, uint, void**, int>)__vtable_native[12])(__this, __parent_native, symbolTag, (ushort*)__name_native, searchOptions, relativeVirtualAddress, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbols = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__symbols_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindSymbolByAddress(uint sectionIndex, uint offset, SymbolTag symbolTag, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbol);
-		void* __symbol_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __symbol_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, SymbolTag, void**, int>)__vtable_native[13])(__this, sectionIndex, offset, symbolTag, &__symbol_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, SymbolTag, void**, int>)__vtable_native[13])(__this, sectionIndex, offset, symbolTag, &__symbol_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag symbolTag, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbol);
-		void* __symbol_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __symbol_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[14])(__this, relativeVirtualAddress, symbolTag, &__symbol_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[14])(__this, relativeVirtualAddress, symbolTag, &__symbol_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindSymbolByVA(ulong virtualAddress, SymbolTag symbolTag, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbol);
-		void* __symbol_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __symbol_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, void**, int>)__vtable_native[15])(__this, virtualAddress, symbolTag, &__symbol_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, void**, int>)__vtable_native[15])(__this, virtualAddress, symbolTag, &__symbol_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindSymbolByToken(uint token, SymbolTag symbolTag, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbol);
-		void* __symbol_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __symbol_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[16])(__this, token, symbolTag, &__symbol_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, void**, int>)__vtable_native[16])(__this, token, symbolTag, &__symbol_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.SymbolsAreEquivalent(ISymbol symbolA, ISymbol symbolB)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		void* __symbolA_native = default;
-		void* __symbolB_native = default;
-		int __retVal = default;
+		void* __symbolA_native = null;
+		void* __symbolB_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__symbolB_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbolB);
 			__symbolA_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbolA);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void*, int>)__vtable_native[17])(__this, __symbolA_native, __symbolB_native);
-			}
 
-			GC.KeepAlive(this);
+			return ((delegate* unmanaged[MemberFunction]<void*, void*, void*, int>)__vtable_native[17])(__this, __symbolA_native, __symbolB_native);
 		}
 		finally
 		{
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__symbolB_native);
 			ComInterfaceMarshaller<ISymbol>.Free(__symbolA_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.SymbolByID(uint id, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbol);
-		void* __symbol_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __symbol_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[18])(__this, id, &__symbol_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[18])(__this, id, &__symbol_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindSymbolByRVA(uint relativeVirtualAddress, SymbolTag symbolTag, out int displacement, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out displacement);
-		Unsafe.SkipInit(out symbol);
-		void* __symbol_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __symbol_native = null;
 
 		try
 		{
-			// Pin - Pin data in preparation for calling the P/Invoke.
+			int __retVal;
+
 			fixed (int* __displacement_native = &displacement)
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, SymbolTag, int*, void**, int>)__vtable_native[19])(__this, relativeVirtualAddress, symbolTag, __displacement_native, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindSymbolByVA(ulong VirtualAddress, SymbolTag symbolTag, out int displacement, out ISymbol symbol)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out displacement);
-		Unsafe.SkipInit(out symbol);
-		void* __symbol_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __symbol_native = null;
 
 		try
 		{
-			// Pin - Pin data in preparation for calling the P/Invoke.
+			int __retVal;
+
 			fixed (int* __displacement_native = &displacement)
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, SymbolTag, int*, void**, int>)__vtable_native[20])(__this, VirtualAddress, symbolTag, __displacement_native, &__symbol_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbol = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__symbol_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindFile(ISymbol compiland, string name, NameSearchOptions searchOptions, out IEnumSourceFiles files)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out files);
-		void* __compiland_native = default;
-		void* __files_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __compiland_native = null;
+		void* __files_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
+			int __retVal;
+
 			__compiland_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(compiland);
-			// Pin - Pin data in preparation for calling the P/Invoke.
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, ushort*, NameSearchOptions, void**, int>)__vtable_native[21])(__this, __compiland_native, (ushort*)__name_native, searchOptions, &__files_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			files = ComInterfaceMarshaller<IEnumSourceFiles>.ConvertToManaged(__files_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSourceFiles>.Free(__files_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSourceFiles>.Free(__files_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__compiland_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindFileByID(uint uniqueId, out ISourceFile file)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out file);
-		void* __file_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __file_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[22])(__this, uniqueId, &__file_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[22])(__this, uniqueId, &__file_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			file = ComInterfaceMarshaller<ISourceFile>.ConvertToManaged(__file_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<ISourceFile>.Free(__file_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<ISourceFile>.Free(__file_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindLines(ISymbol compiland, ISourceFile file, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __compiland_native = default;
-		void* __file_native = default;
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __compiland_native = null;
+		void* __file_native = null;
+		void* __lines_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__file_native = ComInterfaceMarshaller<ISourceFile>.ConvertToUnmanaged(file);
 			__compiland_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(compiland);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void*, void**, int>)__vtable_native[23])(__this, __compiland_native, __file_native, &__lines_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void*, void**, int>)__vtable_native[23])(__this, __compiland_native, __file_native, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISourceFile>.Free(__file_native);
 			ComInterfaceMarshaller<ISymbol>.Free(__compiland_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindLinesByAddress(uint segment, uint offset, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __lines_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[24])(__this, segment, offset, length, &__lines_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[24])(__this, segment, offset, length, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindLinesByRVA(uint relativeVirtualAddress, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __lines_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[25])(__this, relativeVirtualAddress, length, &__lines_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[25])(__this, relativeVirtualAddress, length, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindLinesByVA(ulong virtualAddress, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __lines_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[26])(__this, virtualAddress, length, &__lines_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[26])(__this, virtualAddress, length, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindLinesByLineNumber(ISymbol compiland, ISourceFile file, uint lineNumber, uint column, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __compiland_native = default;
-		void* __file_native = default;
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __compiland_native = null;
+		void* __file_native = null;
+		void* __lines_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__file_native = ComInterfaceMarshaller<ISourceFile>.ConvertToUnmanaged(file);
 			__compiland_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(compiland);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void*, uint, uint, void**, int>)__vtable_native[27])(__this, __compiland_native, __file_native, lineNumber, column, &__lines_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void*, uint, uint, void**, int>)__vtable_native[27])(__this, __compiland_native, __file_native, lineNumber, column, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISourceFile>.Free(__file_native);
 			ComInterfaceMarshaller<ISymbol>.Free(__compiland_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInjectedSource(string sourceFile, out IEnumInjectedSources sources)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out sources);
-		void* __sources_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __sources_native = null;
 
 		try
 		{
-			// Pin - Pin data in preparation for calling the P/Invoke.
+			int __retVal;
+
 			fixed (void* __sourceFile_native = &Utf16StringMarshaller.GetPinnableReference(sourceFile))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, void**, int>)__vtable_native[28])(__this, (ushort*)__sourceFile_native, &__sources_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			sources = ComInterfaceMarshaller<IEnumInjectedSources>.ConvertToManaged(__sources_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumInjectedSources>.Free(__sources_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumInjectedSources>.Free(__sources_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetEnumDebugStreams(out IEnumDebugStreams streams)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out streams);
-		void* __streams_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __streams_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[29])(__this, &__streams_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[29])(__this, &__streams_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			streams = ComInterfaceMarshaller<IEnumDebugStreams>.ConvertToManaged(__streams_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumDebugStreams>.Free(__streams_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumDebugStreams>.Free(__streams_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInlineFramesByAddress(ISymbol parent, uint sectionIndex, uint offset, out IEnumSymbols inlinees)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out inlinees);
-		void* __parent_native = default;
-		void* __inlinees_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __inlinees_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, void**, int>)__vtable_native[30])(__this, __parent_native, sectionIndex, offset, &__inlinees_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, void**, int>)__vtable_native[30])(__this, __parent_native, sectionIndex, offset, &__inlinees_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			inlinees = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__inlinees_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__inlinees_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__inlinees_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInlineFramesByRVA(ISymbol parent, uint relativeVirtualAddress, out IEnumSymbols inlinees)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out inlinees);
-		void* __parent_native = default;
-		void* __inlinees_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __inlinees_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, void**, int>)__vtable_native[31])(__this, __parent_native, relativeVirtualAddress, &__inlinees_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, void**, int>)__vtable_native[31])(__this, __parent_native, relativeVirtualAddress, &__inlinees_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			inlinees = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__inlinees_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__inlinees_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__inlinees_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInlineFramesByVA(ISymbol parent, ulong virtualAddress, out IEnumSymbols inlinees)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out inlinees);
-		void* __parent_native = default;
-		void* __inlinees_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __inlinees_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, ulong, void**, int>)__vtable_native[32])(__this, __parent_native, virtualAddress, &__inlinees_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, ulong, void**, int>)__vtable_native[32])(__this, __parent_native, virtualAddress, &__inlinees_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			inlinees = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__inlinees_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__inlinees_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__inlinees_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInlineeLines(ISymbol parent, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __parent_native = default;
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __lines_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void**, int>)__vtable_native[33])(__this, __parent_native, &__lines_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void**, int>)__vtable_native[33])(__this, __parent_native, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInlineeLinesByAddress(ISymbol parent, uint sectionIndex, uint offset, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __parent_native = default;
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __lines_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, uint, void**, int>)__vtable_native[34])(__this, __parent_native, sectionIndex, offset, length, &__lines_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, uint, void**, int>)__vtable_native[34])(__this, __parent_native, sectionIndex, offset, length, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInlineeLinesByRVA(ISymbol parent, uint relativeVirtualAddress, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __parent_native = default;
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __lines_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, void**, int>)__vtable_native[35])(__this, __parent_native, relativeVirtualAddress, length, &__lines_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, void**, int>)__vtable_native[35])(__this, __parent_native, relativeVirtualAddress, length, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInlineeLinesByVA(ISymbol parent, ulong virtualAddress, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __parent_native = default;
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __lines_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, ulong, uint, void**, int>)__vtable_native[36])(__this, __parent_native, virtualAddress, length, &__lines_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, ulong, uint, void**, int>)__vtable_native[36])(__this, __parent_native, virtualAddress, length, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInlineeLinesByLineNumber(ISymbol compiland, ISourceFile file, uint lineNumber, uint column, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __compiland_native = default;
-		void* __file_native = default;
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __compiland_native = null;
+		void* __file_native = null;
+		void* __lines_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__file_native = ComInterfaceMarshaller<ISourceFile>.ConvertToUnmanaged(file);
 			__compiland_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(compiland);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void*, uint, uint, void**, int>)__vtable_native[37])(__this, __compiland_native, __file_native, lineNumber, column, &__lines_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void*, uint, uint, void**, int>)__vtable_native[37])(__this, __compiland_native, __file_native, lineNumber, column, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISourceFile>.Free(__file_native);
 			ComInterfaceMarshaller<ISymbol>.Free(__compiland_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInlineesByName(string name, NameSearchOptions searchOptions, out IEnumSymbols inlinees)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out inlinees);
-		void* __inlinees_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __inlinees_native = null;
 
 		try
 		{
-			// Pin - Pin data in preparation for calling the P/Invoke.
+			int __retVal;
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, NameSearchOptions, void**, int>)__vtable_native[38])(__this, (ushort*)__name_native, searchOptions, &__inlinees_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			inlinees = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__inlinees_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__inlinees_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__inlinees_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindAcceleratorInlineeLinesByLineNumber(ISymbol parent, ISourceFile file, uint lineNumber, uint column, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __parent_native = default;
-		void* __file_native = default;
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __file_native = null;
+		void* __lines_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__file_native = ComInterfaceMarshaller<ISourceFile>.ConvertToUnmanaged(file);
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void*, uint, uint, void**, int>)__vtable_native[39])(__this, __parent_native, __file_native, lineNumber, column, &__lines_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void*, uint, uint, void**, int>)__vtable_native[39])(__this, __parent_native, __file_native, lineNumber, column, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISourceFile>.Free(__file_native);
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindSymbolsForAcceleratorPointerTag(ISymbol parent, uint tagValue, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbols);
-		void* __parent_native = default;
-		void* __symbols_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __symbols_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, void**, int>)__vtable_native[40])(__this, __parent_native, tagValue, &__symbols_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, void**, int>)__vtable_native[40])(__this, __parent_native, tagValue, &__symbols_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbols = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__symbols_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindSymbolsByRVAForAcceleratorPointerTag(ISymbol parent, uint tagValue, uint relativeVirtualAddress, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbols);
-		void* __parent_native = default;
-		void* __symbols_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __parent_native = null;
+		void* __symbols_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__parent_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(parent);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, void**, int>)__vtable_native[41])(__this, __parent_native, tagValue, relativeVirtualAddress, &__symbols_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, uint, uint, void**, int>)__vtable_native[41])(__this, __parent_native, tagValue, relativeVirtualAddress, &__symbols_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbols = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__symbols_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__parent_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindAcceleratorInlineesByName(string name, NameSearchOptions searchOptions, out IEnumSymbols symbols)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out symbols);
-		void* __symbols_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __symbols_native = null;
 
 		try
 		{
-			// Pin - Pin data in preparation for calling the P/Invoke.
+			int __retVal;
+
 			fixed (void* __name_native = &Utf16StringMarshaller.GetPinnableReference(name))
 			{
 				__retVal = ((delegate* unmanaged[MemberFunction]<void*, ushort*, NameSearchOptions, void**, int>)__vtable_native[42])(__this, (ushort*)__name_native, searchOptions, &__symbols_native);
 			}
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			symbols = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__symbols_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__symbols_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetAddressForVA(ulong virtualAddress, out uint sectionIndex, out uint address)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out sectionIndex);
-		Unsafe.SkipInit(out address);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __address_native = &address)
 		fixed (uint* __sectionIndex_native = &sectionIndex)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint*, uint*, int>)__vtable_native[43])(__this, virtualAddress, __sectionIndex_native, __address_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, ulong, uint*, uint*, int>)__vtable_native[43])(__this, virtualAddress, __sectionIndex_native, __address_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetAddressForRVA(uint relativeVirtualAddress, out uint sectionIndex, out uint address)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out sectionIndex);
-		Unsafe.SkipInit(out address);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __address_native = &address)
 		fixed (uint* __sectionIndex_native = &sectionIndex)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, uint*, int>)__vtable_native[44])(__this, relativeVirtualAddress, __sectionIndex_native, __address_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, uint*, int>)__vtable_native[44])(__this, relativeVirtualAddress, __sectionIndex_native, __address_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindILOffsetsByAddress(uint sectionIndex, uint offset, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __lines_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[45])(__this, sectionIndex, offset, length, &__lines_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, void**, int>)__vtable_native[45])(__this, sectionIndex, offset, length, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindILOffsetsByRVA(uint relativeVirtualAddress, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __lines_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[46])(__this, relativeVirtualAddress, length, &__lines_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, void**, int>)__vtable_native[46])(__this, relativeVirtualAddress, length, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindILOffsetsByVA(ulong virtualAddress, uint length, out IEnumLineNumbers lines)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out lines);
-		void* __lines_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __lines_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[47])(__this, virtualAddress, length, &__lines_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, void**, int>)__vtable_native[47])(__this, virtualAddress, length, &__lines_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			lines = ComInterfaceMarshaller<IEnumLineNumbers>.ConvertToManaged(__lines_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumLineNumbers>.Free(__lines_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInputAssemblyFiles(out IEnumInputAssemblyFiles files)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out files);
-		void* __files_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __files_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[48])(__this, &__files_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[48])(__this, &__files_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			files = ComInterfaceMarshaller<IEnumInputAssemblyFiles>.ConvertToManaged(__files_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumInputAssemblyFiles>.Free(__files_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumInputAssemblyFiles>.Free(__files_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInputAssembly(uint index, out IInputAssemblyFile assembly)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out assembly);
-		void* __assembly_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __assembly_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[49])(__this, index, &__assembly_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[49])(__this, index, &__assembly_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			assembly = ComInterfaceMarshaller<IInputAssemblyFile>.ConvertToManaged(__assembly_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IInputAssemblyFile>.Free(__assembly_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IInputAssemblyFile>.Free(__assembly_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInputAssemblyByID(uint uniqueId, out IInputAssemblyFile assembly)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out assembly);
-		void* __assembly_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __assembly_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[50])(__this, uniqueId, &__assembly_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, void**, int>)__vtable_native[50])(__this, uniqueId, &__assembly_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			assembly = ComInterfaceMarshaller<IInputAssemblyFile>.ConvertToManaged(__assembly_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IInputAssemblyFile>.Free(__assembly_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IInputAssemblyFile>.Free(__assembly_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetFunctionMetadataTokenMapSize(out uint size)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out size);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __size_native = &size)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[51])(__this, __size_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[51])(__this, __size_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetFunctionMetadataTokenMap(uint bufferSize, out uint bytesWritten, byte* buffer)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out bytesWritten);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __bytesWritten_native = &bytesWritten)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, byte*, int>)__vtable_native[52])(__this, bufferSize, __bytesWritten_native, buffer);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, byte*, int>)__vtable_native[52])(__this, bufferSize, __bytesWritten_native, buffer);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetTypeMetadataTokenMapSize(out uint size)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out size);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __size_native = &size)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[53])(__this, __size_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint*, int>)__vtable_native[53])(__this, __size_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetTypeMetadataTokenMap(uint bufferSize, out uint bytesWritten, byte* buffer)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out bytesWritten);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __bytesWritten_native = &bytesWritten)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, byte*, int>)__vtable_native[54])(__this, bufferSize, __bytesWritten_native, buffer);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, uint*, byte*, int>)__vtable_native[54])(__this, bufferSize, __bytesWritten_native, buffer);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetNumberOfFunctionFragmentsForVA(ulong functionVA, uint functionSize, out uint fragmentCount)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out fragmentCount);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __fragmentCount_native = &fragmentCount)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, uint*, int>)__vtable_native[55])(__this, functionVA, functionSize, __fragmentCount_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, uint*, int>)__vtable_native[55])(__this, functionVA, functionSize, __fragmentCount_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetNumberOfFunctionFragmentsForRVA(uint functionRVA, uint functionSize, out uint fragmentCount)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		Unsafe.SkipInit(out fragmentCount);
-		int __retVal;
-		// Pin - Pin data in preparation for calling the P/Invoke.
+
 		fixed (uint* __fragmentCount_native = &fragmentCount)
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint*, int>)__vtable_native[56])(__this, functionRVA, functionSize, __fragmentCount_native);
+			return ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint*, int>)__vtable_native[56])(__this, functionRVA, functionSize, __fragmentCount_native);
 		}
-
-		GC.KeepAlive(this);
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetFunctionFragmentsForVA(ulong functionVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		int __retVal;
 
-		__retVal = ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, uint, uint*, uint*, int>)__vtable_native[57])(__this, functionVA, functionSize, fragmentCount, buffer, fragmentLengths);
-
-		GC.KeepAlive(this);
-		return __retVal;
+		return ((delegate* unmanaged[MemberFunction]<void*, ulong, uint, uint, uint*, uint*, int>)__vtable_native[57])(__this, functionVA, functionSize, fragmentCount, buffer, fragmentLengths);
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetFunctionFragmentsForRVA(uint functionRVA, uint functionSize, uint fragmentCount, uint* buffer, uint* fragmentLengths)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		int __retVal;
 
-		__retVal = ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, uint*, uint*, int>)__vtable_native[58])(__this, functionRVA, functionSize, fragmentCount, buffer, fragmentLengths);
-
-		GC.KeepAlive(this);
-		return __retVal;
+		return ((delegate* unmanaged[MemberFunction]<void*, uint, uint, uint, uint*, uint*, int>)__vtable_native[58])(__this, functionRVA, functionSize, fragmentCount, buffer, fragmentLengths);
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetExports(out IEnumSymbols exports)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out exports);
-		void* __exports_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __exports_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[59])(__this, &__exports_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[59])(__this, &__exports_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			exports = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__exports_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__exports_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__exports_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.GetHeapAllocationSites(out IEnumSymbols sites)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out sites);
-		void* __sites_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __sites_native = null;
 
 		try
 		{
-			__retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[60])(__this, &__sites_native);
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void**, int>)__vtable_native[60])(__this, &__sites_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			sites = ComInterfaceMarshaller<IEnumSymbols>.ConvertToManaged(__sites_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IEnumSymbols>.Free(__sites_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IEnumSymbols>.Free(__sites_native);
 		}
-
-		return __retVal;
 	}
 
 	[SkipLocalsInit]
 	int ISessionEx.FindInputAssemblyFile(ISymbol symbol, out IInputAssemblyFile assembly)
 	{
 		var(__this, __vtable_native) = ((IUnmanagedVirtualMethodTableProvider)this).GetVirtualMethodTableInfoForKey(typeof(ISessionEx));
-		bool __invokeSucceeded = default!;
-		Unsafe.SkipInit(out assembly);
-		void* __symbol_native = default;
-		void* __assembly_native = default;
-		int __retVal = default;
+		bool __invokeSucceeded = false;
+		void* __symbol_native = null;
+		void* __assembly_native = null;
 
 		try
 		{
-			// Marshal - Convert managed data to native data.
 			__symbol_native = ComInterfaceMarshaller<ISymbol>.ConvertToUnmanaged(symbol);
-			{
-				__retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void**, int>)__vtable_native[61])(__this, __symbol_native, &__assembly_native);
-			}
+
+			int __retVal = ((delegate* unmanaged[MemberFunction]<void*, void*, void**, int>)__vtable_native[61])(__this, __symbol_native, &__assembly_native);
 
 			__invokeSucceeded = true;
-			GC.KeepAlive(this);
-			// Unmarshal - Convert native data to managed data.
+
 			assembly = ComInterfaceMarshaller<IInputAssemblyFile>.ConvertToManaged(__assembly_native)!;
+
+			return __retVal;
 		}
 		finally
 		{
-			if (__invokeSucceeded)
-			{
-				// CleanupCalleeAllocated - Perform cleanup of callee allocated resources.
-				ComInterfaceMarshaller<IInputAssemblyFile>.Free(__assembly_native);
-			}
+			if (__invokeSucceeded) ComInterfaceMarshaller<IInputAssemblyFile>.Free(__assembly_native);
 
-			// CleanupCallerAllocated - Perform cleanup of caller allocated resources.
 			ComInterfaceMarshaller<ISymbol>.Free(__symbol_native);
 		}
-
-		return __retVal;
 	}
 
 	int ISession.GetLoadAddress(out ulong address) => throw new UnreachableException();
@@ -1949,78 +1502,55 @@ file unsafe partial interface InterfaceImplementation : ISessionEx
 
 file unsafe partial interface InterfaceImplementation
 {
-	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
+	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_IsFastLinkPDB(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		ISessionEx @this = default!;
-		ref int __value_native = ref *__value_native__param;
-		bool value = default!;
-		int __retVal = default;
-
 		try
 		{
-			// Unmarshal - Convert native data to managed data.
-			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISessionEx>(__this_native);
-			__retVal = @this.IsFastLinkPDB(out value);
-			// Marshal - Convert managed data to native data.
-			__value_native = value ? 1 : 0;
+			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISessionEx>(__this_native).IsFastLinkPDB(out bool value);
+
+			*__value_native__param = value ? 1 : 0;
+
+			return __retVal;
 		}
 		catch (Exception __exception)
 		{
-			__retVal = ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
+			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
 		}
-
-		return __retVal;
 	}
 
-	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
+	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_IsPortablePDB(ComWrappers.ComInterfaceDispatch* __this_native, int* __value_native__param)
 	{
-		ISessionEx @this = default!;
-		ref int __value_native = ref *__value_native__param;
-		bool value = default!;
-		int __retVal = default;
-
 		try
 		{
-			// Unmarshal - Convert native data to managed data.
-			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISessionEx>(__this_native);
-			__retVal = @this.IsPortablePDB(out value);
-			// Marshal - Convert managed data to native data.
-			__value_native = value ? 1 : 0;
+			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISessionEx>(__this_native).IsPortablePDB(out bool value);
+
+			*__value_native__param = value ? 1 : 0;
+
+			return __retVal;
 		}
 		catch (Exception __exception)
 		{
-			__retVal = ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
+			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
 		}
-
-		return __retVal;
 	}
 
-	[UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvMemberFunction) })]
+	[UnmanagedCallersOnly(CallConvs = [typeof(CallConvMemberFunction)])]
 	static internal int ABI_GetSourceLinkInfo(ComWrappers.ComInterfaceDispatch* __this_native, void* __parent_native, void** __link_native__param)
 	{
-		ISessionEx @this = default!;
-		ISymbol parent = default!;
-		ref void* __link_native = ref *__link_native__param;
-		IEnumSourceLink link = default!;
-		int __retVal = default;
-
 		try
 		{
-			// Unmarshal - Convert native data to managed data.
-			parent = ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__parent_native)!;
-			@this = ComWrappers.ComInterfaceDispatch.GetInstance<ISessionEx>(__this_native);
-			__retVal = @this.GetSourceLinkInfo(parent, out link);
-			// Marshal - Convert managed data to native data.
-			__link_native = ComInterfaceMarshaller<IEnumSourceLink>.ConvertToUnmanaged(link);
+			int __retVal = ComWrappers.ComInterfaceDispatch.GetInstance<ISessionEx>(__this_native).GetSourceLinkInfo(ComInterfaceMarshaller<ISymbol>.ConvertToManaged(__parent_native)!, out IEnumSourceLink link);
+
+			*__link_native__param = ComInterfaceMarshaller<IEnumSourceLink>.ConvertToUnmanaged(link);
+
+			return __retVal;
 		}
 		catch (Exception __exception)
 		{
-			__retVal = ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
+			return ExceptionAsHResultMarshaller<int>.ConvertToUnmanaged(__exception);
 		}
-
-		return __retVal;
 	}
 }
 
@@ -2029,15 +1559,12 @@ file unsafe partial interface InterfaceImplementation
 	static internal void** CreateManagedVirtualFunctionTable()
 	{
 		void** vtable = (void**)RuntimeHelpers.AllocateTypeAssociatedMemory(typeof(ISessionEx), sizeof(void*) * 65);
-		{
-			NativeMemory.Copy(StrategyBasedComWrappers.DefaultIUnknownInterfaceDetailsStrategy.GetIUnknownDerivedDetails(typeof(ISession).TypeHandle)!.ManagedVirtualMethodTable, vtable, (nuint)(sizeof(void*) * 62));
-		}
 
-		{
-			vtable[62] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_IsFastLinkPDB;
-			vtable[63] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_IsPortablePDB;
-			vtable[64] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, void*, void**, int>)&ABI_GetSourceLinkInfo;
-		}
+		NativeMemory.Copy(StrategyBasedComWrappers.DefaultIUnknownInterfaceDetailsStrategy.GetIUnknownDerivedDetails(typeof(ISession).TypeHandle)!.ManagedVirtualMethodTable, vtable, (nuint)(sizeof(void*) * 62));
+
+		vtable[62] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_IsFastLinkPDB;
+		vtable[63] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, int*, int>)&ABI_IsPortablePDB;
+		vtable[64] = (delegate* unmanaged[MemberFunction]<ComWrappers.ComInterfaceDispatch*, void*, void**, int>)&ABI_GetSourceLinkInfo;
 
 		return vtable;
 	}
