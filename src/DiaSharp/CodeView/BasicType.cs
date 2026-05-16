@@ -38,7 +38,7 @@ public enum BasicType
 	/// <summary>
 	/// Basic type is a <see langword="uint"/> (16/32).
 	/// </summary>
-	UunisSignedInteger = 7,
+	UnsignedInteger = 7,
 
 	/// <summary>
 	/// Basic type is a <see langword="float"/>.
@@ -63,7 +63,7 @@ public enum BasicType
 	/// <summary>
 	/// Basic type is a <see langword="uint"/>.
 	/// </summary>
-	UnisSignedLong = 14,
+	UnsignedLong = 14,
 	
 	/// <summary>
 	/// Basic type is a currency.
