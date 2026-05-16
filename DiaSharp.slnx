@@ -1,6 +1,6 @@
 <Solution>
   <Folder Name="/Root/">
-    <File Path="Directory.Build.props" />
+    <File Path="src/Directory.Build.props" />
   </Folder>
   <Folder Name="/Samples/">
     <Project Path="src/Samples/MinimalManaged/MinimalManaged.csproj" Id="ee1b9c80-b126-4d09-8a51-5d4fea8092bc" />

@@ -35,7 +35,7 @@
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<PackageVersion>$(Version)</PackageVersion>
 		<FileVersion>$(Version)</FileVersion>
-		<Version>0.1.0</Version>
+		<Version>0.1.1</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
