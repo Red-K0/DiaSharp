@@ -14,9 +14,9 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 {
 	#region ISymbol
 
-	public uint? SymbolIndexID => GetS<uint>(_native.GetSymbolIndexID);
+	public uint SymbolIndexID => GetV<uint>(_native.GetSymbolIndexID);
 
-	public SymbolTag? SymbolTag => GetS<SymbolTag>(_native.GetSymbolTag);
+	public SymbolTag SymbolTag => GetV<SymbolTag>(_native.GetSymbolTag);
 
 	public string? Name => GetC<string>(_native.GetName);
 
@@ -26,9 +26,9 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	public Symbol? SymbolType => TryGetC(_native.GetSymbolType, out ISymbol? native) ? new(native) : null;
 
-	public DataKind? DataKind => GetS<DataKind>(_native.GetDataKind);
+	public DataKind DataKind => GetV<DataKind>(_native.GetDataKind);
 
-	public LocationType? LocationType => GetS<LocationType>(_native.GetLocationType);
+	public LocationType LocationType => GetV<LocationType>(_native.GetLocationType);
 
 	public uint? AddressSection => GetS<uint>(_native.GetAddressSection);
 
@@ -92,7 +92,7 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	public Variant? Value => GetS<Variant>(_native.GetValue);
 
-	public BasicType? BaseType => GetS<BasicType>(_native.GetBaseType);
+	public BasicType BaseType => GetV<BasicType>(_native.GetBaseType);
 
 	public uint? Token => GetS<uint>(_native.GetToken);
 
@@ -248,7 +248,7 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	public ulong? TargetVirtualAddress => GetS<ulong>(_native.GetTargetVirtualAddress);
 
-	public Native.ImageFileMachine? MachineType => GetS<Native.ImageFileMachine>(_native.GetMachineType);
+	public Native.ImageFileMachine MachineType => GetV<Native.ImageFileMachine>(_native.GetMachineType);
 
 	public uint? OemID => GetS<uint>(_native.GetOemID);
 
@@ -417,7 +417,7 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	public bool? OptimizedAway => GetS<bool>(_native.GetIsOptimizedAway);
 
-	public BuiltIn? BuiltInKind => GetS<BuiltIn>(_native.GetBuiltInKind);
+	public BuiltIn BuiltInKind => GetV<BuiltIn>(_native.GetBuiltInKind);
 
 	public Register? RegisterType => GetS<Register>(_native.GetRegisterType);
 
@@ -805,13 +805,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 
 	#region ISymbol8
 
-	public CoroutineKind? CoroutineKind
+	public CoroutineKind CoroutineKind
 	{
 		get
 		{
 			ISymbol8 symbol = EnsureAndQuery<ISymbol8>();
 
-			CoroutineKind? value = GetS<CoroutineKind>(symbol.GetCoroutineKind);
+			CoroutineKind value = GetV<CoroutineKind>(symbol.GetCoroutineKind);
 
 			ComHelpers.Release(ref symbol);
 
@@ -819,13 +819,13 @@ public sealed unsafe class Symbol(ISymbol symbol) : ComObject<ISymbol>(symbol)
 		}
 	}
 
-	public AssociationKind? AssociatedSymbolKind
+	public AssociationKind AssociatedSymbolKind
 	{
 		get
 		{
 			ISymbol8 symbol = EnsureAndQuery<ISymbol8>();
 
-			AssociationKind? value = GetS<AssociationKind>(symbol.GetAssociatedSymbolKind);
+			AssociationKind value = GetV<AssociationKind>(symbol.GetAssociatedSymbolKind);
 
 			ComHelpers.Release(ref symbol);
 

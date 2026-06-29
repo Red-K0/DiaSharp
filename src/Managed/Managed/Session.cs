@@ -7,7 +7,7 @@ using DiaSharp.SDK.Symbols;
 
 namespace DiaSharp.Managed;
 
-	[SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Readonly semantics are unnecessary.")]
+[SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Readonly semantics are unnecessary.")]
 public sealed unsafe class Session(ISession session) : ComObject<ISession>(session)
 {
 	#region ISession

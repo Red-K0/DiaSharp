@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MinimalManaged": {
+      "commandName": "Project",
+      "debugEngines": "managed,native"
+    }
+  }
+}

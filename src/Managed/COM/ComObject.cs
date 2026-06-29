@@ -124,6 +124,28 @@ public abstract class ComObject<TInterface>(TInterface native) : IDisposable whe
 		return value;
 	}
 
+	[StackTraceHidden]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	protected T GetV<T>(GetSingle<T> function, bool ensured = false, [CallerLineNumber] int key = -1) where T : struct
+	{
+		if (!ensured) EnsureNotDisposed();
+
+		ref object? cached = ref CollectionsMarshal.GetValueRefOrAddDefault(_propertyCache, key, out bool exists);
+
+		if (exists) return cached is null ? default : (T)cached;
+
+		int hr = function(out T value);
+
+		if (hr == 0)
+		{
+			cached = value;
+			return value;
+		}
+
+		cached = null;
+		return default;
+	}
+
 	[StackTraceHidden, MethodImpl(MethodImplOptions.AggressiveInlining)]
 	protected unsafe void*[]? GetA(GetBuffer function, bool ensured = false, [CallerLineNumber] int key = -1) => Unsafe.As<void*[]>(GetA(Unsafe.As<GetBuffer<nint>>(function), ensured, key));
 
